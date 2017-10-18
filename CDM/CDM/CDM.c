@@ -232,7 +232,7 @@ CDMText * CDMTextWrapper(_IN_ char * text, const _IN_ CDMEnum color, const _IN_ 
 	txt->bufferContents.alreadyDrawn = NULL;
 	txt->rect.Bottom = 1;
 	txt->rect.Left = 0;
-	txt->rect.Right = strlen(text);
+	txt->rect.Right = (SHORT)strlen(text);
 	txt->rect.Top = 0;
 	return txt;
 }
@@ -349,7 +349,7 @@ CDMText * CDMTextWrapper_s(_IN_ char * text, const _IN_ size_t textSize, const _
 	txt->bufferContents.alreadyDrawn = NULL;
 	txt->rect.Bottom = 1;
 	txt->rect.Left = 0;
-	txt->rect.Right = textSize;
+	txt->rect.Right = (SHORT)textSize;
 	txt->rect.Top = 0;
 	return txt;
 }
@@ -364,7 +364,7 @@ void CDMChangeText(CDMText ** txt, const _IN_ char * text)
 		return;
 	}
 	(*txt)->data = dataCpy;
-	(*txt)->rect.Right = strSize;
+	(*txt)->rect.Right = (SHORT)strSize;
 	CHAR_INFO* cinf = (CHAR_INFO*)realloc((*txt)->bufferContents.printBufferCont,
 		sizeof(CHAR_INFO)* strSize);
 	if (!cinf)
@@ -523,6 +523,36 @@ void CDMClearScreen(_INOUT_ CDMContext ** ctx)
 			}
 		}
 	}
+}
+
+void CDMFillScreen(_INOUT_ CDMContext ** ctx,
+	const _IN_ char character,
+	const _IN_ CDMEnum frontColor,
+	const _IN_ CDMEnum backColor)
+{
+	SHORT	i,
+			j;
+	for (i = (*ctx)->rect.Right; i--;)
+	{
+		for (j = (*ctx)->rect.Bottom; j--;)
+		{
+			(*ctx)->contents.printBufferCont[j + (i * (*ctx)->rect.Right)].Attributes = 
+				frontColor | backColor;
+			(*ctx)->contents.printBufferCont[j + (i * (*ctx)->rect.Right)].Char.AsciiChar = character;
+		}
+	}
+}
+
+void CDMPoke(_INOUT_ CDMContext ** ctx,
+	const _IN_ CDMCoord coord,
+	const _IN_ char character,
+	const _IN_ CDMEnum frontColor,
+	const _IN_ CDMEnum backColor)
+{
+	SHORT accesor = coord.Y + (coord.X * (*ctx)->rect.Right);
+	(*ctx)->contents.printBufferCont[accesor].Attributes =
+		frontColor | backColor;
+	(*ctx)->contents.printBufferCont[accesor].Char.AsciiChar = character;
 }
 
 void CDMDraw(_IN_ CDMContext* ctx)
@@ -1186,7 +1216,9 @@ void CDMSetErrno(const _IN_ CDMErrno code)
 
 CDMErrno CDMGetErrno()
 {
-	return cdmErrno;
+	CDMErrno cpy = cdmErrno;
+	cdmErrno = 0;
+	return cpy;
 }
 
 char * CDMGetErrorMessage()

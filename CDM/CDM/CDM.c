@@ -1,8 +1,18 @@
 #include "CDM.h"
+#include <stdlib.h>
+#include <stdio.h>
 
-CDMContext* CDMCreateContext(const short width, const short height)
+static CDMErrno	cdmErrno;
+
+CDMContext* CDMCreateContext(const _IN_ short width, const _IN_ short height)
 {
+	CDMClearErrno();
 	CDMContext* ctx = malloc(sizeof(CDMContext));
+	if (!ctx)
+	{
+		CDMSetErrno(4);
+		return NULL;
+	}
 	ctx->backBuffer = CreateConsoleScreenBuffer(
 		GENERIC_READ |				
 		GENERIC_WRITE,
@@ -22,7 +32,7 @@ CDMContext* CDMCreateContext(const short width, const short height)
 	ctx->mainBufferActive = TRUE;
 	SetConsoleActiveScreenBuffer(ctx->backBuffer);
 	HWND wnd = GetConsoleWindow();
-	COORD coord = { 
+	CDMCoord coord = { 
 		(SHORT)width,
 		(SHORT)height };
 	SMALL_RECT wndw = { 
@@ -49,9 +59,11 @@ CDMContext* CDMCreateContext(const short width, const short height)
 	return ctx;
 }
 
-void CDMChangeWindowSize(CDMContext ** ctx, const short width, const short height)
+void CDMChangeWindowSize(_INOUT_ CDMContext** ctx,
+	const _IN_ short width,
+	const _IN_ short height)
 {
-	COORD coord = { width, height };
+	CDMCoord coord = { width, height };
 	(*ctx)->rect.Right = width;
 	(*ctx)->rect.Bottom = height;
 	HWND wnd = GetConsoleWindow();
@@ -62,12 +74,32 @@ void CDMChangeWindowSize(CDMContext ** ctx, const short width, const short heigh
 	SetConsoleWindowInfo((*ctx)->backBuffer, TRUE, &(*ctx)->rect);
 }
 
-void CDMSetWindowTitle(const char * title)
+void CDMToggleFullscreen(CDMContext** _INOUT_ ctx, const _IN_ CDMBool val)
+{
+	if (val)
+	{
+		SetConsoleDisplayMode((*ctx)->backBuffer, CONSOLE_FULLSCREEN_MODE, NULL);
+		SetConsoleDisplayMode((*ctx)->mainBuffer, CONSOLE_FULLSCREEN_MODE, NULL);
+	}
+	else
+	{
+		SetConsoleDisplayMode((*ctx)->backBuffer, CONSOLE_WINDOWED_MODE, NULL);
+		SetConsoleDisplayMode((*ctx)->mainBuffer, CONSOLE_WINDOWED_MODE, NULL);
+	}
+	CDMCoord coord = GetLargestConsoleWindowSize((*ctx)->mainBuffer);
+	SetConsoleScreenBufferSize((*ctx)->mainBuffer, coord);
+	SetConsoleScreenBufferSize((*ctx)->backBuffer, coord);
+}
+
+void CDMSetWindowTitle(const _IN_ char* title)
 {
 	SetConsoleTitle(title);
 }
 
-void CDMSetFontAndSize(CDMContext ** ctx, const wchar_t * fontName, const short width, const short height)
+void CDMSetFontAndSize(_INOUT_ CDMContext** ctx,
+	const _IN_ wchar_t* fontName,
+	const _IN_ short width,
+	const _IN_ short height)
 {
 	CONSOLE_FONT_INFOEX currFont;
 	currFont.cbSize = sizeof currFont;
@@ -81,7 +113,8 @@ void CDMSetFontAndSize(CDMContext ** ctx, const wchar_t * fontName, const short 
 	SetCurrentConsoleFontEx((*ctx)->backBuffer, TRUE, &currFont);
 }
 
-void CDMSetCursorVisibility(CDMContext ** ctx, const CDMBool status)
+void CDMSetCursorVisibility(_INOUT_ CDMContext** ctx,
+	const _IN_ CDMBool status)
 {
 	CONSOLE_CURSOR_INFO inf;
 	inf.bVisible = status;
@@ -90,19 +123,24 @@ void CDMSetCursorVisibility(CDMContext ** ctx, const CDMBool status)
 	SetConsoleCursorInfo((*ctx)->backBuffer, &inf);
 }
 
-void CDMActivateMouseInput(CDMContext ** ctx)
+void CDMActivateMouseInput(_INOUT_ CDMContext** ctx)
 {
 	SetConsoleMode((*ctx)->InputBuffer, ENABLE_MOUSE_INPUT);
 	SetConsoleMode((*ctx)->backBuffer, ENABLE_MOUSE_INPUT);
 	SetConsoleMode((*ctx)->mainBuffer, ENABLE_MOUSE_INPUT);
 }
 
-CDMSurface* CMDCreateSurface(const short posX, 
-	const short posY, 
-	const short sizeX, 
-	const short sizeY)
+CDMSurface* CDMCreateSurface(const _IN_ short posX,
+	const _IN_ short posY,
+	const _IN_ short sizeX,
+	const _IN_ short sizeY)
 {
 	CDMSurface* srfc = malloc(sizeof(CDMSurface));
+	if (!srfc)
+	{
+		CDMSetErrno(4);
+		return NULL;
+	}
 	int i;
 	srfc->rect = ((CDMRect) { posX, posY, sizeX, sizeY });
 	srfc->data = calloc(sizeX*sizeY, sizeof(unsigned char));
@@ -117,35 +155,120 @@ CDMSurface* CMDCreateSurface(const short posX,
 	return srfc;
 }
 
-int CDMSwapBuffer(CDMContext * const ctx)
+CDMSurface * CDMReadImg(const _IN_ char* fileName, _OUTOPT_ CDMColorScheme* scheme)
+{
+	CDMSurface* srfc;
+	CDMCoord coord;
+	FILE* f;
+	char bytecheck = 0;
+	f = fopen(fileName, "rb");
+	fread(&bytecheck, 1, 1, f);
+	if (bytecheck != 42)
+	{
+		CDMSetErrno(2);
+		return NULL;
+	}
+	fread(&coord, sizeof(CDMCoord), 1, f);
+	srfc = CDMCreateSurface(0, 0, coord.X, coord.Y);
+	if (scheme != NULL)
+		fread(scheme, sizeof(CDMColorScheme), 1, f);
+	else fseek(f, sizeof(CDMColorScheme), SEEK_CUR);
+	fread(&srfc->pallete, sizeof(CDMPalette), 1, f);
+	fread(srfc->data, sizeof(CDMEnum), srfc->rect.Right * srfc->rect.Bottom, f);
+	fclose(f);
+	free(f);
+	return srfc;
+}
+
+void CDMExportSrfcToImg(const _IN_ CDMContext* ctx,
+	const _IN_ CDMSurface* srfc,
+	const _IN_ char* fileName,
+	const _IN_ size_t nameSize)
+{
+	FILE*	f;
+	int		i;
+	char*	name = calloc(1, nameSize + 4);
+	char	val = 42;
+	CDMColorScheme scheme;
+	for (unsigned int i = 0; i < nameSize; ++i)
+		name[i] = fileName[i];
+	name[nameSize] = '.';
+	name[nameSize + 1] = 'c';
+	name[nameSize + 2] = 'd';
+	name[nameSize + 3] = 'i';
+
+	for (i = 0; i < 16; ++i)
+		scheme.colors[i] = ctx->inf.ColorTable[i];
+	f = fopen(name, "wb");
+	fwrite(&val, 1, 1, f);
+	fwrite(&srfc->rect, sizeof(CDMRect), 1, f);
+	fwrite(&scheme, sizeof(CDMColorScheme), 1, f);
+	fwrite(&srfc->pallete, sizeof(CDMPalette), 1, f);
+	fwrite(srfc->data, sizeof(CDMEnum), srfc->rect.Right * srfc->rect.Bottom, f);
+	fclose(f);
+	free(f);
+	free(name);
+}
+
+CDMText * CDMTextWrapper(_IN_ char * text, const _IN_ CDMEnum color, const _IN_ CDMEnum background)
+{
+	CDMText* txt = malloc(sizeof(CDMText));
+	if(!txt)
+	{
+		CDMSetErrno(4);
+		return NULL;
+	}
+	txt->data = text;
+	txt->backColor = background;
+	txt->frontColor = color;
+	txt->bufferContents.printBufferCont = NULL;
+	txt->bufferContents.printBufferCont = calloc(strlen(text), sizeof(CHAR_INFO));
+	if (!txt->bufferContents.printBufferCont)
+	{
+		CDMSetErrno(4);
+		return NULL;
+	}
+	txt->bufferContents.isAlphaTile = NULL;
+	txt->bufferContents.alreadyDrawn = NULL;
+	txt->rect.Bottom = 1;
+	txt->rect.Left = 0;
+	txt->rect.Right = strlen(text);
+	txt->rect.Top = 0;
+	return txt;
+}
+
+int CDMSwapBuffer(_IN_ CDMContext* const ctx)
 {
 	SetConsoleActiveScreenBuffer(ctx->mainBufferActive ? ctx->backBuffer : ctx->mainBuffer);
 	return ctx->mainBufferActive ^= 1;
 }
 
-void CDMFreeSurface(CDMSurface ** srfc)
+void CDMFreeSurface(_INOUT_ CDMSurface** srfc)
 {
 	free((*srfc)->data);
-	free((*srfc));
 	free((*srfc)->bufferContents.printBufferCont);
 	free((*srfc)->bufferContents.isAlphaTile);
+	free((*srfc));
+	*srfc = NULL;
 }
 
-void CDMFreeText(CDMText ** txt)
+void CDMFreeText(_INOUT_ CDMText** txt)
 {
 	free((*txt)->data);
 	free((*txt)->bufferContents.printBufferCont);
 	free((*txt));
+	*txt = NULL;
 }
 
-void CDMFreeContext(CDMContext ** ctx)
+void CDMFreeContext(_INOUT_ CDMContext** ctx)
 {
 	CloseHandle((*ctx)->backBuffer);
 	CloseHandle((*ctx)->mainBuffer);
 	free((*ctx));
+	*ctx = NULL;
 }
 
-void CDMPrepareSurface(CDMSurface ** surface)
+void CDMPrepareSurface(_INOUT_ CDMSurface** surface)
 {
 	SHORT i, j;
 	for (i = (*surface)->rect.Bottom; i--;)
@@ -189,7 +312,7 @@ void CDMPrepareSurface(CDMSurface ** surface)
 	}
 }
 
-void CDMPrepareText(CDMText ** txt)
+void CDMPrepareText(_INOUT_ CDMText** txt)
 {
 	SHORT i, j;
 	for (i = (*txt)->rect.Bottom; i--;)
@@ -204,26 +327,59 @@ void CDMPrepareText(CDMText ** txt)
 	}
 }
 
-CDMText * CDMTextWrapper(char * text, 
-	const size_t textSize, 
-	const CDMEnum color, 
-	const CDMEnum background)
+CDMText * CDMTextWrapper_s(_IN_ char * text, const _IN_ size_t textSize, const _IN_ CDMEnum color, const _IN_ CDMEnum background)
 {
 	CDMText* txt = malloc(sizeof(CDMText));
+	if(!txt)
+	{
+		CDMSetErrno(4);
+		return NULL;
+	}
 	txt->data = text;
 	txt->backColor = background;
 	txt->frontColor = color;
+	txt->bufferContents.printBufferCont = NULL;
 	txt->bufferContents.printBufferCont = calloc(textSize, sizeof(CHAR_INFO));
+	if (!txt->bufferContents.printBufferCont)
+	{
+		CDMSetErrno(4);
+		return NULL;
+	}
 	txt->bufferContents.isAlphaTile = NULL;
 	txt->bufferContents.alreadyDrawn = NULL;
+	txt->rect.Bottom = 1;
+	txt->rect.Left = 0;
+	txt->rect.Right = textSize;
+	txt->rect.Top = 0;
 	return txt;
 }
 
-void CDMSetForegroundColor(CDMSurface ** surface, 
-	const CDMEnum c1, 
-	const CDMEnum c2, 
-	const CDMEnum c3, 
-	const CDMEnum c4)
+void CDMChangeText(CDMText ** txt, const _IN_ char * text)
+{
+	size_t strSize = strlen(text);
+	char* dataCpy = (char*)realloc((*txt)->data, strSize);
+	if (!dataCpy)
+	{
+		CDMSetErrno(4);
+		return;
+	}
+	(*txt)->data = dataCpy;
+	(*txt)->rect.Right = strSize;
+	CHAR_INFO* cinf = (CHAR_INFO*)realloc((*txt)->bufferContents.printBufferCont,
+		sizeof(CHAR_INFO)* strSize);
+	if (!cinf)
+	{
+		CDMSetErrno(4);
+		return;
+	}
+	(*txt)->bufferContents.printBufferCont = cinf;
+}
+
+void CDMSetForegroundColor(_INOUT_ CDMSurface** surface,
+	const _IN_ CDMEnum c1,
+	const _IN_ CDMEnum c2,
+	const _IN_ CDMEnum c3,
+	const _IN_ CDMEnum c4)
 {
 	(*surface)->pallete.p1.frontColor = c1;
 	(*surface)->pallete.p2.frontColor = c2;
@@ -231,11 +387,11 @@ void CDMSetForegroundColor(CDMSurface ** surface,
 	(*surface)->pallete.p4.frontColor = c4;
 }
 
-void CDMSetBackgroundColor(CDMSurface ** surface,
-	const CDMEnum c1, 
-	const CDMEnum c2, 
-	const CDMEnum c3, 
-	const CDMEnum c4)
+void CDMSetBackgroundColor(_INOUT_ CDMSurface** surface,
+	const _IN_ CDMEnum c1,
+	const _IN_ CDMEnum c2,
+	const _IN_ CDMEnum c3,
+	const _IN_ CDMEnum c4)
 {
 	(*surface)->pallete.p1.backColor = c1;
 	(*surface)->pallete.p2.backColor = c2;
@@ -243,11 +399,11 @@ void CDMSetBackgroundColor(CDMSurface ** surface,
 	(*surface)->pallete.p4.backColor = c4;
 }
 
-void CDMSetCharacters(CDMSurface ** surface, 
-	const CDMEnum c1, 
-	const CDMEnum c2, 
-	const CDMEnum c3, 
-	const CDMEnum c4)
+void CDMSetCharacters(_INOUT_ CDMSurface** surface,
+	const _IN_ CDMEnum c1,
+	const _IN_ CDMEnum c2,
+	const _IN_ CDMEnum c3,
+	const _IN_ CDMEnum c4)
 {
 	(*surface)->pallete.p1.character = c1;
 	(*surface)->pallete.p2.character = c2;
@@ -255,9 +411,9 @@ void CDMSetCharacters(CDMSurface ** surface,
 	(*surface)->pallete.p4.character = c4;
 }
 
-void CDMDrawSurface(CDMContext ** ctx, CDMSurface * surface)
+void CDMDrawSurface(_INOUT_ CDMContext ** ctx, _IN_ CDMSurface * surface)
 {
-	COORD		pos = { surface->rect.Left,surface->rect.Top },
+	CDMCoord	pos = { surface->rect.Left,surface->rect.Top },
 				size = { surface->rect.Right, surface->rect.Bottom };
 	SMALL_RECT	rect = surface->rect;
 	WriteConsoleOutput(
@@ -266,9 +422,14 @@ void CDMDrawSurface(CDMContext ** ctx, CDMSurface * surface)
 		pos, size, &rect);
 }
 
-void CDMAddSurfaceToContext(CDMContext ** ctx, CDMSurface * surface)
+void CDMAddSurfaceToContext(_INOUT_ CDMContext** ctx, _IN_ CDMSurface* surface)
 {
-	SHORT i, j, si, sj, ctxAccessor, srfcAccessor; 
+	SHORT	i, 
+			j,
+			si,
+			sj,
+			ctxAccessor,
+			srfcAccessor; 
 	CDMBool pixelEqual;
 	for (i = surface->rect.Left, si = 0;
 		si < surface->rect.Right && i < (*ctx)->rect.Right; ++i, ++si)
@@ -293,10 +454,10 @@ void CDMAddSurfaceToContext(CDMContext ** ctx, CDMSurface * surface)
 	}
 }
 
-void CDMDrawText(CDMContext ** ctx, CDMText * txt)
+void CDMDrawText(_INOUT_ CDMContext ** ctx, _IN_ CDMText * txt)
 {
-	COORD		pos = { txt->rect.Left,txt->rect.Top },
-		size = { txt->rect.Right, txt->rect.Bottom };
+	CDMCoord	pos = { txt->rect.Left,txt->rect.Top },
+				size = { txt->rect.Right, txt->rect.Bottom };
 	SMALL_RECT	rect = txt->rect;
 	WriteConsoleOutput(
 		(*ctx)->mainBufferActive ? (*ctx)->backBuffer : (*ctx)->mainBuffer,
@@ -304,9 +465,14 @@ void CDMDrawText(CDMContext ** ctx, CDMText * txt)
 		pos, size, &rect);
 }
 
-void CDMAddTextToContext(CDMContext ** ctx, CDMText * txt)
+void CDMAddTextToContext(_INOUT_ CDMContext** ctx, _IN_ CDMText* txt)
 {
-	SHORT i, j, si, sj, ctxAccessor, srfcAccessor;
+	SHORT	i, 
+			j, 
+			si, 
+			sj, 
+			ctxAccessor, 
+			srfcAccessor;
 	for (i = txt->rect.Left, si = 0;
 		si < txt->rect.Right && i < (*ctx)->rect.Right; ++i, ++si)
 	{
@@ -320,27 +486,32 @@ void CDMAddTextToContext(CDMContext ** ctx, CDMText * txt)
 			{
 				(*ctx)->contents.printBufferCont[ctxAccessor] =
 					txt->bufferContents.printBufferCont[srfcAccessor];
-				(*ctx)->contents.alreadyDrawn[ctxAccessor] = CDMFALSE;
 			}
-			else
-				(*ctx)->contents.alreadyDrawn[ctxAccessor] = CDMTRUE;
+
 		}
 	}
 }
 
-void CDMSetColorRGB(CDMColorScheme* data, short position, short r, short g, short b)
+void CDMSetColorRGB(_INOUT_ CDMColorScheme* data,
+	_IN_ short position,
+	_IN_ short r,
+	_IN_ short g,
+	_IN_ short b)
 {
 	data->colors[position % 16] = RGB(r % 256, g % 256, b % 256);
 }
 
-void CDMSetColorBin(CDMColorScheme* data, short position, const DWORD color)
+void CDMSetColorBin(_INOUT_ CDMColorScheme* data,
+	_IN_ short position,
+	const _IN_ DWORD color)
 {
 	data->colors[position % 16] = color;
 }
 
-void CDMClearScreen(CDMContext ** ctx)
+void CDMClearScreen(_INOUT_ CDMContext ** ctx)
 {
-	SHORT i, j;
+	SHORT	i, 
+			j;
 	for (i = (*ctx)->rect.Right; i--;)
 	{
 		for (j = (*ctx)->rect.Bottom; j--;)
@@ -354,33 +525,33 @@ void CDMClearScreen(CDMContext ** ctx)
 	}
 }
 
-void CDMDraw(CDMContext * ctx)
+void CDMDraw(_IN_ CDMContext* ctx)
 {
-	COORD	size = { (ctx)->rect.Right,(ctx)->rect.Bottom },
-		top = { (ctx)->rect.Left, (ctx)->rect.Top };
-	CDMRect r;
+	CDMCoord	size = { (ctx)->rect.Right,(ctx)->rect.Bottom },
+				top = { (ctx)->rect.Left, (ctx)->rect.Top };
+	CDMRect		r;
 	WriteConsoleOutput(
 		(ctx)->mainBufferActive ? (ctx)->backBuffer : (ctx)->mainBuffer,
 		(ctx)->contents.printBufferCont,
 		size, top, &r);
 }
 
-int CDMGetR(CDMColorScheme* data, const short position)
+int CDMGetR(_IN_ CDMColorScheme* data, const _IN_ short position)
 {
 	return GetRValue(data->colors[position % 16]);
 }
 
-int CDMGetG(CDMColorScheme* data, const short position)
+int CDMGetG(_IN_ CDMColorScheme* data, const _IN_ short position)
 {
 	return GetGValue(data->colors[position % 16]);
 }
 
-int CDMGetB(CDMColorScheme* data, const short position)
+int CDMGetB(_IN_ CDMColorScheme* data, const _IN_ short position)
 {
 	return GetBValue(data->colors[position % 16]);
 }
 
-void CDMSetActiveScheme(CDMColorScheme data, CDMContext** ctx)
+void CDMSetActiveScheme(_IN_ CDMColorScheme data, _INOUT_ CDMContext** ctx)
 {
 	int i;
 	for (i = 16; i--;)
@@ -389,24 +560,27 @@ void CDMSetActiveScheme(CDMColorScheme data, CDMContext** ctx)
 	SetConsoleScreenBufferInfoEx((*ctx)->backBuffer, &(*ctx)->inf);
 }
 
-void CDMSetPixel(CDMSurface ** surface, short x, short y, CDMEnum pixelSet)
+void CDMSetPixel(_INOUT_ CDMSurface** surface,
+	_IN_ short x,
+	_IN_ short y,
+	_IN_ CDMEnum pixelSet)
 {
 	(*surface)->data[y * (x * (*surface)->rect.Right)] = pixelSet;
 }
 
-CDMBool CDMCompareCHARINFO(CHAR_INFO rhs, CHAR_INFO lhs)
+CDMBool CDMCompareCHARINFO(_IN_ CHAR_INFO rhs, _IN_ CHAR_INFO lhs)
 {
 	return rhs.Attributes == lhs.Attributes &&
 		rhs.Char.AsciiChar == lhs.Char.AsciiChar ? CDMTRUE : CDMFALSE;
 }
 
-void CDMPollEvents(CDMContext* ctx, CDMEvent * event)
+void CDMPollEvents(_IN_ CDMContext* ctx, _INOUT_ CDMEvent* event)
 {
 	GetNumberOfConsoleInputEvents(ctx->InputBuffer, &event->inputNum);
 	ReadConsoleInput(ctx->InputBuffer, event->inputs, 51, &event->inputNum);
 }
 
-CDMBool CDMGetKeyPressed(CDMEvent * event, const CDMEnum key)
+CDMBool CDMGetKeyPressed(_IN_ CDMEvent* event, const _IN_ CDMEnum key)
 {
 	int i, keyVal;
 	switch (key)
@@ -595,7 +769,7 @@ CDMBool CDMGetKeyPressed(CDMEvent * event, const CDMEnum key)
 	return event->inputPressed[key] = CDMFALSE;
 }
 
-CDMBool CDMGetKeyDown(CDMEvent * event, const CDMEnum key)
+CDMBool CDMGetKeyDown(_IN_ CDMEvent* event, const _IN_ CDMEnum key)
 {
 	int i, keyVal;
 	switch (key)
@@ -786,7 +960,7 @@ CDMBool CDMGetKeyDown(CDMEvent * event, const CDMEnum key)
 	return event->inputPressed[key] = CDMFALSE;
 }
 
-CDMBool CDMGetKeyUp(CDMEvent * event, const CDMEnum key)
+CDMBool CDMGetKeyUp(_IN_ CDMEvent* event, const _IN_ CDMEnum key)
 {
 	int i, keyVal;
 	switch (key)
@@ -975,7 +1149,7 @@ CDMBool CDMGetKeyUp(CDMEvent * event, const CDMEnum key)
 	return event->inputPressed[key] = CDMFALSE;
 }
 
-CDMCoord CDMGetMousePos(CDMEvent * event)
+CDMCoord CDMGetMousePos(_IN_ CDMEvent* event)
 {
 	int i;
 	for (i = 0; i < event->inputNum; ++i)
@@ -987,11 +1161,11 @@ CDMCoord CDMGetMousePos(CDMEvent * event)
 			break;
 		}
 	}
-	COORD ret = { 0,0 };
+	CDMCoord ret = { 0,0 };
 	return ret;
 }
 
-void CDMKeepScreenSize(CDMContext ** ctx, CDMEvent* event)
+void CDMKeepScreenSize(_INOUT_ CDMContext** ctx, _IN_ CDMEvent* event)
 {
 	int i;
 	for (i = 0; i < event->inputNum; ++i)
@@ -1003,6 +1177,38 @@ void CDMKeepScreenSize(CDMContext ** ctx, CDMEvent* event)
 			break;
 		}
 	}
+}
+
+void CDMSetErrno(const _IN_ CDMErrno code)
+{
+	cdmErrno = code;
+}
+
+CDMErrno CDMGetErrno()
+{
+	return cdmErrno;
+}
+
+char * CDMGetErrorMessage()
+{
+	switch(cdmErrno)
+	{
+	case 0:
+		return "No Error.\0";
+	case 1:
+		return "Failed to load image.\0";
+	case 2:
+		return "File is not a CDM compatible image.\0";
+	case 4:
+		return "Memory was unable to be allocated.\0";
+	default:
+		return "Unknown error.\0";
+	}
+}
+
+void CDMClearErrno()
+{
+	cdmErrno = 0;
 }
 
 

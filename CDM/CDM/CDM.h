@@ -843,8 +843,10 @@ typedef struct CDMContext
 									InputBuffer;
 	CDMBool							mainBufferActive;
 	CONSOLE_SCREEN_BUFFER_INFOEX	inf;
-	CDMTiles						contents;
-	CDMRect							rect;
+	CDMTiles						contents,
+									lastFrameContents;
+	CDMRect							rect,
+									drawRect;
 
 }CDMContext;
 

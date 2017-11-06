@@ -72,6 +72,12 @@ void CDMChangeWindowSize(_INOUT_ CDMContext** ctx,
 	MoveWindow(wnd, -8, 0, 1, 1, FALSE);
 	SetConsoleWindowInfo((*ctx)->mainBuffer, TRUE, &(*ctx)->rect);
 	SetConsoleWindowInfo((*ctx)->backBuffer, TRUE, &(*ctx)->rect);
+	free((*ctx)->contents.printBufferCont);
+	free((*ctx)->contents.isAlphaTile);
+	free((*ctx)->contents.alreadyDrawn);
+	(*ctx)->contents.printBufferCont = calloc(width * height, sizeof(CHAR_INFO));
+	(*ctx)->contents.isAlphaTile = calloc(width * height, sizeof(CDMBool));
+	(*ctx)->contents.alreadyDrawn = calloc(width * height, sizeof(CDMBool));
 }
 
 void CDMToggleFullscreen(CDMContext** _INOUT_ ctx, const _IN_ CDMBool val)
@@ -87,6 +93,19 @@ void CDMToggleFullscreen(CDMContext** _INOUT_ ctx, const _IN_ CDMBool val)
 		SetConsoleDisplayMode((*ctx)->mainBuffer, CONSOLE_WINDOWED_MODE, NULL);
 	}
 	CDMCoord coord = GetLargestConsoleWindowSize((*ctx)->mainBuffer);
+	(*ctx)->rect.Top = 0;
+	(*ctx)->rect.Left = 0;
+	(*ctx)->rect.Right = coord.X;
+	(*ctx)->rect.Bottom = coord.Y;
+	free((*ctx)->contents.printBufferCont);
+	free((*ctx)->contents.isAlphaTile);
+	free((*ctx)->contents.alreadyDrawn);
+	(*ctx)->contents.printBufferCont =
+		calloc((*ctx)->rect.Right * (*ctx)->rect.Bottom, sizeof(CHAR_INFO));
+	(*ctx)->contents.isAlphaTile = 
+		calloc((*ctx)->rect.Right * (*ctx)->rect.Bottom, sizeof(CDMBool));
+	(*ctx)->contents.alreadyDrawn = 
+		calloc((*ctx)->rect.Right * (*ctx)->rect.Bottom, sizeof(CDMBool));
 	SetConsoleScreenBufferSize((*ctx)->mainBuffer, coord);
 	SetConsoleScreenBufferSize((*ctx)->backBuffer, coord);
 }
@@ -240,7 +259,10 @@ CDMText * CDMTextWrapper(_IN_ char * text, const _IN_ CDMEnum color, const _IN_ 
 int CDMSwapBuffer(_IN_ CDMContext* const ctx)
 {
 	SetConsoleActiveScreenBuffer(ctx->mainBufferActive ? ctx->backBuffer : ctx->mainBuffer);
-	return ctx->mainBufferActive ^= 1;
+	if (ctx->mainBufferActive)
+		ctx->mainBufferActive = CDMFALSE;
+	else ctx->mainBufferActive = CDMTRUE;
+	return ctx->mainBufferActive;
 }
 
 void CDMFreeSurface(_INOUT_ CDMSurface** srfc)
@@ -357,13 +379,14 @@ CDMText * CDMTextWrapper_s(_IN_ char * text, const _IN_ size_t textSize, const _
 void CDMChangeText(CDMText ** txt, const _IN_ char * text)
 {
 	size_t strSize = strlen(text);
-	char* dataCpy = (char*)realloc((*txt)->data, strSize);
-	if (!dataCpy)
-	{
-		CDMSetErrno(4);
-		return;
-	}
-	(*txt)->data = dataCpy;
+	//free((*txt)->data);
+	//char* dataCpy = (char*)calloc(strSize, 1);
+	//if (!dataCpy)
+	//{
+	//	CDMSetErrno(4);
+	//	return;
+	//}
+	(*txt)->data = text;
 	(*txt)->rect.Right = (SHORT)strSize;
 	CHAR_INFO* cinf = (CHAR_INFO*)realloc((*txt)->bufferContents.printBufferCont,
 		sizeof(CHAR_INFO)* strSize);
@@ -415,11 +438,11 @@ void CDMDrawSurface(_INOUT_ CDMContext ** ctx, _IN_ CDMSurface * surface)
 {
 	CDMCoord	pos = { surface->rect.Left,surface->rect.Top },
 				size = { surface->rect.Right, surface->rect.Bottom };
-	SMALL_RECT	rect = surface->rect;
+	SMALL_RECT	rect = { pos.X, pos.Y, (*ctx)->rect.Right, (*ctx)->rect.Bottom };
 	WriteConsoleOutput(
 		(*ctx)->mainBufferActive ? (*ctx)->backBuffer : (*ctx)->mainBuffer,
 		surface->bufferContents.printBufferCont,
-		pos, size, &rect);
+		size, pos, &rect);
 }
 
 void CDMAddSurfaceToContext(_INOUT_ CDMContext** ctx, _IN_ CDMSurface* surface)
@@ -435,10 +458,10 @@ void CDMAddSurfaceToContext(_INOUT_ CDMContext** ctx, _IN_ CDMSurface* surface)
 		si < surface->rect.Right && i < (*ctx)->rect.Right; ++i, ++si)
 	{
 		for (j = surface->rect.Top, sj = 0;
-			sj < surface->rect.Bottom && i < (*ctx)->rect.Bottom; ++i, ++sj)
+			sj < surface->rect.Bottom && j < (*ctx)->rect.Bottom; ++j, ++sj)
 		{
-			ctxAccessor = j + (i * (*ctx)->rect.Right);
-			srfcAccessor = sj + (si * surface->rect.Right);
+			ctxAccessor = i + (j * (*ctx)->rect.Right);
+			srfcAccessor = si + (sj * surface->rect.Right);
 			pixelEqual = CDMCompareCHARINFO(surface->bufferContents.printBufferCont[srfcAccessor],
 				(*ctx)->contents.printBufferCont[ctxAccessor]);
 			if (! pixelEqual &&
@@ -458,11 +481,11 @@ void CDMDrawText(_INOUT_ CDMContext ** ctx, _IN_ CDMText * txt)
 {
 	CDMCoord	pos = { txt->rect.Left,txt->rect.Top },
 				size = { txt->rect.Right, txt->rect.Bottom };
-	SMALL_RECT	rect = txt->rect;
+	SMALL_RECT	rect = { pos.X, pos.Y, (*ctx)->rect.Right, (*ctx)->rect.Bottom };
 	WriteConsoleOutput(
 		(*ctx)->mainBufferActive ? (*ctx)->backBuffer : (*ctx)->mainBuffer,
 		txt->bufferContents.printBufferCont,
-		pos, size, &rect);
+		size, pos, &rect);
 }
 
 void CDMAddTextToContext(_INOUT_ CDMContext** ctx, _IN_ CDMText* txt)
@@ -477,10 +500,10 @@ void CDMAddTextToContext(_INOUT_ CDMContext** ctx, _IN_ CDMText* txt)
 		si < txt->rect.Right && i < (*ctx)->rect.Right; ++i, ++si)
 	{
 		for (j = txt->rect.Top, sj = 0;
-			sj < txt->rect.Bottom && i < (*ctx)->rect.Bottom; ++i, ++sj)
+			sj < txt->rect.Bottom && j < (*ctx)->rect.Bottom; ++j, ++sj)
 		{
-			ctxAccessor = j + (i * (*ctx)->rect.Right);
-			srfcAccessor = sj + (si * txt->rect.Right);
+			ctxAccessor = i + (j * (*ctx)->rect.Right);
+			srfcAccessor = si + (sj * txt->rect.Right);
 			if (!CDMCompareCHARINFO(txt->bufferContents.printBufferCont[srfcAccessor],
 				(*ctx)->contents.printBufferCont[ctxAccessor]))
 			{
@@ -516,11 +539,8 @@ void CDMClearScreen(_INOUT_ CDMContext ** ctx)
 	{
 		for (j = (*ctx)->rect.Bottom; j--;)
 		{
-			if (!(*ctx)->contents.alreadyDrawn)
-			{
-				(*ctx)->contents.printBufferCont[j + (i * (*ctx)->rect.Right)].Attributes = 0;
-				(*ctx)->contents.printBufferCont[j + (i * (*ctx)->rect.Right)].Char.AsciiChar = 0;
-			}
+			(*ctx)->contents.printBufferCont[i + (j * (*ctx)->rect.Right)].Attributes = 0;
+			(*ctx)->contents.printBufferCont[i + (j * (*ctx)->rect.Right)].Char.AsciiChar = 0;
 		}
 	}
 }
@@ -536,9 +556,9 @@ void CDMFillScreen(_INOUT_ CDMContext ** ctx,
 	{
 		for (j = (*ctx)->rect.Bottom; j--;)
 		{
-			(*ctx)->contents.printBufferCont[j + (i * (*ctx)->rect.Right)].Attributes = 
+			(*ctx)->contents.printBufferCont[i + (j * (*ctx)->rect.Right)].Attributes = 
 				frontColor | backColor;
-			(*ctx)->contents.printBufferCont[j + (i * (*ctx)->rect.Right)].Char.AsciiChar = character;
+			(*ctx)->contents.printBufferCont[i + (j * (*ctx)->rect.Right)].Char.AsciiChar = character;
 		}
 	}
 }
@@ -547,9 +567,9 @@ void CDMPoke(_INOUT_ CDMContext ** ctx,
 	const _IN_ CDMCoord coord,
 	const _IN_ char character,
 	const _IN_ CDMEnum frontColor,
-	const _IN_ CDMEnum backColor)
+	const _IN_ CDMEnum backColor)                             
 {
-	SHORT accesor = coord.Y + (coord.X * (*ctx)->rect.Right);
+	SHORT accesor = coord.X + (coord.Y * (*ctx)->rect.Right);
 	(*ctx)->contents.printBufferCont[accesor].Attributes =
 		frontColor | backColor;
 	(*ctx)->contents.printBufferCont[accesor].Char.AsciiChar = character;
@@ -559,7 +579,7 @@ void CDMDraw(_IN_ CDMContext* ctx)
 {
 	CDMCoord	size = { (ctx)->rect.Right,(ctx)->rect.Bottom },
 				top = { (ctx)->rect.Left, (ctx)->rect.Top };
-	CDMRect		r;
+	CDMRect		r = { 0, 0, size.X, size.Y };
 	WriteConsoleOutput(
 		(ctx)->mainBufferActive ? (ctx)->backBuffer : (ctx)->mainBuffer,
 		(ctx)->contents.printBufferCont,
@@ -607,7 +627,8 @@ CDMBool CDMCompareCHARINFO(_IN_ CHAR_INFO rhs, _IN_ CHAR_INFO lhs)
 void CDMPollEvents(_IN_ CDMContext* ctx, _INOUT_ CDMEvent* event)
 {
 	GetNumberOfConsoleInputEvents(ctx->InputBuffer, &event->inputNum);
-	ReadConsoleInput(ctx->InputBuffer, event->inputs, 51, &event->inputNum);
+	if(!event->inputNum)
+		ReadConsoleInput(ctx->InputBuffer, event->inputs, 51, &event->inputNum);
 }
 
 CDMBool CDMGetKeyPressed(_IN_ CDMEvent* event, const _IN_ CDMEnum key)

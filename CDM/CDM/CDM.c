@@ -26,6 +26,8 @@ CDMContext* CDMCreateContext(const _IN_ short width, const _IN_ short height)
 	ctx->contents.isAlphaTile = NULL;
 	CDMChangeWindowSize(&ctx, width, height);
 	CONSOLE_SCREEN_BUFFER_INFO inf;
+	memset(&ctx->inf, 0, sizeof(CONSOLE_SCREEN_BUFFER_INFOEX));
+	ctx->inf.cbSize = sizeof(CONSOLE_SCREEN_BUFFER_INFOEX);
 	GetConsoleScreenBufferInfo(ctx->mainBuffer, &inf);
 	GetConsoleScreenBufferInfoEx(ctx->mainBuffer, &ctx->inf);
 	SetConsoleActiveScreenBuffer(ctx->mainBuffer);
@@ -94,7 +96,7 @@ void CDMToggleFullscreen(CDMContext** _INOUT_ ctx, const _IN_ CDMBool val)
 	}
 }
 
-void CDMSetWindowTitle(const _IN_ char* title)
+void CDMSetWindowTitle(const _IN_ wchar_t* title)
 {
 	SetConsoleTitle(title);
 }
@@ -525,6 +527,17 @@ void CDMPoke(_INOUT_ CDMContext ** ctx,
 
 void CDMDraw(_IN_ CDMContext** ctx)
 {
+#ifndef PIXELBYPIXEL
+
+
+	CDMCoord	pos = { 0,0 },
+		size = { (*ctx)->rect.Right, (*ctx)->rect.Bottom };
+	SMALL_RECT	rect = { pos.X, pos.Y, (*ctx)->rect.Right, (*ctx)->rect.Bottom };
+	WriteConsoleOutput(
+		(*ctx)->mainBuffer,
+		(*ctx)->contents.printBufferCont,
+		size, pos, &rect);
+#else
 	int i, j, accessor;
 	DWORD extract;
 	COORD pos;
@@ -546,6 +559,7 @@ void CDMDraw(_IN_ CDMContext** ctx)
 	memcpy((*ctx)->lastFrameContents.printBufferCont, (*ctx)->contents.printBufferCont, sizeof(CHAR_INFO) * (*ctx)->rect.Right * (*ctx)->rect.Bottom);
 	pos.X = pos.Y = 0;
 	SetConsoleCursorPosition((*ctx)->mainBuffer, pos);
+#endif // !PIXELBYPIXEL
 }
 
 int CDMGetR(_IN_ CDMColorScheme* data, const _IN_ short position)
@@ -566,6 +580,7 @@ int CDMGetB(_IN_ CDMColorScheme* data, const _IN_ short position)
 void CDMSetActiveScheme(_IN_ CDMColorScheme data, _INOUT_ CDMContext** ctx)
 {
 	int i;
+	GetConsoleScreenBufferInfoEx((*ctx)->mainBuffer, &(*ctx)->inf);
 	for (i = 16; i--;)
 		(*ctx)->inf.ColorTable[i] = data.colors[i];
 	SetConsoleScreenBufferInfoEx((*ctx)->mainBuffer, &(*ctx)->inf);
@@ -597,9 +612,14 @@ CDMBool CDMGetKeyPressed(_IN_ CDMEvent* event, const _IN_ CDMKey key)
 	DWORD i;
 	for (i = 0; i < event->inputNum; ++i)
 	{
-		if (event->inputs[i].EventType == KEY_EVENT &&
+		if ((event->inputs[i].EventType == KEY_EVENT &&
 			event->inputs[i].Event.KeyEvent.wVirtualKeyCode == key &&
-			event->inputs[i].Event.KeyEvent.bKeyDown)
+			event->inputs[i].Event.KeyEvent.bKeyDown) || 
+			(event->inputs[i].EventType == MOUSE_EVENT && 
+			((key == mbright && 
+			event->inputs[i].Event.MouseEvent.dwButtonState == RIGHTMOST_BUTTON_PRESSED) ||
+			(key == mbleft && 
+			event->inputs[i].Event.MouseEvent.dwButtonState == FROM_LEFT_1ST_BUTTON_PRESSED))))
 		{
 			event->inputPressed[key] = CDMTrue;
 			return CDMTrue;
@@ -680,11 +700,7 @@ void CDMKeepScreenSize(_INOUT_ CDMContext** ctx, _IN_ CDMEvent* event)
 		switch (event->inputs[i].EventType)
 		{
 		case WINDOW_BUFFER_SIZE_EVENT:
-			if(event->inputs[i].Event.WindowBufferSizeEvent.dwSize.X !=
-				(*ctx)->rect.Right &&
-				event->inputs[i].Event.WindowBufferSizeEvent.dwSize.X != 
-				(*ctx)->rect.Bottom)
-				CDMChangeWindowSize(ctx, (*ctx)->rect.Right, (*ctx)->rect.Bottom);
+			CDMChangeWindowSize(ctx, (*ctx)->rect.Right, (*ctx)->rect.Bottom);
 			break;
 		}
 	}

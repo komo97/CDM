@@ -35,6 +35,8 @@
 
 #pragma region Defines
 
+//#define PIXELBYPIXEL
+
 /**********************************************************************************************//**
  * \def	_IN_
  *
@@ -177,6 +179,8 @@ typedef enum CDMBool
 #pragma region Inputs
 
 typedef enum CDMKey {
+	mbleft = VK_LBUTTON,
+	mbright = VK_RBUTTON,
 	backspace = VK_BACK,
 	tab = VK_TAB,
 	clear = VK_CLEAR,
@@ -449,7 +453,7 @@ extern "C" {
 	 * \param [in]	title	The title of the console.
 	 **************************************************************************************************/
 
-	void		CDMSetWindowTitle(const _IN_ char* title);
+	void		CDMSetWindowTitle(const _IN_ wchar_t* title);
 
 	/**********************************************************************************************//**
 	 * \fn	void CDMSetFontAndSize(_INOUT_ CDMContext** ctx, const _IN_ wchar_t* fontName, const _IN_ short width, const _IN_ short height);
@@ -742,7 +746,7 @@ extern "C" {
 	 * \brief	Draws directly a surface in the context, instead of batching it with other draws. I
 	 * 			highly recommend using the batch function (Add, then CDMDraw) over this one, to make
 	 * 			the program run faster.
-	 *			Status: Unknown.
+	 *			Status: Partiallly works.
 	 *
 	 * \param [in,out]	ctx	   	The context in which the surface will be painted, must not be null.
 	 * \param [in,out]	surface	The surface to be printed, must not be null.
@@ -769,7 +773,7 @@ extern "C" {
 	 * \brief	Draws directly a text in the context, instead of batching it with other draws. I
 	 * 			highly recommend using the batch function (Add, then CDMDraw) over this one, to make
 	 * 			the program run faster.
-	 *			Status: Unknown.
+	 *			Status: Partially Works.
 	 *
 	 * \param [in,out]	ctx	The context in which the text will be painted, must not be null.
 	 * \param [in,out]	txt	The text that will be printed, must not be null.
@@ -795,7 +799,7 @@ extern "C" {
 	 *
 	 * \brief	Sets an RGB color inside a ColorScheme. Every color goes from 0 to 255, however every
 	 * 			value passes through a modulo operation to assure no weird behaviour will happen.
-	 *			Status: Unknown.
+	 *			Status: Working.
 	 *
 	 * \param [in,out]	data		The color scheme, must not be null.
 	 * \param [in]	  	position	The position of the color inside the ColorScheme.
@@ -815,7 +819,7 @@ extern "C" {
 	 *
 	 * \brief	Sets an RGB color inside a ColorScheme. This function accepts an already converted to
 	 * 			binary RGB color. You may use Windows.h macro RGB(r,g,b) to get the data.
-	 *			Status: Unknown.
+	 *			Status: Working.
 	 *
 	 * \param [in,out]	data		The color scheme, must not be null.
 	 * \param [in]	  	position	The position of the color inside the ColorScheme.
@@ -860,7 +864,7 @@ extern "C" {
 	 * \fn	void CDMPoke(_INOUT_ CDMContext ** ctx, const _IN_ CDMCoord coord, const _IN_ char character, const _IN_ CDMEnum frontColor, const _IN_ CDMEnum backColor);
 	 *
 	 * \brief	Pokes a pixel in the screen to a certain color. Ignores drawn flags.
-	 *			Status: Unknown.
+	 *			Status: Working.
 	 *
 	 * \param [in,out]	ctx		  	The context, must not be null.
 	 * \param [in]	  	coord	  	The coordinate of the pixel.
@@ -890,7 +894,7 @@ extern "C" {
 	 * \fn	int CDMGetR(_IN_ CDMColorScheme* data, const _IN_ short position);
 	 *
 	 * \brief	Gets the red color of a certain color inside a ColorScheme.
-	 *			Status: Unknown.
+	 *			Status: Working.
 	 *
 	 * \param [in]		data		The color scheme to check from.
 	 * \param [in]	  	position	The position of the color wanted.
@@ -904,7 +908,7 @@ extern "C" {
 	 * \fn	int CDMGetG(_IN_ CDMColorScheme* data, const _IN_ short position);
 	 *
 	 * \brief	Gets the green color of a certain color inside a ColorScheme.
-	 *			Status: Unknown.
+	 *			Status: Working.
 	 *
 	 * \param [in]		data		The color scheme to check from.
 	 * \param [in]	  	position	The position of the color wanted.
@@ -918,7 +922,7 @@ extern "C" {
 	 * \fn	int CDMGetB(_IN_ CDMColorScheme* data, const _IN_ short position);
 	 *
 	 * \brief	Gets the blue color of a certain color inside a ColorScheme.
-	 *			Status: Unknown.
+	 *			Status: Working.
 	 *
 	 * \param [in]		data		The color scheme to check from.
 	 * \param [in]	  	position	The position of the color wanted.
@@ -934,7 +938,7 @@ extern "C" {
 	 * \brief	Sets a color scheme inside a context, and thus changing every display color of it.
 	 * 			This instruction does not require you to draw again for results to be shown, as such
 	 * 			its extremely fast.
-	 *			Status: Unknown.
+	 *			Status: Working.
 	 *
 	 * \param [in]	  	data	The color scheme to be set.
 	 * \param [in,out]	ctx 	The context to modify, must not be null.
@@ -992,7 +996,8 @@ extern "C" {
 	/**********************************************************************************************//**
 	 * \fn	CDMBool CDMGetKeyPressed(_IN_ CDMEvent* event, const _IN_ CDMEnum key);
 	 *
-	 * \brief	Checks if the key selected in the parameter was pressed.
+	 * \brief	Checks if the key selected in the parameter was pressed. This is the only function
+	 *			that checks for mouse input too.
 	 *			Status: Working.
 	 *
 	 * \param [in,out]	event	An event structure, must not be null.
@@ -1052,7 +1057,7 @@ extern "C" {
 	 *
 	 * \brief	Keeps the screen size of the program. Might be useful if you want to limit screen
 	 * 			resizing.
-	 *			Status: Not Working.
+	 *			Status: Working.
 	 *
 	 * \param [in,out]	ctx  	The context, must not be null.
 	 * \param [in,out]	event	An event structure to check for resize events, must not be null.

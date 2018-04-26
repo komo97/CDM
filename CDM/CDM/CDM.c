@@ -30,7 +30,9 @@ CDMContext* CDMCreateContext(const _IN_ short width, const _IN_ short height)
 	GetConsoleScreenBufferInfoEx(ctx->mainBuffer, &ctx->inf);
 	SetConsoleActiveScreenBuffer(ctx->mainBuffer);
 	ctx->inputBuffer = GetStdHandle(STD_INPUT_HANDLE);
-	SetConsoleMode(ctx->inputBuffer, ENABLE_WINDOW_INPUT | ENABLE_EXTENDED_FLAGS | ENABLE_VIRTUAL_TERMINAL_INPUT);
+	DWORD modes;
+	GetConsoleMode(ctx->inputBuffer, &modes);
+	SetConsoleMode(ctx->inputBuffer, (ENABLE_WINDOW_INPUT | modes) ^ (ENABLE_INSERT_MODE | ENABLE_QUICK_EDIT_MODE));
 	SetConsoleMode(ctx->mainBuffer, DISABLE_NEWLINE_AUTO_RETURN | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
 	memset(ctx->events.inputPressed, CDMFalse, KeysEnd * sizeof(CDMBool));
 	return ctx;
@@ -124,7 +126,9 @@ void CDMSetCursorVisibility(_INOUT_ CDMContext** ctx,
 
 void CDMActivateMouseInput(_INOUT_ CDMContext** ctx)
 {
-	SetConsoleMode((*ctx)->inputBuffer, ENABLE_MOUSE_INPUT | ENABLE_WINDOW_INPUT | ENABLE_EXTENDED_FLAGS | ENABLE_VIRTUAL_TERMINAL_INPUT);
+	DWORD modes;
+	GetConsoleMode((*ctx)->inputBuffer, &modes);
+	SetConsoleMode((*ctx)->inputBuffer, (modes | ENABLE_MOUSE_INPUT));
 }
 
 CDMSurface* CDMCreateSurface(const _IN_ short posX,
@@ -584,13 +588,14 @@ CDMBool CDMCompareCHARINFO(_IN_ CHAR_INFO rhs, _IN_ CHAR_INFO lhs)
 void CDMPollEvents(_IN_ CDMContext* ctx, _INOUT_ CDMEvent* event)
 {
 	GetNumberOfConsoleInputEvents(ctx->inputBuffer, &event->inputNum);
-	if(!event->inputNum)
+	if(event->inputNum)
 		ReadConsoleInput(ctx->inputBuffer, event->inputs, 51, &event->inputNum);
 }
 
 CDMBool CDMGetKeyPressed(_IN_ CDMEvent* event, const _IN_ CDMKey key)
 {
-	for (DWORD i = 0; i < event->inputNum; ++i)
+	DWORD i;
+	for (i = 0; i < event->inputNum; ++i)
 	{
 		if (event->inputs[i].EventType == KEY_EVENT &&
 			event->inputs[i].Event.KeyEvent.wVirtualKeyCode == key &&
@@ -606,7 +611,8 @@ CDMBool CDMGetKeyPressed(_IN_ CDMEvent* event, const _IN_ CDMKey key)
 
 CDMBool CDMGetKeyDown(_IN_ CDMEvent* event, const _IN_ CDMKey key)
 {
-	for (DWORD i = 0; i < event->inputNum; ++i)
+	DWORD i;
+	for (i = 0; i < event->inputNum; ++i)
 	{
 		if (event->inputs[i].EventType == KEY_EVENT &&
 			event->inputs[i].Event.KeyEvent.wVirtualKeyCode == key &&
@@ -630,7 +636,8 @@ CDMBool CDMGetKeyDown(_IN_ CDMEvent* event, const _IN_ CDMKey key)
 
 CDMBool CDMGetKeyUp(_IN_ CDMEvent* event, const _IN_ CDMKey key)
 {
-	for (DWORD i = 0; i < event->inputNum; ++i)
+	DWORD i;
+	for (i = 0; i < event->inputNum; ++i)
 	{
 		if (event->inputs[i].EventType == KEY_EVENT &&
 			event->inputs[i].Event.KeyEvent.wVirtualKeyCode == key &&
@@ -652,8 +659,17 @@ CDMBool CDMGetKeyUp(_IN_ CDMEvent* event, const _IN_ CDMKey key)
 
 CDMCoord CDMGetMousePos(_IN_ CDMEvent * event)
 {
-	CDMCoord coord = { 0 , 0 };
-	return coord;
+	COORD pos = { -1,-1 };
+	DWORD i;
+	for (i = 0; i < event->inputNum; ++i)
+	{
+		if (event->inputs[i].EventType == MOUSE_EVENT)
+		{
+			pos = event->inputs[i].Event.MouseEvent.dwMousePosition;
+			break;
+		}
+	}
+	return pos;
 }
 
 void CDMKeepScreenSize(_INOUT_ CDMContext** ctx, _IN_ CDMEvent* event)

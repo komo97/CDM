@@ -488,7 +488,7 @@ extern "C" {
 	 * \fn	void CDMActivateMouseInput(_INOUT_ CDMContext** ctx);
 	 *
 	 * \brief	Activates mouse input recognition for the console.
-	 *			Status: Unknown.
+	 *			Status: Working.
 	 *
 	 * \param [in,out]	ctx	The context, must not be null.
 	 **************************************************************************************************/
@@ -559,7 +559,7 @@ extern "C" {
 	 * 			text box will not require you to create a new object or call anything else other than
 	 * 			adding this object to the context, or drawing it directly. All text begins in the ( 0
 	 * 			, 0 ) coordinate.
-	 *			Status: Unknown.
+	 *			Status: Working.
 	 *
 	 * \param [in,out]	text	  	The text string, must not be null, must be zero terminated.
 	 * \param [in]	  	color	  	The color of the text.
@@ -582,7 +582,7 @@ extern "C" {
 	 * 			text box will not require you to create a new object or call anything else other than
 	 * 			adding this object to the context, or drawing it directly. All text begins in the ( 0
 	 * 			, 0 ) coordinate.
-	 *			Status: Unknown.
+	 *			Status: Working.
 	 *
 	 * \param [in,out]	text	  	The text string, must not be null.
 	 * \param [in]	  	textSize  	Size of the text.
@@ -601,7 +601,7 @@ extern "C" {
 	 * \fn	void CDMChangeText(CDMText** txt, const _IN_ char * text);
 	 *
 	 * \brief	Changes the text content of a CDMText.
-	 *			Status: Unknown.
+	 *			Status: Working.
 	 *
 	 * \param [in,out]	txt 	The text object, must not be null.
 	 * \param [in]	  	text	The text, null terminated.
@@ -729,7 +729,7 @@ extern "C" {
 	 * \brief	This should only be called each time the text's contents were modified before calling
 	 * 			a draw or add function. Internally this function converts the text's values to raw
 	 * 			data that the console understands.
-	 *			Status: Unknown.
+	 *			Status: Working.
 	 *
 	 * \param [in,out]	txt	The text, must not be null.
 	 **************************************************************************************************/
@@ -782,7 +782,7 @@ extern "C" {
 	 *
 	 * \brief	Adds a text to the context, and thus batching its draw with every other added object,
 	 * 			the batch will be completely flushed once CDMDraw is called.
-	 *			Status: Unknown.
+	 *			Status: Working.
 	 *
 	 * \param [in,out]	ctx	The context in which the text will be painted, must not be null.
 	 * \param [in,out]	txt	The text that will be printed, must not be null.
@@ -993,7 +993,7 @@ extern "C" {
 	 * \fn	CDMBool CDMGetKeyPressed(_IN_ CDMEvent* event, const _IN_ CDMEnum key);
 	 *
 	 * \brief	Checks if the key selected in the parameter was pressed.
-	 *			Status: Not Working.
+	 *			Status: Working.
 	 *
 	 * \param [in,out]	event	An event structure, must not be null.
 	 * \param [in]	  	key  	The key to be checked.
@@ -1008,7 +1008,7 @@ extern "C" {
 	 * \fn	CDMBool CDMGetKeyDown(_IN_ CDMEvent* event, const _IN_ CDMEnum key);
 	 *
 	 * \brief	Checks if the key selected in the parameter was pressed this frame.
-	 *			Status: Not Working.
+	 *			Status: Working.
 	 *
 	 * \param [in,out]	event	An event structure, must not be null.
 	 * \param 		  	key  	The key to be checked.
@@ -1023,7 +1023,7 @@ extern "C" {
 	 * \fn	CDMBool CDMGetKeyUp(_IN_ CDMEvent* event, const _IN_ CDMEnum key);
 	 *
 	 * \brief	Checks if the key selected in the parameter stopped being pressed this frame.
-	 *			Status: Not Working.
+	 *			Status: Working.
 	 *
 	 * \param [in,out]	event	An event structure, must not be null.
 	 * \param 		  	key  	The key to be checked.
@@ -1038,7 +1038,7 @@ extern "C" {
 	 * \fn	CDMCoord CDMGetMousePos(_IN_ CDMEvent* event);
 	 *
 	 * \brief	Gets the mouse position inside the console window.
-	 *			Status: Not Working.
+	 *			Status: Working.
 	 *
 	 * \param [in,out]	event	An event structure, must not be null.
 	 *

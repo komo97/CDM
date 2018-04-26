@@ -83,680 +83,146 @@
 
 #define _INOUTOPT_
 
-/**********************************************************************************************//**
- * \def	CLEAR
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear 
- * 			defines a completely alpha color.
- **************************************************************************************************/
-
-#define CLEAR				0
-
-/**********************************************************************************************//**
- * \def	LETCOLOR1
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear 
- * 			defines the first color of the scheme applied to the foreground.
- **************************************************************************************************/
-
-#define LETCOLOR1			0x0000			//0000
-
-/**********************************************************************************************//**
- * \def	LETCOLOR2
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the second color of the scheme applied to the foreground.
- **************************************************************************************************/
-
-#define LETCOLOR2			0x0001			//0001
-
-/**********************************************************************************************//**
- * \def	LETCOLOR3
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the third color of the scheme applied to the foreground.
- **************************************************************************************************/
-
-#define LETCOLOR3			0x0002			//0010
-
-/**********************************************************************************************//**
- * \def	LETCOLOR4
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the fourth color of the scheme applied to the foreground.
- **************************************************************************************************/
-
-#define LETCOLOR4			0x0003			//0011	
-
-/**********************************************************************************************//**
- * \def	LETCOLOR5
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the fifth color of the scheme applied to the foreground.
- **************************************************************************************************/
-
-#define LETCOLOR5			0x0004			//0100
-
-/**********************************************************************************************//**
- * \def	LETCOLOR6
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the sixth color of the scheme applied to the foreground.
- **************************************************************************************************/
-
-#define LETCOLOR6			0x0005			//0101
-
-/**********************************************************************************************//**
- * \def	LETCOLOR7
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the seventh color of the scheme applied to the foreground.
- **************************************************************************************************/
-
-#define LETCOLOR7			0x0006			//0110
-
-/**********************************************************************************************//**
- * \def	LETCOLOR8
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the eighth color of the scheme applied to the foreground.
- **************************************************************************************************/
-
-#define LETCOLOR8			0x0007			//0111
-
-/**********************************************************************************************//**
- * \def	LETCOLOR9
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the ninth color of the scheme applied to the foreground.
- **************************************************************************************************/
-
-#define LETCOLOR9			0x0008			//1000
-
-/**********************************************************************************************//**
- * \def	LETCOLOR10
- *
- * \brief	 * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear 
- * 			defines the tenth color of the scheme applied to the foreground.
- **************************************************************************************************/
-
-#define LETCOLOR10			0x0009			//1001
-
-/**********************************************************************************************//**
- * \def	LETCOLOR11
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the eleventh color of the scheme applied to the foreground.
- **************************************************************************************************/
-
-#define LETCOLOR11			0x000A			//1010
-
-/**********************************************************************************************//**
- * \def	LETCOLOR12
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the twelfth color of the scheme applied to the foreground.
- **************************************************************************************************/
-
-#define LETCOLOR12			0x000B			//1011
-
-/**********************************************************************************************//**
- * \def	LETCOLOR13
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the thirtheenth color of the scheme applied to the foreground.
- **************************************************************************************************/
-
-#define LETCOLOR13			0x000C			//1100
-
-/**********************************************************************************************//**
- * \def	LETCOLOR14
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the fourteenth color of the scheme applied to the foreground.
- **************************************************************************************************/
-
-#define LETCOLOR14			0x000D			//1101
-
-/**********************************************************************************************//**
- * \def	LETCOLOR15
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the fifteenth color of the scheme applied to the foreground.
- **************************************************************************************************/
-
-#define LETCOLOR15			0x000E			//1110
-
-/**********************************************************************************************//**
- * \def	LETCOLOR16
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the sixteenth color of the scheme applied to the foreground.
- **************************************************************************************************/
-
-#define LETCOLOR16			0x000F			//1111
-
-/**********************************************************************************************//**
- * \def	BACKCOLOR1
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the first color of the scheme applied to the background.
- **************************************************************************************************/
-
-#define BACKCOLOR1			0x0000
-
-/**********************************************************************************************//**
- * \def	BACKCOLOR2
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the second color of the scheme applied to the background.
- **************************************************************************************************/
-
-#define BACKCOLOR2			0x0010
-
-/**********************************************************************************************//**
- * \def	BACKCOLOR3
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the third color of the scheme applied to the background.
- **************************************************************************************************/
-
-#define BACKCOLOR3			0x0020
-
-/**********************************************************************************************//**
- * \def	BACKCOLOR4
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the fourth color of the scheme applied to the background.
- **************************************************************************************************/
-
-#define BACKCOLOR4			0x0030
-
-/**********************************************************************************************//**
- * \def	BACKCOLOR5
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the fifth color of the scheme applied to the background.
- **************************************************************************************************/
-
-#define BACKCOLOR5			0x0040
-
-/**********************************************************************************************//**
- * \def	BACKCOLOR6
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the sixth color of the scheme applied to the background.
- **************************************************************************************************/
-
-#define BACKCOLOR6			0x0050
-
-/**********************************************************************************************//**
- * \def	BACKCOLOR7
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the seventh color of the scheme applied to the background.
- **************************************************************************************************/
-
-#define BACKCOLOR7			0x0060
-
-/**********************************************************************************************//**
- * \def	BACKCOLOR8
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the eighth color of the scheme applied to the background.
- **************************************************************************************************/
-
-#define BACKCOLOR8			0x0070
-
-/**********************************************************************************************//**
- * \def	BACKCOLOR9
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the ninth color of the scheme applied to the background.
- **************************************************************************************************/
-
-#define BACKCOLOR9			0x0080
-
-/**********************************************************************************************//**
- * \def	BACKCOLOR10
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the tenth color of the scheme applied to the background.
- **************************************************************************************************/
-
-#define BACKCOLOR10			0x0090
-
-/**********************************************************************************************//**
- * \def	BACKCOLOR11
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the eleventh color of the scheme applied to the background.
- **************************************************************************************************/
-
-#define BACKCOLOR11			0x00A0
-
-/**********************************************************************************************//**
- * \def	BACKCOLOR12
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the twelfth color of the scheme applied to the background.
- **************************************************************************************************/
-
-#define BACKCOLOR12			0x00B0
-
-/**********************************************************************************************//**
- * \def	BACKCOLOR13
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the thirteenth color of the scheme applied to the background.
- **************************************************************************************************/
-
-#define BACKCOLOR13			0x00C0
-
-/**********************************************************************************************//**
- * \def	BACKCOLOR14
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the fourteenth color of the scheme applied to the background.
- **************************************************************************************************/
-
-#define BACKCOLOR14			0x00D0
-
-/**********************************************************************************************//**
- * \def	BACKCOLOR15
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the fifteenth color of the scheme applied to the background.
- **************************************************************************************************/
-
-#define BACKCOLOR15			0x00E0
-
-/**********************************************************************************************//**
- * \def	BACKCOLOR16
- *
- * \brief	This are color bytes. Use them for sprites along with the function SetPixel. Clear
- * 			defines the sixteenth color of the scheme applied to the background.
- **************************************************************************************************/
-
-#define BACKCOLOR16			0x00F0
-
-/**********************************************************************************************//**
- * \def	LBASEBLACK
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define LBASEBLACK			LETCOLOR1
-
-/**********************************************************************************************//**
- * \def	LBASEBLUE
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define LBASEBLUE			LETCOLOR2
-
-/**********************************************************************************************//**
- * \def	LBASEGREEN
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define LBASEGREEN			LETCOLOR3
-
-/**********************************************************************************************//**
- * \def	LBASECYAN
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define LBASECYAN			LETCOLOR4
-
-/**********************************************************************************************//**
- * \def	LBASERED
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define LBASERED			LETCOLOR5
-
-/**********************************************************************************************//**
- * \def	LBASEMAGENTA
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define LBASEMAGENTA		LETCOLOR6
-
-/**********************************************************************************************//**
- * \def	LBASEBROWN
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define LBASEBROWN			LETCOLOR7
-
-/**********************************************************************************************//**
- * \def	LBASEGREY
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define LBASEGREY			LETCOLOR8
-
-/**********************************************************************************************//**
- * \def	LBASEDARKGREY
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define LBASEDARKGREY		LETCOLOR9
-
-/**********************************************************************************************//**
- * \def	LBASELIGHTBLUE
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define LBASELIGHTBLUE		LETCOLOR10
-
-/**********************************************************************************************//**
- * \def	LBASELIGHTGREEN
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define LBASELIGHTGREEN		LETCOLOR11
-
-/**********************************************************************************************//**
- * \def	LBASELIGHTCYAN
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define LBASELIGHTCYAN		LETCOLOR12
-
-/**********************************************************************************************//**
- * \def	LBASELIGHTRED
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define LBASELIGHTRED		LETCOLOR13
-
-/**********************************************************************************************//**
- * \def	LBASELIGHTMAGENTA
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define LBASELIGHTMAGENTA	LETCOLOR14
-
-/**********************************************************************************************//**
- * \def	LBASEYELLOW
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define	LBASEYELLOW			LETCOLOR15
-
-/**********************************************************************************************//**
- * \def	LBASEWHITE
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define LBASEWHITE			LETCOLOR16
-
-/**********************************************************************************************//**
- * \def	BBASEBLACK
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define BBASEBLACK			BACKCOLOR1
-
-/**********************************************************************************************//**
- * \def	BBASEBLUE
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define BBASEBLUE			BACKCOLOR2
-
-/**********************************************************************************************//**
- * \def	BBASEGREEN
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define BBASEGREEN			BACKCOLOR3
-
-/**********************************************************************************************//**
- * \def	BBASECYAN
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define BBASECYAN			BACKCOLOR4
-
-/**********************************************************************************************//**
- * \def	BBASERED
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define BBASERED			BACKCOLOR5
-
-/**********************************************************************************************//**
- * \def	BBASEMAGENTA
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define BBASEMAGENTA		BACKCOLOR6
-
-/**********************************************************************************************//**
- * \def	BBASEBROWN
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define BBASEBROWN			BACKCOLOR7
-
-/**********************************************************************************************//**
- * \def	BBASEGREY
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define BBASEGREY			BACKCOLOR8
-
-/**********************************************************************************************//**
- * \def	BBASEDARKGREY
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define BBASEDARKGREY		BACKCOLOR9
-
-/**********************************************************************************************//**
- * \def	BBASELIGHTBLUE
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define BBASELIGHTBLUE		BACKCOLOR10
-
-/**********************************************************************************************//**
- * \def	BBASELIGHTGREEN
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define BBASELIGHTGREEN		BACKCOLOR11
-
-/**********************************************************************************************//**
- * \def	BBASELIGHTCYAN
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define BBASELIGHTCYAN		BACKCOLOR12
-
-/**********************************************************************************************//**
- * \def	BBASELIGHTRED
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define BBASELIGHTRED		BACKCOLOR13
-
-/**********************************************************************************************//**
- * \def	BBASELIGHTMAGENTA
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define BBASELIGHTMAGENTA	BACKCOLOR14
-
-/**********************************************************************************************//**
- * \def	BBASEYELLOW
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define	BBASEYELLOW			BACKCOLOR15
-
-/**********************************************************************************************//**
- * \def	BBASEWHITE
- *
- * \brief	Use this ones if you aren't using a new scheme.
- **************************************************************************************************/
-
-#define BBASEWHITE			BACKCOLOR16
-
-/**********************************************************************************************//**
- * \def	ALPHACOLOR
- *
- * \brief	This is used for choosing an alpha color in either of the .
- **************************************************************************************************/
-
-#define ALPHACOLOR			100
-
-/**********************************************************************************************//**
- * \def	CDMSET1
- *
- * \brief	Enumeration for quickly selecting data sets per pixel.
- **************************************************************************************************/
-
-#define CDMSET1				0x0001
-
-/**********************************************************************************************//**
- * \def	CDMSET2
- *
- * \brief	Enumeration for quickly selecting data sets per pixel.
- **************************************************************************************************/
-
-#define CDMSET2				0x0002
-
-/**********************************************************************************************//**
- * \def	CDMSET3
- *
- * \brief	Enumeration for quickly selecting data sets per pixel.
- **************************************************************************************************/
-
-#define CDMSET3				0x0004
-
-/**********************************************************************************************//**
- * \def	CDMSET4
- *
- * \brief	Enumeration for quickly selecting data sets per pixel.
- **************************************************************************************************/
-
-#define CDMSET4				0x0008
-
-/**********************************************************************************************//**
- * \def	CDMSETALPHA
- *
- * \brief	Sets an alpha color for the full pixel.
- **************************************************************************************************/
-
-#define CDMSETALPHA			0x0010
-
-/**********************************************************************************************//**
- * \def	CDMTRUE
- *
- * \brief	Boolean implementation.
- **************************************************************************************************/
-
-#define CDMTRUE				1
-
-/**********************************************************************************************//**
- * \def	CDMFALSE
- *
- * \brief	Boolean implementation.
- **************************************************************************************************/
-
-#define CDMFALSE			0
+typedef enum CDMLetterColor {
+	CLEAR = -1,
+	BLACK = 0,
+	DARKBLUE = FOREGROUND_BLUE,
+	DARKGREEN = FOREGROUND_GREEN,
+	DARKCYAN = FOREGROUND_GREEN | FOREGROUND_BLUE,
+	DARKRED = FOREGROUND_RED,
+	DARKMAGENTA = FOREGROUND_RED | FOREGROUND_BLUE,
+	DARKYELLOW = FOREGROUND_RED | FOREGROUND_GREEN,
+	DARKGRAY = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE,
+	GRAY = FOREGROUND_INTENSITY,
+	BLUE = FOREGROUND_INTENSITY | FOREGROUND_BLUE,
+	GREEN = FOREGROUND_INTENSITY | FOREGROUND_GREEN,
+	CYAN = FOREGROUND_INTENSITY | FOREGROUND_GREEN | FOREGROUND_BLUE,
+	RED = FOREGROUND_INTENSITY | FOREGROUND_RED,
+	MAGENTA = FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_BLUE,
+	YELLOW = FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN,
+	WHITE = FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE,
+	LCOLOR1 = BLACK,
+	LCOLOR2 = DARKBLUE,
+	LCOLOR3 = DARKGREEN,
+	LCOLOR4 = DARKCYAN,
+	LCOLOR5 = DARKRED,
+	LCOLOR6 = DARKMAGENTA,
+	LCOLOR7 = DARKYELLOW,
+	LCOLOR8 = DARKGRAY,
+	LCOLOR9 = GRAY,
+	LCOLOR10 = GREEN,
+	LCOLOR11 = CYAN,
+	LCOLOR12 = RED,
+	LCOLOR13 = MAGENTA,
+	LCOLOR14 = YELLOW,
+	LCOLOR15 = WHITE,
+} CDMLetterColor;
+
+typedef enum CDMBackgroundColor {
+	BCLEAR = -1,
+	BBLACK = 0,
+	BDARKBLUE = BACKGROUND_BLUE,
+	BDARKGREEN = BACKGROUND_GREEN,
+	BDARKCYAN = BACKGROUND_GREEN | BACKGROUND_BLUE,
+	BDARKRED = BACKGROUND_RED,
+	BDARKMAGENTA = BACKGROUND_RED | BACKGROUND_BLUE,
+	BDARKYELLOW = BACKGROUND_RED | BACKGROUND_GREEN,
+	BDARKGRAY = BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE,
+	BGRAY = BACKGROUND_INTENSITY,
+	BBLUE = BACKGROUND_INTENSITY | BACKGROUND_BLUE,
+	BGREEN = BACKGROUND_INTENSITY | BACKGROUND_GREEN,
+	BCYAN = BACKGROUND_INTENSITY | BACKGROUND_GREEN | BACKGROUND_BLUE,
+	BRED = BACKGROUND_INTENSITY | BACKGROUND_RED,
+	BMAGENTA = BACKGROUND_INTENSITY | BACKGROUND_RED | BACKGROUND_BLUE,
+	BYELLOW = BACKGROUND_INTENSITY | BACKGROUND_RED | BACKGROUND_GREEN,
+	BWHITE = BACKGROUND_INTENSITY | BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE,
+	BCOLOR1 =  BBLACK,
+	BCOLOR2 =  BDARKBLUE,
+	BCOLOR3 =  BDARKGREEN,
+	BCOLOR4 =  BDARKCYAN,
+	BCOLOR5 =  BDARKRED,
+	BCOLOR6 =  BDARKMAGENTA,
+	BCOLOR7 =  BDARKYELLOW,
+	BCOLOR8 =  BDARKGRAY,
+	BCOLOR9 =  BGRAY,
+	BCOLOR10 = BGREEN,
+	BCOLOR11 = BCYAN,
+	BCOLOR12 = BRED,
+	BCOLOR13 = BMAGENTA,
+	BCOLOR14 = BYELLOW,
+	BCOLOR15 = BWHITE,
+} CDMBackgroundColor;
+
+typedef enum CDMExtraOptions {
+	reverseColors = COMMON_LVB_REVERSE_VIDEO,
+	underscore = COMMON_LVB_UNDERSCORE,
+	Alpha = 100,
+}CDMExtraOptions;
+
+typedef enum CDMColorSets
+{
+	Set1 = 0x0001,
+	Set2 = 0x0002,
+	Set3 = 0x0004,
+	Set4 = 0x0008,
+	SetAlpha = 0x0010,
+}CDMColorSets;
+
+typedef enum CDMBool
+{
+	CDMFalse = 0,
+	CDMTrue = 1,
+}CDMBool;
 
 #pragma region Inputs
 
-#define CDMA		0
-#define CDMB		1
-#define CDMC		2
-#define CDMD		3
-#define CDME		4
-#define CDMF		5
-#define CDMG		6
-#define CDMH		7
-#define CDMI		8
-#define CDMJ		9
-#define CDMK		10
-#define CDML		11
-#define CDMM		12
-#define CDMN		13
-#define CDMO		14
-#define CDMP		15
-#define CDMQ		16
-#define CDMR		17
-#define CDMS		18
-#define CDMT		19
-#define CDMU		20
-#define CDMV		21
-#define CDMW		22
-#define CDMX		23
-#define CDMY		24
-#define CDMZ		25
-#define CDMLALT		26
-#define CDMLSHIFT	27
-#define CDMLCTRL	28
-#define CDMRALT		29
-#define CDMRSHIFT	30
-#define CDMRCTRL	31
-#define CDMESC		32
-#define CDMRETURN	33
-#define CDM1		34
-#define CDM2		35
-#define CDM3		36
-#define CDM4		37
-#define CDM5		38
-#define CDM6		39
-#define CDM7		40
-#define CDM8		41
-#define CDM9		42
-#define CDM0		43
-#define CDMCOMMA	47
-#define CDMPERIOD	48
-#define CDMBACKS	49
-#define CDMLEFT		50
-#define CDMRIGHT	51
-#define CDMUP		52
-#define CDMDOWN		53
-#define CDMSPACE    54
-#define CDMLMB		55
-#define CDMRMB		56
-#define CDMMMB		57
+typedef enum CDMKey {
+	backspace = VK_BACK,
+	tab = VK_TAB,
+	clear = VK_CLEAR,
+	returnK = VK_RETURN,
+	shift = VK_SHIFT,
+	ctrl = VK_CONTROL,
+	alt = VK_MENU,
+	pause = VK_PAUSE,
+	caps = VK_CAPITAL,
+	esc = VK_ESCAPE,
+	space = VK_SPACE,
+	pgup = VK_PRIOR,
+	pgdown = VK_NEXT,
+	end = VK_END,
+	left = VK_LEFT,
+	right = VK_RIGHT,
+	up = VK_UP,
+	down = VK_DOWN,
+	print = VK_PRINT,
+	insert = VK_INSERT,
+	del = VK_DELETE,
+	zero = 0x30,
+	one = 0x31,
+	two = 0x32,
+	three = 0x33,
+	four = 0x34,
+	five = 0x35,
+	six = 0x36,
+	seven = 0x37,
+	eight = 0x38,
+	nine = 0x39,
+	A = 0x41, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z,
+	add = 0x6B,
+	separator,
+	substract,
+	decimal,
+	divide,
+	f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12,
+	lshift = 0xA0,
+	rshift,
+	lctrl,
+	rctrl,
+	lalt,
+	ralt,
+	KeysEnd,
+} CDMKey;
 #pragma endregion !Inputs
 
 #pragma endregion !Defines
@@ -782,18 +248,10 @@ typedef COORD			CDMCoord;
  * \typedef	char CDMEnum
  *
  * \brief	Defines an alias representing the cdm enum, this type is completely symbolic and
- * 			describes a parameter that requires to be filled with a macro.
+ * 			describes a parameter that requires to be filled with an enum.
  **************************************************************************************************/
 
 typedef char			CDMEnum;
-
-/**********************************************************************************************//**
- * \typedef	unsigned char CDMBool
- *
- * \brief	Defines an alias representing the cdm bool, its a simple boolean implementation for C.
- **************************************************************************************************/
-
-typedef unsigned char	CDMBool;
 
 /**********************************************************************************************//**
  * \typedef	unsigned char CDMErrno
@@ -824,9 +282,9 @@ typedef struct CDMTiles
  **************************************************************************************************/
 
 typedef struct CDMEvent {
-	INPUT_RECORD	inputs[51];
+	INPUT_RECORD	inputs[64];
 	__int32			inputNum;
-	CDMBool			inputPressed[150];
+	CDMBool			inputPressed[KeysEnd];
 }CDMEvent;
 
 /**********************************************************************************************//**
@@ -838,7 +296,7 @@ typedef struct CDMEvent {
 typedef struct CDMContext
 {
 	HANDLE							mainBuffer,
-									InputBuffer;
+									inputBuffer;
 	CONSOLE_SCREEN_BUFFER_INFOEX	inf;
 	CDMTiles						contents,
 									lastFrameContents;
@@ -1111,8 +569,8 @@ extern "C" {
 	 **************************************************************************************************/
 
 	CDMText*	CDMTextWrapper(_IN_ char * text,
-		const _IN_ CDMEnum color,
-		const _IN_ CDMEnum background);
+		const _IN_ CDMLetterColor color,
+		const _IN_ CDMBackgroundColor background);
 
 	/**********************************************************************************************//**
 	 * \fn	CDMText* CDMTextWrapper_s(_IN_ char * text, const _IN_ size_t textSize, const _IN_ CDMEnum color, const _IN_ CDMEnum background);
@@ -1136,8 +594,8 @@ extern "C" {
 
 	CDMText*	CDMTextWrapper_s(_IN_ char * text,
 							const _IN_ size_t textSize,
-							const _IN_ CDMEnum color,
-							const _IN_ CDMEnum background);
+							const _IN_ CDMLetterColor color,
+							const _IN_ CDMBackgroundColor background);
 
 	/**********************************************************************************************//**
 	 * \fn	void CDMChangeText(CDMText** txt, const _IN_ char * text);
@@ -1168,10 +626,10 @@ extern "C" {
 	 **************************************************************************************************/
 
 	void		CDMSetForegroundColor(_INOUT_ CDMSurface** surface,
-							const _IN_ CDMEnum c1,
-							const _IN_ CDMEnum c2,
-							const _IN_ CDMEnum c3,
-							const _IN_ CDMEnum c4);
+							const _IN_ CDMLetterColor c1,
+							const _IN_ CDMLetterColor c2,
+							const _IN_ CDMLetterColor c3,
+							const _IN_ CDMLetterColor c4);
 
 	/**********************************************************************************************//**
 	 * \fn	void CDMSetBackgroundColor(_INOUT_ CDMSurface** surface, const _IN_ CDMEnum c1, const _IN_ CDMEnum c2, const _IN_ CDMEnum c3, const _IN_ CDMEnum c4);
@@ -1190,10 +648,10 @@ extern "C" {
 	 **************************************************************************************************/
 
 	void		CDMSetBackgroundColor(_INOUT_ CDMSurface** surface,
-							const _IN_ CDMEnum c1,
-							const _IN_ CDMEnum c2,
-							const _IN_ CDMEnum c3,
-							const _IN_ CDMEnum c4);
+							const _IN_ CDMBackgroundColor c1,
+							const _IN_ CDMBackgroundColor c2,
+							const _IN_ CDMBackgroundColor c3,
+							const _IN_ CDMBackgroundColor c4);
 
 	/**********************************************************************************************//**
 	 * \fn	void CDMSetCharacters(_INOUT_ CDMSurface** surface, const _IN_ CDMEnum c1, const _IN_ CDMEnum c2, const _IN_ CDMEnum c3, const _IN_ CDMEnum c4);
@@ -1204,17 +662,17 @@ extern "C" {
 	 *			Status: Working.
 	 *
 	 * \param [in,out]	surface	The surface, must not be null.
-	 * \param [in]	  	c1	   	The first CDMEnum using color macros.
-	 * \param [in]	  	c2	   	The second CDMEnum using color macros.
-	 * \param [in]	  	c3	   	The third CDMEnum using color macros.
-	 * \param [in]	  	c4	   	The fourth CDMEnum using color macros.
+	 * \param [in]	  	c1	   	The first character to be used.
+	 * \param [in]	  	c2	   	The second character to be used.
+	 * \param [in]	  	c3	   	The third character to be used.
+	 * \param [in]	  	c4	   	The fourth character to be used.
 	 **************************************************************************************************/
 
 	void		CDMSetCharacters(_INOUT_ CDMSurface** surface,
-							const _IN_ CDMEnum c1,
-							const _IN_ CDMEnum c2,
-							const _IN_ CDMEnum c3,
-							const _IN_ CDMEnum c4);
+							const _IN_ unsigned char c1,
+							const _IN_ unsigned char c2,
+							const _IN_ unsigned char c3,
+							const _IN_ unsigned char c4);
 
 	/**********************************************************************************************//**
 	 * \fn	void CDMFreeSurface(_INOUT_ CDMSurface** surface);
@@ -1395,8 +853,8 @@ extern "C" {
 
 	void		CDMFillScreen(_INOUT_ CDMContext ** ctx,
 							const _IN_ char character,
-							const _IN_ CDMEnum frontColor,
-							const _IN_ CDMEnum backColor);
+							const _IN_ CDMLetterColor frontColor,
+							const _IN_ CDMBackgroundColor backColor);
 
 	/**********************************************************************************************//**
 	 * \fn	void CDMPoke(_INOUT_ CDMContext ** ctx, const _IN_ CDMCoord coord, const _IN_ char character, const _IN_ CDMEnum frontColor, const _IN_ CDMEnum backColor);
@@ -1414,8 +872,8 @@ extern "C" {
 	void		CDMPoke(_INOUT_ CDMContext ** ctx,
 							const _IN_ CDMCoord coord,
 							const _IN_ char character,
-							const _IN_ CDMEnum frontColor,
-							const _IN_ CDMEnum backColor);
+							const _IN_ CDMLetterColor frontColor,
+							const _IN_ CDMBackgroundColor backColor);
 
 	/**********************************************************************************************//**
 	 * \fn	void CDMDraw(_IN_ CDMContext* ctx);
@@ -1500,7 +958,7 @@ extern "C" {
 	void		CDMSetPixel(_INOUT_ CDMSurface** surface,
 							_IN_ short x,
 							_IN_ short y,
-							_IN_ CDMEnum pixelSet);
+							_IN_ CDMColorSets pixelSet);
 
 	/**********************************************************************************************//**
 	 * \fn	CDMBool CDMCompareCHARINFO(_IN_ CHAR_INFO rhs, _IN_ CHAR_INFO lhs);
@@ -1523,7 +981,7 @@ extern "C" {
 	 * \brief	Polls the console events, this function must be used in order to get key and mouse
 	 * 			presses, as such it must be called at the beggining of every frame and before every
 	 * 			function that requires a CDMEvent.
-	 *			Status: Unknown.
+	 *			Status: Working.
 	 *
 	 * \param [in,out]	ctx  	The context, must not be null.
 	 * \param [in,out]	event	An event structure, must not be null.
@@ -1535,7 +993,7 @@ extern "C" {
 	 * \fn	CDMBool CDMGetKeyPressed(_IN_ CDMEvent* event, const _IN_ CDMEnum key);
 	 *
 	 * \brief	Checks if the key selected in the parameter was pressed.
-	 *			Status: Unknown.
+	 *			Status: Not Working.
 	 *
 	 * \param [in,out]	event	An event structure, must not be null.
 	 * \param [in]	  	key  	The key to be checked.
@@ -1544,13 +1002,13 @@ extern "C" {
 	 * 			pressed, CDMFALSE if the key is not pressed.
 	 **************************************************************************************************/
 
-	CDMBool		CDMGetKeyPressed(_IN_ CDMEvent* event, const _IN_ CDMEnum key);
+	CDMBool		CDMGetKeyPressed(_IN_ CDMEvent* event, const _IN_ CDMKey key);
 
 	/**********************************************************************************************//**
 	 * \fn	CDMBool CDMGetKeyDown(_IN_ CDMEvent* event, const _IN_ CDMEnum key);
 	 *
 	 * \brief	Checks if the key selected in the parameter was pressed this frame.
-	 *			Status: Unknown.
+	 *			Status: Not Working.
 	 *
 	 * \param [in,out]	event	An event structure, must not be null.
 	 * \param 		  	key  	The key to be checked.
@@ -1559,13 +1017,13 @@ extern "C" {
 	 * 			CDMFALSE if the key is not pressed.
 	 **************************************************************************************************/
 
-	CDMBool		CDMGetKeyDown(_IN_ CDMEvent* event, const _IN_ CDMEnum key);
+	CDMBool		CDMGetKeyDown(_IN_ CDMEvent* event, const _IN_ CDMKey key);
 
 	/**********************************************************************************************//**
 	 * \fn	CDMBool CDMGetKeyUp(_IN_ CDMEvent* event, const _IN_ CDMEnum key);
 	 *
 	 * \brief	Checks if the key selected in the parameter stopped being pressed this frame.
-	 *			Status: Unknown.
+	 *			Status: Not Working.
 	 *
 	 * \param [in,out]	event	An event structure, must not be null.
 	 * \param 		  	key  	The key to be checked.
@@ -1574,13 +1032,13 @@ extern "C" {
 	 * 			frame, CDMFALSE if the key is pressed.
 	 **************************************************************************************************/
 
-	CDMBool		CDMGetKeyUp(_IN_ CDMEvent* event, const _IN_ CDMEnum key);
+	CDMBool		CDMGetKeyUp(_IN_ CDMEvent* event, const _IN_ CDMKey key);
 
 	/**********************************************************************************************//**
 	 * \fn	CDMCoord CDMGetMousePos(_IN_ CDMEvent* event);
 	 *
 	 * \brief	Gets the mouse position inside the console window.
-	 *			Status: Unknown.
+	 *			Status: Not Working.
 	 *
 	 * \param [in,out]	event	An event structure, must not be null.
 	 *
@@ -1594,7 +1052,7 @@ extern "C" {
 	 *
 	 * \brief	Keeps the screen size of the program. Might be useful if you want to limit screen
 	 * 			resizing.
-	 *			Status: Unknown.
+	 *			Status: Not Working.
 	 *
 	 * \param [in,out]	ctx  	The context, must not be null.
 	 * \param [in,out]	event	An event structure to check for resize events, must not be null.

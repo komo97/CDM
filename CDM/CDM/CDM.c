@@ -29,7 +29,10 @@ CDMContext* CDMCreateContext(const _IN_ short width, const _IN_ short height)
 	GetConsoleScreenBufferInfo(ctx->mainBuffer, &inf);
 	GetConsoleScreenBufferInfoEx(ctx->mainBuffer, &ctx->inf);
 	SetConsoleActiveScreenBuffer(ctx->mainBuffer);
-	ctx->InputBuffer = GetStdHandle(STD_INPUT_HANDLE);
+	ctx->inputBuffer = GetStdHandle(STD_INPUT_HANDLE);
+	SetConsoleMode(ctx->inputBuffer, ENABLE_WINDOW_INPUT | ENABLE_EXTENDED_FLAGS | ENABLE_VIRTUAL_TERMINAL_INPUT);
+	SetConsoleMode(ctx->mainBuffer, DISABLE_NEWLINE_AUTO_RETURN | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
+	memset(ctx->events.inputPressed, CDMFalse, KeysEnd * sizeof(CDMBool));
 	return ctx;
 }
 
@@ -121,8 +124,7 @@ void CDMSetCursorVisibility(_INOUT_ CDMContext** ctx,
 
 void CDMActivateMouseInput(_INOUT_ CDMContext** ctx)
 {
-	SetConsoleMode((*ctx)->InputBuffer, ENABLE_MOUSE_INPUT);
-	SetConsoleMode((*ctx)->mainBuffer, ENABLE_MOUSE_INPUT);
+	SetConsoleMode((*ctx)->inputBuffer, ENABLE_MOUSE_INPUT | ENABLE_WINDOW_INPUT | ENABLE_EXTENDED_FLAGS | ENABLE_VIRTUAL_TERMINAL_INPUT);
 }
 
 CDMSurface* CDMCreateSurface(const _IN_ short posX,
@@ -141,7 +143,7 @@ CDMSurface* CDMCreateSurface(const _IN_ short posX,
 	srfc->data = calloc(sizeX*sizeY, sizeof(unsigned char));
 	srfc->bufferContents.printBufferCont = calloc(sizeX * sizeY, sizeof(CHAR_INFO));
 	srfc->bufferContents.isAlphaTile = calloc(sizeX * sizeY, sizeof(CDMBool));
-	memset(srfc->bufferContents.isAlphaTile, CDMFALSE, sizeX * sizeY);
+	memset(srfc->bufferContents.isAlphaTile, CDMFalse, sizeX * sizeY);
 	for (i = sizeX * sizeY; i--;)
 	{
 		srfc->bufferContents.printBufferCont[i].Char.AsciiChar = '\0';
@@ -204,7 +206,7 @@ void CDMExportSrfcToImg(const _IN_ CDMContext* ctx,
 	free(name);
 }
 
-CDMText * CDMTextWrapper(_IN_ char * text, const _IN_ CDMEnum color, const _IN_ CDMEnum background)
+CDMText * CDMTextWrapper(_IN_ char * text, const _IN_ CDMLetterColor color, const _IN_ CDMBackgroundColor background)
 {
 	CDMText* txt = malloc(sizeof(CDMText));
 	if(!txt)
@@ -269,36 +271,36 @@ void CDMPrepareSurface(_INOUT_ CDMSurface** surface)
 			accessor = j + (i*(*surface)->rect.Right);
 			switch((*surface)->data[accessor])
 			{
-			case CDMSET1:
+			case Set1:
 				(*surface)->bufferContents.printBufferCont[accessor].Char.AsciiChar =
 					(*surface)->pallete.p1.character;
 				(*surface)->bufferContents.printBufferCont[accessor].Attributes =
 					(*surface)->pallete.p1.frontColor | (*surface)->pallete.p1.backColor;
 				goto NotAlpha;
-			case CDMSET2:
+			case Set2:
 				(*surface)->bufferContents.printBufferCont[accessor].Char.AsciiChar =
 					(*surface)->pallete.p2.character;
 				(*surface)->bufferContents.printBufferCont[accessor].Attributes =
 					(*surface)->pallete.p2.frontColor | (*surface)->pallete.p2.backColor;
 				goto NotAlpha;
-			case CDMSET3:
+			case Set3:
 				(*surface)->bufferContents.printBufferCont[accessor].Char.AsciiChar =
 					(*surface)->pallete.p3.character;
 				(*surface)->bufferContents.printBufferCont[accessor].Attributes =
 					(*surface)->pallete.p3.frontColor | (*surface)->pallete.p3.backColor;
 				goto NotAlpha;
-			case CDMSET4:
+			case Set4:
 				(*surface)->bufferContents.printBufferCont[accessor].Char.AsciiChar =
 					(*surface)->pallete.p4.character;
 				(*surface)->bufferContents.printBufferCont[accessor].Attributes =
 					(*surface)->pallete.p4.frontColor | (*surface)->pallete.p4.backColor;
 				goto NotAlpha;
-			case CDMSETALPHA:
-				(*surface)->bufferContents.isAlphaTile[accessor] = CDMTRUE;
+			case SetAlpha:
+				(*surface)->bufferContents.isAlphaTile[accessor] = CDMTrue;
 				break;
 			}
 			NotAlpha:
-				(*surface)->bufferContents.isAlphaTile[accessor] = CDMFALSE;
+				(*surface)->bufferContents.isAlphaTile[accessor] = CDMFalse;
 		}
 
 	}
@@ -306,22 +308,23 @@ void CDMPrepareSurface(_INOUT_ CDMSurface** surface)
 
 void CDMPrepareText(_INOUT_ CDMText** txt)
 {
-	SHORT i, j;
-	int accessor;
+	SHORT i, j, k = 0;
+	int accessor; 
 	for (i = (*txt)->rect.Bottom; i--;)
 	{
 		for (j = (*txt)->rect.Right; j--;)
 		{
 			accessor = j + (i*(*txt)->rect.Right);
 			(*txt)->bufferContents.printBufferCont[accessor].Char.AsciiChar =
-				(*txt)->data[j + (i*(*txt)->rect.Right)];
+				(*txt)->data[accessor];
 			(*txt)->bufferContents.printBufferCont[accessor].Attributes =
 				(*txt)->frontColor | (*txt)->backColor;
 		}
 	}
 }
 
-CDMText * CDMTextWrapper_s(_IN_ char * text, const _IN_ size_t textSize, const _IN_ CDMEnum color, const _IN_ CDMEnum background)
+CDMText * CDMTextWrapper_s(_IN_ char * text, const _IN_ size_t textSize,
+	const _IN_ CDMLetterColor color, const _IN_ CDMBackgroundColor background)
 {
 	CDMText* txt = malloc(sizeof(CDMText));
 	if(!txt)
@@ -363,10 +366,10 @@ void CDMChangeText(CDMText ** txt, const _IN_ char * text)
 }
 
 void CDMSetForegroundColor(_INOUT_ CDMSurface** surface,
-	const _IN_ CDMEnum c1,
-	const _IN_ CDMEnum c2,
-	const _IN_ CDMEnum c3,
-	const _IN_ CDMEnum c4)
+	const _IN_ CDMLetterColor c1,
+	const _IN_ CDMLetterColor c2,
+	const _IN_ CDMLetterColor c3,
+	const _IN_ CDMLetterColor c4)
 {
 	(*surface)->pallete.p1.frontColor = c1;
 	(*surface)->pallete.p2.frontColor = c2;
@@ -375,10 +378,10 @@ void CDMSetForegroundColor(_INOUT_ CDMSurface** surface,
 }
 
 void CDMSetBackgroundColor(_INOUT_ CDMSurface** surface,
-	const _IN_ CDMEnum c1,
-	const _IN_ CDMEnum c2,
-	const _IN_ CDMEnum c3,
-	const _IN_ CDMEnum c4)
+	const _IN_ CDMBackgroundColor c1,
+	const _IN_ CDMBackgroundColor c2,
+	const _IN_ CDMBackgroundColor c3,
+	const _IN_ CDMBackgroundColor c4)
 {
 	(*surface)->pallete.p1.backColor = c1;
 	(*surface)->pallete.p2.backColor = c2;
@@ -387,10 +390,10 @@ void CDMSetBackgroundColor(_INOUT_ CDMSurface** surface,
 }
 
 void CDMSetCharacters(_INOUT_ CDMSurface** surface,
-	const _IN_ CDMEnum c1,
-	const _IN_ CDMEnum c2,
-	const _IN_ CDMEnum c3,
-	const _IN_ CDMEnum c4)
+	const _IN_ unsigned char c1,
+	const _IN_ unsigned char c2,
+	const _IN_ unsigned char c3,
+	const _IN_ unsigned char c4)
 {
 	(*surface)->pallete.p1.character = c1;
 	(*surface)->pallete.p2.character = c2;
@@ -417,7 +420,6 @@ void CDMAddSurfaceToContext(_INOUT_ CDMContext** ctx, _IN_ CDMSurface* surface)
 			sj,
 			ctxAccessor,
 			srfcAccessor; 
-	CDMBool pixelEqual;
 	for (i = surface->rect.Left, si = 0;
 		si < surface->rect.Right && i < (*ctx)->rect.Right; ++i, ++si)
 	{
@@ -459,12 +461,8 @@ void CDMAddTextToContext(_INOUT_ CDMContext** ctx, _IN_ CDMText* txt)
 		{
 			ctxAccessor = i + (j * (*ctx)->rect.Right);
 			srfcAccessor = si + (sj * txt->rect.Right);
-			if (!CDMCompareCHARINFO(txt->bufferContents.printBufferCont[srfcAccessor],
-				(*ctx)->contents.printBufferCont[ctxAccessor]))
-			{
-				(*ctx)->contents.printBufferCont[ctxAccessor] =
-					txt->bufferContents.printBufferCont[srfcAccessor];
-			}
+			(*ctx)->contents.printBufferCont[ctxAccessor] =
+				txt->bufferContents.printBufferCont[srfcAccessor];
 
 		}
 	}
@@ -493,8 +491,8 @@ void CDMClearScreen(_INOUT_ CDMContext ** ctx)
 
 void CDMFillScreen(_INOUT_ CDMContext ** ctx,
 	const _IN_ char character,
-	const _IN_ CDMEnum frontColor,
-	const _IN_ CDMEnum backColor)
+	const _IN_ CDMLetterColor frontColor,
+	const _IN_ CDMBackgroundColor backColor)
 {
 	SHORT	i,
 			j;
@@ -512,8 +510,8 @@ void CDMFillScreen(_INOUT_ CDMContext ** ctx,
 void CDMPoke(_INOUT_ CDMContext ** ctx,
 	const _IN_ CDMCoord coord,
 	const _IN_ char character,
-	const _IN_ CDMEnum frontColor,
-	const _IN_ CDMEnum backColor)                             
+	const _IN_ CDMLetterColor frontColor,
+	const _IN_ CDMBackgroundColor backColor)
 {
 	SHORT accesor = coord.X + (coord.Y * (*ctx)->rect.Right);
 	(*ctx)->contents.printBufferCont[accesor].Attributes =
@@ -572,7 +570,7 @@ void CDMSetActiveScheme(_IN_ CDMColorScheme data, _INOUT_ CDMContext** ctx)
 void CDMSetPixel(_INOUT_ CDMSurface** surface,
 	_IN_ short x,
 	_IN_ short y,
-	_IN_ CDMEnum pixelSet)
+	_IN_ CDMColorSets pixelSet)
 {
 	(*surface)->data[x + (y * (*surface)->rect.Right)] = pixelSet;
 }
@@ -580,599 +578,82 @@ void CDMSetPixel(_INOUT_ CDMSurface** surface,
 CDMBool CDMCompareCHARINFO(_IN_ CHAR_INFO rhs, _IN_ CHAR_INFO lhs)
 {
 	return rhs.Attributes == lhs.Attributes &&
-		rhs.Char.AsciiChar == lhs.Char.AsciiChar ? CDMTRUE : CDMFALSE;
+		rhs.Char.AsciiChar == lhs.Char.AsciiChar ? CDMTrue : CDMFalse;
 }
 
 void CDMPollEvents(_IN_ CDMContext* ctx, _INOUT_ CDMEvent* event)
 {
-	GetNumberOfConsoleInputEvents(ctx->InputBuffer, &event->inputNum);
+	GetNumberOfConsoleInputEvents(ctx->inputBuffer, &event->inputNum);
 	if(!event->inputNum)
-		ReadConsoleInput(ctx->InputBuffer, event->inputs, 51, &event->inputNum);
+		ReadConsoleInput(ctx->inputBuffer, event->inputs, 51, &event->inputNum);
 }
 
-CDMBool CDMGetKeyPressed(_IN_ CDMEvent* event, const _IN_ CDMEnum key)
+CDMBool CDMGetKeyPressed(_IN_ CDMEvent* event, const _IN_ CDMKey key)
 {
-	int i, keyVal;
-	switch (key)
+	for (DWORD i = 0; i < event->inputNum; ++i)
 	{
-	case CDMA:
-		keyVal = 0x41;
-		break;
-	case CDMB:
-		keyVal = 0x42;
-		break;
-	case CDMC:
-		keyVal = 0x43;
-		break;
-	case CDMD:
-		keyVal = 0x44;
-		break;
-	case CDME:
-		keyVal = 0x45;
-		break;
-	case CDMF:
-		keyVal = 0x46;
-		break;
-	case CDMG:
-		keyVal = 0x47;
-		break;
-	case CDMH:
-		keyVal = 0x48;
-		break;
-	case CDMI:
-		keyVal = 0x49;
-		break;
-	case CDMJ:
-		keyVal = 0x4A;
-		break;
-	case CDMK:
-		keyVal = 0x4B;
-		break;
-	case CDML:
-		keyVal = 0x4C;
-		break;
-	case CDMM:
-		keyVal = 0x4D;
-		break;
-	case CDMN:
-		keyVal = 0x4E;
-		break;
-	case CDMO:
-		keyVal = 0x4F;
-		break;
-	case CDMP:
-		keyVal = 0x50;
-		break;
-	case CDMQ:
-		keyVal = 0x51;
-		break;
-	case CDMR:
-		keyVal = 0x52;
-		break;
-	case CDMS:
-		keyVal = 0x53;
-		break;
-	case CDMT:
-		keyVal = 0x54;
-		break;
-	case CDMU:
-		keyVal = 0x55;
-		break;
-	case CDMV:
-		keyVal = 0x56;
-		break;
-	case CDMW:
-		keyVal = 0x57;
-		break;
-	case CDMX:
-		keyVal = 0x58;
-		break;
-	case CDMY:
-		keyVal = 0x59;
-		break;
-	case CDMZ:
-		keyVal = 0x5A;
-		break;
-	case CDMLALT:
-		keyVal = VK_LMENU;
-		break;
-	case CDMLSHIFT:
-		keyVal = VK_LSHIFT;
-		break;
-	case CDMLCTRL:
-		keyVal = VK_LCONTROL;
-		break;
-	case CDMRALT:
-		keyVal = VK_RMENU;
-		break;
-	case CDMRSHIFT:
-		keyVal = VK_RSHIFT;
-		break;
-	case CDMRCTRL:
-		keyVal = VK_RCONTROL;
-		break;
-	case CDMESC:
-		keyVal = VK_ESCAPE;
-		break;
-	case CDMRETURN:
-		keyVal = VK_RETURN;
-		break;
-	case CDM1:
-		keyVal = 0x31;
-		break;
-	case CDM2:
-		keyVal = 0x32;
-		break;
-	case CDM3:
-		keyVal = 0x33;
-		break;
-	case CDM4:
-		keyVal = 0x34;
-		break;
-	case CDM5:
-		keyVal = 0x35;
-		break;
-	case CDM6:
-		keyVal = 0x36;
-		break;
-	case CDM7:
-		keyVal = 0x37;
-		break;
-	case CDM8:
-		keyVal = 0x38;
-		break;
-	case CDM9:
-		keyVal = 0x39;
-		break;
-	case CDM0:
-		keyVal = 0x30;
-		break;
-	case CDMCOMMA:
-		keyVal = VK_OEM_COMMA;
-		break;
-	case CDMPERIOD:
-		keyVal = VK_OEM_PERIOD;
-		break;
-	case CDMBACKS:
-		keyVal = VK_BACK;
-		break;
-	case CDMLEFT:
-		keyVal = VK_LEFT;
-		break;
-	case CDMRIGHT:
-		keyVal = VK_RIGHT;
-		break;
-	case CDMUP:
-		keyVal = VK_UP;
-		break;
-	case CDMDOWN:
-		keyVal = VK_DOWN;
-		break;
-	case CDMSPACE:
-		keyVal = VK_SPACE;
-		break;
-	case CDMRMB:
-		keyVal = 0x0002;
-		break;
-	case CDMLMB:
-		keyVal = 0x0001;
-		break;
-	case CDMMMB:
-		keyVal = 0x0004;
-		break;
-	}
-	for (i = 0; i < event->inputNum; ++i)
-	{
-		switch (event->inputs[i].EventType)
+		if (event->inputs[i].EventType == KEY_EVENT &&
+			event->inputs[i].Event.KeyEvent.wVirtualKeyCode == key &&
+			event->inputs[i].Event.KeyEvent.bKeyDown)
 		{
-		case KEY_EVENT:
-			if (event->inputs[i].Event.KeyEvent.wVirtualKeyCode == keyVal &&
-				event->inputs[i].Event.KeyEvent.bKeyDown)
-				return event->inputPressed[key] = CDMTRUE;
-			break;
-		case MOUSE_EVENT:
-			if (event->inputs[i].Event.MouseEvent.dwButtonState & keyVal)
-				return event->inputPressed[key] = CDMTRUE;
-			break;
+			event->inputPressed[key] = CDMTrue;
+			return CDMTrue;
 		}
 	}
-	return event->inputPressed[key] = CDMFALSE;
+	event->inputPressed[key] = CDMFalse;
+	return CDMFalse;
 }
 
-CDMBool CDMGetKeyDown(_IN_ CDMEvent* event, const _IN_ CDMEnum key)
+CDMBool CDMGetKeyDown(_IN_ CDMEvent* event, const _IN_ CDMKey key)
 {
-	int i, keyVal;
-	switch (key)
+	for (DWORD i = 0; i < event->inputNum; ++i)
 	{
-	case CDMA:
-		keyVal = 0x41;
-		break;
-	case CDMB:
-		keyVal = 0x42;
-		break;
-	case CDMC:
-		keyVal = 0x43;
-		break;
-	case CDMD:
-		keyVal = 0x44;
-		break;
-	case CDME:
-		keyVal = 0x45;
-		break;
-	case CDMF:
-		keyVal = 0x46;
-		break;
-	case CDMG:
-		keyVal = 0x47;
-		break;
-	case CDMH:
-		keyVal = 0x48;
-		break;
-	case CDMI:
-		keyVal = 0x49;
-		break;
-	case CDMJ:
-		keyVal = 0x4A;
-		break;
-	case CDMK:
-		keyVal = 0x4B;
-		break;
-	case CDML:
-		keyVal = 0x4C;
-		break;
-	case CDMM:
-		keyVal = 0x4D;
-		break;
-	case CDMN:
-		keyVal = 0x4E;
-		break;
-	case CDMO:
-		keyVal = 0x4F;
-		break;
-	case CDMP:
-		keyVal = 0x50;
-		break;
-	case CDMQ:
-		keyVal = 0x51;
-		break;
-	case CDMR:
-		keyVal = 0x52;
-		break;
-	case CDMS:
-		keyVal = 0x53;
-		break;
-	case CDMT:
-		keyVal = 0x54;
-		break;
-	case CDMU:
-		keyVal = 0x55;
-		break;
-	case CDMV:
-		keyVal = 0x56;
-		break;
-	case CDMW:
-		keyVal = 0x57;
-		break;
-	case CDMX:
-		keyVal = 0x58;
-		break;
-	case CDMY:
-		keyVal = 0x59;
-		break;
-	case CDMZ:
-		keyVal = 0x5A;
-		break;
-	case CDMLALT:
-		keyVal = VK_LMENU;
-		break;
-	case CDMLSHIFT:
-		keyVal = VK_LSHIFT;
-		break;
-	case CDMLCTRL:
-		keyVal = VK_LCONTROL;
-		break;
-	case CDMRALT:
-		keyVal = VK_RMENU;
-		break;
-	case CDMRSHIFT:
-		keyVal = VK_RSHIFT;
-		break;
-	case CDMRCTRL:
-		keyVal = VK_RCONTROL;
-		break;
-	case CDMESC:
-		keyVal = VK_ESCAPE;
-		break;
-	case CDMRETURN:
-		keyVal = VK_RETURN;
-		break;
-	case CDM1:
-		keyVal = 0x31;
-		break;
-	case CDM2:
-		keyVal = 0x32;
-		break;
-	case CDM3:
-		keyVal = 0x33;
-		break;
-	case CDM4:
-		keyVal = 0x34;
-		break;
-	case CDM5:
-		keyVal = 0x35;
-		break;
-	case CDM6:
-		keyVal = 0x36;
-		break;
-	case CDM7:
-		keyVal = 0x37;
-		break;
-	case CDM8:
-		keyVal = 0x38;
-		break;
-	case CDM9:
-		keyVal = 0x39;
-		break;
-	case CDM0:
-		keyVal = 0x30;
-		break;
-	case CDMCOMMA:
-		keyVal = VK_OEM_COMMA;
-		break;
-	case CDMPERIOD:
-		keyVal = VK_OEM_PERIOD;
-		break;
-	case CDMBACKS:
-		keyVal = VK_BACK;
-		break;
-	case CDMLEFT:
-		keyVal = VK_LEFT;
-		break;
-	case CDMRIGHT:
-		keyVal = VK_RIGHT;
-		break;
-	case CDMUP:
-		keyVal = VK_UP;
-		break;
-	case CDMDOWN:
-		keyVal = VK_DOWN;
-		break;
-	case CDMSPACE:
-		keyVal = VK_SPACE;
-		break;
-	case CDMRMB:
-		keyVal = 0x0002;
-		break;
-	case CDMLMB:
-		keyVal = 0x0001;
-		break;
-	case CDMMMB:
-		keyVal = 0x0004;
-		break;
-	}
-	for (i = 0; i < event->inputNum; ++i)
-	{
-		switch (event->inputs[i].EventType)
+		if (event->inputs[i].EventType == KEY_EVENT &&
+			event->inputs[i].Event.KeyEvent.wVirtualKeyCode == key &&
+			event->inputs[i].Event.KeyEvent.bKeyDown &&
+			!event->inputPressed[key])
 		{
-		case KEY_EVENT:
-			if (event->inputs[i].Event.KeyEvent.wVirtualKeyCode == keyVal &&
-				event->inputs[i].Event.KeyEvent.bKeyDown && 
-				!event->inputPressed[i])
-				return event->inputPressed[key] = CDMTRUE;
-			break;
-		case MOUSE_EVENT:
-			if (event->inputs[i].Event.MouseEvent.dwButtonState & keyVal &&
-				!event->inputPressed[i])
-				return event->inputPressed[key] = CDMTRUE;
-			break;
+			event->inputPressed[key] = CDMTrue;
+			return CDMTrue;
+		}
+		else if (event->inputs[i].EventType == KEY_EVENT &&
+			event->inputs[i].Event.KeyEvent.wVirtualKeyCode == key &&
+			!event->inputs[i].Event.KeyEvent.bKeyDown &&
+			event->inputPressed[key])
+		{
+			event->inputPressed[key] = CDMFalse;
+			return CDMFalse;
 		}
 	}
-	return event->inputPressed[key] = CDMFALSE;
+	return CDMFalse;
 }
 
-CDMBool CDMGetKeyUp(_IN_ CDMEvent* event, const _IN_ CDMEnum key)
+CDMBool CDMGetKeyUp(_IN_ CDMEvent* event, const _IN_ CDMKey key)
 {
-	int i, keyVal;
-	switch (key)
+	for (DWORD i = 0; i < event->inputNum; ++i)
 	{
-	case CDMA:
-		keyVal = 0x41;
-		break;
-	case CDMB:
-		keyVal = 0x42;
-		break;
-	case CDMC:
-		keyVal = 0x43;
-		break;
-	case CDMD:
-		keyVal = 0x44;
-		break;
-	case CDME:
-		keyVal = 0x45;
-		break;
-	case CDMF:
-		keyVal = 0x46;
-		break;
-	case CDMG:
-		keyVal = 0x47;
-		break;
-	case CDMH:
-		keyVal = 0x48;
-		break;
-	case CDMI:
-		keyVal = 0x49;
-		break;
-	case CDMJ:
-		keyVal = 0x4A;
-		break;
-	case CDMK:
-		keyVal = 0x4B;
-		break;
-	case CDML:
-		keyVal = 0x4C;
-		break;
-	case CDMM:
-		keyVal = 0x4D;
-		break;
-	case CDMN:
-		keyVal = 0x4E;
-		break;
-	case CDMO:
-		keyVal = 0x4F;
-		break;
-	case CDMP:
-		keyVal = 0x50;
-		break;
-	case CDMQ:
-		keyVal = 0x51;
-		break;
-	case CDMR:
-		keyVal = 0x52;
-		break;
-	case CDMS:
-		keyVal = 0x53;
-		break;
-	case CDMT:
-		keyVal = 0x54;
-		break;
-	case CDMU:
-		keyVal = 0x55;
-		break;
-	case CDMV:
-		keyVal = 0x56;
-		break;
-	case CDMW:
-		keyVal = 0x57;
-		break;
-	case CDMX:
-		keyVal = 0x58;
-		break;
-	case CDMY:
-		keyVal = 0x59;
-		break;
-	case CDMZ:
-		keyVal = 0x5A;
-		break;
-	case CDMLALT:
-		keyVal = VK_LMENU;
-		break;
-	case CDMLSHIFT:
-		keyVal = VK_LSHIFT;
-		break;
-	case CDMLCTRL:
-		keyVal = VK_LCONTROL;
-		break;
-	case CDMRALT:
-		keyVal = VK_RMENU;
-		break;
-	case CDMRSHIFT:
-		keyVal = VK_RSHIFT;
-		break;
-	case CDMRCTRL:
-		keyVal = VK_RCONTROL;
-		break;
-	case CDMESC:
-		keyVal = VK_ESCAPE;
-		break;
-	case CDMRETURN:
-		keyVal = VK_RETURN;
-		break;
-	case CDM1:
-		keyVal = 0x31;
-		break;
-	case CDM2:
-		keyVal = 0x32;
-		break;
-	case CDM3:
-		keyVal = 0x33;
-		break;
-	case CDM4:
-		keyVal = 0x34;
-		break;
-	case CDM5:
-		keyVal = 0x35;
-		break;
-	case CDM6:
-		keyVal = 0x36;
-		break;
-	case CDM7:
-		keyVal = 0x37;
-		break;
-	case CDM8:
-		keyVal = 0x38;
-		break;
-	case CDM9:
-		keyVal = 0x39;
-		break;
-	case CDM0:
-		keyVal = 0x30;
-		break;
-	case CDMCOMMA:
-		keyVal = VK_OEM_COMMA;
-		break;
-	case CDMPERIOD:
-		keyVal = VK_OEM_PERIOD;
-		break;
-	case CDMBACKS:
-		keyVal = VK_BACK;
-		break;
-	case CDMLEFT:
-		keyVal = VK_LEFT;
-		break;
-	case CDMRIGHT:
-		keyVal = VK_RIGHT;
-		break;
-	case CDMUP:
-		keyVal = VK_UP;
-		break;
-	case CDMDOWN:
-		keyVal = VK_DOWN;
-		break;
-	case CDMSPACE:
-		keyVal = VK_SPACE;
-		break;
-	case CDMRMB:
-		keyVal = 0x0002;
-		break;
-	case CDMLMB:
-		keyVal = 0x0001;
-		break;
-	case CDMMMB:
-		keyVal = 0x0004;
-		break;
-	}
-	for (i = 0; i < event->inputNum; ++i)
-	{
-		switch (event->inputs[i].EventType)
+		if (event->inputs[i].EventType == KEY_EVENT &&
+			event->inputs[i].Event.KeyEvent.wVirtualKeyCode == key &&
+			!event->inputs[i].Event.KeyEvent.bKeyDown)
 		{
-		case KEY_EVENT:
-			if (event->inputs[i].Event.KeyEvent.wVirtualKeyCode == keyVal &&
-				!event->inputs[i].Event.KeyEvent.bKeyDown &&
-				event->inputPressed[key])
-			{
-				event->inputPressed[key] = CDMFALSE;
-				return CDMTRUE;
-			}
-			break;
+			event->inputPressed[key] = CDMFalse;
+			return CDMTrue;
+		}
+		if (event->inputs[i].EventType == KEY_EVENT &&
+			event->inputs[i].Event.KeyEvent.wVirtualKeyCode == key &&
+			event->inputs[i].Event.KeyEvent.bKeyDown)
+		{
+			event->inputPressed[key] = CDMTrue;
+			return CDMFalse;
 		}
 	}
-	return event->inputPressed[key] = CDMFALSE;
+	return CDMFalse;
 }
 
-CDMCoord CDMGetMousePos(_IN_ CDMEvent* event)
+CDMCoord CDMGetMousePos(_IN_ CDMEvent * event)
 {
-	int i;
-	for (i = 0; i < event->inputNum; ++i)
-	{
-		switch (event->inputs[i].EventType)
-		{
-		case MOUSE_EVENT:
-			return event->inputs[i].Event.MouseEvent.dwMousePosition;
-			break;
-		}
-	}
-	CDMCoord ret = { 0,0 };
-	return ret;
+	CDMCoord coord = { 0 , 0 };
+	return coord;
 }
 
 void CDMKeepScreenSize(_INOUT_ CDMContext** ctx, _IN_ CDMEvent* event)
@@ -1183,7 +664,11 @@ void CDMKeepScreenSize(_INOUT_ CDMContext** ctx, _IN_ CDMEvent* event)
 		switch (event->inputs[i].EventType)
 		{
 		case WINDOW_BUFFER_SIZE_EVENT:
-			CDMChangeWindowSize(ctx, (*ctx)->rect.Right, (*ctx)->rect.Bottom);
+			if(event->inputs[i].Event.WindowBufferSizeEvent.dwSize.X !=
+				(*ctx)->rect.Right &&
+				event->inputs[i].Event.WindowBufferSizeEvent.dwSize.X != 
+				(*ctx)->rect.Bottom)
+				CDMChangeWindowSize(ctx, (*ctx)->rect.Right, (*ctx)->rect.Bottom);
 			break;
 		}
 	}

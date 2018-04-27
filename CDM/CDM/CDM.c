@@ -1,7 +1,7 @@
 #include "CDM.h"
 #include <stdlib.h>
 #include <stdio.h>
-
+#pragma warning(disable:4996)
 static CDMErrno	cdmErrno;
 
 CDMContext* CDMCreateContext(const _IN_ short width, const _IN_ short height)
@@ -58,6 +58,8 @@ void CDMChangeWindowSize(_INOUT_ CDMContext** ctx,
 	rect.Right = infof.dwMaximumWindowSize.X - 1;
 	rect.Bottom = infof.dwMaximumWindowSize.Y - 1;
 	SetConsoleWindowInfo((*ctx)->mainBuffer, TRUE, &rect);
+	rect.Right = screenCoords.X;
+	rect.Bottom = screenCoords.Y;
 	(*ctx)->rect = rect;
 	if ((*ctx)->contents.printBufferCont)
 		free((*ctx)->contents.printBufferCont);
@@ -67,6 +69,7 @@ void CDMChangeWindowSize(_INOUT_ CDMContext** ctx,
 	(*ctx)->contents.isAlphaTile = calloc(rect.Right * rect.Bottom, sizeof(CDMBool));
 	(*ctx)->lastFrameContents.printBufferCont = calloc(rect.Right * rect.Bottom, sizeof(CHAR_INFO));
 	(*ctx)->lastFrameContents.isAlphaTile = calloc(rect.Right * rect.Bottom, sizeof(CDMBool));
+	FlushConsoleInputBuffer((*ctx)->inputBuffer);
 }
 
 void CDMToggleFullscreen(CDMContext** _INOUT_ ctx, const _IN_ CDMBool val)
@@ -98,7 +101,7 @@ void CDMToggleFullscreen(CDMContext** _INOUT_ ctx, const _IN_ CDMBool val)
 
 void CDMSetWindowTitle(const _IN_ wchar_t* title)
 {
-	SetConsoleTitle(title);
+	SetConsoleTitleW(title);
 }
 
 void CDMSetFontAndSize(_INOUT_ CDMContext** ctx,
@@ -160,7 +163,7 @@ CDMSurface* CDMCreateSurface(const _IN_ short posX,
 CDMSurface * CDMReadImg(const _IN_ char* fileName, _OUTOPT_ CDMColorScheme* scheme)
 {
 	CDMSurface* srfc;
-	CDMCoord coord;
+	CDMRect coord;
 	FILE* f;
 	char bytecheck = 0;
 	f = fopen(fileName, "rb");
@@ -170,15 +173,14 @@ CDMSurface * CDMReadImg(const _IN_ char* fileName, _OUTOPT_ CDMColorScheme* sche
 		CDMSetErrno(2);
 		return NULL;
 	}
-	fread(&coord, sizeof(CDMCoord), 1, f);
-	srfc = CDMCreateSurface(0, 0, coord.X, coord.Y);
+	fread(&coord, sizeof(CDMRect), 1, f);
+	srfc = CDMCreateSurface(coord.Left, coord.Top, coord.Right, coord.Bottom);
 	if (scheme != NULL)
 		fread(scheme, sizeof(CDMColorScheme), 1, f);
 	else fseek(f, sizeof(CDMColorScheme), SEEK_CUR);
 	fread(&srfc->pallete, sizeof(CDMPalette), 1, f);
 	fread(srfc->data, sizeof(CDMEnum), srfc->rect.Right * srfc->rect.Bottom, f);
 	fclose(f);
-	free(f);
 	return srfc;
 }
 
@@ -189,7 +191,7 @@ void CDMExportSrfcToImg(const _IN_ CDMContext* ctx,
 {
 	FILE*	f;
 	int		i;
-	char*	name = calloc(1, nameSize + 4);
+	char*	name = calloc(1, nameSize + 5);
 	char	val = 42;
 	CDMColorScheme scheme;
 	for (unsigned int i = 0; i < nameSize; ++i)
@@ -198,7 +200,8 @@ void CDMExportSrfcToImg(const _IN_ CDMContext* ctx,
 	name[nameSize + 1] = 'c';
 	name[nameSize + 2] = 'd';
 	name[nameSize + 3] = 'i';
-
+	name[nameSize + 4] = '\0';
+	GetConsoleScreenBufferInfoEx(ctx->mainBuffer, &ctx->inf);
 	for (i = 0; i < 16; ++i)
 		scheme.colors[i] = ctx->inf.ColorTable[i];
 	f = fopen(name, "wb");
@@ -208,7 +211,6 @@ void CDMExportSrfcToImg(const _IN_ CDMContext* ctx,
 	fwrite(&srfc->pallete, sizeof(CDMPalette), 1, f);
 	fwrite(srfc->data, sizeof(CDMEnum), srfc->rect.Right * srfc->rect.Bottom, f);
 	fclose(f);
-	free(f);
 	free(name);
 }
 
@@ -623,7 +625,7 @@ void CDMPollEvents(_IN_ CDMContext* ctx, _INOUT_ CDMEvent* event)
 
 CDMBool CDMGetKeyPressed(_IN_ CDMEvent* event, const _IN_ CDMKey key)
 {
-	DWORD i;
+	int i;
 	for (i = 0; i < event->inputNum; ++i)
 	{
 		if ((event->inputs[i].EventType == KEY_EVENT &&
@@ -645,7 +647,7 @@ CDMBool CDMGetKeyPressed(_IN_ CDMEvent* event, const _IN_ CDMKey key)
 
 CDMBool CDMGetKeyDown(_IN_ CDMEvent* event, const _IN_ CDMKey key)
 {
-	DWORD i;
+	int i;
 	for (i = 0; i < event->inputNum; ++i)
 	{
 		if (event->inputs[i].EventType == KEY_EVENT &&
@@ -670,7 +672,7 @@ CDMBool CDMGetKeyDown(_IN_ CDMEvent* event, const _IN_ CDMKey key)
 
 CDMBool CDMGetKeyUp(_IN_ CDMEvent* event, const _IN_ CDMKey key)
 {
-	DWORD i;
+	int i;
 	for (i = 0; i < event->inputNum; ++i)
 	{
 		if (event->inputs[i].EventType == KEY_EVENT &&
@@ -694,7 +696,7 @@ CDMBool CDMGetKeyUp(_IN_ CDMEvent* event, const _IN_ CDMKey key)
 CDMCoord CDMGetMousePos(_IN_ CDMEvent * event)
 {
 	COORD pos = { -1,-1 };
-	DWORD i;
+	int i;
 	for (i = 0; i < event->inputNum; ++i)
 	{
 		if (event->inputs[i].EventType == MOUSE_EVENT)

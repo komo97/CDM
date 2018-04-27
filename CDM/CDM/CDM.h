@@ -527,7 +527,7 @@ extern "C" {
 	 * \brief	Reads a .cdi image file into a CDMSurface. The file must be generated exactly the
 	 * 			same as CDMExportSrfcToImg, for it to work using this function. The usage of the
 	 * 			structure may be imperative.
-	 *			Status: Unknown.
+	 *			Status: Working.
 	 *
 	 * \param [in]		  	fileName	Filename of the file.
 	 * \param [in,out,opt]	scheme  	[in,out,opt] If non-null, the scheme that will obtain the
@@ -542,7 +542,7 @@ extern "C" {
 	 * \fn	void CDMExportSrfcToImg(const _IN_ CDMContext* ctx, const _IN_ CDMSurface* srfc, const _IN_ char* fileName, const _IN_ size_t nameSize);
 	 *
 	 * \brief	Cdm export srfc to image
-	 *			Status: Unknown.
+	 *			Status: Working.
 	 *
 	 * \param [in]	ctx			The current context, must not be null.
 	 * \param [in]	srfc		The surface intended to export, must not be null.

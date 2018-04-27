@@ -7,6 +7,8 @@
 * For exclusive use with Windows. Not compatible for versions lower than Windows vista.
 * This library only provides the C functions for drawing on the console, 
 * and the structures for its usage.
+* For a Full hd device the maximum screen size is 237x124 using the terminal font and
+* an 8x8 pixel per tile.
 *
 * @about License
 * This software is provided 'as-is', without any express or implied warranty.
@@ -421,7 +423,7 @@ extern "C" {
 	 *
 	 * \brief	Changes the window size of a context. May be called at any time, however it will
 	 * 			clear the screen once its done.
-	 *			Status: Working.
+	 *			Status: Might not be working completely.
 	 *
 	 * \param [in,out]	ctx   	The context, must not be null.
 	 * \param [in]	  	width 	The expected width in CDM pixels.

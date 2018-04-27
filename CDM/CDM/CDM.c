@@ -215,26 +215,32 @@ void CDMExportSrfcToImg(const _IN_ CDMContext* ctx,
 CDMText * CDMTextWrapper(_IN_ char * text, const _IN_ CDMLetterColor color, const _IN_ CDMBackgroundColor background)
 {
 	CDMText* txt = malloc(sizeof(CDMText));
-	if(!txt)
+	if (!txt)
 	{
 		CDMSetErrno(4);
 		return NULL;
 	}
-	txt->data = text;
+	txt->rect.Bottom = 1;
+	txt->rect.Left = 0;
+	txt->rect.Right = (SHORT)strlen(text);
+	txt->rect.Top = 0;
+	(txt)->data = malloc(txt->rect.Right + 1);
+	strcpy((txt)->data, text);
 	txt->backColor = background;
 	txt->frontColor = color;
 	txt->bufferContents.printBufferCont = NULL;
 	txt->bufferContents.printBufferCont = calloc(strlen(text), sizeof(CHAR_INFO));
+	int i;
+	for (i = txt->rect.Right; i--;)
+	{
+		txt->bufferContents.printBufferCont[i].Char.AsciiChar = '\0';
+	}
 	if (!txt->bufferContents.printBufferCont)
 	{
 		CDMSetErrno(4);
 		return NULL;
 	}
 	txt->bufferContents.isAlphaTile = NULL;
-	txt->rect.Bottom = 1;
-	txt->rect.Left = 0;
-	txt->rect.Right = (SHORT)strlen(text);
-	txt->rect.Top = 0;
 	return txt;
 }
 
@@ -333,12 +339,13 @@ CDMText * CDMTextWrapper_s(_IN_ char * text, const _IN_ size_t textSize,
 	const _IN_ CDMLetterColor color, const _IN_ CDMBackgroundColor background)
 {
 	CDMText* txt = malloc(sizeof(CDMText));
-	if(!txt)
+	if (!txt)
 	{
 		CDMSetErrno(4);
 		return NULL;
 	}
-	txt->data = text;
+	(txt)->data = malloc(textSize + 1);
+	strcpy((txt)->data, text);
 	txt->backColor = background;
 	txt->frontColor = color;
 	txt->bufferContents.printBufferCont = NULL;
@@ -353,13 +360,20 @@ CDMText * CDMTextWrapper_s(_IN_ char * text, const _IN_ size_t textSize,
 	txt->rect.Left = 0;
 	txt->rect.Right = (SHORT)textSize;
 	txt->rect.Top = 0;
+	int i;
+	for (i = txt->rect.Right; i--;)
+	{
+		txt->bufferContents.printBufferCont[i].Char.AsciiChar = '\0';
+	}
 	return txt;
 }
 
 void CDMChangeText(CDMText ** txt, const _IN_ char * text)
 {
 	size_t strSize = strlen(text);
-	(*txt)->data = text;
+	free((*txt)->data);
+	(*txt)->data = malloc(strSize + 1);
+	strcpy((*txt)->data, text);
 	(*txt)->rect.Right = (SHORT)strSize;
 	CHAR_INFO* cinf = (CHAR_INFO*)realloc((*txt)->bufferContents.printBufferCont,
 		sizeof(CHAR_INFO)* strSize);
@@ -412,7 +426,7 @@ void CDMDrawSurface(_INOUT_ CDMContext ** ctx, _IN_ CDMSurface * surface)
 	CDMCoord	pos = { surface->rect.Left,surface->rect.Top },
 				size = { surface->rect.Right, surface->rect.Bottom };
 	SMALL_RECT	rect = { pos.X, pos.Y, (*ctx)->rect.Right, (*ctx)->rect.Bottom };
-	WriteConsoleOutput(
+	WriteConsoleOutputA(
 		(*ctx)->mainBuffer,
 		surface->bufferContents.printBufferCont,
 		size, pos, &rect);
@@ -445,7 +459,7 @@ void CDMDrawText(_INOUT_ CDMContext ** ctx, _IN_ CDMText * txt)
 	CDMCoord	pos = { txt->rect.Left,txt->rect.Top },
 				size = { txt->rect.Right, txt->rect.Bottom };
 	SMALL_RECT	rect = { pos.X, pos.Y, (*ctx)->rect.Right, (*ctx)->rect.Bottom };
-	WriteConsoleOutput(
+	WriteConsoleOutputA(
 		(*ctx)->mainBuffer,
 		txt->bufferContents.printBufferCont,
 		size, pos, &rect);
@@ -533,7 +547,7 @@ void CDMDraw(_IN_ CDMContext** ctx)
 	CDMCoord	pos = { 0,0 },
 		size = { (*ctx)->rect.Right, (*ctx)->rect.Bottom };
 	SMALL_RECT	rect = { pos.X, pos.Y, (*ctx)->rect.Right, (*ctx)->rect.Bottom };
-	WriteConsoleOutput(
+	WriteConsoleOutputA(
 		(*ctx)->mainBuffer,
 		(*ctx)->contents.printBufferCont,
 		size, pos, &rect);
@@ -552,7 +566,7 @@ void CDMDraw(_IN_ CDMContext** ctx)
 			{
 				SetConsoleCursorPosition((*ctx)->mainBuffer, pos);
 				SetConsoleTextAttribute((*ctx)->mainBuffer, (*ctx)->contents.printBufferCont[accessor].Attributes);
-				WriteConsole((*ctx)->mainBuffer, &(*ctx)->contents.printBufferCont[accessor].Char.AsciiChar, 1, &extract, NULL);
+				WriteConsoleA((*ctx)->mainBuffer, &(*ctx)->contents.printBufferCont[accessor].Char.AsciiChar, 1, &extract, NULL);
 			}
 		}
 	}

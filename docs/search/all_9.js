@@ -1,9 +1,11 @@
 var searchData=
 [
-  ['p1',['p1',['../struct_c_d_m_palette_a4c6a2fedfe750c80560e5d5feefeda3e.html#a4c6a2fedfe750c80560e5d5feefeda3e',1,'CDMPalette']]],
-  ['p2',['p2',['../struct_c_d_m_palette_ad828960ecdb97b6e8114d18a582aa11a.html#ad828960ecdb97b6e8114d18a582aa11a',1,'CDMPalette']]],
-  ['p3',['p3',['../struct_c_d_m_palette_aa5ac82bfe8c92455fff7acade0e2c9e2.html#aa5ac82bfe8c92455fff7acade0e2c9e2',1,'CDMPalette']]],
-  ['p4',['p4',['../struct_c_d_m_palette_a620eb7d7a1ee6208029f4e024fb297f8.html#a620eb7d7a1ee6208029f4e024fb297f8',1,'CDMPalette']]],
-  ['pallete',['pallete',['../struct_c_d_m_surface_a22f86f11ee9943243675467949ec8505.html#a22f86f11ee9943243675467949ec8505',1,'CDMSurface']]],
-  ['printbuffercont',['printBufferCont',['../struct_c_d_m_tiles_a56fbdbebe0049831b3ade698fabb9ab2.html#a56fbdbebe0049831b3ade698fabb9ab2',1,'CDMTiles']]]
+  ['i',['I',['../_c_d_m_8h.html#a8e7d3f25fc77053719b079b29784115fad091b8e376f7cf432dc367e1eda65e85',1,'CDM.h']]],
+  ['inf',['inf',['../struct_c_d_m_context.html#a8476715d51a87d0e92e46b9be0ecd138',1,'CDMContext']]],
+  ['inputbuffer',['inputBuffer',['../struct_c_d_m_context.html#adfe043e2777ad6c1ef5fc7a83b928d25',1,'CDMContext']]],
+  ['inputnum',['inputNum',['../struct_c_d_m_event.html#a8710349fb6cd8007331d453943ee67bc',1,'CDMEvent']]],
+  ['inputpressed',['inputPressed',['../struct_c_d_m_event.html#a0a068f50666a0d8b50e12592c39e7b25',1,'CDMEvent']]],
+  ['inputs',['inputs',['../struct_c_d_m_event.html#aa410219eafdce1e5eddb4770d9e84288',1,'CDMEvent']]],
+  ['insert',['insert',['../_c_d_m_8h.html#a8e7d3f25fc77053719b079b29784115fa3269e596ddb6b50b277c8df1b798f88e',1,'CDM.h']]],
+  ['isalphatile',['isAlphaTile',['../struct_c_d_m_tiles.html#a462bed3f7fab03fa6f131587431a6ee2',1,'CDMTiles']]]
 ];

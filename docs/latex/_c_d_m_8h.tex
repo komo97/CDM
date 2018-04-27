@@ -259,7 +259,7 @@ enum \mbox{\hyperlink{_c_d_m_8h_a8e7d3f25fc77053719b079b29784115f}{C\+D\+M\+Key}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$ \mbox{\hyperlink{_c_d_m_8h_aae827ff64ba2651c323ce33c3ab97551}{C\+D\+M\+Create\+Context}} (const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short width, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short height)
+\mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$ \mbox{\hyperlink{_c_d_m_8h_a076bdfe8bf7edc2a9020908c23e51933}{C\+D\+M\+Create\+Context}} (const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short width, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short height)
 \begin{DoxyCompactList}\small\item\em The setup function of C\+DM. Must be called before anything else. C\+DM requires a context to work, most of the functions here require a context to be used. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8h_acb612172ecba4e2a448101b9b6bd4fb7}{C\+D\+M\+Change\+Window\+Size}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$$\ast$ctx, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short width, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short height)
 \begin{DoxyCompactList}\small\item\em Changes the window size of a context. May be called at any time, however it will clear the screen once its done. Status\+: Might not be working completely. \end{DoxyCompactList}\item 
@@ -273,9 +273,9 @@ void \mbox{\hyperlink{_c_d_m_8h_a1989ebc729b746dd247279c15f23c08b}{C\+D\+M\+Set\
 \begin{DoxyCompactList}\small\item\em Sets the visibility of the console\textquotesingle{}s cursor. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8h_a26c8b442c0018368838b783d415b7924}{C\+D\+M\+Activate\+Mouse\+Input}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$$\ast$ctx)
 \begin{DoxyCompactList}\small\item\em Activates mouse input recognition for the console. Status\+: Working. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} $\ast$ \mbox{\hyperlink{_c_d_m_8h_ac598be33feeeda93f6f330c13c92d0b3}{C\+D\+M\+Create\+Surface}} (const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short posX, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short posY, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short sizeX, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short sizeY)
+\mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} $\ast$ \mbox{\hyperlink{_c_d_m_8h_a77895c7197a08de8aae1c075da0d5320}{C\+D\+M\+Create\+Surface}} (const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short posX, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short posY, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short sizeX, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short sizeY)
 \begin{DoxyCompactList}\small\item\em Creates a surface. A surface is the base representation of an image in C\+DM Most every object used in C\+DM will most likely be a surface. Status\+: Working. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} $\ast$ \mbox{\hyperlink{_c_d_m_8h_acb884cd688ad71f1cf86cf0c7b84f981}{C\+D\+M\+Read\+Img}} (const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char $\ast$file\+Name, \mbox{\hyperlink{_c_d_m_8h_a8812df6abf0fea826069eb2a48298dc7}{\+\_\+\+O\+U\+T\+O\+P\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_color_scheme}{C\+D\+M\+Color\+Scheme}} $\ast$scheme)
+\mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} $\ast$ \mbox{\hyperlink{_c_d_m_8h_acdd97b8c992eb0d143f90c1d8cbab459}{C\+D\+M\+Read\+Img}} (const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char $\ast$file\+Name, \mbox{\hyperlink{_c_d_m_8h_a8812df6abf0fea826069eb2a48298dc7}{\+\_\+\+O\+U\+T\+O\+P\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_color_scheme}{C\+D\+M\+Color\+Scheme}} $\ast$scheme)
 \begin{DoxyCompactList}\small\item\em Reads a .cdi image file into a \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}}. The file must be generated exactly the same as C\+D\+M\+Export\+Srfc\+To\+Img, for it to work using this function. The usage of the structure may be imperative. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8h_af70520a48b7acb9353d5a4ee1cbc57ba}{C\+D\+M\+Export\+Srfc\+To\+Img}} (const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$ctx, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} $\ast$srfc, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char $\ast$file\+Name, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} size\+\_\+t name\+Size)
 \begin{DoxyCompactList}\small\item\em Cdm export srfc to image Status\+: Working. \end{DoxyCompactList}\item 
@@ -349,7 +349,7 @@ void \mbox{\hyperlink{_c_d_m_8h_a8a7d1c2c82df2eafd6f8cbad77623c4a}{C\+D\+M\+Set\
 \begin{DoxyCompactList}\small\item\em Sets an specific errno to a value. Status\+: Working. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_c_d_m_8h_ae3f76c4d3a0275b2cfef89ea08d50bd6}{C\+D\+M\+Errno}} \mbox{\hyperlink{_c_d_m_8h_a377becf7e388d3462ecf5afa39e4eca8}{C\+D\+M\+Get\+Errno}} ()
 \begin{DoxyCompactList}\small\item\em Gets the value of errno and sets it to zero. Status\+: Working. \end{DoxyCompactList}\item 
-char $\ast$ \mbox{\hyperlink{_c_d_m_8h_a9ff60f6e6e7da554af1261c2822cb717}{C\+D\+M\+Get\+Error\+Message}} ()
+char $\ast$ \mbox{\hyperlink{_c_d_m_8h_aa7564fc12e9aa10bf264e3ffbaff859a}{C\+D\+M\+Get\+Error\+Message}} ()
 \begin{DoxyCompactList}\small\item\em Translates an error code to an error message, for a brief description. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8h_aed8749a92f10c2f81a93e4ab2514faea}{C\+D\+M\+Clear\+Errno}} ()
 \begin{DoxyCompactList}\small\item\em Sets errno back to 0. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -1290,11 +1290,11 @@ Compares two C\+H\+A\+R\+\_\+\+I\+N\+FO structures, it\textquotesingle{}s mainly
 \begin{DoxyReturn}{Returns}
 C\+D\+M\+T\+R\+UE if both structures are the same, else C\+D\+M\+F\+A\+L\+SE. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{_c_d_m_8h_aae827ff64ba2651c323ce33c3ab97551}\label{_c_d_m_8h_aae827ff64ba2651c323ce33c3ab97551}} 
+\mbox{\Hypertarget{_c_d_m_8h_a076bdfe8bf7edc2a9020908c23e51933}\label{_c_d_m_8h_a076bdfe8bf7edc2a9020908c23e51933}} 
 \index{C\+D\+M.\+h@{C\+D\+M.\+h}!C\+D\+M\+Create\+Context@{C\+D\+M\+Create\+Context}}
 \index{C\+D\+M\+Create\+Context@{C\+D\+M\+Create\+Context}!C\+D\+M.\+h@{C\+D\+M.\+h}}
 \subsubsection{\texorpdfstring{C\+D\+M\+Create\+Context()}{CDMCreateContext()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}}$\ast$ C\+D\+M\+Create\+Context (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short}]{width,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short}]{height }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$ C\+D\+M\+Create\+Context (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short}]{width,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short}]{height }\end{DoxyParamCaption})}
 
 
 
@@ -1313,11 +1313,11 @@ This might not be thread safe.
 \begin{DoxyReturn}{Returns}
 Null if it fails, else a pointer to a \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}}. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{_c_d_m_8h_ac598be33feeeda93f6f330c13c92d0b3}\label{_c_d_m_8h_ac598be33feeeda93f6f330c13c92d0b3}} 
+\mbox{\Hypertarget{_c_d_m_8h_a77895c7197a08de8aae1c075da0d5320}\label{_c_d_m_8h_a77895c7197a08de8aae1c075da0d5320}} 
 \index{C\+D\+M.\+h@{C\+D\+M.\+h}!C\+D\+M\+Create\+Surface@{C\+D\+M\+Create\+Surface}}
 \index{C\+D\+M\+Create\+Surface@{C\+D\+M\+Create\+Surface}!C\+D\+M.\+h@{C\+D\+M.\+h}}
 \subsubsection{\texorpdfstring{C\+D\+M\+Create\+Surface()}{CDMCreateSurface()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}}$\ast$ C\+D\+M\+Create\+Surface (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short}]{posX,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short}]{posY,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short}]{sizeX,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short}]{sizeY }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} $\ast$ C\+D\+M\+Create\+Surface (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short}]{posX,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short}]{posY,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short}]{sizeX,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short}]{sizeY }\end{DoxyParamCaption})}
 
 
 
@@ -1423,7 +1423,7 @@ Simple dynamic memory allocation free method. Status\+: Working.
 \index{C\+D\+M.\+h@{C\+D\+M.\+h}!C\+D\+M\+Free\+Surface@{C\+D\+M\+Free\+Surface}}
 \index{C\+D\+M\+Free\+Surface@{C\+D\+M\+Free\+Surface}!C\+D\+M.\+h@{C\+D\+M.\+h}}
 \subsubsection{\texorpdfstring{C\+D\+M\+Free\+Surface()}{CDMFreeSurface()}}
-{\footnotesize\ttfamily void C\+D\+M\+Free\+Surface (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} $\ast$$\ast$}]{srfc }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void C\+D\+M\+Free\+Surface (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} $\ast$$\ast$}]{surface }\end{DoxyParamCaption})}
 
 
 
@@ -1482,11 +1482,11 @@ Gets the value of errno and sets it to zero. Status\+: Working.
 \begin{DoxyReturn}{Returns}
 The value of errno. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{_c_d_m_8h_a9ff60f6e6e7da554af1261c2822cb717}\label{_c_d_m_8h_a9ff60f6e6e7da554af1261c2822cb717}} 
+\mbox{\Hypertarget{_c_d_m_8h_aa7564fc12e9aa10bf264e3ffbaff859a}\label{_c_d_m_8h_aa7564fc12e9aa10bf264e3ffbaff859a}} 
 \index{C\+D\+M.\+h@{C\+D\+M.\+h}!C\+D\+M\+Get\+Error\+Message@{C\+D\+M\+Get\+Error\+Message}}
 \index{C\+D\+M\+Get\+Error\+Message@{C\+D\+M\+Get\+Error\+Message}!C\+D\+M.\+h@{C\+D\+M.\+h}}
 \subsubsection{\texorpdfstring{C\+D\+M\+Get\+Error\+Message()}{CDMGetErrorMessage()}}
-{\footnotesize\ttfamily char$\ast$ C\+D\+M\+Get\+Error\+Message (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily char $\ast$ C\+D\+M\+Get\+Error\+Message (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -1641,11 +1641,11 @@ This should only be called each time the text\textquotesingle{}s contents were m
 \mbox{\tt in,out}  & {\em txt} & The text, must not be null. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{_c_d_m_8h_acb884cd688ad71f1cf86cf0c7b84f981}\label{_c_d_m_8h_acb884cd688ad71f1cf86cf0c7b84f981}} 
+\mbox{\Hypertarget{_c_d_m_8h_acdd97b8c992eb0d143f90c1d8cbab459}\label{_c_d_m_8h_acdd97b8c992eb0d143f90c1d8cbab459}} 
 \index{C\+D\+M.\+h@{C\+D\+M.\+h}!C\+D\+M\+Read\+Img@{C\+D\+M\+Read\+Img}}
 \index{C\+D\+M\+Read\+Img@{C\+D\+M\+Read\+Img}!C\+D\+M.\+h@{C\+D\+M.\+h}}
 \subsubsection{\texorpdfstring{C\+D\+M\+Read\+Img()}{CDMReadImg()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}}$\ast$ C\+D\+M\+Read\+Img (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char $\ast$}]{file\+Name,  }\item[{\mbox{\hyperlink{_c_d_m_8h_a8812df6abf0fea826069eb2a48298dc7}{\+\_\+\+O\+U\+T\+O\+P\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_color_scheme}{C\+D\+M\+Color\+Scheme}} $\ast$}]{scheme }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} $\ast$ C\+D\+M\+Read\+Img (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char $\ast$}]{file\+Name,  }\item[{\mbox{\hyperlink{_c_d_m_8h_a8812df6abf0fea826069eb2a48298dc7}{\+\_\+\+O\+U\+T\+O\+P\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_color_scheme}{C\+D\+M\+Color\+Scheme}} $\ast$}]{scheme }\end{DoxyParamCaption})}
 
 
 

@@ -717,7 +717,7 @@ void CDMKeepScreenSize(_INOUT_ CDMContext** ctx, _IN_ CDMEvent* event)
 		{
 		case WINDOW_BUFFER_SIZE_EVENT:
 			CDMChangeWindowSize(ctx, (*ctx)->rect.Right, (*ctx)->rect.Bottom);
-			break;
+			return;
 		}
 	}
 }

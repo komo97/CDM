@@ -423,7 +423,7 @@ extern "C" {
 	 *
 	 * \brief	Changes the window size of a context. May be called at any time, however it will
 	 * 			clear the screen once its done.
-	 *			Status: Might not be working completely.
+	 *			Status: Working.
 	 *
 	 * \param [in,out]	ctx   	The context, must not be null.
 	 * \param [in]	  	width 	The expected width in CDM pixels.
@@ -558,7 +558,7 @@ extern "C" {
 	/**********************************************************************************************//**
 	 * \fn	CDMText* CDMTextWrapper(_IN_ char * text, const _IN_ CDMEnum color, const _IN_ CDMEnum background);
 	 *
-	 * \brief	Since CDM basically highjacks the console, functions like printf are not enabled. 
+	 * \brief	Since CDM basically hijacks the console, functions like printf are not enabled. 
 	 *			No output will be shown using them, instead you must use the text as an object,
 	 * 			this means you have much more control of the position and design of your text, at the
 	 * 			expense of making a little bit harder to use. Moreover, repeated uses of the same

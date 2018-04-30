@@ -6,7 +6,7 @@
 \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$ \mbox{\hyperlink{_c_d_m_8c_a076bdfe8bf7edc2a9020908c23e51933}{C\+D\+M\+Create\+Context}} (const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short width, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short height)
 \begin{DoxyCompactList}\small\item\em The setup function of C\+DM. Must be called before anything else. C\+DM requires a context to work, most of the functions here require a context to be used. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8c_acb612172ecba4e2a448101b9b6bd4fb7}{C\+D\+M\+Change\+Window\+Size}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$$\ast$ctx, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short width, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short height)
-\begin{DoxyCompactList}\small\item\em Changes the window size of a context. May be called at any time, however it will clear the screen once its done. Status\+: Might not be working completely. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Changes the window size of a context. May be called at any time, however it will clear the screen once its done. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8c_abd1fd0d3d904625aadb99459dbee4521}{C\+D\+M\+Toggle\+Fullscreen}} (\mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$$\ast$\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} ctx, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_af5296d3141c193195e69417d1825228b}{C\+D\+M\+Bool}} val)
 \begin{DoxyCompactList}\small\item\em Toggles fullscreen mode. Status\+: May be working on older platforms. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8c_ab18b56ed19f345efa1935338fed8c2d5}{C\+D\+M\+Set\+Window\+Title}} (const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} wchar\+\_\+t $\ast$title)
@@ -23,8 +23,8 @@ void \mbox{\hyperlink{_c_d_m_8c_a26c8b442c0018368838b783d415b7924}{C\+D\+M\+Acti
 \begin{DoxyCompactList}\small\item\em Reads a .cdi image file into a \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}}. The file must be generated exactly the same as C\+D\+M\+Export\+Srfc\+To\+Img, for it to work using this function. The usage of the structure may be imperative. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8c_af70520a48b7acb9353d5a4ee1cbc57ba}{C\+D\+M\+Export\+Srfc\+To\+Img}} (const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$ctx, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} $\ast$srfc, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char $\ast$file\+Name, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} size\+\_\+t name\+Size)
 \begin{DoxyCompactList}\small\item\em Cdm export srfc to image Status\+: Working. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{struct_c_d_m_text}{C\+D\+M\+Text}} $\ast$ \mbox{\hyperlink{_c_d_m_8c_a0e764b208e098d5c98868de299935b37}{C\+D\+M\+Text\+Wrapper}} (\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char $\ast$text, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}} color, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34}{C\+D\+M\+Background\+Color}} background)
-\item 
+\mbox{\hyperlink{struct_c_d_m_text}{C\+D\+M\+Text}} $\ast$ \mbox{\hyperlink{_c_d_m_8c_aee3fc633d44b7ea1a7d71f333bfaa8ca}{C\+D\+M\+Text\+Wrapper}} (\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char $\ast$text, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}} color, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34}{C\+D\+M\+Background\+Color}} background)
+\begin{DoxyCompactList}\small\item\em Since C\+DM basically hijacks the console, functions like printf are not enabled. No output will be shown using them, instead you must use the text as an object, this means you have much more control of the position and design of your text, at the expense of making a little bit harder to use. Moreover, repeated uses of the same text box will not require you to create a new object or call anything else other than adding this object to the context, or drawing it directly. All text begins in the ( 0 , 0 ) coordinate. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8c_a1f0ec8bab2c1809e510e8c19c3a0d032}{C\+D\+M\+Free\+Surface}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} $\ast$$\ast$srfc)
 \begin{DoxyCompactList}\small\item\em Simple dynamic memory allocation free method. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8c_a52d6faf2193e9f2ff7cbdd279bea6172}{C\+D\+M\+Free\+Text}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_text}{C\+D\+M\+Text}} $\ast$$\ast$txt)
@@ -35,16 +35,16 @@ void \mbox{\hyperlink{_c_d_m_8c_acff96a2cc91d34c03292d42cba430e6f}{C\+D\+M\+Prep
 \begin{DoxyCompactList}\small\item\em This should only be called each time the surface\textquotesingle{}s contents were modified before calling a draw or add function. Internally this function converts the image\textquotesingle{}s values to raw data that the console understands. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8c_af0c3f5a5f2fb71971fd1a73237d98d2b}{C\+D\+M\+Prepare\+Text}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_text}{C\+D\+M\+Text}} $\ast$$\ast$txt)
 \begin{DoxyCompactList}\small\item\em This should only be called each time the text\textquotesingle{}s contents were modified before calling a draw or add function. Internally this function converts the text\textquotesingle{}s values to raw data that the console understands. Status\+: Working. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{struct_c_d_m_text}{C\+D\+M\+Text}} $\ast$ \mbox{\hyperlink{_c_d_m_8c_adcb3f7b7ab1f6e9b7c3569731358385f}{C\+D\+M\+Text\+Wrapper\+\_\+s}} (\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char $\ast$text, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} size\+\_\+t text\+Size, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}} color, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34}{C\+D\+M\+Background\+Color}} background)
-\item 
+\mbox{\hyperlink{struct_c_d_m_text}{C\+D\+M\+Text}} $\ast$ \mbox{\hyperlink{_c_d_m_8c_a18799208728fdc046bbac97445bf3e60}{C\+D\+M\+Text\+Wrapper\+\_\+s}} (\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char $\ast$text, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} size\+\_\+t text\+Size, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}} color, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34}{C\+D\+M\+Background\+Color}} background)
+\begin{DoxyCompactList}\small\item\em Since C\+DM basically highjacks the console, functions like printf are disabled. No output will be shown using them, instead you must use the text as an object, this means you have much more control of the position and design of your text, at the expense of making a little bit harder to use. Moreover, repeated uses of the same text box will not require you to create a new object or call anything else other than adding this object to the context, or drawing it directly. All text begins in the ( 0 , 0 ) coordinate. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8c_a99dcfb7877ce7fd1c99fff59ac9aa081}{C\+D\+M\+Change\+Text}} (\mbox{\hyperlink{struct_c_d_m_text}{C\+D\+M\+Text}} $\ast$$\ast$txt, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char $\ast$text)
 \begin{DoxyCompactList}\small\item\em Changes the text content of a \mbox{\hyperlink{struct_c_d_m_text}{C\+D\+M\+Text}}. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8c_ad055414dd654ac3b094e755e6abb5f51}{C\+D\+M\+Set\+Foreground\+Color}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} $\ast$$\ast$surface, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}} c1, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}} c2, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}} c3, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}} c4)
-\item 
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} may only have 4 color sets at a time. Including background, foreground and character. Each combination of 3 of those elements makes a set. This function sets directly the four foreground colors that the Surface will use from the color palette. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8c_ab4108b50589991c1f902ea42ac9172d2}{C\+D\+M\+Set\+Background\+Color}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} $\ast$$\ast$surface, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34}{C\+D\+M\+Background\+Color}} c1, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34}{C\+D\+M\+Background\+Color}} c2, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34}{C\+D\+M\+Background\+Color}} c3, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34}{C\+D\+M\+Background\+Color}} c4)
-\item 
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} may only have 4 color sets at a time. Including background, foreground and character. Each combination of 3 of those elements makes a set. This function sets directly the four background colors that the Surface will use from the color palette. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8c_a27478a0b0e3e2bdafa624dfe5e3ce5c4}{C\+D\+M\+Set\+Characters}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} $\ast$$\ast$surface, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} unsigned char c1, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} unsigned char c2, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} unsigned char c3, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} unsigned char c4)
-\item 
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} may only have 4 color sets at a time. Including background, foreground and character. Each combination of 3 of those elements makes a set. This function sets directly the four characters that the Surface will use. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8c_a32d48dfc5b6436fbd73a92b0a090942e}{C\+D\+M\+Draw\+Surface}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$$\ast$ctx, \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} $\ast$surface)
 \begin{DoxyCompactList}\small\item\em Draws directly a surface in the context, instead of batching it with other draws. I highly recommend using the batch function (Add, then C\+D\+M\+Draw) over this one, to make the program run faster. Status\+: Partiallly works. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8c_ab3eb99ad615e5be90432727e88bce28d}{C\+D\+M\+Add\+Surface\+To\+Context}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$$\ast$ctx, \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} $\ast$surface)
@@ -60,11 +60,11 @@ void \mbox{\hyperlink{_c_d_m_8c_a052763fb64e4e6048b1baddbcbbc9a29}{C\+D\+M\+Set\
 void \mbox{\hyperlink{_c_d_m_8c_a0f6f5f1cbbac5ec47a149451ee80673a}{C\+D\+M\+Clear\+Screen}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$$\ast$ctx)
 \begin{DoxyCompactList}\small\item\em Clears the current buffer of undrawn data. It does not make the whole screen black. For that you may use C\+D\+M\+Fill\+Screen.\+This function is implemented like this to reduce overhead on the program by reducing assignations and comparissons. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8c_a256d498746114e59d7476259d71def38}{C\+D\+M\+Fill\+Screen}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$$\ast$ctx, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char character, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}} front\+Color, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34}{C\+D\+M\+Background\+Color}} back\+Color)
-\item 
+\begin{DoxyCompactList}\small\item\em Fills the context with a single color. Ignores drawn flags completely. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8c_a17baf20b93ff56b05a5f296bc626ab60}{C\+D\+M\+Poke}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$$\ast$ctx, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_afe21360e836aeb663c2ad9ee6bc4c321}{C\+D\+M\+Coord}} coord, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char character, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}} front\+Color, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34}{C\+D\+M\+Background\+Color}} back\+Color)
-\item 
+\begin{DoxyCompactList}\small\item\em Pokes a pixel in the screen to a certain color. Ignores drawn flags. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8c_a8faa73f836c78a2373b6beb5cb305aec}{C\+D\+M\+Draw}} (\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$$\ast$ctx)
-\item 
+\begin{DoxyCompactList}\small\item\em Draws the whole screen. Does a batch draw if things have been added to the context. Status\+: Working. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{_c_d_m_8c_a928833d55462e06b40d4073a06b05cf1}{C\+D\+M\+GetR}} (\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_color_scheme}{C\+D\+M\+Color\+Scheme}} $\ast$data, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short position)
 \begin{DoxyCompactList}\small\item\em Gets the red color of a certain color inside a Color\+Scheme. Status\+: Working. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{_c_d_m_8c_a6c9e76f4fe3a494cbf5906acb2d28a65}{C\+D\+M\+GetG}} (\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_color_scheme}{C\+D\+M\+Color\+Scheme}} $\ast$data, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short position)
@@ -74,21 +74,23 @@ int \mbox{\hyperlink{_c_d_m_8c_aa193975b4d32ea2b06dada2c70bbc6da}{C\+D\+M\+GetB}
 void \mbox{\hyperlink{_c_d_m_8c_afcd4db7797d09c07900141cb214dad06}{C\+D\+M\+Set\+Active\+Scheme}} (\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_color_scheme}{C\+D\+M\+Color\+Scheme}} data, \mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$$\ast$ctx)
 \begin{DoxyCompactList}\small\item\em Sets a color scheme inside a context, and thus changing every display color of it. This instruction does not require you to draw again for results to be shown, as such its extremely fast. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8c_aef7e8ddea4a5f872578f3ba654ccef7a}{C\+D\+M\+Set\+Pixel}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} $\ast$$\ast$surface, \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short x, \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short y, \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab827c7b701be4e94f993cd7ccf21a456}{C\+D\+M\+Color\+Sets}} pixel\+Set)
-\item 
+\begin{DoxyCompactList}\small\item\em Sets a pixel inside a surface. You must select from one of the five possible colors inside the surface. Status\+: Working. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_c_d_m_8h_af5296d3141c193195e69417d1825228b}{C\+D\+M\+Bool}} \mbox{\hyperlink{_c_d_m_8c_a7b4771587a381b2437f94349ee006d10}{C\+D\+M\+Compare\+C\+H\+A\+R\+I\+N\+FO}} (\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} C\+H\+A\+R\+\_\+\+I\+N\+FO rhs, \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} C\+H\+A\+R\+\_\+\+I\+N\+FO lhs)
 \begin{DoxyCompactList}\small\item\em Compares two C\+H\+A\+R\+\_\+\+I\+N\+FO structures, it\textquotesingle{}s mainly used inside the A\+PI for certain operations. May not prove useful to the graphics programmer. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8c_a3adb4a4784345380749c67f901fcf468}{C\+D\+M\+Poll\+Events}} (\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$ctx, \mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_event}{C\+D\+M\+Event}} $\ast$event)
 \begin{DoxyCompactList}\small\item\em Polls the console events, this function must be used in order to get key and mouse presses, as such it must be called at the beggining of every frame and before every function that requires a \mbox{\hyperlink{struct_c_d_m_event}{C\+D\+M\+Event}}. Status\+: Working. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_c_d_m_8h_af5296d3141c193195e69417d1825228b}{C\+D\+M\+Bool}} \mbox{\hyperlink{_c_d_m_8c_a85071e5ca6d7bec95cb7f00708bc224d}{C\+D\+M\+Get\+Key\+Pressed}} (\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_event}{C\+D\+M\+Event}} $\ast$event, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_a8e7d3f25fc77053719b079b29784115f}{C\+D\+M\+Key}} key)
-\item 
+\begin{DoxyCompactList}\small\item\em Checks if the key selected in the parameter was pressed. This is the only function that checks for mouse input too. Status\+: Working. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_c_d_m_8h_af5296d3141c193195e69417d1825228b}{C\+D\+M\+Bool}} \mbox{\hyperlink{_c_d_m_8c_aff1ed6e5b8f731d7a2939059677311a3}{C\+D\+M\+Get\+Key\+Down}} (\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_event}{C\+D\+M\+Event}} $\ast$event, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_a8e7d3f25fc77053719b079b29784115f}{C\+D\+M\+Key}} key)
-\item 
+\begin{DoxyCompactList}\small\item\em Checks if the key selected in the parameter was pressed this frame. Status\+: Working. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_c_d_m_8h_af5296d3141c193195e69417d1825228b}{C\+D\+M\+Bool}} \mbox{\hyperlink{_c_d_m_8c_a21c93d3cbf79f86c61cce45f7667957b}{C\+D\+M\+Get\+Key\+Up}} (\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_event}{C\+D\+M\+Event}} $\ast$event, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_a8e7d3f25fc77053719b079b29784115f}{C\+D\+M\+Key}} key)
-\item 
+\begin{DoxyCompactList}\small\item\em Checks if the key selected in the parameter stopped being pressed this frame. Status\+: Working. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_c_d_m_8h_afe21360e836aeb663c2ad9ee6bc4c321}{C\+D\+M\+Coord}} \mbox{\hyperlink{_c_d_m_8c_ade94b879ff0ce1b7fb675af7bb0a399f}{C\+D\+M\+Get\+Mouse\+Pos}} (\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_event}{C\+D\+M\+Event}} $\ast$event)
 \begin{DoxyCompactList}\small\item\em Gets the mouse position inside the console window. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8c_a50545ff4656c0ac84151fef6fbd1d53d}{C\+D\+M\+Keep\+Screen\+Size}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$$\ast$ctx, \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_event}{C\+D\+M\+Event}} $\ast$event)
 \begin{DoxyCompactList}\small\item\em Keeps the screen size of the program. Might be useful if you want to limit screen resizing. Status\+: Working. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_c_d_m_8c_a185c0e3849d521665aa25dc9e086fd4c}{C\+D\+M\+Printf}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$$\ast$ctx, \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_afe21360e836aeb663c2ad9ee6bc4c321}{C\+D\+M\+Coord}} initial\+Pos, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}} front\+Color, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34}{C\+D\+M\+Background\+Color}} back\+Color, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char $\ast$txt,...)
+\begin{DoxyCompactList}\small\item\em A printf implementation for C\+DM, made it as a replacement or alternative to the text object. It should be easier to manage, but a more expensive call, so use this for dynamic text only, and use Text objects for static text. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8c_a8a7d1c2c82df2eafd6f8cbad77623c4a}{C\+D\+M\+Set\+Errno}} (const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ae3f76c4d3a0275b2cfef89ea08d50bd6}{C\+D\+M\+Errno}} code)
 \begin{DoxyCompactList}\small\item\em Sets an specific errno to a value. Status\+: Working. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_c_d_m_8h_ae3f76c4d3a0275b2cfef89ea08d50bd6}{C\+D\+M\+Errno}} \mbox{\hyperlink{_c_d_m_8c_a377becf7e388d3462ecf5afa39e4eca8}{C\+D\+M\+Get\+Errno}} ()
@@ -115,6 +117,12 @@ static \mbox{\hyperlink{_c_d_m_8h_ae3f76c4d3a0275b2cfef89ea08d50bd6}{C\+D\+M\+Er
 
 Activates mouse input recognition for the console. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in,out}  & {\em ctx} & The context, must not be null. \\
@@ -130,6 +138,12 @@ Activates mouse input recognition for the console. Status\+: Working.
 
 Adds a surface to the context, and thus batching its draw with every other added object, the batch will be completely flushed once C\+D\+M\+Draw is called. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in,out}  & {\em ctx} & The context in which the surface will be painted, must not be null. \\
@@ -137,6 +151,9 @@ Adds a surface to the context, and thus batching its draw with every other added
 \mbox{\tt in,out}  & {\em surface} & The surface to be printed, must not be null. \\
 \hline
 \end{DoxyParams}
+\begin{Desc}
+\item[Examples\+: ]\par
+\mbox{\hyperlink{main_8cpp-example}{main.\+cpp}}.\end{Desc}
 \mbox{\Hypertarget{_c_d_m_8c_ad2a46411fdfcc82be4c12ca0621f0de5}\label{_c_d_m_8c_ad2a46411fdfcc82be4c12ca0621f0de5}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Add\+Text\+To\+Context@{C\+D\+M\+Add\+Text\+To\+Context}}
 \index{C\+D\+M\+Add\+Text\+To\+Context@{C\+D\+M\+Add\+Text\+To\+Context}!C\+D\+M.\+c@{C\+D\+M.\+c}}
@@ -147,6 +164,12 @@ Adds a surface to the context, and thus batching its draw with every other added
 
 Adds a text to the context, and thus batching its draw with every other added object, the batch will be completely flushed once C\+D\+M\+Draw is called. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in,out}  & {\em ctx} & The context in which the text will be painted, must not be null. \\
@@ -154,6 +177,9 @@ Adds a text to the context, and thus batching its draw with every other added ob
 \mbox{\tt in,out}  & {\em txt} & The text that will be printed, must not be null. \\
 \hline
 \end{DoxyParams}
+\begin{Desc}
+\item[Examples\+: ]\par
+\mbox{\hyperlink{main_8cpp-example}{main.\+cpp}}.\end{Desc}
 \mbox{\Hypertarget{_c_d_m_8c_a99dcfb7877ce7fd1c99fff59ac9aa081}\label{_c_d_m_8c_a99dcfb7877ce7fd1c99fff59ac9aa081}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Change\+Text@{C\+D\+M\+Change\+Text}}
 \index{C\+D\+M\+Change\+Text@{C\+D\+M\+Change\+Text}!C\+D\+M.\+c@{C\+D\+M.\+c}}
@@ -164,6 +190,12 @@ Adds a text to the context, and thus batching its draw with every other added ob
 
 Changes the text content of a \mbox{\hyperlink{struct_c_d_m_text}{C\+D\+M\+Text}}. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in,out}  & {\em txt} & The text object, must not be null. \\
@@ -179,8 +211,14 @@ Changes the text content of a \mbox{\hyperlink{struct_c_d_m_text}{C\+D\+M\+Text}
 
 
 
-Changes the window size of a context. May be called at any time, however it will clear the screen once its done. Status\+: Might not be working completely. 
+Changes the window size of a context. May be called at any time, however it will clear the screen once its done. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in,out}  & {\em ctx} & The context, must not be null. \\
@@ -190,6 +228,9 @@ Changes the window size of a context. May be called at any time, however it will
 \mbox{\tt in}  & {\em height} & The expected height in C\+DM pixels. \\
 \hline
 \end{DoxyParams}
+\begin{Desc}
+\item[Examples\+: ]\par
+\mbox{\hyperlink{main_8cpp-example}{main.\+cpp}}.\end{Desc}
 \mbox{\Hypertarget{_c_d_m_8c_aed8749a92f10c2f81a93e4ab2514faea}\label{_c_d_m_8c_aed8749a92f10c2f81a93e4ab2514faea}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Clear\+Errno@{C\+D\+M\+Clear\+Errno}}
 \index{C\+D\+M\+Clear\+Errno@{C\+D\+M\+Clear\+Errno}!C\+D\+M.\+c@{C\+D\+M.\+c}}
@@ -200,7 +241,13 @@ Changes the window size of a context. May be called at any time, however it will
 
 Sets errno back to 0. 
 
-Status\+: Working. \mbox{\Hypertarget{_c_d_m_8c_a0f6f5f1cbbac5ec47a149451ee80673a}\label{_c_d_m_8c_a0f6f5f1cbbac5ec47a149451ee80673a}} 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018 
+\end{DoxyDate}
+\mbox{\Hypertarget{_c_d_m_8c_a0f6f5f1cbbac5ec47a149451ee80673a}\label{_c_d_m_8c_a0f6f5f1cbbac5ec47a149451ee80673a}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Clear\+Screen@{C\+D\+M\+Clear\+Screen}}
 \index{C\+D\+M\+Clear\+Screen@{C\+D\+M\+Clear\+Screen}!C\+D\+M.\+c@{C\+D\+M.\+c}}
 \subsubsection{\texorpdfstring{C\+D\+M\+Clear\+Screen()}{CDMClearScreen()}}
@@ -210,11 +257,20 @@ Status\+: Working. \mbox{\Hypertarget{_c_d_m_8c_a0f6f5f1cbbac5ec47a149451ee80673
 
 Clears the current buffer of undrawn data. It does not make the whole screen black. For that you may use C\+D\+M\+Fill\+Screen.\+This function is implemented like this to reduce overhead on the program by reducing assignations and comparissons. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in,out}  & {\em ctx} & The context, must not be null. \\
 \hline
 \end{DoxyParams}
+\begin{Desc}
+\item[Examples\+: ]\par
+\mbox{\hyperlink{main_8cpp-example}{main.\+cpp}}.\end{Desc}
 \mbox{\Hypertarget{_c_d_m_8c_a7b4771587a381b2437f94349ee006d10}\label{_c_d_m_8c_a7b4771587a381b2437f94349ee006d10}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Compare\+C\+H\+A\+R\+I\+N\+FO@{C\+D\+M\+Compare\+C\+H\+A\+R\+I\+N\+FO}}
 \index{C\+D\+M\+Compare\+C\+H\+A\+R\+I\+N\+FO@{C\+D\+M\+Compare\+C\+H\+A\+R\+I\+N\+FO}!C\+D\+M.\+c@{C\+D\+M.\+c}}
@@ -225,6 +281,12 @@ Clears the current buffer of undrawn data. It does not make the whole screen bla
 
 Compares two C\+H\+A\+R\+\_\+\+I\+N\+FO structures, it\textquotesingle{}s mainly used inside the A\+PI for certain operations. May not prove useful to the graphics programmer. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em rhs} & The right hand side. \\
@@ -248,6 +310,12 @@ The setup function of C\+DM. Must be called before anything else. C\+DM requires
 \begin{DoxyWarning}{Warning}
 This might not be thread safe.
 \end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em width} & The expected width in C\+DM pixels. \\
@@ -258,6 +326,9 @@ This might not be thread safe.
 \begin{DoxyReturn}{Returns}
 Null if it fails, else a pointer to a \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}}. 
 \end{DoxyReturn}
+\begin{Desc}
+\item[Examples\+: ]\par
+\mbox{\hyperlink{main_8cpp-example}{main.\+cpp}}.\end{Desc}
 \mbox{\Hypertarget{_c_d_m_8c_a77895c7197a08de8aae1c075da0d5320}\label{_c_d_m_8c_a77895c7197a08de8aae1c075da0d5320}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Create\+Surface@{C\+D\+M\+Create\+Surface}}
 \index{C\+D\+M\+Create\+Surface@{C\+D\+M\+Create\+Surface}!C\+D\+M.\+c@{C\+D\+M.\+c}}
@@ -268,6 +339,12 @@ Null if it fails, else a pointer to a \mbox{\hyperlink{struct_c_d_m_context}{C\+
 
 Creates a surface. A surface is the base representation of an image in C\+DM Most every object used in C\+DM will most likely be a surface. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em posX} & The position x coordinate of the surface, using screen coordinates. \\
@@ -282,12 +359,33 @@ Creates a surface. A surface is the base representation of an image in C\+DM Mos
 \begin{DoxyReturn}{Returns}
 Null if it fails, else a pointer to a \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}}. 
 \end{DoxyReturn}
+\begin{Desc}
+\item[Examples\+: ]\par
+\mbox{\hyperlink{main_8cpp-example}{main.\+cpp}}.\end{Desc}
 \mbox{\Hypertarget{_c_d_m_8c_a8faa73f836c78a2373b6beb5cb305aec}\label{_c_d_m_8c_a8faa73f836c78a2373b6beb5cb305aec}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Draw@{C\+D\+M\+Draw}}
 \index{C\+D\+M\+Draw@{C\+D\+M\+Draw}!C\+D\+M.\+c@{C\+D\+M.\+c}}
 \subsubsection{\texorpdfstring{C\+D\+M\+Draw()}{CDMDraw()}}
 {\footnotesize\ttfamily void C\+D\+M\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$$\ast$}]{ctx }\end{DoxyParamCaption})}
 
+
+
+Draws the whole screen. Does a batch draw if things have been added to the context. Status\+: Working. 
+
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ctx} & context, must not be null. \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples\+: ]\par
+\mbox{\hyperlink{main_8cpp-example}{main.\+cpp}}.\end{Desc}
 \mbox{\Hypertarget{_c_d_m_8c_a32d48dfc5b6436fbd73a92b0a090942e}\label{_c_d_m_8c_a32d48dfc5b6436fbd73a92b0a090942e}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Draw\+Surface@{C\+D\+M\+Draw\+Surface}}
 \index{C\+D\+M\+Draw\+Surface@{C\+D\+M\+Draw\+Surface}!C\+D\+M.\+c@{C\+D\+M.\+c}}
@@ -298,6 +396,12 @@ Null if it fails, else a pointer to a \mbox{\hyperlink{struct_c_d_m_surface}{C\+
 
 Draws directly a surface in the context, instead of batching it with other draws. I highly recommend using the batch function (Add, then C\+D\+M\+Draw) over this one, to make the program run faster. Status\+: Partiallly works. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in,out}  & {\em ctx} & The context in which the surface will be painted, must not be null. \\
@@ -315,6 +419,12 @@ Draws directly a surface in the context, instead of batching it with other draws
 
 Draws directly a text in the context, instead of batching it with other draws. I highly recommend using the batch function (Add, then C\+D\+M\+Draw) over this one, to make the program run faster. Status\+: Partially Works. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in,out}  & {\em ctx} & The context in which the text will be painted, must not be null. \\
@@ -332,6 +442,12 @@ Draws directly a text in the context, instead of batching it with other draws. I
 
 Cdm export srfc to image Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em ctx} & The current context, must not be null. \\
@@ -349,6 +465,27 @@ Cdm export srfc to image Status\+: Working.
 \subsubsection{\texorpdfstring{C\+D\+M\+Fill\+Screen()}{CDMFillScreen()}}
 {\footnotesize\ttfamily void C\+D\+M\+Fill\+Screen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$$\ast$}]{ctx,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char}]{character,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}}}]{front\+Color,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34}{C\+D\+M\+Background\+Color}}}]{back\+Color }\end{DoxyParamCaption})}
 
+
+
+Fills the context with a single color. Ignores drawn flags completely. Status\+: Working. 
+
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em ctx} & The context, must not be null. \\
+\hline
+\mbox{\tt in}  & {\em character} & The character to be printed. \\
+\hline
+\mbox{\tt in}  & {\em front\+Color} & The front color. \\
+\hline
+\mbox{\tt in}  & {\em back\+Color} & The background color. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{_c_d_m_8c_a644584222fbfcbd10d493a2e3e073264}\label{_c_d_m_8c_a644584222fbfcbd10d493a2e3e073264}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Free\+Context@{C\+D\+M\+Free\+Context}}
 \index{C\+D\+M\+Free\+Context@{C\+D\+M\+Free\+Context}!C\+D\+M.\+c@{C\+D\+M.\+c}}
@@ -359,6 +496,12 @@ Cdm export srfc to image Status\+: Working.
 
 Simple dynamic memory allocation free method. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in,out}  & {\em ctx} & The context, must not be null. Upon finishing, this function makes this parameter\textquotesingle{}s value null. \\
@@ -374,11 +517,20 @@ Simple dynamic memory allocation free method. Status\+: Working.
 
 Simple dynamic memory allocation free method. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in,out}  & {\em surface} & The surface, must not be null. Upon finishing this function makes this parameter\textquotesingle{}s value null. \\
 \hline
 \end{DoxyParams}
+\begin{Desc}
+\item[Examples\+: ]\par
+\mbox{\hyperlink{main_8cpp-example}{main.\+cpp}}.\end{Desc}
 \mbox{\Hypertarget{_c_d_m_8c_a52d6faf2193e9f2ff7cbdd279bea6172}\label{_c_d_m_8c_a52d6faf2193e9f2ff7cbdd279bea6172}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Free\+Text@{C\+D\+M\+Free\+Text}}
 \index{C\+D\+M\+Free\+Text@{C\+D\+M\+Free\+Text}!C\+D\+M.\+c@{C\+D\+M.\+c}}
@@ -389,6 +541,12 @@ Simple dynamic memory allocation free method. Status\+: Working.
 
 Simple dynamic memory allocation free method. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in,out}  & {\em txt} & The text, must not be null. Upon finishing, this function makes this parameter\textquotesingle{}s value null. \\
@@ -404,6 +562,12 @@ Simple dynamic memory allocation free method. Status\+: Working.
 
 Gets the blue color of a certain color inside a Color\+Scheme. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em data} & The color scheme to check from. \\
@@ -424,6 +588,12 @@ The color\textquotesingle{}s value in decimal.
 
 Gets the value of errno and sets it to zero. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 \begin{DoxyReturn}{Returns}
 The value of errno. 
 \end{DoxyReturn}
@@ -437,6 +607,12 @@ The value of errno.
 
 Translates an error code to an error message, for a brief description. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 \begin{DoxyReturn}{Returns}
 Will always return a string of characters. 
 \end{DoxyReturn}
@@ -450,6 +626,12 @@ Will always return a string of characters.
 
 Gets the green color of a certain color inside a Color\+Scheme. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em data} & The color scheme to check from. \\
@@ -466,18 +648,81 @@ The color\textquotesingle{}s value in decimal.
 \subsubsection{\texorpdfstring{C\+D\+M\+Get\+Key\+Down()}{CDMGetKeyDown()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{_c_d_m_8h_af5296d3141c193195e69417d1825228b}{C\+D\+M\+Bool}} C\+D\+M\+Get\+Key\+Down (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_event}{C\+D\+M\+Event}} $\ast$}]{event,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_a8e7d3f25fc77053719b079b29784115f}{C\+D\+M\+Key}}}]{key }\end{DoxyParamCaption})}
 
+
+
+Checks if the key selected in the parameter was pressed this frame. Status\+: Working. 
+
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em event} & An event structure, must not be null. \\
+\hline
+\mbox{\tt in}  & {\em key} & The key to be checked.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns C\+D\+M\+T\+R\+UE if the key is pressed, but only if it was pressed in this frame, C\+D\+M\+F\+A\+L\+SE if the key is not pressed. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{_c_d_m_8c_a85071e5ca6d7bec95cb7f00708bc224d}\label{_c_d_m_8c_a85071e5ca6d7bec95cb7f00708bc224d}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Get\+Key\+Pressed@{C\+D\+M\+Get\+Key\+Pressed}}
 \index{C\+D\+M\+Get\+Key\+Pressed@{C\+D\+M\+Get\+Key\+Pressed}!C\+D\+M.\+c@{C\+D\+M.\+c}}
 \subsubsection{\texorpdfstring{C\+D\+M\+Get\+Key\+Pressed()}{CDMGetKeyPressed()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{_c_d_m_8h_af5296d3141c193195e69417d1825228b}{C\+D\+M\+Bool}} C\+D\+M\+Get\+Key\+Pressed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_event}{C\+D\+M\+Event}} $\ast$}]{event,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_a8e7d3f25fc77053719b079b29784115f}{C\+D\+M\+Key}}}]{key }\end{DoxyParamCaption})}
 
+
+
+Checks if the key selected in the parameter was pressed. This is the only function that checks for mouse input too. Status\+: Working. 
+
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em event} & An event structure, must not be null. \\
+\hline
+\mbox{\tt in}  & {\em key} & The key to be checked.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns C\+D\+M\+T\+R\+UE if the key is pressed, regardless of how many frames it has been pressed, C\+D\+M\+F\+A\+L\+SE if the key is not pressed. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{_c_d_m_8c_a21c93d3cbf79f86c61cce45f7667957b}\label{_c_d_m_8c_a21c93d3cbf79f86c61cce45f7667957b}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Get\+Key\+Up@{C\+D\+M\+Get\+Key\+Up}}
 \index{C\+D\+M\+Get\+Key\+Up@{C\+D\+M\+Get\+Key\+Up}!C\+D\+M.\+c@{C\+D\+M.\+c}}
 \subsubsection{\texorpdfstring{C\+D\+M\+Get\+Key\+Up()}{CDMGetKeyUp()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{_c_d_m_8h_af5296d3141c193195e69417d1825228b}{C\+D\+M\+Bool}} C\+D\+M\+Get\+Key\+Up (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_event}{C\+D\+M\+Event}} $\ast$}]{event,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_a8e7d3f25fc77053719b079b29784115f}{C\+D\+M\+Key}}}]{key }\end{DoxyParamCaption})}
 
+
+
+Checks if the key selected in the parameter stopped being pressed this frame. Status\+: Working. 
+
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em event} & An event structure, must not be null. \\
+\hline
+\mbox{\tt in}  & {\em key} & The key to be checked.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns C\+D\+M\+T\+R\+UE if the key is not pressed, but only if it was pressed in the last frame, C\+D\+M\+F\+A\+L\+SE if the key is pressed. 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples\+: ]\par
+\mbox{\hyperlink{main_8cpp-example}{main.\+cpp}}.\end{Desc}
 \mbox{\Hypertarget{_c_d_m_8c_ade94b879ff0ce1b7fb675af7bb0a399f}\label{_c_d_m_8c_ade94b879ff0ce1b7fb675af7bb0a399f}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Get\+Mouse\+Pos@{C\+D\+M\+Get\+Mouse\+Pos}}
 \index{C\+D\+M\+Get\+Mouse\+Pos@{C\+D\+M\+Get\+Mouse\+Pos}!C\+D\+M.\+c@{C\+D\+M.\+c}}
@@ -488,6 +733,12 @@ The color\textquotesingle{}s value in decimal.
 
 Gets the mouse position inside the console window. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in,out}  & {\em event} & An event structure, must not be null.\\
@@ -506,6 +757,12 @@ A C\+D\+M\+Coord containing the coordinates of the mouse inside the screen.
 
 Gets the red color of a certain color inside a Color\+Scheme. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em data} & The color scheme to check from. \\
@@ -526,6 +783,12 @@ The color\textquotesingle{}s value in decimal.
 
 Keeps the screen size of the program. Might be useful if you want to limit screen resizing. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in,out}  & {\em ctx} & The context, must not be null. \\
@@ -533,12 +796,38 @@ Keeps the screen size of the program. Might be useful if you want to limit scree
 \mbox{\tt in,out}  & {\em event} & An event structure to check for resize events, must not be null. \\
 \hline
 \end{DoxyParams}
+\begin{Desc}
+\item[Examples\+: ]\par
+\mbox{\hyperlink{main_8cpp-example}{main.\+cpp}}.\end{Desc}
 \mbox{\Hypertarget{_c_d_m_8c_a17baf20b93ff56b05a5f296bc626ab60}\label{_c_d_m_8c_a17baf20b93ff56b05a5f296bc626ab60}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Poke@{C\+D\+M\+Poke}}
 \index{C\+D\+M\+Poke@{C\+D\+M\+Poke}!C\+D\+M.\+c@{C\+D\+M.\+c}}
 \subsubsection{\texorpdfstring{C\+D\+M\+Poke()}{CDMPoke()}}
 {\footnotesize\ttfamily void C\+D\+M\+Poke (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$$\ast$}]{ctx,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_afe21360e836aeb663c2ad9ee6bc4c321}{C\+D\+M\+Coord}}}]{coord,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char}]{character,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}}}]{front\+Color,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34}{C\+D\+M\+Background\+Color}}}]{back\+Color }\end{DoxyParamCaption})}
 
+
+
+Pokes a pixel in the screen to a certain color. Ignores drawn flags. Status\+: Working. 
+
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em ctx} & The context, must not be null. \\
+\hline
+\mbox{\tt in}  & {\em coord} & The coordinate of the pixel. \\
+\hline
+\mbox{\tt in}  & {\em character} & The character to be printed. \\
+\hline
+\mbox{\tt in}  & {\em front\+Color} & The front color. \\
+\hline
+\mbox{\tt in}  & {\em back\+Color} & The background color. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{_c_d_m_8c_a3adb4a4784345380749c67f901fcf468}\label{_c_d_m_8c_a3adb4a4784345380749c67f901fcf468}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Poll\+Events@{C\+D\+M\+Poll\+Events}}
 \index{C\+D\+M\+Poll\+Events@{C\+D\+M\+Poll\+Events}!C\+D\+M.\+c@{C\+D\+M.\+c}}
@@ -549,6 +838,12 @@ Keeps the screen size of the program. Might be useful if you want to limit scree
 
 Polls the console events, this function must be used in order to get key and mouse presses, as such it must be called at the beggining of every frame and before every function that requires a \mbox{\hyperlink{struct_c_d_m_event}{C\+D\+M\+Event}}. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in,out}  & {\em ctx} & The context, must not be null. \\
@@ -556,6 +851,9 @@ Polls the console events, this function must be used in order to get key and mou
 \mbox{\tt in,out}  & {\em event} & An event structure, must not be null. \\
 \hline
 \end{DoxyParams}
+\begin{Desc}
+\item[Examples\+: ]\par
+\mbox{\hyperlink{main_8cpp-example}{main.\+cpp}}.\end{Desc}
 \mbox{\Hypertarget{_c_d_m_8c_acff96a2cc91d34c03292d42cba430e6f}\label{_c_d_m_8c_acff96a2cc91d34c03292d42cba430e6f}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Prepare\+Surface@{C\+D\+M\+Prepare\+Surface}}
 \index{C\+D\+M\+Prepare\+Surface@{C\+D\+M\+Prepare\+Surface}!C\+D\+M.\+c@{C\+D\+M.\+c}}
@@ -566,11 +864,20 @@ Polls the console events, this function must be used in order to get key and mou
 
 This should only be called each time the surface\textquotesingle{}s contents were modified before calling a draw or add function. Internally this function converts the image\textquotesingle{}s values to raw data that the console understands. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in,out}  & {\em surface} & The surface, must not be null. \\
 \hline
 \end{DoxyParams}
+\begin{Desc}
+\item[Examples\+: ]\par
+\mbox{\hyperlink{main_8cpp-example}{main.\+cpp}}.\end{Desc}
 \mbox{\Hypertarget{_c_d_m_8c_af0c3f5a5f2fb71971fd1a73237d98d2b}\label{_c_d_m_8c_af0c3f5a5f2fb71971fd1a73237d98d2b}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Prepare\+Text@{C\+D\+M\+Prepare\+Text}}
 \index{C\+D\+M\+Prepare\+Text@{C\+D\+M\+Prepare\+Text}!C\+D\+M.\+c@{C\+D\+M.\+c}}
@@ -581,9 +888,49 @@ This should only be called each time the surface\textquotesingle{}s contents wer
 
 This should only be called each time the text\textquotesingle{}s contents were modified before calling a draw or add function. Internally this function converts the text\textquotesingle{}s values to raw data that the console understands. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in,out}  & {\em txt} & The text, must not be null. \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples\+: ]\par
+\mbox{\hyperlink{main_8cpp-example}{main.\+cpp}}.\end{Desc}
+\mbox{\Hypertarget{_c_d_m_8c_a185c0e3849d521665aa25dc9e086fd4c}\label{_c_d_m_8c_a185c0e3849d521665aa25dc9e086fd4c}} 
+\index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Printf@{C\+D\+M\+Printf}}
+\index{C\+D\+M\+Printf@{C\+D\+M\+Printf}!C\+D\+M.\+c@{C\+D\+M.\+c}}
+\subsubsection{\texorpdfstring{C\+D\+M\+Printf()}{CDMPrintf()}}
+{\footnotesize\ttfamily void C\+D\+M\+Printf (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$$\ast$}]{ctx,  }\item[{\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_afe21360e836aeb663c2ad9ee6bc4c321}{C\+D\+M\+Coord}}}]{initial\+Pos,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}}}]{front\+Color,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34}{C\+D\+M\+Background\+Color}}}]{back\+Color,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char $\ast$}]{txt,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+A printf implementation for C\+DM, made it as a replacement or alternative to the text object. It should be easier to manage, but a more expensive call, so use this for dynamic text only, and use Text objects for static text. 
+
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em ctx} & The context, must not be null. \\
+\hline
+\mbox{\tt in}  & {\em initial\+Pos} & The initial position of the text, it wraps as if the x position of the text was the left side of the screen. \\
+\hline
+\mbox{\tt in}  & {\em front\+Color} & The front color of the text. \\
+\hline
+\mbox{\tt in}  & {\em back\+Color} & The back color of the text. \\
+\hline
+\mbox{\tt in}  & {\em txt} & The text, modes \char`\"{}\%d,\%i,\%u,\%f,\%g,\%x,\%o,\%c,\%s\char`\"{} are working, the new line character is \textbackslash{}n. \\
+\hline
+\mbox{\tt in}  & {\em ...} & Variable arguments providing additional information. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{_c_d_m_8c_acdd97b8c992eb0d143f90c1d8cbab459}\label{_c_d_m_8c_acdd97b8c992eb0d143f90c1d8cbab459}} 
@@ -596,11 +943,17 @@ This should only be called each time the text\textquotesingle{}s contents were m
 
 Reads a .cdi image file into a \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}}. The file must be generated exactly the same as C\+D\+M\+Export\+Srfc\+To\+Img, for it to work using this function. The usage of the structure may be imperative. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em file\+Name} & Filename of the file. \\
 \hline
- & {\em \mbox{[}in,out,opt\mbox{]}} & scheme \mbox{[}in,out,opt\mbox{]} If non-\/null, the scheme that will obtain the real scheme used in the image.\\
+ & {\em \mbox{[}in,out,opt\mbox{]}} & scheme If non-\/null, the scheme that will obtain the real scheme used in the image.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -616,6 +969,12 @@ Null if it fails, else a pointer to a \mbox{\hyperlink{struct_c_d_m_surface}{C\+
 
 Sets a color scheme inside a context, and thus changing every display color of it. This instruction does not require you to draw again for results to be shown, as such its extremely fast. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em data} & The color scheme to be set. \\
@@ -623,18 +982,73 @@ Sets a color scheme inside a context, and thus changing every display color of i
 \mbox{\tt in,out}  & {\em ctx} & The context to modify, must not be null. \\
 \hline
 \end{DoxyParams}
+\begin{Desc}
+\item[Examples\+: ]\par
+\mbox{\hyperlink{main_8cpp-example}{main.\+cpp}}.\end{Desc}
 \mbox{\Hypertarget{_c_d_m_8c_ab4108b50589991c1f902ea42ac9172d2}\label{_c_d_m_8c_ab4108b50589991c1f902ea42ac9172d2}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Set\+Background\+Color@{C\+D\+M\+Set\+Background\+Color}}
 \index{C\+D\+M\+Set\+Background\+Color@{C\+D\+M\+Set\+Background\+Color}!C\+D\+M.\+c@{C\+D\+M.\+c}}
 \subsubsection{\texorpdfstring{C\+D\+M\+Set\+Background\+Color()}{CDMSetBackgroundColor()}}
 {\footnotesize\ttfamily void C\+D\+M\+Set\+Background\+Color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} $\ast$$\ast$}]{surface,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34}{C\+D\+M\+Background\+Color}}}]{c1,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34}{C\+D\+M\+Background\+Color}}}]{c2,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34}{C\+D\+M\+Background\+Color}}}]{c3,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34}{C\+D\+M\+Background\+Color}}}]{c4 }\end{DoxyParamCaption})}
 
+
+
+A \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} may only have 4 color sets at a time. Including background, foreground and character. Each combination of 3 of those elements makes a set. This function sets directly the four background colors that the Surface will use from the color palette. Status\+: Working. 
+
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em surface} & The surface, must not be null. \\
+\hline
+\mbox{\tt in}  & {\em c1} & The first C\+D\+M\+Enum using color macros. \\
+\hline
+\mbox{\tt in}  & {\em c2} & The second C\+D\+M\+Enum using color macros. \\
+\hline
+\mbox{\tt in}  & {\em c3} & The third C\+D\+M\+Enum using color macros. \\
+\hline
+\mbox{\tt in}  & {\em c4} & The fourth C\+D\+M\+Enum using color macros. \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples\+: ]\par
+\mbox{\hyperlink{main_8cpp-example}{main.\+cpp}}.\end{Desc}
 \mbox{\Hypertarget{_c_d_m_8c_a27478a0b0e3e2bdafa624dfe5e3ce5c4}\label{_c_d_m_8c_a27478a0b0e3e2bdafa624dfe5e3ce5c4}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Set\+Characters@{C\+D\+M\+Set\+Characters}}
 \index{C\+D\+M\+Set\+Characters@{C\+D\+M\+Set\+Characters}!C\+D\+M.\+c@{C\+D\+M.\+c}}
 \subsubsection{\texorpdfstring{C\+D\+M\+Set\+Characters()}{CDMSetCharacters()}}
 {\footnotesize\ttfamily void C\+D\+M\+Set\+Characters (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} $\ast$$\ast$}]{surface,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} unsigned char}]{c1,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} unsigned char}]{c2,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} unsigned char}]{c3,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} unsigned char}]{c4 }\end{DoxyParamCaption})}
 
+
+
+A \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} may only have 4 color sets at a time. Including background, foreground and character. Each combination of 3 of those elements makes a set. This function sets directly the four characters that the Surface will use. Status\+: Working. 
+
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em surface} & The surface, must not be null. \\
+\hline
+\mbox{\tt in}  & {\em c1} & The first character to be used. \\
+\hline
+\mbox{\tt in}  & {\em c2} & The second character to be used. \\
+\hline
+\mbox{\tt in}  & {\em c3} & The third character to be used. \\
+\hline
+\mbox{\tt in}  & {\em c4} & The fourth character to be used. \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples\+: ]\par
+\mbox{\hyperlink{main_8cpp-example}{main.\+cpp}}.\end{Desc}
 \mbox{\Hypertarget{_c_d_m_8c_a052763fb64e4e6048b1baddbcbbc9a29}\label{_c_d_m_8c_a052763fb64e4e6048b1baddbcbbc9a29}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Set\+Color\+Bin@{C\+D\+M\+Set\+Color\+Bin}}
 \index{C\+D\+M\+Set\+Color\+Bin@{C\+D\+M\+Set\+Color\+Bin}!C\+D\+M.\+c@{C\+D\+M.\+c}}
@@ -645,6 +1059,12 @@ Sets a color scheme inside a context, and thus changing every display color of i
 
 Sets an R\+GB color inside a Color\+Scheme. This function accepts an already converted to binary R\+GB color. You may use Windows.\+h macro R\+G\+B(r,g,b) to get the data. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in,out}  & {\em data} & The color scheme, must not be null. \\
@@ -654,6 +1074,9 @@ Sets an R\+GB color inside a Color\+Scheme. This function accepts an already con
 \mbox{\tt in}  & {\em color} & The binary R\+GB color. \\
 \hline
 \end{DoxyParams}
+\begin{Desc}
+\item[Examples\+: ]\par
+\mbox{\hyperlink{main_8cpp-example}{main.\+cpp}}.\end{Desc}
 \mbox{\Hypertarget{_c_d_m_8c_ab27315a1995b90f71c05dabcfd04394b}\label{_c_d_m_8c_ab27315a1995b90f71c05dabcfd04394b}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Set\+Color\+R\+GB@{C\+D\+M\+Set\+Color\+R\+GB}}
 \index{C\+D\+M\+Set\+Color\+R\+GB@{C\+D\+M\+Set\+Color\+R\+GB}!C\+D\+M.\+c@{C\+D\+M.\+c}}
@@ -664,6 +1087,12 @@ Sets an R\+GB color inside a Color\+Scheme. This function accepts an already con
 
 Sets an R\+GB color inside a Color\+Scheme. Every color goes from 0 to 255, however every value passes through a modulo operation to assure no weird behaviour will happen. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in,out}  & {\em data} & The color scheme, must not be null. \\
@@ -677,6 +1106,9 @@ Sets an R\+GB color inside a Color\+Scheme. Every color goes from 0 to 255, howe
 \mbox{\tt in}  & {\em b} & Blue value. \\
 \hline
 \end{DoxyParams}
+\begin{Desc}
+\item[Examples\+: ]\par
+\mbox{\hyperlink{main_8cpp-example}{main.\+cpp}}.\end{Desc}
 \mbox{\Hypertarget{_c_d_m_8c_a1989ebc729b746dd247279c15f23c08b}\label{_c_d_m_8c_a1989ebc729b746dd247279c15f23c08b}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Set\+Cursor\+Visibility@{C\+D\+M\+Set\+Cursor\+Visibility}}
 \index{C\+D\+M\+Set\+Cursor\+Visibility@{C\+D\+M\+Set\+Cursor\+Visibility}!C\+D\+M.\+c@{C\+D\+M.\+c}}
@@ -687,13 +1119,22 @@ Sets an R\+GB color inside a Color\+Scheme. Every color goes from 0 to 255, howe
 
 Sets the visibility of the console\textquotesingle{}s cursor. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in,out}  & {\em ctx} & If non-\/null, the context. \\
 \hline
- & {\em status} & Boolean value to set the status of the cursor. \\
+\mbox{\tt in}  & {\em status} & Boolean value to set the status of the cursor. \\
 \hline
 \end{DoxyParams}
+\begin{Desc}
+\item[Examples\+: ]\par
+\mbox{\hyperlink{main_8cpp-example}{main.\+cpp}}.\end{Desc}
 \mbox{\Hypertarget{_c_d_m_8c_a8a7d1c2c82df2eafd6f8cbad77623c4a}\label{_c_d_m_8c_a8a7d1c2c82df2eafd6f8cbad77623c4a}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Set\+Errno@{C\+D\+M\+Set\+Errno}}
 \index{C\+D\+M\+Set\+Errno@{C\+D\+M\+Set\+Errno}!C\+D\+M.\+c@{C\+D\+M.\+c}}
@@ -704,6 +1145,12 @@ Sets the visibility of the console\textquotesingle{}s cursor. Status\+: Working.
 
 Sets an specific errno to a value. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}{Parameters}
 {\em code} & The code to be set. \\
@@ -719,6 +1166,12 @@ Sets an specific errno to a value. Status\+: Working.
 
 Sets the font and font size of the console. The recommended font name is L\char`\"{}\+Terminal\char`\"{} for its unique characteristic of allowing square pixels, however most fonts can be used. It\textquotesingle{}s important to include L at the start of your string, since this function requires a wchar\+\_\+t$\ast$ instead of a regular char. Status\+: Working. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in,out}  & {\em ctx} & The context, must not be null. \\
@@ -730,36 +1183,141 @@ Sets the font and font size of the console. The recommended font name is L\char`
 \mbox{\tt in}  & {\em height} & The height in regular pixels of the font. \\
 \hline
 \end{DoxyParams}
+\begin{Desc}
+\item[Examples\+: ]\par
+\mbox{\hyperlink{main_8cpp-example}{main.\+cpp}}.\end{Desc}
 \mbox{\Hypertarget{_c_d_m_8c_ad055414dd654ac3b094e755e6abb5f51}\label{_c_d_m_8c_ad055414dd654ac3b094e755e6abb5f51}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Set\+Foreground\+Color@{C\+D\+M\+Set\+Foreground\+Color}}
 \index{C\+D\+M\+Set\+Foreground\+Color@{C\+D\+M\+Set\+Foreground\+Color}!C\+D\+M.\+c@{C\+D\+M.\+c}}
 \subsubsection{\texorpdfstring{C\+D\+M\+Set\+Foreground\+Color()}{CDMSetForegroundColor()}}
 {\footnotesize\ttfamily void C\+D\+M\+Set\+Foreground\+Color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} $\ast$$\ast$}]{surface,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}}}]{c1,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}}}]{c2,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}}}]{c3,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}}}]{c4 }\end{DoxyParamCaption})}
 
+
+
+A \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} may only have 4 color sets at a time. Including background, foreground and character. Each combination of 3 of those elements makes a set. This function sets directly the four foreground colors that the Surface will use from the color palette. Status\+: Working. 
+
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em surface} & The surface, must not be null. \\
+\hline
+\mbox{\tt in}  & {\em c1} & The first C\+D\+M\+Enum using color macros. \\
+\hline
+\mbox{\tt in}  & {\em c2} & The second C\+D\+M\+Enum using color macros. \\
+\hline
+\mbox{\tt in}  & {\em c3} & The third C\+D\+M\+Enum using color macros. \\
+\hline
+\mbox{\tt in}  & {\em c4} & The fourth C\+D\+M\+Enum using color macros. \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples\+: ]\par
+\mbox{\hyperlink{main_8cpp-example}{main.\+cpp}}.\end{Desc}
 \mbox{\Hypertarget{_c_d_m_8c_aef7e8ddea4a5f872578f3ba654ccef7a}\label{_c_d_m_8c_aef7e8ddea4a5f872578f3ba654ccef7a}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Set\+Pixel@{C\+D\+M\+Set\+Pixel}}
 \index{C\+D\+M\+Set\+Pixel@{C\+D\+M\+Set\+Pixel}!C\+D\+M.\+c@{C\+D\+M.\+c}}
 \subsubsection{\texorpdfstring{C\+D\+M\+Set\+Pixel()}{CDMSetPixel()}}
 {\footnotesize\ttfamily void C\+D\+M\+Set\+Pixel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} $\ast$$\ast$}]{surface,  }\item[{\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short}]{x,  }\item[{\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short}]{y,  }\item[{\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab827c7b701be4e94f993cd7ccf21a456}{C\+D\+M\+Color\+Sets}}}]{pixel\+Set }\end{DoxyParamCaption})}
 
+
+
+Sets a pixel inside a surface. You must select from one of the five possible colors inside the surface. Status\+: Working. 
+
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em surface} & The surface to be modified, must not be null. \\
+\hline
+\mbox{\tt in}  & {\em x} & The x coordinate of the pixel. \\
+\hline
+\mbox{\tt in}  & {\em y} & The y coordinate of the pixel. \\
+\hline
+\mbox{\tt in}  & {\em pixel\+Set} & The enumeration value of the data. \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples\+: ]\par
+\mbox{\hyperlink{main_8cpp-example}{main.\+cpp}}.\end{Desc}
 \mbox{\Hypertarget{_c_d_m_8c_ab18b56ed19f345efa1935338fed8c2d5}\label{_c_d_m_8c_ab18b56ed19f345efa1935338fed8c2d5}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Set\+Window\+Title@{C\+D\+M\+Set\+Window\+Title}}
 \index{C\+D\+M\+Set\+Window\+Title@{C\+D\+M\+Set\+Window\+Title}!C\+D\+M.\+c@{C\+D\+M.\+c}}
 \subsubsection{\texorpdfstring{C\+D\+M\+Set\+Window\+Title()}{CDMSetWindowTitle()}}
 {\footnotesize\ttfamily void C\+D\+M\+Set\+Window\+Title (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} wchar\+\_\+t $\ast$}]{title }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{_c_d_m_8c_a0e764b208e098d5c98868de299935b37}\label{_c_d_m_8c_a0e764b208e098d5c98868de299935b37}} 
+\begin{Desc}
+\item[Examples\+: ]\par
+\mbox{\hyperlink{main_8cpp-example}{main.\+cpp}}.\end{Desc}
+\mbox{\Hypertarget{_c_d_m_8c_aee3fc633d44b7ea1a7d71f333bfaa8ca}\label{_c_d_m_8c_aee3fc633d44b7ea1a7d71f333bfaa8ca}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Text\+Wrapper@{C\+D\+M\+Text\+Wrapper}}
 \index{C\+D\+M\+Text\+Wrapper@{C\+D\+M\+Text\+Wrapper}!C\+D\+M.\+c@{C\+D\+M.\+c}}
 \subsubsection{\texorpdfstring{C\+D\+M\+Text\+Wrapper()}{CDMTextWrapper()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_c_d_m_text}{C\+D\+M\+Text}}$\ast$ C\+D\+M\+Text\+Wrapper (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char $\ast$}]{text,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}}}]{color,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34}{C\+D\+M\+Background\+Color}}}]{background }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_c_d_m_text}{C\+D\+M\+Text}} $\ast$ C\+D\+M\+Text\+Wrapper (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char $\ast$}]{text,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}}}]{color,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34}{C\+D\+M\+Background\+Color}}}]{background }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{_c_d_m_8c_adcb3f7b7ab1f6e9b7c3569731358385f}\label{_c_d_m_8c_adcb3f7b7ab1f6e9b7c3569731358385f}} 
+
+
+Since C\+DM basically hijacks the console, functions like printf are not enabled. No output will be shown using them, instead you must use the text as an object, this means you have much more control of the position and design of your text, at the expense of making a little bit harder to use. Moreover, repeated uses of the same text box will not require you to create a new object or call anything else other than adding this object to the context, or drawing it directly. All text begins in the ( 0 , 0 ) coordinate. Status\+: Working. 
+
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em text} & The text string, must not be null, must be zero terminated. \\
+\hline
+\mbox{\tt in}  & {\em color} & The color of the text. \\
+\hline
+\mbox{\tt in}  & {\em background} & The background color of the text.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Null if it fails, else a pointer to a \mbox{\hyperlink{struct_c_d_m_text}{C\+D\+M\+Text}}. 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples\+: ]\par
+\mbox{\hyperlink{main_8cpp-example}{main.\+cpp}}.\end{Desc}
+\mbox{\Hypertarget{_c_d_m_8c_a18799208728fdc046bbac97445bf3e60}\label{_c_d_m_8c_a18799208728fdc046bbac97445bf3e60}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Text\+Wrapper\+\_\+s@{C\+D\+M\+Text\+Wrapper\+\_\+s}}
 \index{C\+D\+M\+Text\+Wrapper\+\_\+s@{C\+D\+M\+Text\+Wrapper\+\_\+s}!C\+D\+M.\+c@{C\+D\+M.\+c}}
 \subsubsection{\texorpdfstring{C\+D\+M\+Text\+Wrapper\+\_\+s()}{CDMTextWrapper\_s()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_c_d_m_text}{C\+D\+M\+Text}}$\ast$ C\+D\+M\+Text\+Wrapper\+\_\+s (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char $\ast$}]{text,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} size\+\_\+t}]{text\+Size,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}}}]{color,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34}{C\+D\+M\+Background\+Color}}}]{background }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_c_d_m_text}{C\+D\+M\+Text}} $\ast$ C\+D\+M\+Text\+Wrapper\+\_\+s (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char $\ast$}]{text,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} size\+\_\+t}]{text\+Size,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}}}]{color,  }\item[{const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34}{C\+D\+M\+Background\+Color}}}]{background }\end{DoxyParamCaption})}
 
+
+
+Since C\+DM basically highjacks the console, functions like printf are disabled. No output will be shown using them, instead you must use the text as an object, this means you have much more control of the position and design of your text, at the expense of making a little bit harder to use. Moreover, repeated uses of the same text box will not require you to create a new object or call anything else other than adding this object to the context, or drawing it directly. All text begins in the ( 0 , 0 ) coordinate. Status\+: Working. 
+
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em text} & The text string, must not be null. \\
+\hline
+\mbox{\tt in}  & {\em text\+Size} & Size of the text. \\
+\hline
+\mbox{\tt in}  & {\em color} & The color of the text. \\
+\hline
+\mbox{\tt in}  & {\em background} & The background color of the text.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Null if it fails, else a pointer to a \mbox{\hyperlink{struct_c_d_m_text}{C\+D\+M\+Text}}. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{_c_d_m_8c_abd1fd0d3d904625aadb99459dbee4521}\label{_c_d_m_8c_abd1fd0d3d904625aadb99459dbee4521}} 
 \index{C\+D\+M.\+c@{C\+D\+M.\+c}!C\+D\+M\+Toggle\+Fullscreen@{C\+D\+M\+Toggle\+Fullscreen}}
 \index{C\+D\+M\+Toggle\+Fullscreen@{C\+D\+M\+Toggle\+Fullscreen}!C\+D\+M.\+c@{C\+D\+M.\+c}}
@@ -770,6 +1328,12 @@ Sets the font and font size of the console. The recommended font name is L\char`
 
 Toggles fullscreen mode. Status\+: May be working on older platforms. 
 
+\begin{DoxyAuthor}{Author}
+Komo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+30/4/2018
+\end{DoxyDate}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in,out}  & {\em ctx} & If non-\/null, the context. \\

@@ -24,6 +24,11 @@ for the JavaScript code in this file
 var NAVTREE =
 [
   [ "CDM", "index.html", [
+    [ "Console Draw Motor", "index.html", [
+      [ "Description.", "index.html#sec1", null ],
+      [ "Instalation.", "index.html#sec2", null ],
+      [ "Usage.", "index.html#sec3", null ]
+    ] ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
       [ "Data Structure Index", "classes.html", null ],
@@ -37,20 +42,20 @@ var NAVTREE =
       [ "Globals", "globals.html", [
         [ "All", "globals.html", "globals_dup" ],
         [ "Functions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
         [ "Enumerator", "globals_eval.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
-    ] ]
+    ] ],
+    [ "Examples", "examples.html", "examples" ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"_c_d_m_8c.html",
-"_c_d_m_8h.html#ad2a46411fdfcc82be4c12ca0621f0de5"
+"_c_d_m_8h.html",
+"globals_n.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

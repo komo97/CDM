@@ -1,0 +1,129 @@
+\hypertarget{main_8cpp-example}{}\section{main.\+cpp}
+This is an example of most all capabilities of C\+DM being put to use.
+
+
+\begin{DoxyCodeInclude}
+\textcolor{preprocessor}{#include "\mbox{\hyperlink{_c_d_m_8h}{CDM.h}}"}
+\textcolor{preprocessor}{#include <string>}
+
+\textcolor{preprocessor}{#define SQR\_X 15}
+\textcolor{preprocessor}{#define SQR\_Y 15}
+\textcolor{keywordtype}{int} main()
+\{
+    \textcolor{keywordtype}{int} horSpeed = 1, verSpeed = 1;
+    \mbox{\hyperlink{struct_c_d_m_context}{CDMContext}}* ctx = \mbox{\hyperlink{_c_d_m_8h_a076bdfe8bf7edc2a9020908c23e51933}{CDMCreateContext}}(1, 1);
+    \mbox{\hyperlink{_c_d_m_8h_ab18b56ed19f345efa1935338fed8c2d5}{CDMSetWindowTitle}}(\mbox{\hyperlink{_c_d_m_8h_a8e7d3f25fc77053719b079b29784115faef31cc6fe9479955961311ee18ac205f}{L}}\textcolor{stringliteral}{"Testing"});
+    \mbox{\hyperlink{_c_d_m_8h_a830aae36fb545d324dc5eae83fa41067}{CDMSetFontAndSize}}(&ctx, \mbox{\hyperlink{_c_d_m_8h_a8e7d3f25fc77053719b079b29784115faef31cc6fe9479955961311ee18ac205f}{L}}\textcolor{stringliteral}{"Terminal"}, 8, 8);
+    \mbox{\hyperlink{_c_d_m_8h_acb612172ecba4e2a448101b9b6bd4fb7}{CDMChangeWindowSize}}(&ctx, 80, 80);
+    \mbox{\hyperlink{_c_d_m_8h_a1989ebc729b746dd247279c15f23c08b}{CDMSetCursorVisibility}}(&ctx, \mbox{\hyperlink{_c_d_m_8h_af5296d3141c193195e69417d1825228bab161cb3a26bd5c4a81e8df255cf55d28}{CDMFalse}});
+    \mbox{\hyperlink{struct_c_d_m_color_scheme}{CDMColorScheme}} mainColor;
+    \mbox{\hyperlink{_c_d_m_8h_a052763fb64e4e6048b1baddbcbbc9a29}{CDMSetColorBin}}(&mainColor, 0, 0x00362b00);
+    \mbox{\hyperlink{_c_d_m_8h_a052763fb64e4e6048b1baddbcbbc9a29}{CDMSetColorBin}}(&mainColor, 1, 0x00423607);
+    \mbox{\hyperlink{_c_d_m_8h_a052763fb64e4e6048b1baddbcbbc9a29}{CDMSetColorBin}}(&mainColor, 2, 0x00756e58);
+    \mbox{\hyperlink{_c_d_m_8h_a052763fb64e4e6048b1baddbcbbc9a29}{CDMSetColorBin}}(&mainColor, 3, 0x00837b65);
+    \mbox{\hyperlink{_c_d_m_8h_a052763fb64e4e6048b1baddbcbbc9a29}{CDMSetColorBin}}(&mainColor, 4, 0x00969483);
+    \mbox{\hyperlink{_c_d_m_8h_a052763fb64e4e6048b1baddbcbbc9a29}{CDMSetColorBin}}(&mainColor, 5, 0x00a1a193);
+    \mbox{\hyperlink{_c_d_m_8h_a052763fb64e4e6048b1baddbcbbc9a29}{CDMSetColorBin}}(&mainColor, 6, 0x00d5e8ee);
+    \mbox{\hyperlink{_c_d_m_8h_a052763fb64e4e6048b1baddbcbbc9a29}{CDMSetColorBin}}(&mainColor, 7, 0x00e3f6fd);
+    \mbox{\hyperlink{_c_d_m_8h_a052763fb64e4e6048b1baddbcbbc9a29}{CDMSetColorBin}}(&mainColor, 8, 0x000089b5);
+    \mbox{\hyperlink{_c_d_m_8h_a052763fb64e4e6048b1baddbcbbc9a29}{CDMSetColorBin}}(&mainColor, 9, 0x00164bcb);
+    \mbox{\hyperlink{_c_d_m_8h_a052763fb64e4e6048b1baddbcbbc9a29}{CDMSetColorBin}}(&mainColor, 10, 0x002f32dc);
+    \mbox{\hyperlink{_c_d_m_8h_a052763fb64e4e6048b1baddbcbbc9a29}{CDMSetColorBin}}(&mainColor, 11, 0x008236d3);
+    \mbox{\hyperlink{_c_d_m_8h_a052763fb64e4e6048b1baddbcbbc9a29}{CDMSetColorBin}}(&mainColor, 12, 0x00c4716c);
+    \mbox{\hyperlink{_c_d_m_8h_a052763fb64e4e6048b1baddbcbbc9a29}{CDMSetColorBin}}(&mainColor, 13, 0x00d28b26);
+    \mbox{\hyperlink{_c_d_m_8h_a052763fb64e4e6048b1baddbcbbc9a29}{CDMSetColorBin}}(&mainColor, 14, 0x0098a12a);
+    \mbox{\hyperlink{_c_d_m_8h_a052763fb64e4e6048b1baddbcbbc9a29}{CDMSetColorBin}}(&mainColor, 15, 0x00009985);
+    \mbox{\hyperlink{struct_c_d_m_surface}{CDMSurface}}* square = \mbox{\hyperlink{_c_d_m_8h_a77895c7197a08de8aae1c075da0d5320}{CDMCreateSurface}}(0, 0, SQR\_X, SQR\_Y);
+    \mbox{\hyperlink{_c_d_m_8h_a27478a0b0e3e2bdafa624dfe5e3ce5c4}{CDMSetCharacters}}(&square, \textcolor{charliteral}{'T'}, \textcolor{charliteral}{'E'}, \textcolor{charliteral}{'S'}, \textcolor{charliteral}{'T'});
+    \mbox{\hyperlink{_c_d_m_8h_ad055414dd654ac3b094e755e6abb5f51}{CDMSetForegroundColor}}(&square, \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187eaf77fb67151d0c18d397069ad8c271ba3}{CDMLetterColor::BLACK}}, 
+      \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187eaafe71cad474c15ce63b300c470eef8cc}{CDMLetterColor::CYAN}}, \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187ea1e1a4aba20a5a009e616cbc8fad33ac7}{CDMLetterColor::CLEAR}}, 
+      \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187ea68f9f8e23d51fc9d6882df0d7877495f}{CDMLetterColor::DARKMAGENTA}});
+    \mbox{\hyperlink{_c_d_m_8h_ab4108b50589991c1f902ea42ac9172d2}{CDMSetBackgroundColor}}(&square, 
+      \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34a560c01f8e0b4e6849da2b72e4e64ea5d}{CDMBackgroundColor::BWHITE}}, 
+      \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34a526e465a28bd63cecdb4f9f83835064b}{CDMBackgroundColor::BDARKYELLOW}}, 
+      \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34a83d2f72e2df3952f0c2c5d971008fd0e}{CDMBackgroundColor::BGREEN}}, 
+      \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34a37e64dc54b421569a918c58a7fd7848e}{CDMBackgroundColor::BDARKBLUE}});
+    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < SQR\_Y; ++i)
+    \{
+        \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < SQR\_X; ++j)
+        \{
+            \textcolor{keywordtype}{int} randNum = rand() % 100;
+            \textcolor{keywordflow}{if} (randNum < 25)
+                \mbox{\hyperlink{_c_d_m_8h_aef7e8ddea4a5f872578f3ba654ccef7a}{CDMSetPixel}}(&square, j, i, \mbox{\hyperlink{_c_d_m_8h_ab827c7b701be4e94f993cd7ccf21a456aa49596e5b37225c1a6e53083b055245f}{Set1}});
+            \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(randNum < 50)
+                \mbox{\hyperlink{_c_d_m_8h_aef7e8ddea4a5f872578f3ba654ccef7a}{CDMSetPixel}}(&square, j, i, \mbox{\hyperlink{_c_d_m_8h_ab827c7b701be4e94f993cd7ccf21a456a7a97510e5016179331ad364ea0618597}{Set2}});
+            \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (randNum < 75)
+                \mbox{\hyperlink{_c_d_m_8h_aef7e8ddea4a5f872578f3ba654ccef7a}{CDMSetPixel}}(&square, j, i, \mbox{\hyperlink{_c_d_m_8h_ab827c7b701be4e94f993cd7ccf21a456a5a1c4f53bb6b632ef473f872ebbac2d6}{Set3}});
+            \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (randNum < 100)
+                \mbox{\hyperlink{_c_d_m_8h_aef7e8ddea4a5f872578f3ba654ccef7a}{CDMSetPixel}}(&square, j, i, \mbox{\hyperlink{_c_d_m_8h_ab827c7b701be4e94f993cd7ccf21a456a978ea5793f8e87dd0f06a2b0a143862c}{Set4}});
+        \}
+    \}
+    \mbox{\hyperlink{_c_d_m_8h_acff96a2cc91d34c03292d42cba430e6f}{CDMPrepareSurface}}(&square);
+    \mbox{\hyperlink{struct_c_d_m_text}{CDMText}}* txt = \mbox{\hyperlink{_c_d_m_8h_aee3fc633d44b7ea1a7d71f333bfaa8ca}{CDMTextWrapper}}(\textcolor{stringliteral}{"Press escape to exit."}, 
+      \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187ea283fc479650da98250635b9c3c0e7e50}{CDMLetterColor::WHITE}}, \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34af0168e1b28c1ddd72d969bda8c5719f4}{CDMBackgroundColor::BBLACK}});
+    \mbox{\hyperlink{struct_c_d_m_text}{CDMText}}* scrSize = \mbox{\hyperlink{_c_d_m_8h_aee3fc633d44b7ea1a7d71f333bfaa8ca}{CDMTextWrapper}}((\textcolor{keywordtype}{char}*)(std::string(\textcolor{stringliteral}{"Screen size = "}) + 
+      std::to\_string(ctx->\mbox{\hyperlink{struct_c_d_m_context_aa61e26c3b59930152cdaa0ce2dac8b14}{rect}}.Right) +
+        \textcolor{stringliteral}{", "} + std::to\_string(ctx->\mbox{\hyperlink{struct_c_d_m_context_aa61e26c3b59930152cdaa0ce2dac8b14}{rect}}.Bottom) +
+        std::string(\textcolor{stringliteral}{"Press 0 to use the main palette, press 1 to change to a random palette"})).data(), 
+      \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187ea283fc479650da98250635b9c3c0e7e50}{CDMLetterColor::WHITE}}, \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34af0168e1b28c1ddd72d969bda8c5719f4}{CDMBackgroundColor::BBLACK}});
+    \mbox{\hyperlink{_c_d_m_8h_af0c3f5a5f2fb71971fd1a73237d98d2b}{CDMPrepareText}}(&scrSize);
+    \mbox{\hyperlink{_c_d_m_8h_af0c3f5a5f2fb71971fd1a73237d98d2b}{CDMPrepareText}}(&txt);
+    scrSize->\mbox{\hyperlink{struct_c_d_m_text_aa61e26c3b59930152cdaa0ce2dac8b14}{rect}}.Left = txt->\mbox{\hyperlink{struct_c_d_m_text_aa61e26c3b59930152cdaa0ce2dac8b14}{rect}}.Right + 1;
+    \textcolor{keywordflow}{while} (\textcolor{keyword}{true})
+    \{
+        \mbox{\hyperlink{_c_d_m_8h_a3adb4a4784345380749c67f901fcf468}{CDMPollEvents}}(ctx, &ctx->\mbox{\hyperlink{struct_c_d_m_context_ab97a0f3b9d5615487c4e542601499e94}{events}});
+        \mbox{\hyperlink{_c_d_m_8h_a50545ff4656c0ac84151fef6fbd1d53d}{CDMKeepScreenSize}}(&ctx, &ctx->\mbox{\hyperlink{struct_c_d_m_context_ab97a0f3b9d5615487c4e542601499e94}{events}});
+        \mbox{\hyperlink{_c_d_m_8h_a0f6f5f1cbbac5ec47a149451ee80673a}{CDMClearScreen}}(&ctx);
+        \mbox{\hyperlink{_c_d_m_8h_af0c3f5a5f2fb71971fd1a73237d98d2b}{CDMPrepareText}}(&scrSize);
+        \textcolor{keywordflow}{if} (square->\mbox{\hyperlink{struct_c_d_m_surface_aa61e26c3b59930152cdaa0ce2dac8b14}{rect}}.Left < 0)
+        \{
+            square->\mbox{\hyperlink{struct_c_d_m_surface_aa61e26c3b59930152cdaa0ce2dac8b14}{rect}}.Left = 0;
+            horSpeed = (horSpeed / abs(horSpeed)) * ((rand() % 5) + 1);
+            horSpeed *= -1;
+        \}
+        \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (square->\mbox{\hyperlink{struct_c_d_m_surface_aa61e26c3b59930152cdaa0ce2dac8b14}{rect}}.Left + square->\mbox{\hyperlink{struct_c_d_m_surface_aa61e26c3b59930152cdaa0ce2dac8b14}{rect}}.Right > ctx->\mbox{\hyperlink{struct_c_d_m_context_aa61e26c3b59930152cdaa0ce2dac8b14}{rect}}.Right)
+        \{
+            square->\mbox{\hyperlink{struct_c_d_m_surface_aa61e26c3b59930152cdaa0ce2dac8b14}{rect}}.Left = ctx->\mbox{\hyperlink{struct_c_d_m_context_aa61e26c3b59930152cdaa0ce2dac8b14}{rect}}.Right - square->\mbox{\hyperlink{struct_c_d_m_surface_aa61e26c3b59930152cdaa0ce2dac8b14}{rect}}.Right;
+            horSpeed = (horSpeed / abs(horSpeed)) * ((rand() % 5) + 1);
+            horSpeed *= -1;
+        \}
+        \textcolor{keywordflow}{if} (square->\mbox{\hyperlink{struct_c_d_m_surface_aa61e26c3b59930152cdaa0ce2dac8b14}{rect}}.Top < 0)
+        \{
+            square->\mbox{\hyperlink{struct_c_d_m_surface_aa61e26c3b59930152cdaa0ce2dac8b14}{rect}}.Top = 0;
+            verSpeed = (verSpeed / abs(verSpeed)) * ((rand() % 5) + 1);
+            verSpeed *= -1;
+        \}
+        \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (square->\mbox{\hyperlink{struct_c_d_m_surface_aa61e26c3b59930152cdaa0ce2dac8b14}{rect}}.Top + square->\mbox{\hyperlink{struct_c_d_m_surface_aa61e26c3b59930152cdaa0ce2dac8b14}{rect}}.Bottom > ctx->\mbox{\hyperlink{struct_c_d_m_context_aa61e26c3b59930152cdaa0ce2dac8b14}{rect}}.Bottom)
+        \{
+            square->\mbox{\hyperlink{struct_c_d_m_surface_aa61e26c3b59930152cdaa0ce2dac8b14}{rect}}.Top = ctx->\mbox{\hyperlink{struct_c_d_m_context_aa61e26c3b59930152cdaa0ce2dac8b14}{rect}}.Bottom - square->\mbox{\hyperlink{struct_c_d_m_surface_aa61e26c3b59930152cdaa0ce2dac8b14}{rect}}.Bottom;
+            verSpeed = (verSpeed / abs(verSpeed)) * ((rand() % 5) + 1);
+            verSpeed *= -1;
+        \}
+        \textcolor{keywordflow}{if} (\mbox{\hyperlink{_c_d_m_8h_a21c93d3cbf79f86c61cce45f7667957b}{CDMGetKeyUp}}(&ctx->\mbox{\hyperlink{struct_c_d_m_context_ab97a0f3b9d5615487c4e542601499e94}{events}}, \mbox{\hyperlink{_c_d_m_8h_a8e7d3f25fc77053719b079b29784115fa7b3ef6ceb30a5b0c69691a9574a1b6db}{CDMKey::zero}}))
+        \{
+            \mbox{\hyperlink{_c_d_m_8h_afcd4db7797d09c07900141cb214dad06}{CDMSetActiveScheme}}(mainColor, &ctx);
+        \}
+        \textcolor{keywordflow}{if} (\mbox{\hyperlink{_c_d_m_8h_a21c93d3cbf79f86c61cce45f7667957b}{CDMGetKeyUp}}(&ctx->\mbox{\hyperlink{struct_c_d_m_context_ab97a0f3b9d5615487c4e542601499e94}{events}}, \mbox{\hyperlink{_c_d_m_8h_a8e7d3f25fc77053719b079b29784115fa470762e93142d967e17ff201a373c133}{CDMKey::one}}))
+        \{
+            \mbox{\hyperlink{struct_c_d_m_color_scheme}{CDMColorScheme}} randScheme;
+            \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 15; ++i)
+                \mbox{\hyperlink{_c_d_m_8h_ab27315a1995b90f71c05dabcfd04394b}{CDMSetColorRGB}}(&randScheme, i, rand() % 255, rand() % 255, rand() % 255);
+            \mbox{\hyperlink{_c_d_m_8h_afcd4db7797d09c07900141cb214dad06}{CDMSetActiveScheme}}(randScheme, &ctx);
+        \}
+        \textcolor{keywordflow}{if} (\mbox{\hyperlink{_c_d_m_8h_a21c93d3cbf79f86c61cce45f7667957b}{CDMGetKeyUp}}(&ctx->\mbox{\hyperlink{struct_c_d_m_context_ab97a0f3b9d5615487c4e542601499e94}{events}}, \mbox{\hyperlink{_c_d_m_8h_a8e7d3f25fc77053719b079b29784115fad5efee43b35d5046b5867ced838be9eb}{CDMKey::esc}}))
+        \{
+            \mbox{\hyperlink{_c_d_m_8h_a586935214c68238f2a2ab8ce16ece2bc}{CDMFreeSurface}}(&square);
+            \textcolor{keywordflow}{break};
+        \}
+        square->\mbox{\hyperlink{struct_c_d_m_surface_aa61e26c3b59930152cdaa0ce2dac8b14}{rect}}.Left += horSpeed;
+        square->\mbox{\hyperlink{struct_c_d_m_surface_aa61e26c3b59930152cdaa0ce2dac8b14}{rect}}.Top += verSpeed;
+        \mbox{\hyperlink{_c_d_m_8h_ab3eb99ad615e5be90432727e88bce28d}{CDMAddSurfaceToContext}}(&ctx, square);
+        \mbox{\hyperlink{_c_d_m_8h_ad2a46411fdfcc82be4c12ca0621f0de5}{CDMAddTextToContext}}(&ctx, txt);
+        \mbox{\hyperlink{_c_d_m_8h_ad2a46411fdfcc82be4c12ca0621f0de5}{CDMAddTextToContext}}(&ctx, scrSize);
+        \mbox{\hyperlink{_c_d_m_8h_a8faa73f836c78a2373b6beb5cb305aec}{CDMDraw}}(&ctx);
+        Sleep(16);
+    \}
+    \textcolor{keywordflow}{return} 0;
+\}
+\end{DoxyCodeInclude}
+ 

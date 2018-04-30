@@ -101,7 +101,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:a076bdfe8bf7edc2a9020908c23e51933"><td class="mdescLeft">&#160;</td><td class="mdescRight">The setup function of CDM. Must be called before anything else. CDM requires a context to work, most of the functions here require a context to be used. Status: Working.  <a href="#a076bdfe8bf7edc2a9020908c23e51933">More...</a><br /></td></tr>
 <tr class="separator:a076bdfe8bf7edc2a9020908c23e51933"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb612172ecba4e2a448101b9b6bd4fb7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8c.html#acb612172ecba4e2a448101b9b6bd4fb7">CDMChangeWindowSize</a> (<a class="el" href="_c_d_m_8h.html#a760bf06d6fb7dd0f780ecfc311d9413d">_INOUT_</a> <a class="el" href="struct_c_d_m_context.html">CDMContext</a> **ctx, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> short width, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> short height)</td></tr>
-<tr class="memdesc:acb612172ecba4e2a448101b9b6bd4fb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the window size of a context. May be called at any time, however it will clear the screen once its done. Status: Might not be working completely.  <a href="#acb612172ecba4e2a448101b9b6bd4fb7">More...</a><br /></td></tr>
+<tr class="memdesc:acb612172ecba4e2a448101b9b6bd4fb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the window size of a context. May be called at any time, however it will clear the screen once its done. Status: Working.  <a href="#acb612172ecba4e2a448101b9b6bd4fb7">More...</a><br /></td></tr>
 <tr class="separator:acb612172ecba4e2a448101b9b6bd4fb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd1fd0d3d904625aadb99459dbee4521"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8c.html#abd1fd0d3d904625aadb99459dbee4521">CDMToggleFullscreen</a> (<a class="el" href="struct_c_d_m_context.html">CDMContext</a> **<a class="el" href="_c_d_m_8h.html#a760bf06d6fb7dd0f780ecfc311d9413d">_INOUT_</a> ctx, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#af5296d3141c193195e69417d1825228b">CDMBool</a> val)</td></tr>
 <tr class="memdesc:abd1fd0d3d904625aadb99459dbee4521"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggles fullscreen mode. Status: May be working on older platforms.  <a href="#abd1fd0d3d904625aadb99459dbee4521">More...</a><br /></td></tr>
@@ -126,8 +126,9 @@ Functions</h2></td></tr>
 <tr class="memitem:af70520a48b7acb9353d5a4ee1cbc57ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8c.html#af70520a48b7acb9353d5a4ee1cbc57ba">CDMExportSrfcToImg</a> (const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="struct_c_d_m_context.html">CDMContext</a> *ctx, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="struct_c_d_m_surface.html">CDMSurface</a> *srfc, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> char *fileName, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> size_t nameSize)</td></tr>
 <tr class="memdesc:af70520a48b7acb9353d5a4ee1cbc57ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cdm export srfc to image Status: Working.  <a href="#af70520a48b7acb9353d5a4ee1cbc57ba">More...</a><br /></td></tr>
 <tr class="separator:af70520a48b7acb9353d5a4ee1cbc57ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e764b208e098d5c98868de299935b37"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_c_d_m_text.html">CDMText</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8c.html#a0e764b208e098d5c98868de299935b37">CDMTextWrapper</a> (<a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> char *text, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#acfe075b8847d66a3a1dfb6fb8051187e">CDMLetterColor</a> color, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#ab0f45b504a1102ad4b6658c1fde15d34">CDMBackgroundColor</a> background)</td></tr>
-<tr class="separator:a0e764b208e098d5c98868de299935b37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee3fc633d44b7ea1a7d71f333bfaa8ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_c_d_m_text.html">CDMText</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8c.html#aee3fc633d44b7ea1a7d71f333bfaa8ca">CDMTextWrapper</a> (<a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> char *text, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#acfe075b8847d66a3a1dfb6fb8051187e">CDMLetterColor</a> color, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#ab0f45b504a1102ad4b6658c1fde15d34">CDMBackgroundColor</a> background)</td></tr>
+<tr class="memdesc:aee3fc633d44b7ea1a7d71f333bfaa8ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Since CDM basically hijacks the console, functions like printf are not enabled. No output will be shown using them, instead you must use the text as an object, this means you have much more control of the position and design of your text, at the expense of making a little bit harder to use. Moreover, repeated uses of the same text box will not require you to create a new object or call anything else other than adding this object to the context, or drawing it directly. All text begins in the ( 0 , 0 ) coordinate. Status: Working.  <a href="#aee3fc633d44b7ea1a7d71f333bfaa8ca">More...</a><br /></td></tr>
+<tr class="separator:aee3fc633d44b7ea1a7d71f333bfaa8ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f0ec8bab2c1809e510e8c19c3a0d032"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8c.html#a1f0ec8bab2c1809e510e8c19c3a0d032">CDMFreeSurface</a> (<a class="el" href="_c_d_m_8h.html#a760bf06d6fb7dd0f780ecfc311d9413d">_INOUT_</a> <a class="el" href="struct_c_d_m_surface.html">CDMSurface</a> **srfc)</td></tr>
 <tr class="memdesc:a1f0ec8bab2c1809e510e8c19c3a0d032"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple dynamic memory allocation free method. Status: Working.  <a href="#a1f0ec8bab2c1809e510e8c19c3a0d032">More...</a><br /></td></tr>
 <tr class="separator:a1f0ec8bab2c1809e510e8c19c3a0d032"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,16 +144,20 @@ Functions</h2></td></tr>
 <tr class="memitem:af0c3f5a5f2fb71971fd1a73237d98d2b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8c.html#af0c3f5a5f2fb71971fd1a73237d98d2b">CDMPrepareText</a> (<a class="el" href="_c_d_m_8h.html#a760bf06d6fb7dd0f780ecfc311d9413d">_INOUT_</a> <a class="el" href="struct_c_d_m_text.html">CDMText</a> **txt)</td></tr>
 <tr class="memdesc:af0c3f5a5f2fb71971fd1a73237d98d2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This should only be called each time the text's contents were modified before calling a draw or add function. Internally this function converts the text's values to raw data that the console understands. Status: Working.  <a href="#af0c3f5a5f2fb71971fd1a73237d98d2b">More...</a><br /></td></tr>
 <tr class="separator:af0c3f5a5f2fb71971fd1a73237d98d2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adcb3f7b7ab1f6e9b7c3569731358385f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_c_d_m_text.html">CDMText</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8c.html#adcb3f7b7ab1f6e9b7c3569731358385f">CDMTextWrapper_s</a> (<a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> char *text, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> size_t textSize, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#acfe075b8847d66a3a1dfb6fb8051187e">CDMLetterColor</a> color, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#ab0f45b504a1102ad4b6658c1fde15d34">CDMBackgroundColor</a> background)</td></tr>
-<tr class="separator:adcb3f7b7ab1f6e9b7c3569731358385f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18799208728fdc046bbac97445bf3e60"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_c_d_m_text.html">CDMText</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8c.html#a18799208728fdc046bbac97445bf3e60">CDMTextWrapper_s</a> (<a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> char *text, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> size_t textSize, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#acfe075b8847d66a3a1dfb6fb8051187e">CDMLetterColor</a> color, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#ab0f45b504a1102ad4b6658c1fde15d34">CDMBackgroundColor</a> background)</td></tr>
+<tr class="memdesc:a18799208728fdc046bbac97445bf3e60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Since CDM basically highjacks the console, functions like printf are disabled. No output will be shown using them, instead you must use the text as an object, this means you have much more control of the position and design of your text, at the expense of making a little bit harder to use. Moreover, repeated uses of the same text box will not require you to create a new object or call anything else other than adding this object to the context, or drawing it directly. All text begins in the ( 0 , 0 ) coordinate. Status: Working.  <a href="#a18799208728fdc046bbac97445bf3e60">More...</a><br /></td></tr>
+<tr class="separator:a18799208728fdc046bbac97445bf3e60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99dcfb7877ce7fd1c99fff59ac9aa081"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8c.html#a99dcfb7877ce7fd1c99fff59ac9aa081">CDMChangeText</a> (<a class="el" href="struct_c_d_m_text.html">CDMText</a> **txt, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> char *text)</td></tr>
 <tr class="memdesc:a99dcfb7877ce7fd1c99fff59ac9aa081"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the text content of a <a class="el" href="struct_c_d_m_text.html" title="A representation of a text object able to be interpreted by CDM. ">CDMText</a>. Status: Working.  <a href="#a99dcfb7877ce7fd1c99fff59ac9aa081">More...</a><br /></td></tr>
 <tr class="separator:a99dcfb7877ce7fd1c99fff59ac9aa081"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad055414dd654ac3b094e755e6abb5f51"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8c.html#ad055414dd654ac3b094e755e6abb5f51">CDMSetForegroundColor</a> (<a class="el" href="_c_d_m_8h.html#a760bf06d6fb7dd0f780ecfc311d9413d">_INOUT_</a> <a class="el" href="struct_c_d_m_surface.html">CDMSurface</a> **surface, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#acfe075b8847d66a3a1dfb6fb8051187e">CDMLetterColor</a> c1, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#acfe075b8847d66a3a1dfb6fb8051187e">CDMLetterColor</a> c2, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#acfe075b8847d66a3a1dfb6fb8051187e">CDMLetterColor</a> c3, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#acfe075b8847d66a3a1dfb6fb8051187e">CDMLetterColor</a> c4)</td></tr>
+<tr class="memdesc:ad055414dd654ac3b094e755e6abb5f51"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <a class="el" href="struct_c_d_m_surface.html" title="A representation of an image that is able to be interpreted by CDM. ">CDMSurface</a> may only have 4 color sets at a time. Including background, foreground and character. Each combination of 3 of those elements makes a set. This function sets directly the four foreground colors that the Surface will use from the color palette. Status: Working.  <a href="#ad055414dd654ac3b094e755e6abb5f51">More...</a><br /></td></tr>
 <tr class="separator:ad055414dd654ac3b094e755e6abb5f51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4108b50589991c1f902ea42ac9172d2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8c.html#ab4108b50589991c1f902ea42ac9172d2">CDMSetBackgroundColor</a> (<a class="el" href="_c_d_m_8h.html#a760bf06d6fb7dd0f780ecfc311d9413d">_INOUT_</a> <a class="el" href="struct_c_d_m_surface.html">CDMSurface</a> **surface, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#ab0f45b504a1102ad4b6658c1fde15d34">CDMBackgroundColor</a> c1, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#ab0f45b504a1102ad4b6658c1fde15d34">CDMBackgroundColor</a> c2, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#ab0f45b504a1102ad4b6658c1fde15d34">CDMBackgroundColor</a> c3, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#ab0f45b504a1102ad4b6658c1fde15d34">CDMBackgroundColor</a> c4)</td></tr>
+<tr class="memdesc:ab4108b50589991c1f902ea42ac9172d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <a class="el" href="struct_c_d_m_surface.html" title="A representation of an image that is able to be interpreted by CDM. ">CDMSurface</a> may only have 4 color sets at a time. Including background, foreground and character. Each combination of 3 of those elements makes a set. This function sets directly the four background colors that the Surface will use from the color palette. Status: Working.  <a href="#ab4108b50589991c1f902ea42ac9172d2">More...</a><br /></td></tr>
 <tr class="separator:ab4108b50589991c1f902ea42ac9172d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27478a0b0e3e2bdafa624dfe5e3ce5c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8c.html#a27478a0b0e3e2bdafa624dfe5e3ce5c4">CDMSetCharacters</a> (<a class="el" href="_c_d_m_8h.html#a760bf06d6fb7dd0f780ecfc311d9413d">_INOUT_</a> <a class="el" href="struct_c_d_m_surface.html">CDMSurface</a> **surface, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> unsigned char c1, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> unsigned char c2, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> unsigned char c3, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> unsigned char c4)</td></tr>
+<tr class="memdesc:a27478a0b0e3e2bdafa624dfe5e3ce5c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <a class="el" href="struct_c_d_m_surface.html" title="A representation of an image that is able to be interpreted by CDM. ">CDMSurface</a> may only have 4 color sets at a time. Including background, foreground and character. Each combination of 3 of those elements makes a set. This function sets directly the four characters that the Surface will use. Status: Working.  <a href="#a27478a0b0e3e2bdafa624dfe5e3ce5c4">More...</a><br /></td></tr>
 <tr class="separator:a27478a0b0e3e2bdafa624dfe5e3ce5c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32d48dfc5b6436fbd73a92b0a090942e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8c.html#a32d48dfc5b6436fbd73a92b0a090942e">CDMDrawSurface</a> (<a class="el" href="_c_d_m_8h.html#a760bf06d6fb7dd0f780ecfc311d9413d">_INOUT_</a> <a class="el" href="struct_c_d_m_context.html">CDMContext</a> **ctx, <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="struct_c_d_m_surface.html">CDMSurface</a> *surface)</td></tr>
 <tr class="memdesc:a32d48dfc5b6436fbd73a92b0a090942e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws directly a surface in the context, instead of batching it with other draws. I highly recommend using the batch function (Add, then CDMDraw) over this one, to make the program run faster. Status: Partiallly works.  <a href="#a32d48dfc5b6436fbd73a92b0a090942e">More...</a><br /></td></tr>
@@ -176,10 +181,13 @@ Functions</h2></td></tr>
 <tr class="memdesc:a0f6f5f1cbbac5ec47a149451ee80673a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears the current buffer of undrawn data. It does not make the whole screen black. For that you may use CDMFillScreen.This function is implemented like this to reduce overhead on the program by reducing assignations and comparissons. Status: Working.  <a href="#a0f6f5f1cbbac5ec47a149451ee80673a">More...</a><br /></td></tr>
 <tr class="separator:a0f6f5f1cbbac5ec47a149451ee80673a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a256d498746114e59d7476259d71def38"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8c.html#a256d498746114e59d7476259d71def38">CDMFillScreen</a> (<a class="el" href="_c_d_m_8h.html#a760bf06d6fb7dd0f780ecfc311d9413d">_INOUT_</a> <a class="el" href="struct_c_d_m_context.html">CDMContext</a> **ctx, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> char character, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#acfe075b8847d66a3a1dfb6fb8051187e">CDMLetterColor</a> frontColor, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#ab0f45b504a1102ad4b6658c1fde15d34">CDMBackgroundColor</a> backColor)</td></tr>
+<tr class="memdesc:a256d498746114e59d7476259d71def38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fills the context with a single color. Ignores drawn flags completely. Status: Working.  <a href="#a256d498746114e59d7476259d71def38">More...</a><br /></td></tr>
 <tr class="separator:a256d498746114e59d7476259d71def38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17baf20b93ff56b05a5f296bc626ab60"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8c.html#a17baf20b93ff56b05a5f296bc626ab60">CDMPoke</a> (<a class="el" href="_c_d_m_8h.html#a760bf06d6fb7dd0f780ecfc311d9413d">_INOUT_</a> <a class="el" href="struct_c_d_m_context.html">CDMContext</a> **ctx, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#afe21360e836aeb663c2ad9ee6bc4c321">CDMCoord</a> coord, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> char character, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#acfe075b8847d66a3a1dfb6fb8051187e">CDMLetterColor</a> frontColor, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#ab0f45b504a1102ad4b6658c1fde15d34">CDMBackgroundColor</a> backColor)</td></tr>
+<tr class="memdesc:a17baf20b93ff56b05a5f296bc626ab60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pokes a pixel in the screen to a certain color. Ignores drawn flags. Status: Working.  <a href="#a17baf20b93ff56b05a5f296bc626ab60">More...</a><br /></td></tr>
 <tr class="separator:a17baf20b93ff56b05a5f296bc626ab60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8faa73f836c78a2373b6beb5cb305aec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8c.html#a8faa73f836c78a2373b6beb5cb305aec">CDMDraw</a> (<a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="struct_c_d_m_context.html">CDMContext</a> **ctx)</td></tr>
+<tr class="memdesc:a8faa73f836c78a2373b6beb5cb305aec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the whole screen. Does a batch draw if things have been added to the context. Status: Working.  <a href="#a8faa73f836c78a2373b6beb5cb305aec">More...</a><br /></td></tr>
 <tr class="separator:a8faa73f836c78a2373b6beb5cb305aec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a928833d55462e06b40d4073a06b05cf1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8c.html#a928833d55462e06b40d4073a06b05cf1">CDMGetR</a> (<a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="struct_c_d_m_color_scheme.html">CDMColorScheme</a> *data, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> short position)</td></tr>
 <tr class="memdesc:a928833d55462e06b40d4073a06b05cf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the red color of a certain color inside a ColorScheme. Status: Working.  <a href="#a928833d55462e06b40d4073a06b05cf1">More...</a><br /></td></tr>
@@ -194,6 +202,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:afcd4db7797d09c07900141cb214dad06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a color scheme inside a context, and thus changing every display color of it. This instruction does not require you to draw again for results to be shown, as such its extremely fast. Status: Working.  <a href="#afcd4db7797d09c07900141cb214dad06">More...</a><br /></td></tr>
 <tr class="separator:afcd4db7797d09c07900141cb214dad06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef7e8ddea4a5f872578f3ba654ccef7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8c.html#aef7e8ddea4a5f872578f3ba654ccef7a">CDMSetPixel</a> (<a class="el" href="_c_d_m_8h.html#a760bf06d6fb7dd0f780ecfc311d9413d">_INOUT_</a> <a class="el" href="struct_c_d_m_surface.html">CDMSurface</a> **surface, <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> short x, <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> short y, <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#ab827c7b701be4e94f993cd7ccf21a456">CDMColorSets</a> pixelSet)</td></tr>
+<tr class="memdesc:aef7e8ddea4a5f872578f3ba654ccef7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a pixel inside a surface. You must select from one of the five possible colors inside the surface. Status: Working.  <a href="#aef7e8ddea4a5f872578f3ba654ccef7a">More...</a><br /></td></tr>
 <tr class="separator:aef7e8ddea4a5f872578f3ba654ccef7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b4771587a381b2437f94349ee006d10"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_c_d_m_8h.html#af5296d3141c193195e69417d1825228b">CDMBool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8c.html#a7b4771587a381b2437f94349ee006d10">CDMCompareCHARINFO</a> (<a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> CHAR_INFO rhs, <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> CHAR_INFO lhs)</td></tr>
 <tr class="memdesc:a7b4771587a381b2437f94349ee006d10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two CHAR_INFO structures, it's mainly used inside the API for certain operations. May not prove useful to the graphics programmer. Status: Working.  <a href="#a7b4771587a381b2437f94349ee006d10">More...</a><br /></td></tr>
@@ -202,10 +211,13 @@ Functions</h2></td></tr>
 <tr class="memdesc:a3adb4a4784345380749c67f901fcf468"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polls the console events, this function must be used in order to get key and mouse presses, as such it must be called at the beggining of every frame and before every function that requires a <a class="el" href="struct_c_d_m_event.html" title="A structure containing the events required to check input inside CDM. ">CDMEvent</a>. Status: Working.  <a href="#a3adb4a4784345380749c67f901fcf468">More...</a><br /></td></tr>
 <tr class="separator:a3adb4a4784345380749c67f901fcf468"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85071e5ca6d7bec95cb7f00708bc224d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_c_d_m_8h.html#af5296d3141c193195e69417d1825228b">CDMBool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8c.html#a85071e5ca6d7bec95cb7f00708bc224d">CDMGetKeyPressed</a> (<a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="struct_c_d_m_event.html">CDMEvent</a> *event, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#a8e7d3f25fc77053719b079b29784115f">CDMKey</a> key)</td></tr>
+<tr class="memdesc:a85071e5ca6d7bec95cb7f00708bc224d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the key selected in the parameter was pressed. This is the only function that checks for mouse input too. Status: Working.  <a href="#a85071e5ca6d7bec95cb7f00708bc224d">More...</a><br /></td></tr>
 <tr class="separator:a85071e5ca6d7bec95cb7f00708bc224d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff1ed6e5b8f731d7a2939059677311a3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_c_d_m_8h.html#af5296d3141c193195e69417d1825228b">CDMBool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8c.html#aff1ed6e5b8f731d7a2939059677311a3">CDMGetKeyDown</a> (<a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="struct_c_d_m_event.html">CDMEvent</a> *event, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#a8e7d3f25fc77053719b079b29784115f">CDMKey</a> key)</td></tr>
+<tr class="memdesc:aff1ed6e5b8f731d7a2939059677311a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the key selected in the parameter was pressed this frame. Status: Working.  <a href="#aff1ed6e5b8f731d7a2939059677311a3">More...</a><br /></td></tr>
 <tr class="separator:aff1ed6e5b8f731d7a2939059677311a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21c93d3cbf79f86c61cce45f7667957b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_c_d_m_8h.html#af5296d3141c193195e69417d1825228b">CDMBool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8c.html#a21c93d3cbf79f86c61cce45f7667957b">CDMGetKeyUp</a> (<a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="struct_c_d_m_event.html">CDMEvent</a> *event, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#a8e7d3f25fc77053719b079b29784115f">CDMKey</a> key)</td></tr>
+<tr class="memdesc:a21c93d3cbf79f86c61cce45f7667957b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the key selected in the parameter stopped being pressed this frame. Status: Working.  <a href="#a21c93d3cbf79f86c61cce45f7667957b">More...</a><br /></td></tr>
 <tr class="separator:a21c93d3cbf79f86c61cce45f7667957b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade94b879ff0ce1b7fb675af7bb0a399f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_c_d_m_8h.html#afe21360e836aeb663c2ad9ee6bc4c321">CDMCoord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8c.html#ade94b879ff0ce1b7fb675af7bb0a399f">CDMGetMousePos</a> (<a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="struct_c_d_m_event.html">CDMEvent</a> *event)</td></tr>
 <tr class="memdesc:ade94b879ff0ce1b7fb675af7bb0a399f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the mouse position inside the console window. Status: Working.  <a href="#ade94b879ff0ce1b7fb675af7bb0a399f">More...</a><br /></td></tr>
@@ -213,6 +225,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a50545ff4656c0ac84151fef6fbd1d53d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8c.html#a50545ff4656c0ac84151fef6fbd1d53d">CDMKeepScreenSize</a> (<a class="el" href="_c_d_m_8h.html#a760bf06d6fb7dd0f780ecfc311d9413d">_INOUT_</a> <a class="el" href="struct_c_d_m_context.html">CDMContext</a> **ctx, <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="struct_c_d_m_event.html">CDMEvent</a> *event)</td></tr>
 <tr class="memdesc:a50545ff4656c0ac84151fef6fbd1d53d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Keeps the screen size of the program. Might be useful if you want to limit screen resizing. Status: Working.  <a href="#a50545ff4656c0ac84151fef6fbd1d53d">More...</a><br /></td></tr>
 <tr class="separator:a50545ff4656c0ac84151fef6fbd1d53d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a185c0e3849d521665aa25dc9e086fd4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8c.html#a185c0e3849d521665aa25dc9e086fd4c">CDMPrintf</a> (<a class="el" href="_c_d_m_8h.html#a760bf06d6fb7dd0f780ecfc311d9413d">_INOUT_</a> <a class="el" href="struct_c_d_m_context.html">CDMContext</a> **ctx, <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#afe21360e836aeb663c2ad9ee6bc4c321">CDMCoord</a> initialPos, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#acfe075b8847d66a3a1dfb6fb8051187e">CDMLetterColor</a> frontColor, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#ab0f45b504a1102ad4b6658c1fde15d34">CDMBackgroundColor</a> backColor, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> char *txt,...)</td></tr>
+<tr class="memdesc:a185c0e3849d521665aa25dc9e086fd4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">A printf implementation for CDM, made it as a replacement or alternative to the text object. It should be easier to manage, but a more expensive call, so use this for dynamic text only, and use Text objects for static text.  <a href="#a185c0e3849d521665aa25dc9e086fd4c">More...</a><br /></td></tr>
+<tr class="separator:a185c0e3849d521665aa25dc9e086fd4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a7d1c2c82df2eafd6f8cbad77623c4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8c.html#a8a7d1c2c82df2eafd6f8cbad77623c4a">CDMSetErrno</a> (const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#ae3f76c4d3a0275b2cfef89ea08d50bd6">CDMErrno</a> code)</td></tr>
 <tr class="memdesc:a8a7d1c2c82df2eafd6f8cbad77623c4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets an specific errno to a value. Status: Working.  <a href="#a8a7d1c2c82df2eafd6f8cbad77623c4a">More...</a><br /></td></tr>
 <tr class="separator:a8a7d1c2c82df2eafd6f8cbad77623c4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -249,6 +264,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Activates mouse input recognition for the console. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>The context, must not be null. </td></tr>
@@ -285,6 +302,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Adds a surface to the context, and thus batching its draw with every other added object, the batch will be completely flushed once CDMDraw is called. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>The context in which the surface will be painted, must not be null. </td></tr>
@@ -292,7 +311,8 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="main_8cpp-example.html#a48">main.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ad2a46411fdfcc82be4c12ca0621f0de5"></a>
@@ -322,6 +342,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Adds a text to the context, and thus batching its draw with every other added object, the batch will be completely flushed once CDMDraw is called. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>The context in which the text will be painted, must not be null. </td></tr>
@@ -329,7 +351,8 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="main_8cpp-example.html#a49">main.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="a99dcfb7877ce7fd1c99fff59ac9aa081"></a>
@@ -359,6 +382,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Changes the text content of a <a class="el" href="struct_c_d_m_text.html" title="A representation of a text object able to be interpreted by CDM. ">CDMText</a>. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">txt</td><td>The text object, must not be null. </td></tr>
@@ -401,7 +426,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Changes the window size of a context. May be called at any time, however it will clear the screen once its done. Status: Might not be working completely. </p>
+<p>Changes the window size of a context. May be called at any time, however it will clear the screen once its done. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>The context, must not be null. </td></tr>
@@ -410,7 +437,8 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="main_8cpp-example.html#a5">main.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="aed8749a92f10c2f81a93e4ab2514faea"></a>
@@ -429,7 +457,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Sets errno back to 0. </p>
-<p>Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018 </dd></dl>
 
 </div>
 </div>
@@ -450,13 +479,16 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Clears the current buffer of undrawn data. It does not make the whole screen black. For that you may use CDMFillScreen.This function is implemented like this to reduce overhead on the program by reducing assignations and comparissons. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>The context, must not be null. </td></tr>
   </table>
   </dd>
 </dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="main_8cpp-example.html#a39">main.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="a7b4771587a381b2437f94349ee006d10"></a>
@@ -486,6 +518,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Compares two CHAR_INFO structures, it's mainly used inside the API for certain operations. May not prove useful to the graphics programmer. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">rhs</td><td>The right hand side. </td></tr>
@@ -525,6 +559,8 @@ Variables</h2></td></tr>
 
 <p>The setup function of CDM. Must be called before anything else. CDM requires a context to work, most of the functions here require a context to be used. Status: Working. </p>
 <dl class="section warning"><dt>Warning</dt><dd>This might not be thread safe.</dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">width</td><td>The expected width in CDM pixels. </td></tr>
@@ -533,7 +569,8 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Null if it fails, else a pointer to a <a class="el" href="struct_c_d_m_context.html" title="A context in which CDM will run. ">CDMContext</a>. </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="main_8cpp-example.html#a1">main.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="a77895c7197a08de8aae1c075da0d5320"></a>
@@ -575,6 +612,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Creates a surface. A surface is the base representation of an image in CDM Most every object used in CDM will most likely be a surface. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">posX</td><td>The position x coordinate of the surface, using screen coordinates. </td></tr>
@@ -585,7 +624,8 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Null if it fails, else a pointer to a <a class="el" href="struct_c_d_m_surface.html" title="A representation of an image that is able to be interpreted by CDM. ">CDMSurface</a>. </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="main_8cpp-example.html#a11">main.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="a8faa73f836c78a2373b6beb5cb305aec"></a>
@@ -604,6 +644,17 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Draws the whole screen. Does a batch draw if things have been added to the context. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ctx</td><td>context, must not be null. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="main_8cpp-example.html#a50">main.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="a32d48dfc5b6436fbd73a92b0a090942e"></a>
@@ -633,6 +684,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Draws directly a surface in the context, instead of batching it with other draws. I highly recommend using the batch function (Add, then CDMDraw) over this one, to make the program run faster. Status: Partiallly works. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>The context in which the surface will be painted, must not be null. </td></tr>
@@ -670,6 +723,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Draws directly a text in the context, instead of batching it with other draws. I highly recommend using the batch function (Add, then CDMDraw) over this one, to make the program run faster. Status: Partially Works. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>The context in which the text will be painted, must not be null. </td></tr>
@@ -719,6 +774,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Cdm export srfc to image Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">ctx</td><td>The current context, must not be null. </td></tr>
@@ -769,6 +826,19 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Fills the context with a single color. Ignores drawn flags completely. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>The context, must not be null. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">character</td><td>The character to be printed. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">frontColor</td><td>The front color. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">backColor</td><td>The background color. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a644584222fbfcbd10d493a2e3e073264"></a>
@@ -788,6 +858,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Simple dynamic memory allocation free method. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>The context, must not be null. Upon finishing, this function makes this parameter's value null. </td></tr>
@@ -814,13 +886,16 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Simple dynamic memory allocation free method. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">surface</td><td>The surface, must not be null. Upon finishing this function makes this parameter's value null. </td></tr>
   </table>
   </dd>
 </dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="main_8cpp-example.html#a47">main.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="a52d6faf2193e9f2ff7cbdd279bea6172"></a>
@@ -840,6 +915,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Simple dynamic memory allocation free method. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">txt</td><td>The text, must not be null. Upon finishing, this function makes this parameter's value null. </td></tr>
@@ -876,6 +953,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Gets the blue color of a certain color inside a ColorScheme. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>The color scheme to check from. </td></tr>
@@ -903,6 +982,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Gets the value of errno and sets it to zero. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>The value of errno. </dd></dl>
 
 </div>
@@ -923,6 +1004,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Translates an error code to an error message, for a brief description. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>Will always return a string of characters. </dd></dl>
 
 </div>
@@ -954,6 +1037,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Gets the green color of a certain color inside a ColorScheme. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>The color scheme to check from. </td></tr>
@@ -991,6 +1076,18 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Checks if the key selected in the parameter was pressed this frame. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">event</td><td>An event structure, must not be null. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>The key to be checked.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns CDMTRUE if the key is pressed, but only if it was pressed in this frame, CDMFALSE if the key is not pressed. </dd></dl>
+
 </div>
 </div>
 <a id="a85071e5ca6d7bec95cb7f00708bc224d"></a>
@@ -1018,6 +1115,18 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Checks if the key selected in the parameter was pressed. This is the only function that checks for mouse input too. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">event</td><td>An event structure, must not be null. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>The key to be checked.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns CDMTRUE if the key is pressed, regardless of how many frames it has been pressed, CDMFALSE if the key is not pressed. </dd></dl>
 
 </div>
 </div>
@@ -1047,6 +1156,19 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Checks if the key selected in the parameter stopped being pressed this frame. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">event</td><td>An event structure, must not be null. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>The key to be checked.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns CDMTRUE if the key is not pressed, but only if it was pressed in the last frame, CDMFALSE if the key is pressed. </dd></dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="main_8cpp-example.html#a41">main.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ade94b879ff0ce1b7fb675af7bb0a399f"></a>
@@ -1066,6 +1188,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Gets the mouse position inside the console window. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">event</td><td>An event structure, must not be null.</td></tr>
@@ -1103,6 +1227,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Gets the red color of a certain color inside a ColorScheme. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>The color scheme to check from. </td></tr>
@@ -1141,6 +1267,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Keeps the screen size of the program. Might be useful if you want to limit screen resizing. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>The context, must not be null. </td></tr>
@@ -1148,7 +1276,8 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="main_8cpp-example.html#a38">main.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="a17baf20b93ff56b05a5f296bc626ab60"></a>
@@ -1195,6 +1324,20 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Pokes a pixel in the screen to a certain color. Ignores drawn flags. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>The context, must not be null. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">coord</td><td>The coordinate of the pixel. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">character</td><td>The character to be printed. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">frontColor</td><td>The front color. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">backColor</td><td>The background color. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a3adb4a4784345380749c67f901fcf468"></a>
@@ -1224,6 +1367,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Polls the console events, this function must be used in order to get key and mouse presses, as such it must be called at the beggining of every frame and before every function that requires a <a class="el" href="struct_c_d_m_event.html" title="A structure containing the events required to check input inside CDM. ">CDMEvent</a>. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>The context, must not be null. </td></tr>
@@ -1231,7 +1376,8 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="main_8cpp-example.html#a36">main.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="acff96a2cc91d34c03292d42cba430e6f"></a>
@@ -1251,13 +1397,16 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>This should only be called each time the surface's contents were modified before calling a draw or add function. Internally this function converts the image's values to raw data that the console understands. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">surface</td><td>The surface, must not be null. </td></tr>
   </table>
   </dd>
 </dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="main_8cpp-example.html#a28">main.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="af0c3f5a5f2fb71971fd1a73237d98d2b"></a>
@@ -1277,9 +1426,79 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>This should only be called each time the text's contents were modified before calling a draw or add function. Internally this function converts the text's values to raw data that the console understands. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">txt</td><td>The text, must not be null. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="main_8cpp-example.html#a34">main.cpp</a>.</dd>
+</dl>
+</div>
+</div>
+<a id="a185c0e3849d521665aa25dc9e086fd4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a185c0e3849d521665aa25dc9e086fd4c">&#9670;&nbsp;</a></span>CDMPrintf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CDMPrintf </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_c_d_m_8h.html#a760bf06d6fb7dd0f780ecfc311d9413d">_INOUT_</a> <a class="el" href="struct_c_d_m_context.html">CDMContext</a> **&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#afe21360e836aeb663c2ad9ee6bc4c321">CDMCoord</a>&#160;</td>
+          <td class="paramname"><em>initialPos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#acfe075b8847d66a3a1dfb6fb8051187e">CDMLetterColor</a>&#160;</td>
+          <td class="paramname"><em>frontColor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#ab0f45b504a1102ad4b6658c1fde15d34">CDMBackgroundColor</a>&#160;</td>
+          <td class="paramname"><em>backColor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> char *&#160;</td>
+          <td class="paramname"><em>txt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A printf implementation for CDM, made it as a replacement or alternative to the text object. It should be easier to manage, but a more expensive call, so use this for dynamic text only, and use Text objects for static text. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>The context, must not be null. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">initialPos</td><td>The initial position of the text, it wraps as if the x position of the text was the left side of the screen. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">frontColor</td><td>The front color of the text. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">backColor</td><td>The back color of the text. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">txt</td><td>The text, modes "%d,%i,%u,%f,%g,%x,%o,%c,%s" are working, the new line character is \n. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">...</td><td>Variable arguments providing additional information. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1313,10 +1532,12 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reads a .cdi image file into a <a class="el" href="struct_c_d_m_surface.html" title="A representation of an image that is able to be interpreted by CDM. ">CDMSurface</a>. The file must be generated exactly the same as CDMExportSrfcToImg, for it to work using this function. The usage of the structure may be imperative. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">fileName</td><td>Filename of the file. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">[in,out,opt]</td><td>scheme [in,out,opt] If non-null, the scheme that will obtain the real scheme used in the image.</td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">[in,out,opt]</td><td>scheme If non-null, the scheme that will obtain the real scheme used in the image.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1351,6 +1572,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Sets a color scheme inside a context, and thus changing every display color of it. This instruction does not require you to draw again for results to be shown, as such its extremely fast. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>The color scheme to be set. </td></tr>
@@ -1358,7 +1581,8 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="main_8cpp-example.html#a43">main.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ab4108b50589991c1f902ea42ac9172d2"></a>
@@ -1405,6 +1629,21 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>A <a class="el" href="struct_c_d_m_surface.html" title="A representation of an image that is able to be interpreted by CDM. ">CDMSurface</a> may only have 4 color sets at a time. Including background, foreground and character. Each combination of 3 of those elements makes a set. This function sets directly the four background colors that the Surface will use from the color palette. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">surface</td><td>The surface, must not be null. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">c1</td><td>The first CDMEnum using color macros. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">c2</td><td>The second CDMEnum using color macros. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">c3</td><td>The third CDMEnum using color macros. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">c4</td><td>The fourth CDMEnum using color macros. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="main_8cpp-example.html#a18">main.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="a27478a0b0e3e2bdafa624dfe5e3ce5c4"></a>
@@ -1451,6 +1690,21 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>A <a class="el" href="struct_c_d_m_surface.html" title="A representation of an image that is able to be interpreted by CDM. ">CDMSurface</a> may only have 4 color sets at a time. Including background, foreground and character. Each combination of 3 of those elements makes a set. This function sets directly the four characters that the Surface will use. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">surface</td><td>The surface, must not be null. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">c1</td><td>The first character to be used. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">c2</td><td>The second character to be used. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">c3</td><td>The third character to be used. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">c4</td><td>The fourth character to be used. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="main_8cpp-example.html#a12">main.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="a052763fb64e4e6048b1baddbcbbc9a29"></a>
@@ -1486,6 +1740,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Sets an RGB color inside a ColorScheme. This function accepts an already converted to binary RGB color. You may use Windows.h macro RGB(r,g,b) to get the data. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">data</td><td>The color scheme, must not be null. </td></tr>
@@ -1494,7 +1750,8 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="main_8cpp-example.html#a9">main.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ab27315a1995b90f71c05dabcfd04394b"></a>
@@ -1542,6 +1799,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Sets an RGB color inside a ColorScheme. Every color goes from 0 to 255, however every value passes through a modulo operation to assure no weird behaviour will happen. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">data</td><td>The color scheme, must not be null. </td></tr>
@@ -1552,7 +1811,8 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="main_8cpp-example.html#a45">main.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="a1989ebc729b746dd247279c15f23c08b"></a>
@@ -1582,14 +1842,17 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Sets the visibility of the console's cursor. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>If non-null, the context. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">status</td><td>Boolean value to set the status of the cursor. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">status</td><td>Boolean value to set the status of the cursor. </td></tr>
   </table>
   </dd>
 </dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="main_8cpp-example.html#a6">main.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="a8a7d1c2c82df2eafd6f8cbad77623c4a"></a>
@@ -1609,6 +1872,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Sets an specific errno to a value. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">code</td><td>The code to be set. </td></tr>
@@ -1657,6 +1922,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Sets the font and font size of the console. The recommended font name is L"Terminal" for its unique characteristic of allowing square pixels, however most fonts can be used. It's important to include L at the start of your string, since this function requires a wchar_t* instead of a regular char. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>The context, must not be null. </td></tr>
@@ -1666,7 +1933,8 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="main_8cpp-example.html#a4">main.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ad055414dd654ac3b094e755e6abb5f51"></a>
@@ -1713,6 +1981,21 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>A <a class="el" href="struct_c_d_m_surface.html" title="A representation of an image that is able to be interpreted by CDM. ">CDMSurface</a> may only have 4 color sets at a time. Including background, foreground and character. Each combination of 3 of those elements makes a set. This function sets directly the four foreground colors that the Surface will use from the color palette. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">surface</td><td>The surface, must not be null. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">c1</td><td>The first CDMEnum using color macros. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">c2</td><td>The second CDMEnum using color macros. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">c3</td><td>The third CDMEnum using color macros. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">c4</td><td>The fourth CDMEnum using color macros. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="main_8cpp-example.html#a13">main.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="aef7e8ddea4a5f872578f3ba654ccef7a"></a>
@@ -1753,6 +2036,20 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Sets a pixel inside a surface. You must select from one of the five possible colors inside the surface. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">surface</td><td>The surface to be modified, must not be null. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The x coordinate of the pixel. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>The y coordinate of the pixel. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pixelSet</td><td>The enumeration value of the data. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="main_8cpp-example.html#a23">main.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ab18b56ed19f345efa1935338fed8c2d5"></a>
@@ -1770,17 +2067,18 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="main_8cpp-example.html#a2">main.cpp</a>.</dd>
+</dl>
 </div>
 </div>
-<a id="a0e764b208e098d5c98868de299935b37"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0e764b208e098d5c98868de299935b37">&#9670;&nbsp;</a></span>CDMTextWrapper()</h2>
+<a id="aee3fc633d44b7ea1a7d71f333bfaa8ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee3fc633d44b7ea1a7d71f333bfaa8ca">&#9670;&nbsp;</a></span>CDMTextWrapper()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_c_d_m_text.html">CDMText</a>* CDMTextWrapper </td>
+          <td class="memname"><a class="el" href="struct_c_d_m_text.html">CDMText</a> * CDMTextWrapper </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> char *&#160;</td>
           <td class="paramname"><em>text</em>, </td>
@@ -1805,16 +2103,30 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Since CDM basically hijacks the console, functions like printf are not enabled. No output will be shown using them, instead you must use the text as an object, this means you have much more control of the position and design of your text, at the expense of making a little bit harder to use. Moreover, repeated uses of the same text box will not require you to create a new object or call anything else other than adding this object to the context, or drawing it directly. All text begins in the ( 0 , 0 ) coordinate. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">text</td><td>The text string, must not be null, must be zero terminated. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">color</td><td>The color of the text. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">background</td><td>The background color of the text.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Null if it fails, else a pointer to a <a class="el" href="struct_c_d_m_text.html" title="A representation of a text object able to be interpreted by CDM. ">CDMText</a>. </dd></dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="main_8cpp-example.html#a30">main.cpp</a>.</dd>
+</dl>
 </div>
 </div>
-<a id="adcb3f7b7ab1f6e9b7c3569731358385f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adcb3f7b7ab1f6e9b7c3569731358385f">&#9670;&nbsp;</a></span>CDMTextWrapper_s()</h2>
+<a id="a18799208728fdc046bbac97445bf3e60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18799208728fdc046bbac97445bf3e60">&#9670;&nbsp;</a></span>CDMTextWrapper_s()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_c_d_m_text.html">CDMText</a>* CDMTextWrapper_s </td>
+          <td class="memname"><a class="el" href="struct_c_d_m_text.html">CDMText</a> * CDMTextWrapper_s </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> char *&#160;</td>
           <td class="paramname"><em>text</em>, </td>
@@ -1845,6 +2157,20 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Since CDM basically highjacks the console, functions like printf are disabled. No output will be shown using them, instead you must use the text as an object, this means you have much more control of the position and design of your text, at the expense of making a little bit harder to use. Moreover, repeated uses of the same text box will not require you to create a new object or call anything else other than adding this object to the context, or drawing it directly. All text begins in the ( 0 , 0 ) coordinate. Status: Working. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">text</td><td>The text string, must not be null. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">textSize</td><td>Size of the text. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">color</td><td>The color of the text. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">background</td><td>The background color of the text.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Null if it fails, else a pointer to a <a class="el" href="struct_c_d_m_text.html" title="A representation of a text object able to be interpreted by CDM. ">CDMText</a>. </dd></dl>
+
 </div>
 </div>
 <a id="abd1fd0d3d904625aadb99459dbee4521"></a>
@@ -1874,6 +2200,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Toggles fullscreen mode. Status: May be working on older platforms. </p>
+<dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>If non-null, the context. </td></tr>
@@ -1912,7 +2240,7 @@ Variables</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d522931ffa1371640980b621734a4381.html">Users</a></li><li class="navelem"><a class="el" href="dir_4a7d43d331f229116810e173cd06db51.html">komo97</a></li><li class="navelem"><a class="el" href="dir_23cd39db3c9315d3b0e146e222e91a32.html">Documents</a></li><li class="navelem"><a class="el" href="dir_936f848068e34b2b8d6591937aa38c08.html">GitHub</a></li><li class="navelem"><a class="el" href="dir_b07a208c55057c29bd049230c8ce4959.html">CDM</a></li><li class="navelem"><a class="el" href="dir_a4a50cdd100712f64450eae0c1ae7d80.html">CDM</a></li><li class="navelem"><a class="el" href="dir_3b605569ccc2130fa19cf2c18c526179.html">CDM</a></li><li class="navelem"><a class="el" href="_c_d_m_8c.html">CDM.c</a></li>
+    <li class="navelem"><a class="el" href="dir_e5fbe6d2783ccd4c93c7856d92d7be6e.html">GitHub</a></li><li class="navelem"><a class="el" href="dir_9ee194868a17050b9a511e393541fbb1.html">CDM</a></li><li class="navelem"><a class="el" href="dir_b5b5717cac746b5e5b35492b499a93b4.html">CDM</a></li><li class="navelem"><a class="el" href="dir_66f55bc8a49b87689e996180b1beb204.html">CDM</a></li><li class="navelem"><a class="el" href="_c_d_m_8c.html">CDM.c</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>

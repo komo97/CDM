@@ -32,6 +32,7 @@ var _c_d_m_8c =
     [ "CDMPollEvents", "_c_d_m_8c.html#a3adb4a4784345380749c67f901fcf468", null ],
     [ "CDMPrepareSurface", "_c_d_m_8c.html#acff96a2cc91d34c03292d42cba430e6f", null ],
     [ "CDMPrepareText", "_c_d_m_8c.html#af0c3f5a5f2fb71971fd1a73237d98d2b", null ],
+    [ "CDMPrintf", "_c_d_m_8c.html#a185c0e3849d521665aa25dc9e086fd4c", null ],
     [ "CDMReadImg", "_c_d_m_8c.html#acdd97b8c992eb0d143f90c1d8cbab459", null ],
     [ "CDMSetActiveScheme", "_c_d_m_8c.html#afcd4db7797d09c07900141cb214dad06", null ],
     [ "CDMSetBackgroundColor", "_c_d_m_8c.html#ab4108b50589991c1f902ea42ac9172d2", null ],
@@ -44,8 +45,8 @@ var _c_d_m_8c =
     [ "CDMSetForegroundColor", "_c_d_m_8c.html#ad055414dd654ac3b094e755e6abb5f51", null ],
     [ "CDMSetPixel", "_c_d_m_8c.html#aef7e8ddea4a5f872578f3ba654ccef7a", null ],
     [ "CDMSetWindowTitle", "_c_d_m_8c.html#ab18b56ed19f345efa1935338fed8c2d5", null ],
-    [ "CDMTextWrapper", "_c_d_m_8c.html#a0e764b208e098d5c98868de299935b37", null ],
-    [ "CDMTextWrapper_s", "_c_d_m_8c.html#adcb3f7b7ab1f6e9b7c3569731358385f", null ],
+    [ "CDMTextWrapper", "_c_d_m_8c.html#aee3fc633d44b7ea1a7d71f333bfaa8ca", null ],
+    [ "CDMTextWrapper_s", "_c_d_m_8c.html#a18799208728fdc046bbac97445bf3e60", null ],
     [ "CDMToggleFullscreen", "_c_d_m_8c.html#abd1fd0d3d904625aadb99459dbee4521", null ],
     [ "cdmErrno", "_c_d_m_8c.html#a324c0274dc0959e9cb00e868025cc22b", null ]
 ];

@@ -187,6 +187,10 @@ var _c_d_m_8h =
       [ "LCOLOR14", "_c_d_m_8h.html#acfe075b8847d66a3a1dfb6fb8051187ea15034f06c362b796199dda55a42a93a4", null ],
       [ "LCOLOR15", "_c_d_m_8h.html#acfe075b8847d66a3a1dfb6fb8051187eaf4f3e7948d4028a72ed9e82da5669927", null ]
     ] ],
+    [ "CDMMode", "_c_d_m_8h.html#ae9a051379e0fffc039c43565f882fe3b", [
+      [ "mode3d", "_c_d_m_8h.html#ae9a051379e0fffc039c43565f882fe3bad7c325ac1ac708ad61071f2740a787b9", null ],
+      [ "mode2d", "_c_d_m_8h.html#ae9a051379e0fffc039c43565f882fe3ba7c591f5d4e494cc1439f3d1ddf472022", null ]
+    ] ],
     [ "CDMActivateMouseInput", "_c_d_m_8h.html#a26c8b442c0018368838b783d415b7924", null ],
     [ "CDMAddSurfaceToContext", "_c_d_m_8h.html#ab3eb99ad615e5be90432727e88bce28d", null ],
     [ "CDMAddTextToContext", "_c_d_m_8h.html#ad2a46411fdfcc82be4c12ca0621f0de5", null ],
@@ -195,8 +199,8 @@ var _c_d_m_8h =
     [ "CDMClearErrno", "_c_d_m_8h.html#aed8749a92f10c2f81a93e4ab2514faea", null ],
     [ "CDMClearScreen", "_c_d_m_8h.html#a0f6f5f1cbbac5ec47a149451ee80673a", null ],
     [ "CDMCompareCHARINFO", "_c_d_m_8h.html#a7b4771587a381b2437f94349ee006d10", null ],
-    [ "CDMCreateContext", "_c_d_m_8h.html#aae827ff64ba2651c323ce33c3ab97551", null ],
-    [ "CDMCreateSurface", "_c_d_m_8h.html#ac598be33feeeda93f6f330c13c92d0b3", null ],
+    [ "CDMCreateContext", "_c_d_m_8h.html#a076bdfe8bf7edc2a9020908c23e51933", null ],
+    [ "CDMCreateSurface", "_c_d_m_8h.html#a77895c7197a08de8aae1c075da0d5320", null ],
     [ "CDMDraw", "_c_d_m_8h.html#a8faa73f836c78a2373b6beb5cb305aec", null ],
     [ "CDMDrawSurface", "_c_d_m_8h.html#a32d48dfc5b6436fbd73a92b0a090942e", null ],
     [ "CDMDrawText", "_c_d_m_8h.html#a4d008c0ed5b655b46c729a6fe0b0143c", null ],
@@ -207,7 +211,7 @@ var _c_d_m_8h =
     [ "CDMFreeText", "_c_d_m_8h.html#a52d6faf2193e9f2ff7cbdd279bea6172", null ],
     [ "CDMGetB", "_c_d_m_8h.html#aa193975b4d32ea2b06dada2c70bbc6da", null ],
     [ "CDMGetErrno", "_c_d_m_8h.html#a377becf7e388d3462ecf5afa39e4eca8", null ],
-    [ "CDMGetErrorMessage", "_c_d_m_8h.html#a9ff60f6e6e7da554af1261c2822cb717", null ],
+    [ "CDMGetErrorMessage", "_c_d_m_8h.html#aa7564fc12e9aa10bf264e3ffbaff859a", null ],
     [ "CDMGetG", "_c_d_m_8h.html#a6c9e76f4fe3a494cbf5906acb2d28a65", null ],
     [ "CDMGetKeyDown", "_c_d_m_8h.html#aff1ed6e5b8f731d7a2939059677311a3", null ],
     [ "CDMGetKeyPressed", "_c_d_m_8h.html#a85071e5ca6d7bec95cb7f00708bc224d", null ],
@@ -219,7 +223,8 @@ var _c_d_m_8h =
     [ "CDMPollEvents", "_c_d_m_8h.html#a3adb4a4784345380749c67f901fcf468", null ],
     [ "CDMPrepareSurface", "_c_d_m_8h.html#acff96a2cc91d34c03292d42cba430e6f", null ],
     [ "CDMPrepareText", "_c_d_m_8h.html#af0c3f5a5f2fb71971fd1a73237d98d2b", null ],
-    [ "CDMReadImg", "_c_d_m_8h.html#acb884cd688ad71f1cf86cf0c7b84f981", null ],
+    [ "CDMPrintf", "_c_d_m_8h.html#a185c0e3849d521665aa25dc9e086fd4c", null ],
+    [ "CDMReadImg", "_c_d_m_8h.html#acdd97b8c992eb0d143f90c1d8cbab459", null ],
     [ "CDMSetActiveScheme", "_c_d_m_8h.html#afcd4db7797d09c07900141cb214dad06", null ],
     [ "CDMSetBackgroundColor", "_c_d_m_8h.html#ab4108b50589991c1f902ea42ac9172d2", null ],
     [ "CDMSetCharacters", "_c_d_m_8h.html#a27478a0b0e3e2bdafa624dfe5e3ce5c4", null ],
@@ -231,7 +236,7 @@ var _c_d_m_8h =
     [ "CDMSetForegroundColor", "_c_d_m_8h.html#ad055414dd654ac3b094e755e6abb5f51", null ],
     [ "CDMSetPixel", "_c_d_m_8h.html#aef7e8ddea4a5f872578f3ba654ccef7a", null ],
     [ "CDMSetWindowTitle", "_c_d_m_8h.html#ab18b56ed19f345efa1935338fed8c2d5", null ],
-    [ "CDMTextWrapper", "_c_d_m_8h.html#a0e764b208e098d5c98868de299935b37", null ],
-    [ "CDMTextWrapper_s", "_c_d_m_8h.html#adcb3f7b7ab1f6e9b7c3569731358385f", null ],
+    [ "CDMTextWrapper", "_c_d_m_8h.html#aee3fc633d44b7ea1a7d71f333bfaa8ca", null ],
+    [ "CDMTextWrapper_s", "_c_d_m_8h.html#a18799208728fdc046bbac97445bf3e60", null ],
     [ "CDMToggleFullscreen", "_c_d_m_8h.html#abd1fd0d3d904625aadb99459dbee4521", null ]
 ];

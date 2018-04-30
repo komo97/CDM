@@ -1,36 +1,60 @@
+/**********************************************************************************************//**
+ * \file	CDM.h.
+ *
+ * \brief	This file contains every definition, structure and function needed to use CDM.
+ **************************************************************************************************/
 
-/**
-* @file CDM.h
-* @about Description
-* Console Draw Motor
-* Library for creating 2D Games for the Windows CMD.
-* For exclusive use with Windows. Not compatible for versions lower than Windows vista.
-* This library only provides the C functions for drawing on the console, 
-* and the structures for its usage.
-* For a Full hd device the maximum screen size is 237x124 using the terminal font and
-* an 8x8 pixel per tile.
-*
-* @about License
-* This software is provided 'as-is', without any express or implied warranty.
-* In no event will the authors be held liable for any damages arising from
-* the use of this software.
-*
-* Permission is granted to anyone to use this software for any purpose,
-* including commercial applications, and to alter it and redistribute it
-* freely, subject to the following restrictions:
-*
-* 1. The origin of this software must not be misrepresented; you must not claim
-* that you wrote the original software. If you use this software in a product,
-* an acknowledgment in the product documentation would be appreciated but is
-* not required.
-*
-* 2. Altered source versions must be plainly marked as such, and must not be
-* misrepresented as being the original software.
-*
-* 3. This notice may not be removed or altered from any source distribution.
-*
-* @author José María Pérez Parrillat 2017
-*/
+/**********************************************************************************************//**
+ * \mainpage Console Draw Motor
+ * 			
+ * \section	sec1 Description. 
+ *				Library for creating 2D Games for the Windows CMD. For
+ *				exclusive use with Windows. Not compatible for versions lower than Windows vista.
+ *				This library only provides the C functions for drawing on the console, and the
+ *				structures for its usage. For a Full hd device the maximum screen size is 237x124
+ *				using the terminal font and an 8x8 pixel per tile, or 479x168 using the same font but
+ *				4x6 pixels per tile.
+ * 
+ * \section	sec2 Instalation.
+ * 				Installing CDM is pretty straightforward, you can either download the compiled binaries
+ * 				and header file from my github on the releases section and use them inside Visual Studio
+ * 				2017 or compile them yourself for your version of preference. 
+ * 				Keep in mind that most defines included inside windows.h are not assured to be declared
+ * 				in vstools' versions prior to v141, you may have to define them yourself.
+ * 				
+ * \section	sec3 Usage.
+ * 				Usage of CDM is extremely simple, just create a CDMContext using CDMCreateContext,
+ * 				after that you can either change the font size and resize your window, change the
+ * 				title of your window or create a surface and start drawing.
+ * 				Keep in mind, inside your main loop, CDMPollEvents should not have anything running
+ * 				before it, and for optimization purposes CDMDraw should only be called once at the end
+ * 				of your loop.
+ * 				
+ * \copyright	This software is provided 'as-is', without any express or implied warranty.
+ *				In no event will the authors be held liable for any damages arising from
+ *				the use of this software.
+ *
+ *				Permission is granted to anyone to use this software for any purpose,
+ *				including commercial applications, and to alter it and redistribute it
+ *				freely, subject to the following restrictions:
+ *
+ *				1. The origin of this software must not be misrepresented; you must not claim
+ *				that you wrote the original software. If you use this software in a product,
+ *				an acknowledgment in the product documentation would be appreciated but is
+ *				not required.
+ *
+ *				2. Altered source versions must be plainly marked as such, and must not be
+ *				misrepresented as being the original software.
+ *
+ *				3. This notice may not be removed or altered from any source distribution.    
+ *				
+ * \author		José María Pérez Parrillat 2017
+ * 				
+ * \example		main.cpp
+ * 				This is an example of most all capabilities of CDM being put to use.
+ * 				
+ *
+ **************************************************************************************************/
 
 #pragma once
 #include <Windows.h>
@@ -39,6 +63,8 @@
 
 //#define PIXELBYPIXEL
 
+///< .
+///< .
 /**********************************************************************************************//**
  * \def	_IN_
  *
@@ -47,6 +73,7 @@
 
 #define _IN_
 
+///< .
 /**********************************************************************************************//**
  * \def	_OUT_
  *
@@ -55,6 +82,7 @@
  
 #define _OUT_
 
+///< .
 /**********************************************************************************************//**
  * \def	_INOUT_
  *
@@ -63,6 +91,7 @@
 
 #define _INOUT_
 
+///< .
 /**********************************************************************************************//**
  * \def	_INOPT_
  *
@@ -86,6 +115,13 @@
  **************************************************************************************************/
 
 #define _INOUTOPT_
+
+/**********************************************************************************************//**
+ * \enum	CDMLetterColor
+ *
+ * \brief	Describes a parameter that will be used for data input and output and it maps all the
+ * 			possible colors for the letters that can be used inside CDM.
+ **************************************************************************************************/
 
 typedef enum CDMLetterColor {
 	CLEAR = -1,
@@ -122,6 +158,13 @@ typedef enum CDMLetterColor {
 	LCOLOR15 = WHITE,
 } CDMLetterColor;
 
+/**********************************************************************************************//**
+ * \enum	CDMBackgroundColor
+ *
+ * \brief	Describes a parameter that will be used for data input and output and it maps all the
+ * 			possible colors for the letters that can be used inside CDM.
+ **************************************************************************************************/
+
 typedef enum CDMBackgroundColor {
 	BCLEAR = -1,
 	BBLACK = 0,
@@ -157,11 +200,26 @@ typedef enum CDMBackgroundColor {
 	BCOLOR15 = BWHITE,
 } CDMBackgroundColor;
 
+/**********************************************************************************************//**
+ * \enum	CDMExtraOptions
+ *
+ * \brief	Values that represent extra options for coloring letters and backgrounds.
+ * 			Exclusive for advanced usage.
+ **************************************************************************************************/
+
 typedef enum CDMExtraOptions {
 	reverseColors = COMMON_LVB_REVERSE_VIDEO,
 	underscore = COMMON_LVB_UNDERSCORE,
 	Alpha = 100,
 }CDMExtraOptions;
+
+/**********************************************************************************************//**
+ * \enum	CDMColorSets
+ *
+ * \brief	Values that represent the color sets to be used inside CDMSetPixel.
+ * 			Each one represents one combination of a background color, a letter color and a 
+ * 			character.
+ **************************************************************************************************/
 
 typedef enum CDMColorSets
 {
@@ -172,6 +230,12 @@ typedef enum CDMColorSets
 	SetAlpha = 0x0010,
 }CDMColorSets;
 
+/**********************************************************************************************//**
+ * \enum	CDMBool
+ *
+ * \brief	Boolean implementation.
+ **************************************************************************************************/
+
 typedef enum CDMBool
 {
 	CDMFalse = 0,
@@ -179,6 +243,12 @@ typedef enum CDMBool
 }CDMBool;
 
 #pragma region Inputs
+
+/**********************************************************************************************//**
+ * \enum	CDMKey
+ *
+ * \brief	Values that represent all possible inputs inside CDM.
+ **************************************************************************************************/
 
 typedef enum CDMKey {
 	mbleft = VK_LBUTTON,
@@ -231,6 +301,18 @@ typedef enum CDMKey {
 } CDMKey;
 #pragma endregion !Inputs
 
+/**********************************************************************************************//**
+ * \enum	CDMMode
+ *
+ * \brief	Values that represent the rendering mode of CDM, not to be used right now.
+ **************************************************************************************************/
+
+typedef enum CDMMode
+{
+	mode3d,
+	mode2d,
+}CDMMode;
+
 #pragma endregion !Defines
 
 /**********************************************************************************************//**
@@ -271,8 +353,11 @@ typedef unsigned char	CDMErrno;
 /**********************************************************************************************//**
  * \struct	CDMTiles
  *
- * \brief	A structure that contains raw data for the console to process, most structures used in
- * 			CDM require this component.
+ * \brief	A structure that contains raw data for the console to process, most structures used
+ * 			in CDM require this component.
+ *
+ * \author	Komo
+ * \date	30/4/2018
  **************************************************************************************************/
 
 typedef struct CDMTiles
@@ -285,11 +370,17 @@ typedef struct CDMTiles
  * \struct	CDMEvent
  *
  * \brief	A structure containing the events required to check input inside CDM.
+ *
+ * \author	Komo
+ * \date	30/4/2018
  **************************************************************************************************/
 
 typedef struct CDMEvent {
+	/** \brief	The input array */
 	INPUT_RECORD	inputs[64];
+	/** \brief	The inputs number */
 	__int32			inputNum;
+	/** \brief	An array to keep track of presses. */
 	CDMBool			inputPressed[KeysEnd];
 }CDMEvent;
 
@@ -297,6 +388,9 @@ typedef struct CDMEvent {
  * \struct	CDMContext
  *
  * \brief	A context in which CDM will run.
+ *
+ * \author	Komo
+ * \date	30/4/2018
  **************************************************************************************************/
 
 typedef struct CDMContext
@@ -306,7 +400,9 @@ typedef struct CDMContext
 	CONSOLE_SCREEN_BUFFER_INFOEX	inf;
 	CDMTiles						contents,
 									lastFrameContents;
+	/** \brief	The rectangle which contains the width and height of the context. READ ONLY */
 	CDMRect							rect;
+	/** \brief	The event structure that contains every CDM input. */
 	CDMEvent						events;
 }CDMContext;
 
@@ -314,6 +410,9 @@ typedef struct CDMContext
  * \struct	CDMPixelData
  *
  * \brief	The data of a single pixel.
+ *
+ * \author	Komo
+ * \date	30/4/2018
  **************************************************************************************************/
 
 typedef struct CDMPixelData
@@ -326,8 +425,11 @@ typedef struct CDMPixelData
 /**********************************************************************************************//**
  * \struct	CDMPalette
  *
- * \brief	A palette for a CDMSurface. It contains the four types of pixel that the surface is able
- * 			to be used.
+ * \brief	A palette for a CDMSurface. It contains the four types of pixel that the surface is
+ * 			able to be used.
+ *
+ * \author	Komo
+ * \date	30/4/2018
  **************************************************************************************************/
 
 typedef struct CDMPalette
@@ -342,6 +444,9 @@ typedef struct CDMPalette
  * \struct	CDMSurface
  *
  * \brief	A representation of an image that is able to be interpreted by CDM.
+ *
+ * \author	Komo
+ * \date	30/4/2018
  **************************************************************************************************/
 
 typedef struct CDMSurface 
@@ -356,6 +461,9 @@ typedef struct CDMSurface
  * \struct	CDMText
  *
  * \brief	A representation of a text object able to be interpreted by CDM.
+ *
+ * \author	Komo
+ * \date	30/4/2018
  **************************************************************************************************/
 
 typedef struct CDMText
@@ -371,24 +479,27 @@ typedef struct CDMText
  * \struct	CDMColorScheme
  *
  * \brief	This structure serves the purpose of a color palette. You can select which palette is
- * 			active and displaying at any time using CDMSetActiveScheme.
- * 			The default values for colors are this, in binary. 
- * 			0x00362b00		Black
- * 			0x00423607		Gray 
- * 			0x00756e58		Green 
- * 			0x00837b65		Yellow 
- * 			0x00969483		Blue 
- * 			0x00a1a193		Aqua 
- * 			0x00d5e8ee		White 
- * 			0x00e3f6fd		BrightWhite 
- * 			0x000089b5		BrightYellow 
- * 			0x00164bcb		Red 
- * 			0x002f32dc		LightRed 
- * 			0x008236d3		LightPurple 
- * 			0x00c4716c		Purple 
- * 			0x00d28b26		LightBlue 
- * 			0x0098a12a		LightAqua 
- * 			0x00009985		LightGreen
+ * 			active and displaying at any time using CDMSetActiveScheme. The default values for
+ * 			colors are this, in binary.\n
+ * 			0x00362b00		Black\n
+ * 			0x00423607		Gray\n 
+ * 			0x00756e58		Green\n
+ * 			0x00837b65		Yellow\n
+ * 			0x00969483		Blue\n
+ * 			0x00a1a193		Aqua\n
+ * 			0x00d5e8ee		White\n
+ * 			0x00e3f6fd		BrightWhite\n
+ * 			0x000089b5		BrightYellow\n 
+ * 			0x00164bcb		Red\n 
+ * 			0x002f32dc		LightRed\n 
+ * 			0x008236d3		LightPurple\n
+ * 			0x00c4716c		Purple\n 
+ * 			0x00d28b26		LightBlue\n 
+ * 			0x0098a12a		LightAqua\n 
+ * 			0x00009985		LightGreen\n
+ *
+ * \author	Komo
+ * \date	30/4/2018
  **************************************************************************************************/
 
 typedef struct CDMColorScheme 
@@ -405,10 +516,13 @@ extern "C" {
 	 * \fn	CDMContext* CDMCreateContext(const _IN_ short width, const _IN_ short height);
 	 *
 	 * \brief	The setup function of CDM. Must be called before anything else. CDM requires a
-	 * 			context to work, most of the functions here require a context to be used. 
-	 *			Status: Working.
+	 * 			context to work, most of the functions here require a context to be used. Status:
+	 * 			Working. 
+	 * 			
 	 * \warning This might not be thread safe.
-	 * 			 
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in]	width 	The expected width in CDM pixels.
 	 * \param [in]	height	The expected height in CDM pixels.
@@ -422,8 +536,10 @@ extern "C" {
 	 * \fn	void CDMChangeWindowSize(_INOUT_ CDMContext** ctx, const _IN_ short width, const _IN_ short height);
 	 *
 	 * \brief	Changes the window size of a context. May be called at any time, however it will
-	 * 			clear the screen once its done.
-	 *			Status: Working.
+	 * 			clear the screen once its done. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	ctx   	The context, must not be null.
 	 * \param [in]	  	width 	The expected width in CDM pixels.
@@ -437,8 +553,10 @@ extern "C" {
 	/**********************************************************************************************//**
 	 * \fn	void CDMToggleFullscreen(CDMContext** _INOUT_ ctx, const _IN_ CDMBool val);
 	 *
-	 * \brief	Toggles fullscreen mode.
-	 *			Status: May be working on older platforms.
+	 * \brief	Toggles fullscreen mode. Status: May be working on older platforms.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	ctx	If non-null, the context.
 	 * \param [in]	  	val	Boolean value for the toggle.
@@ -463,8 +581,10 @@ extern "C" {
 	 * \brief	Sets the font and font size of the console. The recommended font name is L"Terminal"
 	 * 			for its unique characteristic of allowing square pixels, however most fonts can be
 	 * 			used. It's important to include L at the start of your string, since this function
-	 * 			requires a wchar_t* instead of a regular char.
-	 *			Status: Working.
+	 * 			requires a wchar_t* instead of a regular char. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	ctx			The context, must not be null.
 	 * \param [in]	  	fontName	Name of the font.
@@ -480,11 +600,13 @@ extern "C" {
 	/**********************************************************************************************//**
 	 * \fn	void CDMSetCursorVisibility(_INOUT_ CDMContext** ctx, const _IN_ CDMBool status);
 	 *
-	 * \brief	Sets the visibility of the console's cursor.
-	 *			Status: Working.
+	 * \brief	Sets the visibility of the console's cursor. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	ctx   	If non-null, the context.
-	 * \param 		  	status	Boolean value to set the status of the cursor.
+	 * \param [in]	  	status	Boolean value to set the status of the cursor.
 	 **************************************************************************************************/
 
 	void		CDMSetCursorVisibility(_INOUT_ CDMContext** ctx,
@@ -493,8 +615,10 @@ extern "C" {
 	/**********************************************************************************************//**
 	 * \fn	void CDMActivateMouseInput(_INOUT_ CDMContext** ctx);
 	 *
-	 * \brief	Activates mouse input recognition for the console.
-	 *			Status: Working.
+	 * \brief	Activates mouse input recognition for the console. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	ctx	The context, must not be null.
 	 **************************************************************************************************/
@@ -505,8 +629,10 @@ extern "C" {
 	 * \fn	CDMSurface* CDMCreateSurface(const _IN_ short posX, const _IN_ short posY, const _IN_ short sizeX, const _IN_ short sizeY);
 	 *
 	 * \brief	Creates a surface. A surface is the base representation of an image in CDM Most every
-	 * 			object used in CDM will most likely be a surface.
-	 *			Status: Working.
+	 * 			object used in CDM will most likely be a surface. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in]	posX 	The position x coordinate of the surface, using screen coordinates.
 	 * \param [in]	posY 	The position y coordinate of the surface, using screen coordinates.
@@ -526,12 +652,14 @@ extern "C" {
 	 *
 	 * \brief	Reads a .cdi image file into a CDMSurface. The file must be generated exactly the
 	 * 			same as CDMExportSrfcToImg, for it to work using this function. The usage of the
-	 * 			structure may be imperative.
-	 *			Status: Working.
+	 * 			structure may be imperative. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in]		  	fileName	Filename of the file.
-	 * \param [in,out,opt]	scheme  	[in,out,opt] If non-null, the scheme that will obtain the
-	 * 									real scheme used in the image.
+	 * \param [in,out]		scheme  	If non-null, the scheme that will
+	 * 									obtain the real scheme used in the image.
 	 *
 	 * \return	Null if it fails, else a pointer to a CDMSurface.
 	 **************************************************************************************************/
@@ -541,8 +669,10 @@ extern "C" {
 	/**********************************************************************************************//**
 	 * \fn	void CDMExportSrfcToImg(const _IN_ CDMContext* ctx, const _IN_ CDMSurface* srfc, const _IN_ char* fileName, const _IN_ size_t nameSize);
 	 *
-	 * \brief	Cdm export srfc to image
-	 *			Status: Working.
+	 * \brief	Cdm export srfc to image Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in]	ctx			The current context, must not be null.
 	 * \param [in]	srfc		The surface intended to export, must not be null.
@@ -556,16 +686,18 @@ extern "C" {
 							const _IN_ size_t nameSize);
 
 	/**********************************************************************************************//**
-	 * \fn	CDMText* CDMTextWrapper(_IN_ char * text, const _IN_ CDMEnum color, const _IN_ CDMEnum background);
+	 * \fn	CDMText* CDMTextWrapper(_IN_ char * text, const _IN_ CDMLetterColor color, const _IN_ CDMBackgroundColor background);
 	 *
-	 * \brief	Since CDM basically hijacks the console, functions like printf are not enabled. 
-	 *			No output will be shown using them, instead you must use the text as an object,
-	 * 			this means you have much more control of the position and design of your text, at the
+	 * \brief	Since CDM basically hijacks the console, functions like printf are not enabled. No
+	 * 			output will be shown using them, instead you must use the text as an object, this
+	 * 			means you have much more control of the position and design of your text, at the
 	 * 			expense of making a little bit harder to use. Moreover, repeated uses of the same
 	 * 			text box will not require you to create a new object or call anything else other than
 	 * 			adding this object to the context, or drawing it directly. All text begins in the ( 0
-	 * 			, 0 ) coordinate.
-	 *			Status: Working.
+	 * 			, 0 ) coordinate. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	text	  	The text string, must not be null, must be zero terminated.
 	 * \param [in]	  	color	  	The color of the text.
@@ -579,16 +711,18 @@ extern "C" {
 		const _IN_ CDMBackgroundColor background);
 
 	/**********************************************************************************************//**
-	 * \fn	CDMText* CDMTextWrapper_s(_IN_ char * text, const _IN_ size_t textSize, const _IN_ CDMEnum color, const _IN_ CDMEnum background);
+	 * \fn	CDMText* CDMTextWrapper_s(_IN_ char * text, const _IN_ size_t textSize, const _IN_ CDMLetterColor color, const _IN_ CDMBackgroundColor background);
 	 *
-	 * \brief	Since CDM basically highjacks the console, functions like printf are disabled. 
-	 *			No output will be shown using them, instead you must use the text as an object,
-	 * 			this means you have much more control of the position and design of your text, at the
+	 * \brief	Since CDM basically highjacks the console, functions like printf are disabled. No
+	 * 			output will be shown using them, instead you must use the text as an object, this
+	 * 			means you have much more control of the position and design of your text, at the
 	 * 			expense of making a little bit harder to use. Moreover, repeated uses of the same
 	 * 			text box will not require you to create a new object or call anything else other than
 	 * 			adding this object to the context, or drawing it directly. All text begins in the ( 0
-	 * 			, 0 ) coordinate.
-	 *			Status: Working.
+	 * 			, 0 ) coordinate. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	text	  	The text string, must not be null.
 	 * \param [in]	  	textSize  	Size of the text.
@@ -606,8 +740,10 @@ extern "C" {
 	/**********************************************************************************************//**
 	 * \fn	void CDMChangeText(CDMText** txt, const _IN_ char * text);
 	 *
-	 * \brief	Changes the text content of a CDMText.
-	 *			Status: Working.
+	 * \brief	Changes the text content of a CDMText. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	txt 	The text object, must not be null.
 	 * \param [in]	  	text	The text, null terminated.
@@ -616,13 +752,15 @@ extern "C" {
 	void		CDMChangeText(CDMText** txt, const _IN_ char * text);
 
 	/**********************************************************************************************//**
-	 * \fn	void CDMSetForegroundColor(_INOUT_ CDMSurface** surface, const _IN_ CDMEnum c1, const _IN_ CDMEnum c2, const _IN_ CDMEnum c3, const _IN_ CDMEnum c4);
+	 * \fn	void CDMSetForegroundColor(_INOUT_ CDMSurface** surface, const _IN_ CDMLetterColor c1, const _IN_ CDMLetterColor c2, const _IN_ CDMLetterColor c3, const _IN_ CDMLetterColor c4);
 	 *
 	 * \brief	A CDMSurface may only have 4 color sets at a time. Including background, foreground
 	 * 			and character. Each combination of 3 of those elements makes a set. This function
 	 * 			sets directly the four foreground colors that the Surface will use from the color
-	 * 			palette.
-	 *			Status: Working.
+	 * 			palette. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	surface	The surface, must not be null.
 	 * \param [in]	  	c1	   	The first CDMEnum using color macros.
@@ -638,13 +776,15 @@ extern "C" {
 							const _IN_ CDMLetterColor c4);
 
 	/**********************************************************************************************//**
-	 * \fn	void CDMSetBackgroundColor(_INOUT_ CDMSurface** surface, const _IN_ CDMEnum c1, const _IN_ CDMEnum c2, const _IN_ CDMEnum c3, const _IN_ CDMEnum c4);
+	 * \fn	void CDMSetBackgroundColor(_INOUT_ CDMSurface** surface, const _IN_ CDMBackgroundColor c1, const _IN_ CDMBackgroundColor c2, const _IN_ CDMBackgroundColor c3, const _IN_ CDMBackgroundColor c4);
 	 *
 	 * \brief	A CDMSurface may only have 4 color sets at a time. Including background, foreground
 	 * 			and character. Each combination of 3 of those elements makes a set. This function
 	 * 			sets directly the four background colors that the Surface will use from the color
-	 * 			palette.
-	 *			Status: Working.
+	 * 			palette. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	surface	The surface, must not be null.
 	 * \param [in]	  	c1	   	The first CDMEnum using color macros.
@@ -660,12 +800,14 @@ extern "C" {
 							const _IN_ CDMBackgroundColor c4);
 
 	/**********************************************************************************************//**
-	 * \fn	void CDMSetCharacters(_INOUT_ CDMSurface** surface, const _IN_ CDMEnum c1, const _IN_ CDMEnum c2, const _IN_ CDMEnum c3, const _IN_ CDMEnum c4);
+	 * \fn	void CDMSetCharacters(_INOUT_ CDMSurface** surface, const _IN_ unsigned char c1, const _IN_ unsigned char c2, const _IN_ unsigned char c3, const _IN_ unsigned char c4);
 	 *
 	 * \brief	A CDMSurface may only have 4 color sets at a time. Including background, foreground
 	 * 			and character. Each combination of 3 of those elements makes a set. This function
-	 * 			sets directly the four characters that the Surface will use.
-	 *			Status: Working.
+	 * 			sets directly the four characters that the Surface will use. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	surface	The surface, must not be null.
 	 * \param [in]	  	c1	   	The first character to be used.
@@ -683,8 +825,10 @@ extern "C" {
 	/**********************************************************************************************//**
 	 * \fn	void CDMFreeSurface(_INOUT_ CDMSurface** surface);
 	 *
-	 * \brief	Simple dynamic memory allocation free method.
-	 *			Status: Working.
+	 * \brief	Simple dynamic memory allocation free method. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	surface	The surface, must not be null. Upon finishing this function makes
 	 * 							this parameter's value null.
@@ -695,8 +839,10 @@ extern "C" {
 	/**********************************************************************************************//**
 	 * \fn	void CDMFreeText(_INOUT_ CDMText** txt);
 	 *
-	 * \brief	Simple dynamic memory allocation free method.
-	 *			Status: Working.
+	 * \brief	Simple dynamic memory allocation free method. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	txt	The text, must not be null. Upon finishing, this function makes this
 	 * 						parameter's value null.
@@ -707,8 +853,10 @@ extern "C" {
 	/**********************************************************************************************//**
 	 * \fn	void CDMFreeContext(_INOUT_ CDMContext** ctx);
 	 *
-	 * \brief	Simple dynamic memory allocation free method.
-	 *			Status: Working.
+	 * \brief	Simple dynamic memory allocation free method. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	ctx	The context, must not be null. Upon finishing, this function makes this
 	 * 						parameter's value null.
@@ -721,8 +869,10 @@ extern "C" {
 	 *
 	 * \brief	This should only be called each time the surface's contents were modified before
 	 * 			calling a draw or add function. Internally this function converts the image's values
-	 * 			to raw data that the console understands.
-	 *			Status: Working.
+	 * 			to raw data that the console understands. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	surface	The surface, must not be null.
 	 **************************************************************************************************/
@@ -734,8 +884,10 @@ extern "C" {
 	 *
 	 * \brief	This should only be called each time the text's contents were modified before calling
 	 * 			a draw or add function. Internally this function converts the text's values to raw
-	 * 			data that the console understands.
-	 *			Status: Working.
+	 * 			data that the console understands. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	txt	The text, must not be null.
 	 **************************************************************************************************/
@@ -747,8 +899,10 @@ extern "C" {
 	 *
 	 * \brief	Draws directly a surface in the context, instead of batching it with other draws. I
 	 * 			highly recommend using the batch function (Add, then CDMDraw) over this one, to make
-	 * 			the program run faster.
-	 *			Status: Partiallly works.
+	 * 			the program run faster. Status: Partiallly works.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	ctx	   	The context in which the surface will be painted, must not be null.
 	 * \param [in,out]	surface	The surface to be printed, must not be null.
@@ -760,8 +914,10 @@ extern "C" {
 	 * \fn	void CDMAddSurfaceToContext(_INOUT_ CDMContext** ctx, _IN_ CDMSurface* surface);
 	 *
 	 * \brief	Adds a surface to the context, and thus batching its draw with every other added
-	 * 			object, the batch will be completely flushed once CDMDraw is called.
-	 *			Status: Working.
+	 * 			object, the batch will be completely flushed once CDMDraw is called. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	ctx	   	The context in which the surface will be painted, must not be null.
 	 * \param [in,out]	surface	The surface to be printed, must not be null.
@@ -774,8 +930,10 @@ extern "C" {
 	 *
 	 * \brief	Draws directly a text in the context, instead of batching it with other draws. I
 	 * 			highly recommend using the batch function (Add, then CDMDraw) over this one, to make
-	 * 			the program run faster.
-	 *			Status: Partially Works.
+	 * 			the program run faster. Status: Partially Works.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	ctx	The context in which the text will be painted, must not be null.
 	 * \param [in,out]	txt	The text that will be printed, must not be null.
@@ -787,8 +945,10 @@ extern "C" {
 	 * \fn	void CDMAddTextToContext(_INOUT_ CDMContext** ctx, _IN_ CDMText* txt);
 	 *
 	 * \brief	Adds a text to the context, and thus batching its draw with every other added object,
-	 * 			the batch will be completely flushed once CDMDraw is called.
-	 *			Status: Working.
+	 * 			the batch will be completely flushed once CDMDraw is called. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	ctx	The context in which the text will be painted, must not be null.
 	 * \param [in,out]	txt	The text that will be printed, must not be null.
@@ -801,7 +961,10 @@ extern "C" {
 	 *
 	 * \brief	Sets an RGB color inside a ColorScheme. Every color goes from 0 to 255, however every
 	 * 			value passes through a modulo operation to assure no weird behaviour will happen.
-	 *			Status: Working.
+	 * 			Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	data		The color scheme, must not be null.
 	 * \param [in]	  	position	The position of the color inside the ColorScheme.
@@ -820,8 +983,11 @@ extern "C" {
 	 * \fn	void CDMSetColorBin(_INOUT_ CDMColorScheme* data, _IN_ short position, const _IN_ DWORD color);
 	 *
 	 * \brief	Sets an RGB color inside a ColorScheme. This function accepts an already converted to
-	 * 			binary RGB color. You may use Windows.h macro RGB(r,g,b) to get the data.
-	 *			Status: Working.
+	 * 			binary RGB color. You may use Windows.h macro RGB(r,g,b) to get the data. Status:
+	 * 			Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	data		The color scheme, must not be null.
 	 * \param [in]	  	position	The position of the color inside the ColorScheme.
@@ -837,8 +1003,10 @@ extern "C" {
 	 *
 	 * \brief	Clears the current buffer of undrawn data. It does not make the whole screen black.
 	 * 			For that you may use CDMFillScreen.This function is implemented like this to reduce
-	 * 			overhead on the program by reducing assignations and comparissons.
-	 *			Status: Working.
+	 * 			overhead on the program by reducing assignations and comparissons. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	ctx	The context, must not be null.
 	 **************************************************************************************************/
@@ -846,10 +1014,13 @@ extern "C" {
 	void		CDMClearScreen(_INOUT_ CDMContext ** ctx);
 
 	/**********************************************************************************************//**
-	 * \fn	void CDMFillScreen(_INOUT_ CDMContext ** ctx, const _IN_ char character, const _IN_ CDMEnum frontColor, const _IN_ CDMEnum backColor);
+	 * \fn	void CDMFillScreen(_INOUT_ CDMContext ** ctx, const _IN_ char character, const _IN_ CDMLetterColor frontColor, const _IN_ CDMBackgroundColor backColor);
 	 *
-	 * \brief	Fills the context with a single color. Ignores drawn flags completely.
-	 *			Status: Working.
+	 * \brief	Fills the context with a single color. Ignores drawn flags completely. Status:
+	 * 			Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	ctx		  	The context, must not be null.
 	 * \param [in]	  	character 	The character to be printed.
@@ -863,10 +1034,12 @@ extern "C" {
 							const _IN_ CDMBackgroundColor backColor);
 
 	/**********************************************************************************************//**
-	 * \fn	void CDMPoke(_INOUT_ CDMContext ** ctx, const _IN_ CDMCoord coord, const _IN_ char character, const _IN_ CDMEnum frontColor, const _IN_ CDMEnum backColor);
+	 * \fn	void CDMPoke(_INOUT_ CDMContext ** ctx, const _IN_ CDMCoord coord, const _IN_ char character, const _IN_ CDMLetterColor frontColor, const _IN_ CDMBackgroundColor backColor);
 	 *
-	 * \brief	Pokes a pixel in the screen to a certain color. Ignores drawn flags.
-	 *			Status: Working.
+	 * \brief	Pokes a pixel in the screen to a certain color. Ignores drawn flags. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	ctx		  	The context, must not be null.
 	 * \param [in]	  	coord	  	The coordinate of the pixel.
@@ -882,12 +1055,15 @@ extern "C" {
 							const _IN_ CDMBackgroundColor backColor);
 
 	/**********************************************************************************************//**
-	 * \fn	void CDMDraw(_IN_ CDMContext* ctx);
+	 * \fn	void CDMDraw(_IN_ CDMContext** ctx);
 	 *
 	 * \brief	Draws the whole screen. Does a batch draw if things have been added to the context.
-	 *			Status: Working.
+	 * 			Status: Working.
 	 *
-	 * \param [in]	The context, must not be null.
+	 * \author	Komo
+	 * \date	30/4/2018
+	 *
+	 * \param [in]	ctx	context, must not be null.
 	 **************************************************************************************************/
 
 	void		CDMDraw(_IN_ CDMContext** ctx);
@@ -895,11 +1071,13 @@ extern "C" {
 	/**********************************************************************************************//**
 	 * \fn	int CDMGetR(_IN_ CDMColorScheme* data, const _IN_ short position);
 	 *
-	 * \brief	Gets the red color of a certain color inside a ColorScheme.
-	 *			Status: Working.
+	 * \brief	Gets the red color of a certain color inside a ColorScheme. Status: Working.
 	 *
-	 * \param [in]		data		The color scheme to check from.
-	 * \param [in]	  	position	The position of the color wanted.
+	 * \author	Komo
+	 * \date	30/4/2018
+	 *
+	 * \param [in]	data		The color scheme to check from.
+	 * \param [in]	position	The position of the color wanted.
 	 *
 	 * \return	The color's value in decimal.
 	 **************************************************************************************************/
@@ -909,11 +1087,13 @@ extern "C" {
 	/**********************************************************************************************//**
 	 * \fn	int CDMGetG(_IN_ CDMColorScheme* data, const _IN_ short position);
 	 *
-	 * \brief	Gets the green color of a certain color inside a ColorScheme.
-	 *			Status: Working.
+	 * \brief	Gets the green color of a certain color inside a ColorScheme. Status: Working.
 	 *
-	 * \param [in]		data		The color scheme to check from.
-	 * \param [in]	  	position	The position of the color wanted.
+	 * \author	Komo
+	 * \date	30/4/2018
+	 *
+	 * \param [in]	data		The color scheme to check from.
+	 * \param [in]	position	The position of the color wanted.
 	 *
 	 * \return	The color's value in decimal.
 	 **************************************************************************************************/
@@ -923,11 +1103,13 @@ extern "C" {
 	/**********************************************************************************************//**
 	 * \fn	int CDMGetB(_IN_ CDMColorScheme* data, const _IN_ short position);
 	 *
-	 * \brief	Gets the blue color of a certain color inside a ColorScheme.
-	 *			Status: Working.
+	 * \brief	Gets the blue color of a certain color inside a ColorScheme. Status: Working.
 	 *
-	 * \param [in]		data		The color scheme to check from.
-	 * \param [in]	  	position	The position of the color wanted.
+	 * \author	Komo
+	 * \date	30/4/2018
+	 *
+	 * \param [in]	data		The color scheme to check from.
+	 * \param [in]	position	The position of the color wanted.
 	 *
 	 * \return	The color's value in decimal.
 	 **************************************************************************************************/
@@ -939,8 +1121,10 @@ extern "C" {
 	 *
 	 * \brief	Sets a color scheme inside a context, and thus changing every display color of it.
 	 * 			This instruction does not require you to draw again for results to be shown, as such
-	 * 			its extremely fast.
-	 *			Status: Working.
+	 * 			its extremely fast. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in]	  	data	The color scheme to be set.
 	 * \param [in,out]	ctx 	The context to modify, must not be null.
@@ -949,11 +1133,13 @@ extern "C" {
 	void		CDMSetActiveScheme(_IN_ CDMColorScheme data, _INOUT_ CDMContext** ctx);
 
 	/**********************************************************************************************//**
-	 * \fn	void CDMSetPixel(_INOUT_ CDMSurface** surface, _IN_ short x, _IN_ short y, _IN_ CDMEnum pixelSet);
+	 * \fn	void CDMSetPixel(_INOUT_ CDMSurface** surface, _IN_ short x, _IN_ short y, _IN_ CDMColorSets pixelSet);
 	 *
 	 * \brief	Sets a pixel inside a surface. You must select from one of the five possible colors
-	 * 			inside the surface.
-	 *			Status: Working.
+	 * 			inside the surface. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	surface 	The surface to be modified, must not be null.
 	 * \param [in]	  	x			The x coordinate of the pixel.
@@ -969,9 +1155,11 @@ extern "C" {
 	/**********************************************************************************************//**
 	 * \fn	CDMBool CDMCompareCHARINFO(_IN_ CHAR_INFO rhs, _IN_ CHAR_INFO lhs);
 	 *
-	 * \brief	Compares two CHAR_INFO structures, it's mainly used inside the API for certain 
-	 * 			operations. May not prove useful to the graphics programmer. 
-	 *			Status: Working.
+	 * \brief	Compares two CHAR_INFO structures, it's mainly used inside the API for certain
+	 * 			operations. May not prove useful to the graphics programmer. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in]	rhs	The right hand side.
 	 * \param [in]	lhs	The left hand side.
@@ -986,8 +1174,10 @@ extern "C" {
 	 *
 	 * \brief	Polls the console events, this function must be used in order to get key and mouse
 	 * 			presses, as such it must be called at the beggining of every frame and before every
-	 * 			function that requires a CDMEvent.
-	 *			Status: Working.
+	 * 			function that requires a CDMEvent. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	ctx  	The context, must not be null.
 	 * \param [in,out]	event	An event structure, must not be null.
@@ -996,11 +1186,13 @@ extern "C" {
 	void		CDMPollEvents(_IN_ CDMContext* ctx, _INOUT_ CDMEvent* event);
 
 	/**********************************************************************************************//**
-	 * \fn	CDMBool CDMGetKeyPressed(_IN_ CDMEvent* event, const _IN_ CDMEnum key);
+	 * \fn	CDMBool CDMGetKeyPressed(_IN_ CDMEvent* event, const _IN_ CDMKey key);
 	 *
 	 * \brief	Checks if the key selected in the parameter was pressed. This is the only function
-	 *			that checks for mouse input too.
-	 *			Status: Working.
+	 * 			that checks for mouse input too. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	event	An event structure, must not be null.
 	 * \param [in]	  	key  	The key to be checked.
@@ -1012,13 +1204,15 @@ extern "C" {
 	CDMBool		CDMGetKeyPressed(_IN_ CDMEvent* event, const _IN_ CDMKey key);
 
 	/**********************************************************************************************//**
-	 * \fn	CDMBool CDMGetKeyDown(_IN_ CDMEvent* event, const _IN_ CDMEnum key);
+	 * \fn	CDMBool CDMGetKeyDown(_IN_ CDMEvent* event, const _IN_ CDMKey key);
 	 *
-	 * \brief	Checks if the key selected in the parameter was pressed this frame.
-	 *			Status: Working.
+	 * \brief	Checks if the key selected in the parameter was pressed this frame. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	event	An event structure, must not be null.
-	 * \param 		  	key  	The key to be checked.
+	 * \param [in]	  	key  	The key to be checked.
 	 *
 	 * \return	Returns CDMTRUE if the key is pressed, but only if it was pressed in this frame,
 	 * 			CDMFALSE if the key is not pressed.
@@ -1027,13 +1221,16 @@ extern "C" {
 	CDMBool		CDMGetKeyDown(_IN_ CDMEvent* event, const _IN_ CDMKey key);
 
 	/**********************************************************************************************//**
-	 * \fn	CDMBool CDMGetKeyUp(_IN_ CDMEvent* event, const _IN_ CDMEnum key);
+	 * \fn	CDMBool CDMGetKeyUp(_IN_ CDMEvent* event, const _IN_ CDMKey key);
 	 *
-	 * \brief	Checks if the key selected in the parameter stopped being pressed this frame.
-	 *			Status: Working.
+	 * \brief	Checks if the key selected in the parameter stopped being pressed this frame. Status:
+	 * 			Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	event	An event structure, must not be null.
-	 * \param 		  	key  	The key to be checked.
+	 * \param [in]	  	key  	The key to be checked.
 	 *
 	 * \return	Returns CDMTRUE if the key is not pressed, but only if it was pressed in the last
 	 * 			frame, CDMFALSE if the key is pressed.
@@ -1044,8 +1241,10 @@ extern "C" {
 	/**********************************************************************************************//**
 	 * \fn	CDMCoord CDMGetMousePos(_IN_ CDMEvent* event);
 	 *
-	 * \brief	Gets the mouse position inside the console window.
-	 *			Status: Working.
+	 * \brief	Gets the mouse position inside the console window. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	event	An event structure, must not be null.
 	 *
@@ -1058,14 +1257,34 @@ extern "C" {
 	 * \fn	void CDMKeepScreenSize(_INOUT_ CDMContext** ctx, _IN_ CDMEvent* event);
 	 *
 	 * \brief	Keeps the screen size of the program. Might be useful if you want to limit screen
-	 * 			resizing.
-	 *			Status: Working.
+	 * 			resizing. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param [in,out]	ctx  	The context, must not be null.
 	 * \param [in,out]	event	An event structure to check for resize events, must not be null.
 	 **************************************************************************************************/
 
 	void		CDMKeepScreenSize(_INOUT_ CDMContext** ctx, _IN_ CDMEvent* event);
+
+	/**********************************************************************************************//**
+	 * \fn	void CDMPrintf(_INOUT_ CDMContext** ctx, _IN_ CDMCoord initialPos, const _IN_ CDMLetterColor frontColor, const _IN_ CDMBackgroundColor backColor, const _IN_ char* txt, ...);
+	 *
+	 * \brief	A printf implementation for CDM, made it as a replacement or alternative to the 
+	 * 			text object. It should be easier to manage, but a more expensive call, so use this
+	 * 			for dynamic text only, and use Text objects for static text. 
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
+	 *
+	 * \param [in,out]	ctx		  	The context, must not be null.
+	 * \param [in]	  	initialPos	The initial position of the text, it wraps as if the x position of the text was the left side of the screen.
+	 * \param [in]	  	frontColor	The front color of the text.
+	 * \param [in]	  	backColor 	The back color of the text.
+	 * \param [in]	  	txt		  	The text, modes "%d,%i,%u,%f,%g,%x,%o,%c,%s" are working, the new line character is \\n.
+	 * \param [in]	  	...		  	Variable arguments providing additional information.
+	 **************************************************************************************************/
 
 	void		CDMPrintf(_INOUT_ CDMContext** ctx, _IN_ CDMCoord initialPos,
 		const _IN_ CDMLetterColor frontColor,
@@ -1074,8 +1293,10 @@ extern "C" {
 	/**********************************************************************************************//**
 	 * \fn	void CDMSetErrno(const _IN_ CDMErrno code);
 	 *
-	 * \brief	Sets an specific errno to a value.
-	 *			Status: Working.
+	 * \brief	Sets an specific errno to a value. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \param	code	The code to be set.
 	 **************************************************************************************************/
@@ -1085,8 +1306,10 @@ extern "C" {
 	/**********************************************************************************************//**
 	 * \fn	CDMErrno CDMGetErrno();
 	 *
-	 * \brief	Gets the value of errno and sets it to zero.
-	 *			Status: Working.
+	 * \brief	Gets the value of errno and sets it to zero. Status: Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \return	The value of errno.
 	 **************************************************************************************************/
@@ -1096,8 +1319,11 @@ extern "C" {
 	/**********************************************************************************************//**
 	 * \fn	char* CDMGetErrorMessage();
 	 *
-	 * \brief	Translates an error code to an error message, for a brief description.
-	 *			Status: Working.
+	 * \brief	Translates an error code to an error message, for a brief description. Status:
+	 * 			Working.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 *
 	 * \return	Will always return a string of characters.
 	 **************************************************************************************************/
@@ -1106,9 +1332,11 @@ extern "C" {
 
 	/**********************************************************************************************//**
 	 * \fn	void CDMClearErrno();
-	 *			Status: Working.
 	 *
 	 * \brief	Sets errno back to 0.
+	 *
+	 * \author	Komo
+	 * \date	30/4/2018
 	 **************************************************************************************************/
 
 	void		CDMClearErrno();

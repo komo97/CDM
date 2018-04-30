@@ -722,6 +722,115 @@ void CDMKeepScreenSize(_INOUT_ CDMContext** ctx, _IN_ CDMEvent* event)
 	}
 }
 
+void CDMPrintf(_INOUT_ CDMContext** ctx, _IN_ CDMCoord initialPos,
+	const _IN_ CDMLetterColor frontColor,
+	const _IN_ CDMBackgroundColor backColor, const _IN_ char* txt, ...)
+{
+	va_list args;
+	va_start(args, txt);
+	char token;
+	int argInt, i, iposX = initialPos.X;
+	unsigned int arguint;
+	float argFloat;
+	char trans[32], argChar;
+	char* argString;
+	while (*txt != '\0')
+	{
+		switch (*txt)
+		{
+		case '%':
+			token = *(++txt);
+			switch (token)
+			{
+			case '%':
+				CDMPoke(ctx, initialPos, '%', frontColor, backColor);
+				++initialPos.X;
+				break;
+			case 'U':
+			case 'u':
+				arguint = va_arg(args, unsigned int);
+				sprintf(trans, "%u", arguint);
+				for (i = 0; trans[i] != '\0'; ++i)
+				{
+					CDMPoke(ctx, initialPos, trans[i], frontColor, backColor);
+					++initialPos.X;
+				}
+				break;
+			case 'O':
+			case 'o':
+				argInt = va_arg(args, int);
+				sprintf(trans, "%o", argInt);
+				for (i = 0; trans[i] != '\0'; ++i)
+				{
+					CDMPoke(ctx, initialPos, trans[i], frontColor, backColor);
+					++initialPos.X;
+				}
+				break;
+			case 'C':
+			case 'c':
+				argChar = va_arg(args, char);
+				CDMPoke(ctx, initialPos, argChar, frontColor, backColor);
+				++initialPos.X;
+				break;
+			case 'D':
+			case 'I':
+			case 'd':
+			case 'i':
+				argInt = va_arg(args, int);
+				sprintf(trans, "%d", argInt);
+				for (i = 0; trans[i] != '\0'; ++i)
+				{
+					CDMPoke(ctx, initialPos, trans[i], frontColor, backColor);
+					++initialPos.X;
+				}
+				break;
+			case 'G':
+			case 'F':
+			case 'g':
+			case 'f':
+				argFloat = va_arg(args, float);
+				sprintf(trans, "%g", argFloat);
+				for (i = 0; trans[i] != '\0'; ++i)
+				{
+					CDMPoke(ctx, initialPos, trans[i], frontColor, backColor);
+					++initialPos.X;
+				}
+				break;
+			case 's':
+			case 'S':
+				argString = va_arg(args, char*);
+				while(argString != '\0')
+				{
+					CDMPoke(ctx, initialPos, argString, frontColor, backColor);
+					++initialPos.X;
+					++argString;
+				}
+				break;
+			case 'X':
+			case 'x':
+				argInt = va_arg(args, int);
+				sprintf(trans, "%x", argInt);
+				for (i = 0; trans[i] != '\0'; ++i)
+				{
+					CDMPoke(ctx, initialPos, trans[i], frontColor, backColor);
+					++initialPos.X;
+				}
+				break;
+			}
+			break;
+		case '\n':
+			++initialPos.Y;
+			initialPos.X = iposX;
+			break;
+		default:
+			CDMPoke(ctx, initialPos, *txt, frontColor, backColor);
+			++initialPos.X;
+			break;
+		}
+		++txt;
+	}
+}
+
 void CDMSetErrno(const _IN_ CDMErrno code)
 {
 	cdmErrno = code;

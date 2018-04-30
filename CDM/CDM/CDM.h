@@ -1067,6 +1067,10 @@ extern "C" {
 
 	void		CDMKeepScreenSize(_INOUT_ CDMContext** ctx, _IN_ CDMEvent* event);
 
+	void		CDMPrintf(_INOUT_ CDMContext** ctx, _IN_ CDMCoord intialPos,
+		const _IN_ CDMLetterColor frontColor,
+		const _IN_ CDMBackgroundColor backColor, const _IN_ char* txt, ...);
+
 	/**********************************************************************************************//**
 	 * \fn	void CDMSetErrno(const _IN_ CDMErrno code);
 	 *

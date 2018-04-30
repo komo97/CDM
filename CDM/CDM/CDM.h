@@ -1067,7 +1067,7 @@ extern "C" {
 
 	void		CDMKeepScreenSize(_INOUT_ CDMContext** ctx, _IN_ CDMEvent* event);
 
-	void		CDMPrintf(_INOUT_ CDMContext** ctx, _IN_ CDMCoord intialPos,
+	void		CDMPrintf(_INOUT_ CDMContext** ctx, _IN_ CDMCoord initialPos,
 		const _IN_ CDMLetterColor frontColor,
 		const _IN_ CDMBackgroundColor backColor, const _IN_ char* txt, ...);
 

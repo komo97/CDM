@@ -1271,24 +1271,27 @@ extern "C" {
 	void		CDMKeepScreenSize(_INOUT_ CDMContext** ctx, _IN_ CDMEvent* event);
 
 	/**********************************************************************************************//**
-	 * \fn	void CDMPrintf(_INOUT_ CDMContext** ctx, _IN_ CDMCoord initialPos, const _IN_ CDMLetterColor frontColor, const _IN_ CDMBackgroundColor backColor, const _IN_ char* txt, ...);
+	 * \fn	void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDMRect initialPos, const _IN_ CDMLetterColor frontColor, const _IN_ CDMBackgroundColor backColor, const _IN_ char* txt, ...);
 	 *
-	 * \brief	A printf implementation for CDM, made it as a replacement or alternative to the 
-	 * 			text object. It should be easier to manage, but a more expensive call, so use this
-	 * 			for dynamic text only, and use Text objects for static text. 
+	 * \brief	A printf implementation for CDM, made it as a replacement or alternative to the text
+	 * 			object. It should be easier to manage, but a more expensive call, so use this for
+	 * 			dynamic text only, and use Text objects for static text.
 	 *
 	 * \author	Komo
 	 * \date	30/4/2018
 	 *
-	 * \param [in,out]	ctx		  	The context, must not be null.
-	 * \param [in]	  	initialPos	The initial position of the text, it wraps as if the x position of the text was the left side of the screen.
-	 * \param [in]	  	frontColor	The front color of the text.
-	 * \param [in]	  	backColor 	The back color of the text.
-	 * \param [in]	  	txt		  	The text, modes "%d,%i,%u,%f,%g,%x,%o,%c,%s" are working, the new line character is \\n.
-	 * \param [in]	  	...		  	Variable arguments providing additional information.
+	 * \param [in,out]	ctx			  	The context, must not be null.
+	 * \param 		  	startingLetter	The letter index to start printing from.
+	 * \param [in]	  	initialPos	  	The initial position of the text, it wraps around the initialPos 
+	 * 									parameter's right and bottom elements.
+	 * \param [in]	  	frontColor	  	The front color of the text.
+	 * \param [in]	  	backColor	  	The back color of the text.
+	 * \param [in]	  	txt			  	The text, modes "%d,%i,%u,%f,%g,%x,%o,%c,%s" are working, the
+	 * 									new line character is \\n.
+	 * \param [in]	  	...			  	Variable arguments providing additional information.
 	 **************************************************************************************************/
 
-	void		CDMPrintf(_INOUT_ CDMContext** ctx, _IN_ CDMCoord initialPos,
+	void		CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDMRect initialPos,
 		const _IN_ CDMLetterColor frontColor,
 		const _IN_ CDMBackgroundColor backColor, const _IN_ char* txt, ...);
 

@@ -724,18 +724,21 @@ void CDMKeepScreenSize(_INOUT_ CDMContext** ctx, _IN_ CDMEvent* event)
 	}
 }
 
-void CDMPrintf(_INOUT_ CDMContext** ctx, _IN_ CDMCoord initialPos,
+void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDMRect initialPos,
 	const _IN_ CDMLetterColor frontColor,
 	const _IN_ CDMBackgroundColor backColor, const _IN_ char* txt, ...)
 {
 	va_list args;
 	va_start(args, txt);
 	char token;
-	int argInt, i, iposX = initialPos.X;
+	int argInt, i, iposX = initialPos.Left;
 	unsigned int arguint;
 	float argFloat;
 	char trans[32], argChar;
 	char* argString;
+	CDMCoord inPos = { initialPos.Left, initialPos.Right };
+	for (i = 0; i <= startingLetter && *txt != '\0'; ++i)
+		++txt;
 	while (*txt != '\0')
 	{
 		switch (*txt)
@@ -745,8 +748,8 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, _IN_ CDMCoord initialPos,
 			switch (token)
 			{
 			case '%':
-				CDMPoke(ctx, initialPos, '%', frontColor, backColor);
-				++initialPos.X;
+				CDMPoke(ctx, inPos, '%', frontColor, backColor);
+				++inPos.X;
 				break;
 			case 'U':
 			case 'u':
@@ -754,14 +757,14 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, _IN_ CDMCoord initialPos,
 				sprintf(trans, "%u", arguint);
 				for (i = 0; trans[i] != '\0'; ++i)
 				{
-					CDMPoke(ctx, initialPos, trans[i], frontColor, backColor);
-					if (initialPos.X + 1 >= (*ctx)->rect.Right)
+					CDMPoke(ctx, inPos, trans[i], frontColor, backColor);
+					if (inPos.X + 1 >= initialPos.Right)
 					{
-						++initialPos.Y;
-						initialPos.X = iposX;
+						++inPos.Y;
+						inPos.X = iposX;
 					}
 					else
-						++initialPos.X;
+						++inPos.X;
 				}
 				break;
 			case 'O':
@@ -770,21 +773,21 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, _IN_ CDMCoord initialPos,
 				sprintf(trans, "%o", argInt);
 				for (i = 0; trans[i] != '\0'; ++i)
 				{
-					CDMPoke(ctx, initialPos, trans[i], frontColor, backColor);
-					if (initialPos.X + 1 >= (*ctx)->rect.Right)
+					CDMPoke(ctx, inPos, trans[i], frontColor, backColor);
+					if (inPos.X + 1 >= initialPos.Right)
 					{
-						++initialPos.Y;
-						initialPos.X = iposX;
+						++inPos.Y;
+						inPos.X = iposX;
 					}
 					else
-						++initialPos.X;
+						++inPos.X;
 				}
 				break;
 			case 'C':
 			case 'c':
 				argChar = va_arg(args, char);
-				CDMPoke(ctx, initialPos, argChar, frontColor, backColor);
-				++initialPos.X;
+				CDMPoke(ctx, inPos, argChar, frontColor, backColor);
+				++inPos.X;
 				break;
 			case 'D':
 			case 'I':
@@ -794,14 +797,14 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, _IN_ CDMCoord initialPos,
 				sprintf(trans, "%d", argInt);
 				for (i = 0; trans[i] != '\0'; ++i)
 				{
-					CDMPoke(ctx, initialPos, trans[i], frontColor, backColor);
-					if (initialPos.X + 1 >= (*ctx)->rect.Right)
+					CDMPoke(ctx, inPos, trans[i], frontColor, backColor);
+					if (inPos.X + 1 >= initialPos.Right)
 					{
-						++initialPos.Y;
-						initialPos.X = iposX;
+						++inPos.Y;
+						inPos.X = iposX;
 					}
 					else
-						++initialPos.X;
+						++inPos.X;
 				}
 				break;
 			case 'G':
@@ -812,14 +815,14 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, _IN_ CDMCoord initialPos,
 				sprintf(trans, "%g", argFloat);
 				for (i = 0; trans[i] != '\0'; ++i)
 				{
-					CDMPoke(ctx, initialPos, trans[i], frontColor, backColor);
-					if (initialPos.X + 1 >= (*ctx)->rect.Right)
+					CDMPoke(ctx, inPos, trans[i], frontColor, backColor);
+					if (inPos.X + 1 >= initialPos.Right)
 					{
-						++initialPos.Y;
-						initialPos.X = iposX;
+						++inPos.Y;
+						inPos.X = iposX;
 					}
 					else
-						++initialPos.X;
+						++inPos.X;
 				}
 				break;
 			case 's':
@@ -827,14 +830,14 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, _IN_ CDMCoord initialPos,
 				argString = va_arg(args, char*);
 				while(*argString != '\0')
 				{
-					CDMPoke(ctx, initialPos, *argString, frontColor, backColor);
-					if (initialPos.X + 1 >= (*ctx)->rect.Right)
+					CDMPoke(ctx, inPos, *argString, frontColor, backColor);
+					if (inPos.X + 1 >= initialPos.Right)
 					{
-						++initialPos.Y;
-						initialPos.X = iposX;
+						++inPos.Y;
+						inPos.X = iposX;
 					}
 					else
-						++initialPos.X;
+						++inPos.X;
 					++argString;
 				}
 				break;
@@ -844,25 +847,27 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, _IN_ CDMCoord initialPos,
 				sprintf(trans, "%x", argInt);
 				for (i = 0; trans[i] != '\0'; ++i)
 				{
-					CDMPoke(ctx, initialPos, trans[i], frontColor, backColor);
-					if (initialPos.X + 1 >= (*ctx)->rect.Right)
+					CDMPoke(ctx, inPos, trans[i], frontColor, backColor);
+					if (inPos.X + 1 >= initialPos.Right)
 					{
-						++initialPos.Y;
-						initialPos.X = iposX;
+						++inPos.Y;
+						inPos.X = iposX;
 					}
 					else
-						++initialPos.X;
+						++inPos.X;
 				}
 				break;
 			}
 			break;
 		case '\n':
-			++initialPos.Y;
-			initialPos.X = iposX;
+			++inPos.Y;
+			if (inPos.Y >= initialPos.Bottom)
+				inPos.Y = initialPos.Top;
+			inPos.X = iposX;
 			break;
 		default:
-			CDMPoke(ctx, initialPos, *txt, frontColor, backColor);
-			++initialPos.X;
+			CDMPoke(ctx, inPos, *txt, frontColor, backColor);
+			++inPos.X;
 			break;
 		}
 		++txt;

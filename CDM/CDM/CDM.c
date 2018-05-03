@@ -830,6 +830,13 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDM
 				argString = va_arg(args, char*);
 				while(*argString != '\0')
 				{
+					if (*argString == '\n')
+					{
+						++inPos.Y;
+						inPos.X = iposX;
+						++argString;
+						continue;
+					}
 					CDMPoke(ctx, inPos, *argString, frontColor, backColor);
 					if (inPos.X + 1 >= initialPos.Right)
 					{

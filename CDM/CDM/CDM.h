@@ -11,16 +11,16 @@
  *				Library for creating 2D Games for the Windows CMD. For
  *				exclusive use with Windows. Not compatible for versions lower than Windows vista.
  *				This library only provides the C functions for drawing on the console, and the
- *				structures for its usage. For a Full hd device the maximum screen size is 237x124
+ *				structures for its usage. For a Full HD device the maximum screen size is 237x124
  *				using the terminal font and an 8x8 pixel per tile, or 479x168 using the same font but
  *				4x6 pixels per tile.
  * 
- * \section	sec2 Instalation.
+ * \section	sec2 Installation.
  * 				Installing CDM is pretty straightforward, you can either download the compiled binaries
  * 				and header file from my github on the releases section and use them inside Visual Studio
  * 				2017 or compile them yourself for your version of preference. 
  * 				Keep in mind that most defines included inside windows.h are not assured to be declared
- * 				in vstools' versions prior to v141, you may have to define them yourself.
+ * 				in vs-tools' versions prior to v141, you may have to define them yourself.
  * 				
  * \section	sec3 Usage.
  * 				Usage of CDM is extremely simple, just create a CDMContext using CDMCreateContext,
@@ -318,7 +318,7 @@ typedef enum CDMMode
 /**********************************************************************************************//**
  * \typedef	SMALL_RECT CDMRect
  *
- * \brief	Defines an alias representing the cdm rectangle, contains a left, right, top and
+ * \brief	Defines an alias representing the CDM rectangle, contains a left, right, top and
  * 			bottom properties.
  **************************************************************************************************/
 
@@ -327,7 +327,7 @@ typedef SMALL_RECT		CDMRect;
 /**********************************************************************************************//**
  * \typedef	COORD CDMCoord
  *
- * \brief	Defines an alias representing the cdm coordinate, contains an X and a Y property.
+ * \brief	Defines an alias representing the CDM coordinate, contains an X and a Y property.
  **************************************************************************************************/
 
 typedef COORD			CDMCoord;
@@ -335,8 +335,8 @@ typedef COORD			CDMCoord;
 /**********************************************************************************************//**
  * \typedef	char CDMEnum
  *
- * \brief	Defines an alias representing the cdm enum, this type is completely symbolic and
- * 			describes a parameter that requires to be filled with an enum.
+ * \brief	Defines an alias representing the CDM enum, this type is completely symbolic and
+ * 			describes a parameter that requires to be filled with an enumeration.
  **************************************************************************************************/
 
 typedef char			CDMEnum;
@@ -344,7 +344,7 @@ typedef char			CDMEnum;
 /**********************************************************************************************//**
  * \typedef	unsigned char CDMErrno
  *
- * \brief	Defines an alias representing the cdm errno, a simple type for checking errors inside
+ * \brief	Defines an alias representing the CDM error number, a simple type for checking errors inside
  * 			the API.
  **************************************************************************************************/
 
@@ -387,7 +387,9 @@ typedef struct CDMEvent {
 /**********************************************************************************************//**
  * \struct	CDMContext
  *
- * \brief	A context in which CDM will run.
+ * \brief	A context in which CDM will run. It contains the handle for the console window, 
+ * 			color information buffers, character buffers, the size of the window inside it's rect 
+ * 			and an event structure to get key events.
  *
  * \author	Komo
  * \date	30/4/2018
@@ -553,7 +555,7 @@ extern "C" {
 	/**********************************************************************************************//**
 	 * \fn	void CDMToggleFullscreen(CDMContext** _INOUT_ ctx, const _IN_ CDMBool val);
 	 *
-	 * \brief	Toggles fullscreen mode. Status: May be working on older platforms.
+	 * \brief	Toggles full screen mode. Status: May be working on older platforms.
 	 *
 	 * \author	Komo
 	 * \date	30/4/2018
@@ -669,7 +671,7 @@ extern "C" {
 	/**********************************************************************************************//**
 	 * \fn	void CDMExportSrfcToImg(const _IN_ CDMContext* ctx, const _IN_ CDMSurface* srfc, const _IN_ char* fileName, const _IN_ size_t nameSize);
 	 *
-	 * \brief	Cdm export srfc to image Status: Working.
+	 * \brief	Exports a surface to a .cdi image.  Status: Working.
 	 *
 	 * \author	Komo
 	 * \date	30/4/2018
@@ -713,7 +715,7 @@ extern "C" {
 	/**********************************************************************************************//**
 	 * \fn	CDMText* CDMTextWrapper_s(_IN_ char * text, const _IN_ size_t textSize, const _IN_ CDMLetterColor color, const _IN_ CDMBackgroundColor background);
 	 *
-	 * \brief	Since CDM basically highjacks the console, functions like printf are disabled. No
+	 * \brief	Since CDM basically hijacks the console, functions like printf are disabled. No
 	 * 			output will be shown using them, instead you must use the text as an object, this
 	 * 			means you have much more control of the position and design of your text, at the
 	 * 			expense of making a little bit harder to use. Moreover, repeated uses of the same
@@ -899,7 +901,7 @@ extern "C" {
 	 *
 	 * \brief	Draws directly a surface in the context, instead of batching it with other draws. I
 	 * 			highly recommend using the batch function (Add, then CDMDraw) over this one, to make
-	 * 			the program run faster. Status: Partiallly works.
+	 * 			the program run faster. Status: Partially works.
 	 *
 	 * \author	Komo
 	 * \date	30/4/2018
@@ -960,7 +962,7 @@ extern "C" {
 	 * \fn	void CDMSetColorRGB(_INOUT_ CDMColorScheme* data, _IN_ short position, _IN_ short r, _IN_ short g, _IN_ short b);
 	 *
 	 * \brief	Sets an RGB color inside a ColorScheme. Every color goes from 0 to 255, however every
-	 * 			value passes through a modulo operation to assure no weird behaviour will happen.
+	 * 			value passes through a modulo operation to assure no weird behavior will happen.
 	 * 			Status: Working.
 	 *
 	 * \author	Komo
@@ -1001,9 +1003,9 @@ extern "C" {
 	/**********************************************************************************************//**
 	 * \fn	void CDMClearScreen(_INOUT_ CDMContext ** ctx);
 	 *
-	 * \brief	Clears the current buffer of undrawn data. It does not make the whole screen black.
+	 * \brief	Clears the current buffer. It does not make the whole screen black.
 	 * 			For that you may use CDMFillScreen.This function is implemented like this to reduce
-	 * 			overhead on the program by reducing assignations and comparissons. Status: Working.
+	 * 			overhead on the program by reducing assignations and comparisons. Status: Working.
 	 *
 	 * \author	Komo
 	 * \date	30/4/2018
@@ -1173,7 +1175,7 @@ extern "C" {
 	 * \fn	void CDMPollEvents(_IN_ CDMContext* ctx, _INOUT_ CDMEvent* event);
 	 *
 	 * \brief	Polls the console events, this function must be used in order to get key and mouse
-	 * 			presses, as such it must be called at the beggining of every frame and before every
+	 * 			presses, as such it must be called at the beginning of every frame and before every
 	 * 			function that requires a CDMEvent. Status: Working.
 	 *
 	 * \author	Komo

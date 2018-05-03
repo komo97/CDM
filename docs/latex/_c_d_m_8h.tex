@@ -13,7 +13,7 @@ struct \mbox{\hyperlink{struct_c_d_m_tiles}{C\+D\+M\+Tiles}}
 struct \mbox{\hyperlink{struct_c_d_m_event}{C\+D\+M\+Event}}
 \begin{DoxyCompactList}\small\item\em A structure containing the events required to check input inside C\+DM. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}}
-\begin{DoxyCompactList}\small\item\em A context in which C\+DM will run. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em A context in which C\+DM will run. It contains the handle for the console window, color information buffers, character buffers, the size of the window inside it\textquotesingle{}s rect and an event structure to get key events. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{struct_c_d_m_pixel_data}{C\+D\+M\+Pixel\+Data}}
 \begin{DoxyCompactList}\small\item\em The data of a single pixel. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{struct_c_d_m_palette}{C\+D\+M\+Palette}}
@@ -60,13 +60,13 @@ struct \mbox{\hyperlink{struct_c_d_m_color_scheme}{C\+D\+M\+Color\+Scheme}}
 \begin{DoxyCompactItemize}
 \item 
 typedef S\+M\+A\+L\+L\+\_\+\+R\+E\+CT \mbox{\hyperlink{_c_d_m_8h_a23402dc2128c3c7f1e88e505a5631b9c}{C\+D\+M\+Rect}}
-\begin{DoxyCompactList}\small\item\em Defines an alias representing the cdm rectangle, contains a left, right, top and bottom properties. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Defines an alias representing the C\+DM rectangle, contains a left, right, top and bottom properties. \end{DoxyCompactList}\item 
 typedef C\+O\+O\+RD \mbox{\hyperlink{_c_d_m_8h_afe21360e836aeb663c2ad9ee6bc4c321}{C\+D\+M\+Coord}}
-\begin{DoxyCompactList}\small\item\em Defines an alias representing the cdm coordinate, contains an X and a Y property. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Defines an alias representing the C\+DM coordinate, contains an X and a Y property. \end{DoxyCompactList}\item 
 typedef char \mbox{\hyperlink{_c_d_m_8h_a3b61dfc1ca706f8e42c76483dc93576f}{C\+D\+M\+Enum}}
-\begin{DoxyCompactList}\small\item\em Defines an alias representing the cdm enum, this type is completely symbolic and describes a parameter that requires to be filled with an enum. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Defines an alias representing the C\+DM enum, this type is completely symbolic and describes a parameter that requires to be filled with an enumeration. \end{DoxyCompactList}\item 
 typedef unsigned char \mbox{\hyperlink{_c_d_m_8h_ae3f76c4d3a0275b2cfef89ea08d50bd6}{C\+D\+M\+Errno}}
-\begin{DoxyCompactList}\small\item\em Defines an alias representing the cdm errno, a simple type for checking errors inside the A\+PI. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Defines an alias representing the C\+DM error number, a simple type for checking errors inside the A\+PI. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
@@ -290,7 +290,7 @@ enum \mbox{\hyperlink{_c_d_m_8h_ae9a051379e0fffc039c43565f882fe3b}{C\+D\+M\+Mode
 void \mbox{\hyperlink{_c_d_m_8h_acb612172ecba4e2a448101b9b6bd4fb7}{C\+D\+M\+Change\+Window\+Size}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$$\ast$ctx, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short width, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short height)
 \begin{DoxyCompactList}\small\item\em Changes the window size of a context. May be called at any time, however it will clear the screen once its done. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8h_abd1fd0d3d904625aadb99459dbee4521}{C\+D\+M\+Toggle\+Fullscreen}} (\mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$$\ast$\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} ctx, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_af5296d3141c193195e69417d1825228b}{C\+D\+M\+Bool}} val)
-\begin{DoxyCompactList}\small\item\em Toggles fullscreen mode. Status\+: May be working on older platforms. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Toggles full screen mode. Status\+: May be working on older platforms. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8h_ab18b56ed19f345efa1935338fed8c2d5}{C\+D\+M\+Set\+Window\+Title}} (const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} wchar\+\_\+t $\ast$title)
 \item 
 void \mbox{\hyperlink{_c_d_m_8h_a830aae36fb545d324dc5eae83fa41067}{C\+D\+M\+Set\+Font\+And\+Size}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$$\ast$ctx, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} wchar\+\_\+t $\ast$font\+Name, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short width, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short height)
@@ -304,11 +304,11 @@ void \mbox{\hyperlink{_c_d_m_8h_a26c8b442c0018368838b783d415b7924}{C\+D\+M\+Acti
 \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} $\ast$ \mbox{\hyperlink{_c_d_m_8h_acdd97b8c992eb0d143f90c1d8cbab459}{C\+D\+M\+Read\+Img}} (const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char $\ast$file\+Name, \mbox{\hyperlink{_c_d_m_8h_a8812df6abf0fea826069eb2a48298dc7}{\+\_\+\+O\+U\+T\+O\+P\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_color_scheme}{C\+D\+M\+Color\+Scheme}} $\ast$scheme)
 \begin{DoxyCompactList}\small\item\em Reads a .cdi image file into a \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}}. The file must be generated exactly the same as C\+D\+M\+Export\+Srfc\+To\+Img, for it to work using this function. The usage of the structure may be imperative. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8h_af70520a48b7acb9353d5a4ee1cbc57ba}{C\+D\+M\+Export\+Srfc\+To\+Img}} (const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$ctx, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} $\ast$srfc, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char $\ast$file\+Name, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} size\+\_\+t name\+Size)
-\begin{DoxyCompactList}\small\item\em Cdm export srfc to image Status\+: Working. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Exports a surface to a .cdi image. Status\+: Working. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{struct_c_d_m_text}{C\+D\+M\+Text}} $\ast$ \mbox{\hyperlink{_c_d_m_8h_aee3fc633d44b7ea1a7d71f333bfaa8ca}{C\+D\+M\+Text\+Wrapper}} (\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char $\ast$text, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}} color, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34}{C\+D\+M\+Background\+Color}} background)
 \begin{DoxyCompactList}\small\item\em Since C\+DM basically hijacks the console, functions like printf are not enabled. No output will be shown using them, instead you must use the text as an object, this means you have much more control of the position and design of your text, at the expense of making a little bit harder to use. Moreover, repeated uses of the same text box will not require you to create a new object or call anything else other than adding this object to the context, or drawing it directly. All text begins in the ( 0 , 0 ) coordinate. Status\+: Working. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{struct_c_d_m_text}{C\+D\+M\+Text}} $\ast$ \mbox{\hyperlink{_c_d_m_8h_a18799208728fdc046bbac97445bf3e60}{C\+D\+M\+Text\+Wrapper\+\_\+s}} (\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char $\ast$text, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} size\+\_\+t text\+Size, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}} color, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34}{C\+D\+M\+Background\+Color}} background)
-\begin{DoxyCompactList}\small\item\em Since C\+DM basically highjacks the console, functions like printf are disabled. No output will be shown using them, instead you must use the text as an object, this means you have much more control of the position and design of your text, at the expense of making a little bit harder to use. Moreover, repeated uses of the same text box will not require you to create a new object or call anything else other than adding this object to the context, or drawing it directly. All text begins in the ( 0 , 0 ) coordinate. Status\+: Working. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Since C\+DM basically hijacks the console, functions like printf are disabled. No output will be shown using them, instead you must use the text as an object, this means you have much more control of the position and design of your text, at the expense of making a little bit harder to use. Moreover, repeated uses of the same text box will not require you to create a new object or call anything else other than adding this object to the context, or drawing it directly. All text begins in the ( 0 , 0 ) coordinate. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8h_a99dcfb7877ce7fd1c99fff59ac9aa081}{C\+D\+M\+Change\+Text}} (\mbox{\hyperlink{struct_c_d_m_text}{C\+D\+M\+Text}} $\ast$$\ast$txt, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char $\ast$text)
 \begin{DoxyCompactList}\small\item\em Changes the text content of a \mbox{\hyperlink{struct_c_d_m_text}{C\+D\+M\+Text}}. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8h_ad055414dd654ac3b094e755e6abb5f51}{C\+D\+M\+Set\+Foreground\+Color}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} $\ast$$\ast$surface, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}} c1, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}} c2, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}} c3, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}} c4)
@@ -328,7 +328,7 @@ void \mbox{\hyperlink{_c_d_m_8h_acff96a2cc91d34c03292d42cba430e6f}{C\+D\+M\+Prep
 void \mbox{\hyperlink{_c_d_m_8h_af0c3f5a5f2fb71971fd1a73237d98d2b}{C\+D\+M\+Prepare\+Text}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_text}{C\+D\+M\+Text}} $\ast$$\ast$txt)
 \begin{DoxyCompactList}\small\item\em This should only be called each time the text\textquotesingle{}s contents were modified before calling a draw or add function. Internally this function converts the text\textquotesingle{}s values to raw data that the console understands. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8h_a32d48dfc5b6436fbd73a92b0a090942e}{C\+D\+M\+Draw\+Surface}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$$\ast$ctx, \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} $\ast$surface)
-\begin{DoxyCompactList}\small\item\em Draws directly a surface in the context, instead of batching it with other draws. I highly recommend using the batch function (Add, then C\+D\+M\+Draw) over this one, to make the program run faster. Status\+: Partiallly works. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Draws directly a surface in the context, instead of batching it with other draws. I highly recommend using the batch function (Add, then C\+D\+M\+Draw) over this one, to make the program run faster. Status\+: Partially works. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8h_ab3eb99ad615e5be90432727e88bce28d}{C\+D\+M\+Add\+Surface\+To\+Context}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$$\ast$ctx, \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_surface}{C\+D\+M\+Surface}} $\ast$surface)
 \begin{DoxyCompactList}\small\item\em Adds a surface to the context, and thus batching its draw with every other added object, the batch will be completely flushed once C\+D\+M\+Draw is called. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8h_a4d008c0ed5b655b46c729a6fe0b0143c}{C\+D\+M\+Draw\+Text}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$$\ast$ctx, \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_text}{C\+D\+M\+Text}} $\ast$txt)
@@ -336,11 +336,11 @@ void \mbox{\hyperlink{_c_d_m_8h_a4d008c0ed5b655b46c729a6fe0b0143c}{C\+D\+M\+Draw
 void \mbox{\hyperlink{_c_d_m_8h_ad2a46411fdfcc82be4c12ca0621f0de5}{C\+D\+M\+Add\+Text\+To\+Context}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$$\ast$ctx, \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_text}{C\+D\+M\+Text}} $\ast$txt)
 \begin{DoxyCompactList}\small\item\em Adds a text to the context, and thus batching its draw with every other added object, the batch will be completely flushed once C\+D\+M\+Draw is called. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8h_ab27315a1995b90f71c05dabcfd04394b}{C\+D\+M\+Set\+Color\+R\+GB}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_color_scheme}{C\+D\+M\+Color\+Scheme}} $\ast$data, \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short position, \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short r, \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short g, \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short b)
-\begin{DoxyCompactList}\small\item\em Sets an R\+GB color inside a Color\+Scheme. Every color goes from 0 to 255, however every value passes through a modulo operation to assure no weird behaviour will happen. Status\+: Working. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets an R\+GB color inside a Color\+Scheme. Every color goes from 0 to 255, however every value passes through a modulo operation to assure no weird behavior will happen. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8h_a052763fb64e4e6048b1baddbcbbc9a29}{C\+D\+M\+Set\+Color\+Bin}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_color_scheme}{C\+D\+M\+Color\+Scheme}} $\ast$data, \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} short position, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} D\+W\+O\+RD color)
 \begin{DoxyCompactList}\small\item\em Sets an R\+GB color inside a Color\+Scheme. This function accepts an already converted to binary R\+GB color. You may use Windows.\+h macro R\+G\+B(r,g,b) to get the data. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8h_a0f6f5f1cbbac5ec47a149451ee80673a}{C\+D\+M\+Clear\+Screen}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$$\ast$ctx)
-\begin{DoxyCompactList}\small\item\em Clears the current buffer of undrawn data. It does not make the whole screen black. For that you may use C\+D\+M\+Fill\+Screen.\+This function is implemented like this to reduce overhead on the program by reducing assignations and comparissons. Status\+: Working. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Clears the current buffer. It does not make the whole screen black. For that you may use C\+D\+M\+Fill\+Screen.\+This function is implemented like this to reduce overhead on the program by reducing assignations and comparisons. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8h_a256d498746114e59d7476259d71def38}{C\+D\+M\+Fill\+Screen}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$$\ast$ctx, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char character, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}} front\+Color, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34}{C\+D\+M\+Background\+Color}} back\+Color)
 \begin{DoxyCompactList}\small\item\em Fills the context with a single color. Ignores drawn flags completely. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8h_a17baf20b93ff56b05a5f296bc626ab60}{C\+D\+M\+Poke}} (\mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$$\ast$ctx, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_afe21360e836aeb663c2ad9ee6bc4c321}{C\+D\+M\+Coord}} coord, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} char character, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_acfe075b8847d66a3a1dfb6fb8051187e}{C\+D\+M\+Letter\+Color}} front\+Color, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_ab0f45b504a1102ad4b6658c1fde15d34}{C\+D\+M\+Background\+Color}} back\+Color)
@@ -360,7 +360,7 @@ void \mbox{\hyperlink{_c_d_m_8h_aef7e8ddea4a5f872578f3ba654ccef7a}{C\+D\+M\+Set\
 \mbox{\hyperlink{_c_d_m_8h_af5296d3141c193195e69417d1825228b}{C\+D\+M\+Bool}} \mbox{\hyperlink{_c_d_m_8h_a7b4771587a381b2437f94349ee006d10}{C\+D\+M\+Compare\+C\+H\+A\+R\+I\+N\+FO}} (\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} C\+H\+A\+R\+\_\+\+I\+N\+FO rhs, \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} C\+H\+A\+R\+\_\+\+I\+N\+FO lhs)
 \begin{DoxyCompactList}\small\item\em Compares two C\+H\+A\+R\+\_\+\+I\+N\+FO structures, it\textquotesingle{}s mainly used inside the A\+PI for certain operations. May not prove useful to the graphics programmer. Status\+: Working. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_c_d_m_8h_a3adb4a4784345380749c67f901fcf468}{C\+D\+M\+Poll\+Events}} (\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_context}{C\+D\+M\+Context}} $\ast$ctx, \mbox{\hyperlink{_c_d_m_8h_a760bf06d6fb7dd0f780ecfc311d9413d}{\+\_\+\+I\+N\+O\+U\+T\+\_\+}} \mbox{\hyperlink{struct_c_d_m_event}{C\+D\+M\+Event}} $\ast$event)
-\begin{DoxyCompactList}\small\item\em Polls the console events, this function must be used in order to get key and mouse presses, as such it must be called at the beggining of every frame and before every function that requires a \mbox{\hyperlink{struct_c_d_m_event}{C\+D\+M\+Event}}. Status\+: Working. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Polls the console events, this function must be used in order to get key and mouse presses, as such it must be called at the beginning of every frame and before every function that requires a \mbox{\hyperlink{struct_c_d_m_event}{C\+D\+M\+Event}}. Status\+: Working. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_c_d_m_8h_af5296d3141c193195e69417d1825228b}{C\+D\+M\+Bool}} \mbox{\hyperlink{_c_d_m_8h_a85071e5ca6d7bec95cb7f00708bc224d}{C\+D\+M\+Get\+Key\+Pressed}} (\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_event}{C\+D\+M\+Event}} $\ast$event, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_a8e7d3f25fc77053719b079b29784115f}{C\+D\+M\+Key}} key)
 \begin{DoxyCompactList}\small\item\em Checks if the key selected in the parameter was pressed. This is the only function that checks for mouse input too. Status\+: Working. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{_c_d_m_8h_af5296d3141c193195e69417d1825228b}{C\+D\+M\+Bool}} \mbox{\hyperlink{_c_d_m_8h_aff1ed6e5b8f731d7a2939059677311a3}{C\+D\+M\+Get\+Key\+Down}} (\mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{struct_c_d_m_event}{C\+D\+M\+Event}} $\ast$event, const \mbox{\hyperlink{_c_d_m_8h_aa99f2147b3f775316d89971291dbf174}{\+\_\+\+I\+N\+\_\+}} \mbox{\hyperlink{_c_d_m_8h_a8e7d3f25fc77053719b079b29784115f}{C\+D\+M\+Key}} key)
@@ -460,7 +460,7 @@ Describes a parameter that will only be used for data output and is not required
 
 
 
-Defines an alias representing the cdm coordinate, contains an X and a Y property. 
+Defines an alias representing the C\+DM coordinate, contains an X and a Y property. 
 
 \mbox{\Hypertarget{_c_d_m_8h_a3b61dfc1ca706f8e42c76483dc93576f}\label{_c_d_m_8h_a3b61dfc1ca706f8e42c76483dc93576f}} 
 \index{C\+D\+M.\+h@{C\+D\+M.\+h}!C\+D\+M\+Enum@{C\+D\+M\+Enum}}
@@ -470,7 +470,7 @@ Defines an alias representing the cdm coordinate, contains an X and a Y property
 
 
 
-Defines an alias representing the cdm enum, this type is completely symbolic and describes a parameter that requires to be filled with an enum. 
+Defines an alias representing the C\+DM enum, this type is completely symbolic and describes a parameter that requires to be filled with an enumeration. 
 
 \mbox{\Hypertarget{_c_d_m_8h_ae3f76c4d3a0275b2cfef89ea08d50bd6}\label{_c_d_m_8h_ae3f76c4d3a0275b2cfef89ea08d50bd6}} 
 \index{C\+D\+M.\+h@{C\+D\+M.\+h}!C\+D\+M\+Errno@{C\+D\+M\+Errno}}
@@ -480,7 +480,7 @@ Defines an alias representing the cdm enum, this type is completely symbolic and
 
 
 
-Defines an alias representing the cdm errno, a simple type for checking errors inside the A\+PI. 
+Defines an alias representing the C\+DM error number, a simple type for checking errors inside the A\+PI. 
 
 \mbox{\Hypertarget{_c_d_m_8h_a23402dc2128c3c7f1e88e505a5631b9c}\label{_c_d_m_8h_a23402dc2128c3c7f1e88e505a5631b9c}} 
 \index{C\+D\+M.\+h@{C\+D\+M.\+h}!C\+D\+M\+Rect@{C\+D\+M\+Rect}}
@@ -490,7 +490,7 @@ Defines an alias representing the cdm errno, a simple type for checking errors i
 
 
 
-Defines an alias representing the cdm rectangle, contains a left, right, top and bottom properties. 
+Defines an alias representing the C\+DM rectangle, contains a left, right, top and bottom properties. 
 
 
 
@@ -1366,7 +1366,7 @@ Komo
 
 
 
-Clears the current buffer of undrawn data. It does not make the whole screen black. For that you may use C\+D\+M\+Fill\+Screen.\+This function is implemented like this to reduce overhead on the program by reducing assignations and comparissons. Status\+: Working. 
+Clears the current buffer. It does not make the whole screen black. For that you may use C\+D\+M\+Fill\+Screen.\+This function is implemented like this to reduce overhead on the program by reducing assignations and comparisons. Status\+: Working. 
 
 \begin{DoxyAuthor}{Author}
 Komo 
@@ -1505,7 +1505,7 @@ Komo
 
 
 
-Draws directly a surface in the context, instead of batching it with other draws. I highly recommend using the batch function (Add, then C\+D\+M\+Draw) over this one, to make the program run faster. Status\+: Partiallly works. 
+Draws directly a surface in the context, instead of batching it with other draws. I highly recommend using the batch function (Add, then C\+D\+M\+Draw) over this one, to make the program run faster. Status\+: Partially works. 
 
 \begin{DoxyAuthor}{Author}
 Komo 
@@ -1551,7 +1551,7 @@ Komo
 
 
 
-Cdm export srfc to image Status\+: Working. 
+Exports a surface to a .cdi image. Status\+: Working. 
 
 \begin{DoxyAuthor}{Author}
 Komo 
@@ -1947,7 +1947,7 @@ Komo
 
 
 
-Polls the console events, this function must be used in order to get key and mouse presses, as such it must be called at the beggining of every frame and before every function that requires a \mbox{\hyperlink{struct_c_d_m_event}{C\+D\+M\+Event}}. Status\+: Working. 
+Polls the console events, this function must be used in order to get key and mouse presses, as such it must be called at the beginning of every frame and before every function that requires a \mbox{\hyperlink{struct_c_d_m_event}{C\+D\+M\+Event}}. Status\+: Working. 
 
 \begin{DoxyAuthor}{Author}
 Komo 
@@ -2196,7 +2196,7 @@ Komo
 
 
 
-Sets an R\+GB color inside a Color\+Scheme. Every color goes from 0 to 255, however every value passes through a modulo operation to assure no weird behaviour will happen. Status\+: Working. 
+Sets an R\+GB color inside a Color\+Scheme. Every color goes from 0 to 255, however every value passes through a modulo operation to assure no weird behavior will happen. Status\+: Working. 
 
 \begin{DoxyAuthor}{Author}
 Komo 
@@ -2407,7 +2407,7 @@ Null if it fails, else a pointer to a \mbox{\hyperlink{struct_c_d_m_text}{C\+D\+
 
 
 
-Since C\+DM basically highjacks the console, functions like printf are disabled. No output will be shown using them, instead you must use the text as an object, this means you have much more control of the position and design of your text, at the expense of making a little bit harder to use. Moreover, repeated uses of the same text box will not require you to create a new object or call anything else other than adding this object to the context, or drawing it directly. All text begins in the ( 0 , 0 ) coordinate. Status\+: Working. 
+Since C\+DM basically hijacks the console, functions like printf are disabled. No output will be shown using them, instead you must use the text as an object, this means you have much more control of the position and design of your text, at the expense of making a little bit harder to use. Moreover, repeated uses of the same text box will not require you to create a new object or call anything else other than adding this object to the context, or drawing it directly. All text begins in the ( 0 , 0 ) coordinate. Status\+: Working. 
 
 \begin{DoxyAuthor}{Author}
 Komo 
@@ -2437,7 +2437,7 @@ Null if it fails, else a pointer to a \mbox{\hyperlink{struct_c_d_m_text}{C\+D\+
 
 
 
-Toggles fullscreen mode. Status\+: May be working on older platforms. 
+Toggles full screen mode. Status\+: May be working on older platforms. 
 
 \begin{DoxyAuthor}{Author}
 Komo 

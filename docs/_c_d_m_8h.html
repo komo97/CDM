@@ -32,7 +32,7 @@
    <div id="projectname">CDM
    &#160;<span id="projectnumber">v0.9</span>
    </div>
-   <div id="projectbrief">Console Draw Motor, C librarly for quickly developing Windows console applications with advanced graphics. https://github.com/komo97/CDM</div>
+   <div id="projectbrief">Console Draw Motor, C library for quickly developing Windows console applications with advanced graphics by wrapping WinAPI functions in easier to use containers. https://github.com/komo97/CDM</div>
   </td>
  </tr>
  </tbody>
@@ -110,7 +110,7 @@ Data Structures</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure containing the events required to check input inside CDM.  <a href="struct_c_d_m_event.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_c_d_m_context.html">CDMContext</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A context in which CDM will run.  <a href="struct_c_d_m_context.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A context in which CDM will run. It contains the handle for the console window, color information buffers, character buffers, the size of the window inside it's rect and an event structure to get key events.  <a href="struct_c_d_m_context.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_c_d_m_pixel_data.html">CDMPixelData</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The data of a single pixel.  <a href="struct_c_d_m_pixel_data.html#details">More...</a><br /></td></tr>
@@ -169,16 +169,16 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a23402dc2128c3c7f1e88e505a5631b9c"><td class="memItemLeft" align="right" valign="top">typedef SMALL_RECT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8h.html#a23402dc2128c3c7f1e88e505a5631b9c">CDMRect</a></td></tr>
-<tr class="memdesc:a23402dc2128c3c7f1e88e505a5631b9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines an alias representing the cdm rectangle, contains a left, right, top and bottom properties.  <a href="#a23402dc2128c3c7f1e88e505a5631b9c">More...</a><br /></td></tr>
+<tr class="memdesc:a23402dc2128c3c7f1e88e505a5631b9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines an alias representing the CDM rectangle, contains a left, right, top and bottom properties.  <a href="#a23402dc2128c3c7f1e88e505a5631b9c">More...</a><br /></td></tr>
 <tr class="separator:a23402dc2128c3c7f1e88e505a5631b9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe21360e836aeb663c2ad9ee6bc4c321"><td class="memItemLeft" align="right" valign="top">typedef COORD&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8h.html#afe21360e836aeb663c2ad9ee6bc4c321">CDMCoord</a></td></tr>
-<tr class="memdesc:afe21360e836aeb663c2ad9ee6bc4c321"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines an alias representing the cdm coordinate, contains an X and a Y property.  <a href="#afe21360e836aeb663c2ad9ee6bc4c321">More...</a><br /></td></tr>
+<tr class="memdesc:afe21360e836aeb663c2ad9ee6bc4c321"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines an alias representing the CDM coordinate, contains an X and a Y property.  <a href="#afe21360e836aeb663c2ad9ee6bc4c321">More...</a><br /></td></tr>
 <tr class="separator:afe21360e836aeb663c2ad9ee6bc4c321"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b61dfc1ca706f8e42c76483dc93576f"><td class="memItemLeft" align="right" valign="top">typedef char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8h.html#a3b61dfc1ca706f8e42c76483dc93576f">CDMEnum</a></td></tr>
-<tr class="memdesc:a3b61dfc1ca706f8e42c76483dc93576f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines an alias representing the cdm enum, this type is completely symbolic and describes a parameter that requires to be filled with an enum.  <a href="#a3b61dfc1ca706f8e42c76483dc93576f">More...</a><br /></td></tr>
+<tr class="memdesc:a3b61dfc1ca706f8e42c76483dc93576f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines an alias representing the CDM enum, this type is completely symbolic and describes a parameter that requires to be filled with an enumeration.  <a href="#a3b61dfc1ca706f8e42c76483dc93576f">More...</a><br /></td></tr>
 <tr class="separator:a3b61dfc1ca706f8e42c76483dc93576f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3f76c4d3a0275b2cfef89ea08d50bd6"><td class="memItemLeft" align="right" valign="top">typedef unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8h.html#ae3f76c4d3a0275b2cfef89ea08d50bd6">CDMErrno</a></td></tr>
-<tr class="memdesc:ae3f76c4d3a0275b2cfef89ea08d50bd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines an alias representing the cdm errno, a simple type for checking errors inside the API.  <a href="#ae3f76c4d3a0275b2cfef89ea08d50bd6">More...</a><br /></td></tr>
+<tr class="memdesc:ae3f76c4d3a0275b2cfef89ea08d50bd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines an alias representing the CDM error number, a simple type for checking errors inside the API.  <a href="#ae3f76c4d3a0275b2cfef89ea08d50bd6">More...</a><br /></td></tr>
 <tr class="separator:ae3f76c4d3a0275b2cfef89ea08d50bd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
@@ -416,7 +416,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:acb612172ecba4e2a448101b9b6bd4fb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the window size of a context. May be called at any time, however it will clear the screen once its done. Status: Working.  <a href="#acb612172ecba4e2a448101b9b6bd4fb7">More...</a><br /></td></tr>
 <tr class="separator:acb612172ecba4e2a448101b9b6bd4fb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd1fd0d3d904625aadb99459dbee4521"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8h.html#abd1fd0d3d904625aadb99459dbee4521">CDMToggleFullscreen</a> (<a class="el" href="struct_c_d_m_context.html">CDMContext</a> **<a class="el" href="_c_d_m_8h.html#a760bf06d6fb7dd0f780ecfc311d9413d">_INOUT_</a> ctx, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#af5296d3141c193195e69417d1825228b">CDMBool</a> val)</td></tr>
-<tr class="memdesc:abd1fd0d3d904625aadb99459dbee4521"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggles fullscreen mode. Status: May be working on older platforms.  <a href="#abd1fd0d3d904625aadb99459dbee4521">More...</a><br /></td></tr>
+<tr class="memdesc:abd1fd0d3d904625aadb99459dbee4521"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggles full screen mode. Status: May be working on older platforms.  <a href="#abd1fd0d3d904625aadb99459dbee4521">More...</a><br /></td></tr>
 <tr class="separator:abd1fd0d3d904625aadb99459dbee4521"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab18b56ed19f345efa1935338fed8c2d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8h.html#ab18b56ed19f345efa1935338fed8c2d5">CDMSetWindowTitle</a> (const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> wchar_t *title)</td></tr>
 <tr class="separator:ab18b56ed19f345efa1935338fed8c2d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -436,13 +436,13 @@ Functions</h2></td></tr>
 <tr class="memdesc:acdd97b8c992eb0d143f90c1d8cbab459"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a .cdi image file into a <a class="el" href="struct_c_d_m_surface.html" title="A representation of an image that is able to be interpreted by CDM. ">CDMSurface</a>. The file must be generated exactly the same as CDMExportSrfcToImg, for it to work using this function. The usage of the structure may be imperative. Status: Working.  <a href="#acdd97b8c992eb0d143f90c1d8cbab459">More...</a><br /></td></tr>
 <tr class="separator:acdd97b8c992eb0d143f90c1d8cbab459"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af70520a48b7acb9353d5a4ee1cbc57ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8h.html#af70520a48b7acb9353d5a4ee1cbc57ba">CDMExportSrfcToImg</a> (const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="struct_c_d_m_context.html">CDMContext</a> *ctx, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="struct_c_d_m_surface.html">CDMSurface</a> *srfc, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> char *fileName, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> size_t nameSize)</td></tr>
-<tr class="memdesc:af70520a48b7acb9353d5a4ee1cbc57ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cdm export srfc to image Status: Working.  <a href="#af70520a48b7acb9353d5a4ee1cbc57ba">More...</a><br /></td></tr>
+<tr class="memdesc:af70520a48b7acb9353d5a4ee1cbc57ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exports a surface to a .cdi image. Status: Working.  <a href="#af70520a48b7acb9353d5a4ee1cbc57ba">More...</a><br /></td></tr>
 <tr class="separator:af70520a48b7acb9353d5a4ee1cbc57ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee3fc633d44b7ea1a7d71f333bfaa8ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_c_d_m_text.html">CDMText</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8h.html#aee3fc633d44b7ea1a7d71f333bfaa8ca">CDMTextWrapper</a> (<a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> char *text, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#acfe075b8847d66a3a1dfb6fb8051187e">CDMLetterColor</a> color, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#ab0f45b504a1102ad4b6658c1fde15d34">CDMBackgroundColor</a> background)</td></tr>
 <tr class="memdesc:aee3fc633d44b7ea1a7d71f333bfaa8ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Since CDM basically hijacks the console, functions like printf are not enabled. No output will be shown using them, instead you must use the text as an object, this means you have much more control of the position and design of your text, at the expense of making a little bit harder to use. Moreover, repeated uses of the same text box will not require you to create a new object or call anything else other than adding this object to the context, or drawing it directly. All text begins in the ( 0 , 0 ) coordinate. Status: Working.  <a href="#aee3fc633d44b7ea1a7d71f333bfaa8ca">More...</a><br /></td></tr>
 <tr class="separator:aee3fc633d44b7ea1a7d71f333bfaa8ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18799208728fdc046bbac97445bf3e60"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_c_d_m_text.html">CDMText</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8h.html#a18799208728fdc046bbac97445bf3e60">CDMTextWrapper_s</a> (<a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> char *text, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> size_t textSize, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#acfe075b8847d66a3a1dfb6fb8051187e">CDMLetterColor</a> color, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#ab0f45b504a1102ad4b6658c1fde15d34">CDMBackgroundColor</a> background)</td></tr>
-<tr class="memdesc:a18799208728fdc046bbac97445bf3e60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Since CDM basically highjacks the console, functions like printf are disabled. No output will be shown using them, instead you must use the text as an object, this means you have much more control of the position and design of your text, at the expense of making a little bit harder to use. Moreover, repeated uses of the same text box will not require you to create a new object or call anything else other than adding this object to the context, or drawing it directly. All text begins in the ( 0 , 0 ) coordinate. Status: Working.  <a href="#a18799208728fdc046bbac97445bf3e60">More...</a><br /></td></tr>
+<tr class="memdesc:a18799208728fdc046bbac97445bf3e60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Since CDM basically hijacks the console, functions like printf are disabled. No output will be shown using them, instead you must use the text as an object, this means you have much more control of the position and design of your text, at the expense of making a little bit harder to use. Moreover, repeated uses of the same text box will not require you to create a new object or call anything else other than adding this object to the context, or drawing it directly. All text begins in the ( 0 , 0 ) coordinate. Status: Working.  <a href="#a18799208728fdc046bbac97445bf3e60">More...</a><br /></td></tr>
 <tr class="separator:a18799208728fdc046bbac97445bf3e60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99dcfb7877ce7fd1c99fff59ac9aa081"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8h.html#a99dcfb7877ce7fd1c99fff59ac9aa081">CDMChangeText</a> (<a class="el" href="struct_c_d_m_text.html">CDMText</a> **txt, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> char *text)</td></tr>
 <tr class="memdesc:a99dcfb7877ce7fd1c99fff59ac9aa081"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the text content of a <a class="el" href="struct_c_d_m_text.html" title="A representation of a text object able to be interpreted by CDM. ">CDMText</a>. Status: Working.  <a href="#a99dcfb7877ce7fd1c99fff59ac9aa081">More...</a><br /></td></tr>
@@ -472,7 +472,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:af0c3f5a5f2fb71971fd1a73237d98d2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This should only be called each time the text's contents were modified before calling a draw or add function. Internally this function converts the text's values to raw data that the console understands. Status: Working.  <a href="#af0c3f5a5f2fb71971fd1a73237d98d2b">More...</a><br /></td></tr>
 <tr class="separator:af0c3f5a5f2fb71971fd1a73237d98d2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32d48dfc5b6436fbd73a92b0a090942e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8h.html#a32d48dfc5b6436fbd73a92b0a090942e">CDMDrawSurface</a> (<a class="el" href="_c_d_m_8h.html#a760bf06d6fb7dd0f780ecfc311d9413d">_INOUT_</a> <a class="el" href="struct_c_d_m_context.html">CDMContext</a> **ctx, <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="struct_c_d_m_surface.html">CDMSurface</a> *surface)</td></tr>
-<tr class="memdesc:a32d48dfc5b6436fbd73a92b0a090942e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws directly a surface in the context, instead of batching it with other draws. I highly recommend using the batch function (Add, then CDMDraw) over this one, to make the program run faster. Status: Partiallly works.  <a href="#a32d48dfc5b6436fbd73a92b0a090942e">More...</a><br /></td></tr>
+<tr class="memdesc:a32d48dfc5b6436fbd73a92b0a090942e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws directly a surface in the context, instead of batching it with other draws. I highly recommend using the batch function (Add, then CDMDraw) over this one, to make the program run faster. Status: Partially works.  <a href="#a32d48dfc5b6436fbd73a92b0a090942e">More...</a><br /></td></tr>
 <tr class="separator:a32d48dfc5b6436fbd73a92b0a090942e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3eb99ad615e5be90432727e88bce28d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8h.html#ab3eb99ad615e5be90432727e88bce28d">CDMAddSurfaceToContext</a> (<a class="el" href="_c_d_m_8h.html#a760bf06d6fb7dd0f780ecfc311d9413d">_INOUT_</a> <a class="el" href="struct_c_d_m_context.html">CDMContext</a> **ctx, <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="struct_c_d_m_surface.html">CDMSurface</a> *surface)</td></tr>
 <tr class="memdesc:ab3eb99ad615e5be90432727e88bce28d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a surface to the context, and thus batching its draw with every other added object, the batch will be completely flushed once CDMDraw is called. Status: Working.  <a href="#ab3eb99ad615e5be90432727e88bce28d">More...</a><br /></td></tr>
@@ -484,13 +484,13 @@ Functions</h2></td></tr>
 <tr class="memdesc:ad2a46411fdfcc82be4c12ca0621f0de5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a text to the context, and thus batching its draw with every other added object, the batch will be completely flushed once CDMDraw is called. Status: Working.  <a href="#ad2a46411fdfcc82be4c12ca0621f0de5">More...</a><br /></td></tr>
 <tr class="separator:ad2a46411fdfcc82be4c12ca0621f0de5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab27315a1995b90f71c05dabcfd04394b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8h.html#ab27315a1995b90f71c05dabcfd04394b">CDMSetColorRGB</a> (<a class="el" href="_c_d_m_8h.html#a760bf06d6fb7dd0f780ecfc311d9413d">_INOUT_</a> <a class="el" href="struct_c_d_m_color_scheme.html">CDMColorScheme</a> *data, <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> short position, <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> short r, <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> short g, <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> short b)</td></tr>
-<tr class="memdesc:ab27315a1995b90f71c05dabcfd04394b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets an RGB color inside a ColorScheme. Every color goes from 0 to 255, however every value passes through a modulo operation to assure no weird behaviour will happen. Status: Working.  <a href="#ab27315a1995b90f71c05dabcfd04394b">More...</a><br /></td></tr>
+<tr class="memdesc:ab27315a1995b90f71c05dabcfd04394b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets an RGB color inside a ColorScheme. Every color goes from 0 to 255, however every value passes through a modulo operation to assure no weird behavior will happen. Status: Working.  <a href="#ab27315a1995b90f71c05dabcfd04394b">More...</a><br /></td></tr>
 <tr class="separator:ab27315a1995b90f71c05dabcfd04394b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a052763fb64e4e6048b1baddbcbbc9a29"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8h.html#a052763fb64e4e6048b1baddbcbbc9a29">CDMSetColorBin</a> (<a class="el" href="_c_d_m_8h.html#a760bf06d6fb7dd0f780ecfc311d9413d">_INOUT_</a> <a class="el" href="struct_c_d_m_color_scheme.html">CDMColorScheme</a> *data, <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> short position, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> DWORD color)</td></tr>
 <tr class="memdesc:a052763fb64e4e6048b1baddbcbbc9a29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets an RGB color inside a ColorScheme. This function accepts an already converted to binary RGB color. You may use Windows.h macro RGB(r,g,b) to get the data. Status: Working.  <a href="#a052763fb64e4e6048b1baddbcbbc9a29">More...</a><br /></td></tr>
 <tr class="separator:a052763fb64e4e6048b1baddbcbbc9a29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f6f5f1cbbac5ec47a149451ee80673a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8h.html#a0f6f5f1cbbac5ec47a149451ee80673a">CDMClearScreen</a> (<a class="el" href="_c_d_m_8h.html#a760bf06d6fb7dd0f780ecfc311d9413d">_INOUT_</a> <a class="el" href="struct_c_d_m_context.html">CDMContext</a> **ctx)</td></tr>
-<tr class="memdesc:a0f6f5f1cbbac5ec47a149451ee80673a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears the current buffer of undrawn data. It does not make the whole screen black. For that you may use CDMFillScreen.This function is implemented like this to reduce overhead on the program by reducing assignations and comparissons. Status: Working.  <a href="#a0f6f5f1cbbac5ec47a149451ee80673a">More...</a><br /></td></tr>
+<tr class="memdesc:a0f6f5f1cbbac5ec47a149451ee80673a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears the current buffer. It does not make the whole screen black. For that you may use CDMFillScreen.This function is implemented like this to reduce overhead on the program by reducing assignations and comparisons. Status: Working.  <a href="#a0f6f5f1cbbac5ec47a149451ee80673a">More...</a><br /></td></tr>
 <tr class="separator:a0f6f5f1cbbac5ec47a149451ee80673a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a256d498746114e59d7476259d71def38"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8h.html#a256d498746114e59d7476259d71def38">CDMFillScreen</a> (<a class="el" href="_c_d_m_8h.html#a760bf06d6fb7dd0f780ecfc311d9413d">_INOUT_</a> <a class="el" href="struct_c_d_m_context.html">CDMContext</a> **ctx, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> char character, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#acfe075b8847d66a3a1dfb6fb8051187e">CDMLetterColor</a> frontColor, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#ab0f45b504a1102ad4b6658c1fde15d34">CDMBackgroundColor</a> backColor)</td></tr>
 <tr class="memdesc:a256d498746114e59d7476259d71def38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fills the context with a single color. Ignores drawn flags completely. Status: Working.  <a href="#a256d498746114e59d7476259d71def38">More...</a><br /></td></tr>
@@ -520,7 +520,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:a7b4771587a381b2437f94349ee006d10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two CHAR_INFO structures, it's mainly used inside the API for certain operations. May not prove useful to the graphics programmer. Status: Working.  <a href="#a7b4771587a381b2437f94349ee006d10">More...</a><br /></td></tr>
 <tr class="separator:a7b4771587a381b2437f94349ee006d10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3adb4a4784345380749c67f901fcf468"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8h.html#a3adb4a4784345380749c67f901fcf468">CDMPollEvents</a> (<a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="struct_c_d_m_context.html">CDMContext</a> *ctx, <a class="el" href="_c_d_m_8h.html#a760bf06d6fb7dd0f780ecfc311d9413d">_INOUT_</a> <a class="el" href="struct_c_d_m_event.html">CDMEvent</a> *event)</td></tr>
-<tr class="memdesc:a3adb4a4784345380749c67f901fcf468"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polls the console events, this function must be used in order to get key and mouse presses, as such it must be called at the beggining of every frame and before every function that requires a <a class="el" href="struct_c_d_m_event.html" title="A structure containing the events required to check input inside CDM. ">CDMEvent</a>. Status: Working.  <a href="#a3adb4a4784345380749c67f901fcf468">More...</a><br /></td></tr>
+<tr class="memdesc:a3adb4a4784345380749c67f901fcf468"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polls the console events, this function must be used in order to get key and mouse presses, as such it must be called at the beginning of every frame and before every function that requires a <a class="el" href="struct_c_d_m_event.html" title="A structure containing the events required to check input inside CDM. ">CDMEvent</a>. Status: Working.  <a href="#a3adb4a4784345380749c67f901fcf468">More...</a><br /></td></tr>
 <tr class="separator:a3adb4a4784345380749c67f901fcf468"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85071e5ca6d7bec95cb7f00708bc224d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_c_d_m_8h.html#af5296d3141c193195e69417d1825228b">CDMBool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_c_d_m_8h.html#a85071e5ca6d7bec95cb7f00708bc224d">CDMGetKeyPressed</a> (<a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="struct_c_d_m_event.html">CDMEvent</a> *event, const <a class="el" href="_c_d_m_8h.html#aa99f2147b3f775316d89971291dbf174">_IN_</a> <a class="el" href="_c_d_m_8h.html#a8e7d3f25fc77053719b079b29784115f">CDMKey</a> key)</td></tr>
 <tr class="memdesc:a85071e5ca6d7bec95cb7f00708bc224d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the key selected in the parameter was pressed. This is the only function that checks for mouse input too. Status: Working.  <a href="#a85071e5ca6d7bec95cb7f00708bc224d">More...</a><br /></td></tr>
@@ -666,7 +666,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Defines an alias representing the cdm coordinate, contains an X and a Y property. </p>
+<p>Defines an alias representing the CDM coordinate, contains an X and a Y property. </p>
 
 </div>
 </div>
@@ -682,7 +682,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Defines an alias representing the cdm enum, this type is completely symbolic and describes a parameter that requires to be filled with an enum. </p>
+<p>Defines an alias representing the CDM enum, this type is completely symbolic and describes a parameter that requires to be filled with an enumeration. </p>
 
 </div>
 </div>
@@ -698,7 +698,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Defines an alias representing the cdm errno, a simple type for checking errors inside the API. </p>
+<p>Defines an alias representing the CDM error number, a simple type for checking errors inside the API. </p>
 
 </div>
 </div>
@@ -714,7 +714,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Defines an alias representing the cdm rectangle, contains a left, right, top and bottom properties. </p>
+<p>Defines an alias representing the CDM rectangle, contains a left, right, top and bottom properties. </p>
 
 </div>
 </div>
@@ -1236,7 +1236,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Clears the current buffer of undrawn data. It does not make the whole screen black. For that you may use CDMFillScreen.This function is implemented like this to reduce overhead on the program by reducing assignations and comparissons. Status: Working. </p>
+<p>Clears the current buffer. It does not make the whole screen black. For that you may use CDMFillScreen.This function is implemented like this to reduce overhead on the program by reducing assignations and comparisons. Status: Working. </p>
 <dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -1326,7 +1326,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Null if it fails, else a pointer to a <a class="el" href="struct_c_d_m_context.html" title="A context in which CDM will run. ">CDMContext</a>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Null if it fails, else a pointer to a <a class="el" href="struct_c_d_m_context.html" title="A context in which CDM will run. It contains the handle for the console window, color information buf...">CDMContext</a>. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="main_8cpp-example.html#a1">main.cpp</a>.</dd>
 </dl>
 </div>
@@ -1441,7 +1441,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Draws directly a surface in the context, instead of batching it with other draws. I highly recommend using the batch function (Add, then CDMDraw) over this one, to make the program run faster. Status: Partiallly works. </p>
+<p>Draws directly a surface in the context, instead of batching it with other draws. I highly recommend using the batch function (Add, then CDMDraw) over this one, to make the program run faster. Status: Partially works. </p>
 <dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -1531,7 +1531,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Cdm export srfc to image Status: Working. </p>
+<p>Exports a surface to a .cdi image. Status: Working. </p>
 <dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -2124,7 +2124,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Polls the console events, this function must be used in order to get key and mouse presses, as such it must be called at the beggining of every frame and before every function that requires a <a class="el" href="struct_c_d_m_event.html" title="A structure containing the events required to check input inside CDM. ">CDMEvent</a>. Status: Working. </p>
+<p>Polls the console events, this function must be used in order to get key and mouse presses, as such it must be called at the beginning of every frame and before every function that requires a <a class="el" href="struct_c_d_m_event.html" title="A structure containing the events required to check input inside CDM. ">CDMEvent</a>. Status: Working. </p>
 <dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -2556,7 +2556,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets an RGB color inside a ColorScheme. Every color goes from 0 to 255, however every value passes through a modulo operation to assure no weird behaviour will happen. Status: Working. </p>
+<p>Sets an RGB color inside a ColorScheme. Every color goes from 0 to 255, however every value passes through a modulo operation to assure no weird behavior will happen. Status: Working. </p>
 <dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -2915,7 +2915,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Since CDM basically highjacks the console, functions like printf are disabled. No output will be shown using them, instead you must use the text as an object, this means you have much more control of the position and design of your text, at the expense of making a little bit harder to use. Moreover, repeated uses of the same text box will not require you to create a new object or call anything else other than adding this object to the context, or drawing it directly. All text begins in the ( 0 , 0 ) coordinate. Status: Working. </p>
+<p>Since CDM basically hijacks the console, functions like printf are disabled. No output will be shown using them, instead you must use the text as an object, this means you have much more control of the position and design of your text, at the expense of making a little bit harder to use. Moreover, repeated uses of the same text box will not require you to create a new object or call anything else other than adding this object to the context, or drawing it directly. All text begins in the ( 0 , 0 ) coordinate. Status: Working. </p>
 <dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -2957,7 +2957,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Toggles fullscreen mode. Status: May be working on older platforms. </p>
+<p>Toggles full screen mode. Status: May be working on older platforms. </p>
 <dl class="section author"><dt>Author</dt><dd>Komo </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>30/4/2018</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>

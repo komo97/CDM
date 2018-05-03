@@ -26,7 +26,7 @@ var NAVTREE =
   [ "CDM", "index.html", [
     [ "Console Draw Motor", "index.html", [
       [ "Description.", "index.html#sec1", null ],
-      [ "Instalation.", "index.html#sec2", null ],
+      [ "Installation.", "index.html#sec2", null ],
       [ "Usage.", "index.html#sec3", null ]
     ] ],
     [ "Data Structures", "annotated.html", [

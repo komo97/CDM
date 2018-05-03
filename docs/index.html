@@ -32,7 +32,7 @@
    <div id="projectname">CDM
    &#160;<span id="projectnumber">v0.9</span>
    </div>
-   <div id="projectbrief">Console Draw Motor, C librarly for quickly developing Windows console applications with advanced graphics. https://github.com/komo97/CDM</div>
+   <div id="projectbrief">Console Draw Motor, C library for quickly developing Windows console applications with advanced graphics by wrapping WinAPI functions in easier to use containers. https://github.com/komo97/CDM</div>
   </td>
  </tr>
  </tbody>
@@ -93,13 +93,13 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="sec1"></a>
 Description.</h1>
-<p>Library for creating 2D Games for the Windows CMD. For exclusive use with Windows. Not compatible for versions lower than Windows vista. This library only provides the C functions for drawing on the console, and the structures for its usage. For a Full hd device the maximum screen size is 237x124 using the terminal font and an 8x8 pixel per tile, or 479x168 using the same font but 4x6 pixels per tile.</p>
+<p>Library for creating 2D Games for the Windows CMD. For exclusive use with Windows. Not compatible for versions lower than Windows vista. This library only provides the C functions for drawing on the console, and the structures for its usage. For a Full HD device the maximum screen size is 237x124 using the terminal font and an 8x8 pixel per tile, or 479x168 using the same font but 4x6 pixels per tile.</p>
 <h1><a class="anchor" id="sec2"></a>
-Instalation.</h1>
-<p>Installing CDM is pretty straightforward, you can either download the compiled binaries and header file from my github on the releases section and use them inside Visual Studio 2017 or compile them yourself for your version of preference. Keep in mind that most defines included inside windows.h are not assured to be declared in vstools' versions prior to v141, you may have to define them yourself.</p>
+Installation.</h1>
+<p>Installing CDM is pretty straightforward, you can either download the compiled binaries and header file from my github on the releases section and use them inside Visual Studio 2017 or compile them yourself for your version of preference. Keep in mind that most defines included inside windows.h are not assured to be declared in vs-tools' versions prior to v141, you may have to define them yourself.</p>
 <h1><a class="anchor" id="sec3"></a>
 Usage.</h1>
-<p>Usage of CDM is extremely simple, just create a <a class="el" href="struct_c_d_m_context.html" title="A context in which CDM will run. ">CDMContext</a> using CDMCreateContext, after that you can either change the font size and resize your window, change the title of your window or create a surface and start drawing. Keep in mind, inside your main loop, CDMPollEvents should not have anything running before it, and for optimization purposes CDMDraw should only be called once at the end of your loop.</p>
+<p>Usage of CDM is extremely simple, just create a <a class="el" href="struct_c_d_m_context.html" title="A context in which CDM will run. It contains the handle for the console window, color information buf...">CDMContext</a> using CDMCreateContext, after that you can either change the font size and resize your window, change the title of your window or create a surface and start drawing. Keep in mind, inside your main loop, CDMPollEvents should not have anything running before it, and for optimization purposes CDMDraw should only be called once at the end of your loop.</p>
 <dl class="section copyright"><dt>Copyright</dt><dd>This software is provided 'as-is', without any express or implied warranty. In no event will the authors be held liable for any damages arising from the use of this software.</dd></dl>
 <p>Permission is granted to anyone to use this software for any purpose, including commercial applications, and to alter it and redistribute it freely, subject to the following restrictions:</p>
 <ol type="1">

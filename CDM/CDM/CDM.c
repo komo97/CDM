@@ -37,6 +37,7 @@ CDMContext* CDMCreateContext(const _IN_ short width, const _IN_ short height)
 	SetConsoleMode(ctx->inputBuffer, (ENABLE_WINDOW_INPUT | modes) ^ (ENABLE_INSERT_MODE | ENABLE_QUICK_EDIT_MODE));
 	SetConsoleMode(ctx->mainBuffer, DISABLE_NEWLINE_AUTO_RETURN | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
 	memset(ctx->events.inputPressed, CDMFalse, KeysEnd * sizeof(CDMBool));
+	ctx->clip = CDMTrue;
 	return ctx;
 }
 
@@ -761,6 +762,13 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDM
 					if (inPos.X + 1 >= initialPos.Right)
 					{
 						++inPos.Y;
+						if (inPos.Y >= initialPos.Bottom)
+						{
+							if ((*ctx)->clip)
+								return;
+							else
+								inPos.Y = initialPos.Top;
+						}
 						inPos.X = iposX;
 					}
 					else
@@ -777,6 +785,13 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDM
 					if (inPos.X + 1 >= initialPos.Right)
 					{
 						++inPos.Y;
+						if (inPos.Y >= initialPos.Bottom)
+						{
+							if ((*ctx)->clip)
+								return;
+							else
+								inPos.Y = initialPos.Top;
+						}
 						inPos.X = iposX;
 					}
 					else
@@ -801,6 +816,13 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDM
 					if (inPos.X + 1 >= initialPos.Right)
 					{
 						++inPos.Y;
+						if (inPos.Y >= initialPos.Bottom)
+						{
+							if ((*ctx)->clip)
+								return;
+							else
+								inPos.Y = initialPos.Top;
+						}
 						inPos.X = iposX;
 					}
 					else
@@ -819,6 +841,13 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDM
 					if (inPos.X + 1 >= initialPos.Right)
 					{
 						++inPos.Y;
+						if (inPos.Y >= initialPos.Bottom)
+						{
+							if ((*ctx)->clip)
+								return;
+							else
+								inPos.Y = initialPos.Top;
+						}
 						inPos.X = iposX;
 					}
 					else
@@ -833,6 +862,13 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDM
 					if (*argString == '\n')
 					{
 						++inPos.Y;
+						if (inPos.Y >= initialPos.Bottom)
+						{
+							if ((*ctx)->clip)
+								return;
+							else
+								inPos.Y = initialPos.Top;
+						}
 						inPos.X = iposX;
 						++argString;
 						continue;
@@ -841,6 +877,13 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDM
 					if (inPos.X + 1 >= initialPos.Right)
 					{
 						++inPos.Y;
+						if (inPos.Y >= initialPos.Bottom)
+						{
+							if ((*ctx)->clip)
+								return;
+							else
+								inPos.Y = initialPos.Top;
+						}
 						inPos.X = iposX;
 					}
 					else
@@ -858,6 +901,13 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDM
 					if (inPos.X + 1 >= initialPos.Right)
 					{
 						++inPos.Y;
+						if (inPos.Y >= initialPos.Bottom)
+						{
+							if ((*ctx)->clip)
+								return;
+							else
+								inPos.Y = initialPos.Top;
+						}
 						inPos.X = iposX;
 					}
 					else
@@ -869,7 +919,12 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDM
 		case '\n':
 			++inPos.Y;
 			if (inPos.Y >= initialPos.Bottom)
-				inPos.Y = initialPos.Top;
+			{
+				if ((*ctx)->clip)
+					return;
+				else
+					inPos.Y = initialPos.Top;
+			}
 			inPos.X = iposX;
 			break;
 		default:

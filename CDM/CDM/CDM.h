@@ -406,6 +406,7 @@ typedef struct CDMContext
 	CDMRect							rect;
 	/** \brief	The event structure that contains every CDM input. */
 	CDMEvent						events;
+	CDMBool							clip;
 }CDMContext;
 
 /**********************************************************************************************//**

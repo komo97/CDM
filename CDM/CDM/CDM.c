@@ -739,8 +739,8 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDM
 	float argFloat;
 	wchar_t trans[32], argChar;
 	wchar_t* argString;
-	CDMCoord inPos = { initialPos.Left, initialPos.Right };
-	for (i = 0; i <= startingLetter && *txt != L'\0'; ++i)
+	CDMCoord inPos = { initialPos.Left, initialPos.Top };
+	for (i = 0; i < startingLetter && *txt != L'\0'; ++i)
 		++txt;
 	while (*txt != L'\0')
 	{
@@ -761,10 +761,10 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDM
 				for (i = 0; trans[i] != L'\0'; ++i)
 				{
 					CDMPoke(ctx, inPos, trans[i], frontColor, backColor);
-					if (inPos.X + 1 >= initialPos.Right)
+					if (inPos.X + 1 >= initialPos.Right + initialPos.Left)
 					{
 						++inPos.Y;
-						if (inPos.Y >= initialPos.Bottom)
+						if (inPos.Y >= initialPos.Bottom + initialPos.Top)
 						{
 							if ((*ctx)->clip)
 								return;
@@ -784,10 +784,10 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDM
 				for (i = 0; trans[i] != L'\0'; ++i)
 				{
 					CDMPoke(ctx, inPos, trans[i], frontColor, backColor);
-					if (inPos.X + 1 >= initialPos.Right)
+					if (inPos.X + 1 >= initialPos.Right + initialPos.Left)
 					{
 						++inPos.Y;
-						if (inPos.Y >= initialPos.Bottom)
+						if (inPos.Y >= initialPos.Bottom + initialPos.Top)
 						{
 							if ((*ctx)->clip)
 								return;
@@ -815,10 +815,10 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDM
 				for (i = 0; trans[i] != L'\0'; ++i)
 				{
 					CDMPoke(ctx, inPos, trans[i], frontColor, backColor);
-					if (inPos.X + 1 >= initialPos.Right)
+					if (inPos.X + 1 >= initialPos.Right + initialPos.Left)
 					{
 						++inPos.Y;
-						if (inPos.Y >= initialPos.Bottom)
+						if (inPos.Y >= initialPos.Bottom + initialPos.Top)
 						{
 							if ((*ctx)->clip)
 								return;
@@ -840,10 +840,10 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDM
 				for (i = 0; trans[i] != L'\0'; ++i)
 				{
 					CDMPoke(ctx, inPos, trans[i], frontColor, backColor);
-					if (inPos.X + 1 >= initialPos.Right)
+					if (inPos.X + 1 >= initialPos.Right + initialPos.Left)
 					{
 						++inPos.Y;
-						if (inPos.Y >= initialPos.Bottom)
+						if (inPos.Y >= initialPos.Bottom + initialPos.Top)
 						{
 							if ((*ctx)->clip)
 								return;
@@ -864,7 +864,7 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDM
 					if (*argString == L'\n')
 					{
 						++inPos.Y;
-						if (inPos.Y >= initialPos.Bottom)
+						if (inPos.Y >= initialPos.Bottom + initialPos.Top)
 						{
 							if ((*ctx)->clip)
 								return;
@@ -876,10 +876,10 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDM
 						continue;
 					}
 					CDMPoke(ctx, inPos, *argString, frontColor, backColor);
-					if (inPos.X + 1 >= initialPos.Right)
+					if (inPos.X + 1 >= initialPos.Right + initialPos.Left)
 					{
 						++inPos.Y;
-						if (inPos.Y >= initialPos.Bottom)
+						if (inPos.Y >= initialPos.Bottom + initialPos.Top)
 						{
 							if ((*ctx)->clip)
 								return;
@@ -900,10 +900,10 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDM
 				for (i = 0; trans[i] != L'\0'; ++i)
 				{
 					CDMPoke(ctx, inPos, trans[i], frontColor, backColor);
-					if (inPos.X + 1 >= initialPos.Right)
+					if (inPos.X + 1 >= initialPos.Right + initialPos.Left)
 					{
 						++inPos.Y;
-						if (inPos.Y >= initialPos.Bottom)
+						if (inPos.Y >= initialPos.Bottom + initialPos.Top)
 						{
 							if ((*ctx)->clip)
 								return;
@@ -920,7 +920,7 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDM
 			break;
 		case L'\n':
 			++inPos.Y;
-			if (inPos.Y >= initialPos.Bottom)
+			if (inPos.Y >= initialPos.Bottom + initialPos.Top)
 			{
 				if ((*ctx)->clip)
 					return;
@@ -931,7 +931,20 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDM
 			break;
 		default:
 			CDMPoke(ctx, inPos, *txt, frontColor, backColor);
-			++inPos.X;
+			if (inPos.X + 1 >= initialPos.Right + initialPos.Left)
+			{
+				++inPos.Y;
+				if (inPos.Y >= initialPos.Bottom + initialPos.Top)
+				{
+					if ((*ctx)->clip)
+						return;
+					else
+						inPos.Y = initialPos.Top;
+				}
+				inPos.X = iposX;
+			}
+			else
+				++inPos.X;
 			break;
 		}
 		++txt;

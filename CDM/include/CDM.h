@@ -406,6 +406,7 @@ typedef struct CDMContext
 	CDMRect							rect;
 	/** \brief	The event structure that contains every CDM input. */
 	CDMEvent						events;
+	CDMBool							clip;
 }CDMContext;
 
 /**********************************************************************************************//**
@@ -419,8 +420,8 @@ typedef struct CDMContext
 
 typedef struct CDMPixelData
 {
-	unsigned char	character,
-					frontColor,
+	wchar_t			character;
+	unsigned char	frontColor,
 					backColor;
 }CDMPixelData;
 
@@ -472,7 +473,7 @@ typedef struct CDMText
 {
 	short		frontColor,
 				backColor;
-	char		*data;
+	wchar_t		*data;
 	CDMRect		rect;
 	CDMTiles	bufferContents;
 }CDMText;
@@ -567,10 +568,13 @@ extern "C" {
 	void		CDMToggleFullscreen(CDMContext** _INOUT_ ctx, const _IN_ CDMBool val);
 
 	/**********************************************************************************************//**
-	 * \fn	void CDMSetWindowTitle(const _IN_ char* title);
+	 * \fn	void CDMSetWindowTitle(const _IN_ wchar_t* title);
 	 *
-	 * \brief	Sets the title of the console. Just a wrapper for a WINAPI functionality.
-	 *			Status: Working.
+	 * \brief	Sets the title of the console. Just a wrapper for a WINAPI functionality. Status:
+	 * 			Working.
+	 *
+	 * \author	Komo
+	 * \date	8/5/2018
 	 *
 	 * \param [in]	title	The title of the console.
 	 **************************************************************************************************/
@@ -659,9 +663,9 @@ extern "C" {
 	 * \author	Komo
 	 * \date	30/4/2018
 	 *
-	 * \param [in]		  	fileName	Filename of the file.
-	 * \param [in,out]		scheme  	If non-null, the scheme that will
-	 * 									obtain the real scheme used in the image.
+	 * \param [in]	  	fileName	Filename of the file.
+	 * \param [in,out]	scheme  	If non-null, the scheme that will obtain the real scheme used in
+	 * 								the image.
 	 *
 	 * \return	Null if it fails, else a pointer to a CDMSurface.
 	 **************************************************************************************************/
@@ -688,7 +692,7 @@ extern "C" {
 							const _IN_ size_t nameSize);
 
 	/**********************************************************************************************//**
-	 * \fn	CDMText* CDMTextWrapper(_IN_ char * text, const _IN_ CDMLetterColor color, const _IN_ CDMBackgroundColor background);
+	 * \fn	CDMText* CDMTextWrapper(_IN_ wchar_t * text, const _IN_ CDMLetterColor color, const _IN_ CDMBackgroundColor background);
 	 *
 	 * \brief	Since CDM basically hijacks the console, functions like printf are not enabled. No
 	 * 			output will be shown using them, instead you must use the text as an object, this
@@ -708,12 +712,12 @@ extern "C" {
 	 * \return	Null if it fails, else a pointer to a CDMText.
 	 **************************************************************************************************/
 
-	CDMText*	CDMTextWrapper(_IN_ char * text,
+	CDMText*	CDMTextWrapper(_IN_ wchar_t * text,
 		const _IN_ CDMLetterColor color,
 		const _IN_ CDMBackgroundColor background);
 
 	/**********************************************************************************************//**
-	 * \fn	CDMText* CDMTextWrapper_s(_IN_ char * text, const _IN_ size_t textSize, const _IN_ CDMLetterColor color, const _IN_ CDMBackgroundColor background);
+	 * \fn	CDMText* CDMTextWrapper_s(_IN_ wchar_t * text, const _IN_ size_t textSize, const _IN_ CDMLetterColor color, const _IN_ CDMBackgroundColor background);
 	 *
 	 * \brief	Since CDM basically hijacks the console, functions like printf are disabled. No
 	 * 			output will be shown using them, instead you must use the text as an object, this
@@ -734,13 +738,13 @@ extern "C" {
 	 * \return	Null if it fails, else a pointer to a CDMText.
 	 **************************************************************************************************/
 
-	CDMText*	CDMTextWrapper_s(_IN_ char * text,
+	CDMText*	CDMTextWrapper_s(_IN_ wchar_t * text,
 							const _IN_ size_t textSize,
 							const _IN_ CDMLetterColor color,
 							const _IN_ CDMBackgroundColor background);
 
 	/**********************************************************************************************//**
-	 * \fn	void CDMChangeText(CDMText** txt, const _IN_ char * text);
+	 * \fn	void CDMChangeText(CDMText** txt, const _IN_ wchar_t * text);
 	 *
 	 * \brief	Changes the text content of a CDMText. Status: Working.
 	 *
@@ -751,7 +755,7 @@ extern "C" {
 	 * \param [in]	  	text	The text, null terminated.
 	 **************************************************************************************************/
 
-	void		CDMChangeText(CDMText** txt, const _IN_ char * text);
+	void		CDMChangeText(CDMText** txt, const _IN_ wchar_t * text);
 
 	/**********************************************************************************************//**
 	 * \fn	void CDMSetForegroundColor(_INOUT_ CDMSurface** surface, const _IN_ CDMLetterColor c1, const _IN_ CDMLetterColor c2, const _IN_ CDMLetterColor c3, const _IN_ CDMLetterColor c4);
@@ -802,7 +806,7 @@ extern "C" {
 							const _IN_ CDMBackgroundColor c4);
 
 	/**********************************************************************************************//**
-	 * \fn	void CDMSetCharacters(_INOUT_ CDMSurface** surface, const _IN_ unsigned char c1, const _IN_ unsigned char c2, const _IN_ unsigned char c3, const _IN_ unsigned char c4);
+	 * \fn	void CDMSetCharacters(_INOUT_ CDMSurface** surface, const _IN_ wchar_t c1, const _IN_ wchar_t c2, const _IN_ wchar_t c3, const _IN_ wchar_t c4);
 	 *
 	 * \brief	A CDMSurface may only have 4 color sets at a time. Including background, foreground
 	 * 			and character. Each combination of 3 of those elements makes a set. This function
@@ -819,10 +823,10 @@ extern "C" {
 	 **************************************************************************************************/
 
 	void		CDMSetCharacters(_INOUT_ CDMSurface** surface,
-							const _IN_ unsigned char c1,
-							const _IN_ unsigned char c2,
-							const _IN_ unsigned char c3,
-							const _IN_ unsigned char c4);
+							const _IN_ wchar_t c1,
+							const _IN_ wchar_t c2,
+							const _IN_ wchar_t c3,
+							const _IN_ wchar_t c4);
 
 	/**********************************************************************************************//**
 	 * \fn	void CDMFreeSurface(_INOUT_ CDMSurface** surface);
@@ -1003,9 +1007,9 @@ extern "C" {
 	/**********************************************************************************************//**
 	 * \fn	void CDMClearScreen(_INOUT_ CDMContext ** ctx);
 	 *
-	 * \brief	Clears the current buffer. It does not make the whole screen black.
-	 * 			For that you may use CDMFillScreen.This function is implemented like this to reduce
-	 * 			overhead on the program by reducing assignations and comparisons. Status: Working.
+	 * \brief	Clears the current buffer. It does not make the whole screen black. For that you may
+	 * 			use CDMFillScreen.This function is implemented like this to reduce overhead on the
+	 * 			program by reducing assignations and comparisons. Status: Working.
 	 *
 	 * \author	Komo
 	 * \date	30/4/2018
@@ -1016,7 +1020,7 @@ extern "C" {
 	void		CDMClearScreen(_INOUT_ CDMContext ** ctx);
 
 	/**********************************************************************************************//**
-	 * \fn	void CDMFillScreen(_INOUT_ CDMContext ** ctx, const _IN_ char character, const _IN_ CDMLetterColor frontColor, const _IN_ CDMBackgroundColor backColor);
+	 * \fn	void CDMFillScreen(_INOUT_ CDMContext ** ctx, const _IN_ wchar_t character, const _IN_ CDMLetterColor frontColor, const _IN_ CDMBackgroundColor backColor);
 	 *
 	 * \brief	Fills the context with a single color. Ignores drawn flags completely. Status:
 	 * 			Working.
@@ -1031,12 +1035,12 @@ extern "C" {
 	 **************************************************************************************************/
 
 	void		CDMFillScreen(_INOUT_ CDMContext ** ctx,
-							const _IN_ char character,
+							const _IN_ wchar_t character,
 							const _IN_ CDMLetterColor frontColor,
 							const _IN_ CDMBackgroundColor backColor);
 
 	/**********************************************************************************************//**
-	 * \fn	void CDMPoke(_INOUT_ CDMContext ** ctx, const _IN_ CDMCoord coord, const _IN_ char character, const _IN_ CDMLetterColor frontColor, const _IN_ CDMBackgroundColor backColor);
+	 * \fn	void CDMPoke(_INOUT_ CDMContext ** ctx, const _IN_ CDMCoord coord, const _IN_ wchar_t character, const _IN_ CDMLetterColor frontColor, const _IN_ CDMBackgroundColor backColor);
 	 *
 	 * \brief	Pokes a pixel in the screen to a certain color. Ignores drawn flags. Status: Working.
 	 *
@@ -1052,7 +1056,7 @@ extern "C" {
 
 	void		CDMPoke(_INOUT_ CDMContext ** ctx,
 							const _IN_ CDMCoord coord,
-							const _IN_ char character,
+							const _IN_ wchar_t character,
 							const _IN_ CDMLetterColor frontColor,
 							const _IN_ CDMBackgroundColor backColor);
 
@@ -1271,26 +1275,29 @@ extern "C" {
 	void		CDMKeepScreenSize(_INOUT_ CDMContext** ctx, _IN_ CDMEvent* event);
 
 	/**********************************************************************************************//**
-	 * \fn	void CDMPrintf(_INOUT_ CDMContext** ctx, _IN_ CDMCoord initialPos, const _IN_ CDMLetterColor frontColor, const _IN_ CDMBackgroundColor backColor, const _IN_ char* txt, ...);
+	 * \fn	void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDMRect initialPos, const _IN_ CDMLetterColor frontColor, const _IN_ CDMBackgroundColor backColor, const _IN_ wchar_t* txt, ...);
 	 *
-	 * \brief	A printf implementation for CDM, made it as a replacement or alternative to the 
-	 * 			text object. It should be easier to manage, but a more expensive call, so use this
-	 * 			for dynamic text only, and use Text objects for static text. 
+	 * \brief	A printf implementation for CDM, made it as a replacement or alternative to the text
+	 * 			object. It should be easier to manage, but a more expensive call, so use this for
+	 * 			dynamic text only, and use Text objects for static text.
 	 *
 	 * \author	Komo
 	 * \date	30/4/2018
 	 *
-	 * \param [in,out]	ctx		  	The context, must not be null.
-	 * \param [in]	  	initialPos	The initial position of the text, it wraps as if the x position of the text was the left side of the screen.
-	 * \param [in]	  	frontColor	The front color of the text.
-	 * \param [in]	  	backColor 	The back color of the text.
-	 * \param [in]	  	txt		  	The text, modes "%d,%i,%u,%f,%g,%x,%o,%c,%s" are working, the new line character is \\n.
-	 * \param [in]	  	...		  	Variable arguments providing additional information.
+	 * \param [in,out]	ctx			  	The context, must not be null.
+	 * \param 		  	startingLetter	The letter index to start printing from.
+	 * \param [in]	  	initialPos	  	The initial position of the text, it wraps around the
+	 * 									initialPos parameter's right and bottom elements.
+	 * \param [in]	  	frontColor	  	The front color of the text.
+	 * \param [in]	  	backColor	  	The back color of the text.
+	 * \param [in]	  	txt			  	The text, modes "%d,%i,%u,%f,%g,%x,%o,%c,%s" are working, the
+	 * 									new line character is \\n.
+	 * \param [in]	  	...			  	Variable arguments providing additional information.
 	 **************************************************************************************************/
 
-	void		CDMPrintf(_INOUT_ CDMContext** ctx, _IN_ CDMCoord initialPos,
+	void		CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDMRect initialPos,
 		const _IN_ CDMLetterColor frontColor,
-		const _IN_ CDMBackgroundColor backColor, const _IN_ char* txt, ...);
+		const _IN_ CDMBackgroundColor backColor, const _IN_ wchar_t* txt, ...);
 
 	/**********************************************************************************************//**
 	 * \fn	void CDMSetErrno(const _IN_ CDMErrno code);

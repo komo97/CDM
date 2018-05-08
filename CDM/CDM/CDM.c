@@ -150,13 +150,13 @@ CDMSurface* CDMCreateSurface(const _IN_ short posX,
 	}
 	int i;
 	srfc->rect = ((CDMRect) { posX, posY, sizeX, sizeY });
-	srfc->data = calloc(sizeX*sizeY, sizeof(unsigned char));
+	srfc->data = calloc(sizeX*sizeY, sizeof(CDMEnum));
 	srfc->bufferContents.printBufferCont = calloc(sizeX * sizeY, sizeof(CHAR_INFO));
 	srfc->bufferContents.isAlphaTile = calloc(sizeX * sizeY, sizeof(CDMBool));
 	memset(srfc->bufferContents.isAlphaTile, CDMFalse, sizeX * sizeY);
 	for (i = sizeX * sizeY; i--;)
 	{
-		srfc->bufferContents.printBufferCont[i].Char.AsciiChar = '\0';
+		srfc->bufferContents.printBufferCont[i].Char.UnicodeChar = L'\0';
 	}
 	return srfc;
 }
@@ -215,7 +215,7 @@ void CDMExportSrfcToImg(const _IN_ CDMContext* ctx,
 	free(name);
 }
 
-CDMText * CDMTextWrapper(_IN_ char * text, const _IN_ CDMLetterColor color, const _IN_ CDMBackgroundColor background)
+CDMText * CDMTextWrapper(_IN_ wchar_t * text, const _IN_ CDMLetterColor color, const _IN_ CDMBackgroundColor background)
 {
 	CDMText* txt = malloc(sizeof(CDMText));
 	if (!txt)
@@ -225,18 +225,18 @@ CDMText * CDMTextWrapper(_IN_ char * text, const _IN_ CDMLetterColor color, cons
 	}
 	txt->rect.Bottom = 1;
 	txt->rect.Left = 0;
-	txt->rect.Right = (SHORT)strlen(text);
+	txt->rect.Right = (SHORT)wcslen(text);
 	txt->rect.Top = 0;
-	(txt)->data = malloc(txt->rect.Right + 1);
-	strcpy((txt)->data, text);
+	(txt)->data = malloc((txt->rect.Right + 1) * sizeof(wchar_t));
+	wcscpy((txt)->data, text);
 	txt->backColor = background;
 	txt->frontColor = color;
 	txt->bufferContents.printBufferCont = NULL;
-	txt->bufferContents.printBufferCont = calloc(strlen(text), sizeof(CHAR_INFO));
+	txt->bufferContents.printBufferCont = calloc(wcslen(text), sizeof(CHAR_INFO));
 	int i;
 	for (i = txt->rect.Right; i--;)
 	{
-		txt->bufferContents.printBufferCont[i].Char.AsciiChar = '\0';
+		txt->bufferContents.printBufferCont[i].Char.UnicodeChar = L'\0';
 	}
 	if (!txt->bufferContents.printBufferCont)
 	{
@@ -287,25 +287,25 @@ void CDMPrepareSurface(_INOUT_ CDMSurface** surface)
 			switch((*surface)->data[accessor])
 			{
 			case Set1:
-				(*surface)->bufferContents.printBufferCont[accessor].Char.AsciiChar =
+				(*surface)->bufferContents.printBufferCont[accessor].Char.UnicodeChar =
 					(*surface)->pallete.p1.character;
 				(*surface)->bufferContents.printBufferCont[accessor].Attributes =
 					(*surface)->pallete.p1.frontColor | (*surface)->pallete.p1.backColor;
 				goto NotAlpha;
 			case Set2:
-				(*surface)->bufferContents.printBufferCont[accessor].Char.AsciiChar =
+				(*surface)->bufferContents.printBufferCont[accessor].Char.UnicodeChar =
 					(*surface)->pallete.p2.character;
 				(*surface)->bufferContents.printBufferCont[accessor].Attributes =
 					(*surface)->pallete.p2.frontColor | (*surface)->pallete.p2.backColor;
 				goto NotAlpha;
 			case Set3:
-				(*surface)->bufferContents.printBufferCont[accessor].Char.AsciiChar =
+				(*surface)->bufferContents.printBufferCont[accessor].Char.UnicodeChar =
 					(*surface)->pallete.p3.character;
 				(*surface)->bufferContents.printBufferCont[accessor].Attributes =
 					(*surface)->pallete.p3.frontColor | (*surface)->pallete.p3.backColor;
 				goto NotAlpha;
 			case Set4:
-				(*surface)->bufferContents.printBufferCont[accessor].Char.AsciiChar =
+				(*surface)->bufferContents.printBufferCont[accessor].Char.UnicodeChar =
 					(*surface)->pallete.p4.character;
 				(*surface)->bufferContents.printBufferCont[accessor].Attributes =
 					(*surface)->pallete.p4.frontColor | (*surface)->pallete.p4.backColor;
@@ -330,7 +330,7 @@ void CDMPrepareText(_INOUT_ CDMText** txt)
 		for (j = (*txt)->rect.Right; j--;)
 		{
 			accessor = j + (i*(*txt)->rect.Right);
-			(*txt)->bufferContents.printBufferCont[accessor].Char.AsciiChar =
+			(*txt)->bufferContents.printBufferCont[accessor].Char.UnicodeChar =
 				(*txt)->data[accessor];
 			(*txt)->bufferContents.printBufferCont[accessor].Attributes =
 				(*txt)->frontColor | (*txt)->backColor;
@@ -338,7 +338,7 @@ void CDMPrepareText(_INOUT_ CDMText** txt)
 	}
 }
 
-CDMText * CDMTextWrapper_s(_IN_ char * text, const _IN_ size_t textSize,
+CDMText * CDMTextWrapper_s(_IN_ wchar_t * text, const _IN_ size_t textSize,
 	const _IN_ CDMLetterColor color, const _IN_ CDMBackgroundColor background)
 {
 	CDMText* txt = malloc(sizeof(CDMText));
@@ -347,8 +347,8 @@ CDMText * CDMTextWrapper_s(_IN_ char * text, const _IN_ size_t textSize,
 		CDMSetErrno(4);
 		return NULL;
 	}
-	(txt)->data = malloc(textSize + 1);
-	strcpy((txt)->data, text);
+	(txt)->data = malloc((textSize + 1) * sizeof(wchar_t));
+	wcscpy((txt)->data, text);
 	txt->backColor = background;
 	txt->frontColor = color;
 	txt->bufferContents.printBufferCont = NULL;
@@ -371,12 +371,12 @@ CDMText * CDMTextWrapper_s(_IN_ char * text, const _IN_ size_t textSize,
 	return txt;
 }
 
-void CDMChangeText(CDMText ** txt, const _IN_ char * text)
+void CDMChangeText(CDMText ** txt, const _IN_ wchar_t * text)
 {
-	size_t strSize = strlen(text);
+	size_t strSize = wcslen(text);
 	free((*txt)->data);
-	(*txt)->data = malloc(strSize + 1);
-	strcpy((*txt)->data, text);
+	(*txt)->data = malloc((strSize + 1) * sizeof(wchar_t));
+	wcscpy((*txt)->data, text);
 	(*txt)->rect.Right = (SHORT)strSize;
 	CHAR_INFO* cinf = (CHAR_INFO*)realloc((*txt)->bufferContents.printBufferCont,
 		sizeof(CHAR_INFO)* strSize);
@@ -413,10 +413,10 @@ void CDMSetBackgroundColor(_INOUT_ CDMSurface** surface,
 }
 
 void CDMSetCharacters(_INOUT_ CDMSurface** surface,
-	const _IN_ unsigned char c1,
-	const _IN_ unsigned char c2,
-	const _IN_ unsigned char c3,
-	const _IN_ unsigned char c4)
+	const _IN_ wchar_t c1,
+	const _IN_ wchar_t c2,
+	const _IN_ wchar_t c3,
+	const _IN_ wchar_t c4)
 {
 	(*surface)->pallete.p1.character = c1;
 	(*surface)->pallete.p2.character = c2;
@@ -451,6 +451,8 @@ void CDMAddSurfaceToContext(_INOUT_ CDMContext** ctx, _IN_ CDMSurface* surface)
 		{
 			ctxAccessor = i + (j * (*ctx)->rect.Right);
 			srfcAccessor = si + (sj * surface->rect.Right);
+			if (surface->data[srfcAccessor] == SetAlpha)
+				continue;
 			(*ctx)->contents.printBufferCont[ctxAccessor] =
 				surface->bufferContents.printBufferCont[srfcAccessor];
 		}
@@ -513,7 +515,7 @@ void CDMClearScreen(_INOUT_ CDMContext ** ctx)
 }
 
 void CDMFillScreen(_INOUT_ CDMContext ** ctx,
-	const _IN_ char character,
+	const _IN_ wchar_t character,
 	const _IN_ CDMLetterColor frontColor,
 	const _IN_ CDMBackgroundColor backColor)
 {
@@ -525,14 +527,14 @@ void CDMFillScreen(_INOUT_ CDMContext ** ctx,
 		{
 			(*ctx)->contents.printBufferCont[i + (j * (*ctx)->rect.Right)].Attributes = 
 				frontColor | backColor;
-			(*ctx)->contents.printBufferCont[i + (j * (*ctx)->rect.Right)].Char.AsciiChar = character;
+			(*ctx)->contents.printBufferCont[i + (j * (*ctx)->rect.Right)].Char.UnicodeChar = character;
 		}
 	}
 }
 
 void CDMPoke(_INOUT_ CDMContext ** ctx,
 	const _IN_ CDMCoord coord,
-	const _IN_ char character,
+	const _IN_ wchar_t character,
 	const _IN_ CDMLetterColor frontColor,
 	const _IN_ CDMBackgroundColor backColor)
 {
@@ -541,7 +543,7 @@ void CDMPoke(_INOUT_ CDMContext ** ctx,
 	int accesor = coord.X + (coord.Y * (*ctx)->rect.Right);
 	(*ctx)->contents.printBufferCont[accesor].Attributes =
 		frontColor | backColor;
-	(*ctx)->contents.printBufferCont[accesor].Char.AsciiChar = character;
+	(*ctx)->contents.printBufferCont[accesor].Char.UnicodeChar = character;
 }
 
 void CDMDraw(_IN_ CDMContext** ctx)
@@ -552,7 +554,7 @@ void CDMDraw(_IN_ CDMContext** ctx)
 	CDMCoord	pos = { 0,0 },
 		size = { (*ctx)->rect.Right, (*ctx)->rect.Bottom };
 	SMALL_RECT	rect = { pos.X, pos.Y, (*ctx)->rect.Right, (*ctx)->rect.Bottom };
-	WriteConsoleOutputA(
+	WriteConsoleOutputW(
 		(*ctx)->mainBuffer,
 		(*ctx)->contents.printBufferCont,
 		size, pos, &rect);
@@ -616,7 +618,7 @@ void CDMSetPixel(_INOUT_ CDMSurface** surface,
 CDMBool CDMCompareCHARINFO(_IN_ CHAR_INFO rhs, _IN_ CHAR_INFO lhs)
 {
 	return rhs.Attributes == lhs.Attributes &&
-		rhs.Char.AsciiChar == lhs.Char.AsciiChar ? CDMTrue : CDMFalse;
+		rhs.Char.UnicodeChar == lhs.Char.UnicodeChar ? CDMTrue : CDMFalse;
 }
 
 void CDMPollEvents(_IN_ CDMContext* ctx, _INOUT_ CDMEvent* event)
@@ -727,36 +729,36 @@ void CDMKeepScreenSize(_INOUT_ CDMContext** ctx, _IN_ CDMEvent* event)
 
 void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDMRect initialPos,
 	const _IN_ CDMLetterColor frontColor,
-	const _IN_ CDMBackgroundColor backColor, const _IN_ char* txt, ...)
+	const _IN_ CDMBackgroundColor backColor, const _IN_ wchar_t* txt, ...)
 {
 	va_list args;
 	va_start(args, txt);
-	char token;
+	wchar_t token;
 	int argInt, i, iposX = initialPos.Left;
 	unsigned int arguint;
 	float argFloat;
-	char trans[32], argChar;
-	char* argString;
+	wchar_t trans[32], argChar;
+	wchar_t* argString;
 	CDMCoord inPos = { initialPos.Left, initialPos.Right };
-	for (i = 0; i <= startingLetter && *txt != '\0'; ++i)
+	for (i = 0; i <= startingLetter && *txt != L'\0'; ++i)
 		++txt;
-	while (*txt != '\0')
+	while (*txt != L'\0')
 	{
 		switch (*txt)
 		{
-		case '%':
+		case L'%':
 			token = *(++txt);
 			switch (token)
 			{
-			case '%':
-				CDMPoke(ctx, inPos, '%', frontColor, backColor);
+			case L'%':
+				CDMPoke(ctx, inPos, L'%', frontColor, backColor);
 				++inPos.X;
 				break;
-			case 'U':
-			case 'u':
+			case L'U':
+			case L'u':
 				arguint = va_arg(args, unsigned int);
-				sprintf(trans, "%u", arguint);
-				for (i = 0; trans[i] != '\0'; ++i)
+				swprintf(trans, 31, L"%u", arguint);
+				for (i = 0; trans[i] != L'\0'; ++i)
 				{
 					CDMPoke(ctx, inPos, trans[i], frontColor, backColor);
 					if (inPos.X + 1 >= initialPos.Right)
@@ -775,11 +777,11 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDM
 						++inPos.X;
 				}
 				break;
-			case 'O':
-			case 'o':
+			case L'O':
+			case L'o':
 				argInt = va_arg(args, int);
-				sprintf(trans, "%o", argInt);
-				for (i = 0; trans[i] != '\0'; ++i)
+				swprintf(trans, 31, L"%o", argInt);
+				for (i = 0; trans[i] != L'\0'; ++i)
 				{
 					CDMPoke(ctx, inPos, trans[i], frontColor, backColor);
 					if (inPos.X + 1 >= initialPos.Right)
@@ -798,19 +800,19 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDM
 						++inPos.X;
 				}
 				break;
-			case 'C':
-			case 'c':
-				argChar = va_arg(args, char);
+			case L'C':
+			case L'c':
+				argChar = va_arg(args, wchar_t);
 				CDMPoke(ctx, inPos, argChar, frontColor, backColor);
 				++inPos.X;
 				break;
-			case 'D':
-			case 'I':
-			case 'd':
-			case 'i':
+			case L'D':
+			case L'I':
+			case L'd':
+			case L'i':
 				argInt = va_arg(args, int);
-				sprintf(trans, "%d", argInt);
-				for (i = 0; trans[i] != '\0'; ++i)
+				swprintf(trans, 31, L"%d", argInt);
+				for (i = 0; trans[i] != L'\0'; ++i)
 				{
 					CDMPoke(ctx, inPos, trans[i], frontColor, backColor);
 					if (inPos.X + 1 >= initialPos.Right)
@@ -829,13 +831,13 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDM
 						++inPos.X;
 				}
 				break;
-			case 'G':
-			case 'F':
-			case 'g':
-			case 'f':
+			case L'G':
+			case L'F':
+			case L'g':
+			case L'f':
 				argFloat = va_arg(args, float);
-				sprintf(trans, "%g", argFloat);
-				for (i = 0; trans[i] != '\0'; ++i)
+				swprintf(trans, 31, L"%g", argFloat);
+				for (i = 0; trans[i] != L'\0'; ++i)
 				{
 					CDMPoke(ctx, inPos, trans[i], frontColor, backColor);
 					if (inPos.X + 1 >= initialPos.Right)
@@ -854,12 +856,12 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDM
 						++inPos.X;
 				}
 				break;
-			case 's':
-			case 'S':
-				argString = va_arg(args, char*);
-				while(*argString != '\0')
+			case L's':
+			case L'S':
+				argString = va_arg(args, wchar_t*);
+				while(*argString != L'\0')
 				{
-					if (*argString == '\n')
+					if (*argString == L'\n')
 					{
 						++inPos.Y;
 						if (inPos.Y >= initialPos.Bottom)
@@ -891,11 +893,11 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDM
 					++argString;
 				}
 				break;
-			case 'X':
-			case 'x':
+			case L'X':
+			case L'x':
 				argInt = va_arg(args, int);
-				sprintf(trans, "%x", argInt);
-				for (i = 0; trans[i] != '\0'; ++i)
+				swprintf(trans, 31, L"%x", argInt);
+				for (i = 0; trans[i] != L'\0'; ++i)
 				{
 					CDMPoke(ctx, inPos, trans[i], frontColor, backColor);
 					if (inPos.X + 1 >= initialPos.Right)
@@ -916,7 +918,7 @@ void CDMPrintf(_INOUT_ CDMContext** ctx, const _IN_ int startingLetter, _IN_ CDM
 				break;
 			}
 			break;
-		case '\n':
+		case L'\n':
 			++inPos.Y;
 			if (inPos.Y >= initialPos.Bottom)
 			{

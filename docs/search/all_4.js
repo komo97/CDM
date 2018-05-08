@@ -8,7 +8,7 @@ var searchData=
   ['darkmagenta',['DARKMAGENTA',['../_c_d_m_8h.html#acfe075b8847d66a3a1dfb6fb8051187ea68f9f8e23d51fc9d6882df0d7877495f',1,'CDM.h']]],
   ['darkred',['DARKRED',['../_c_d_m_8h.html#acfe075b8847d66a3a1dfb6fb8051187eabe740b28cdb8bf307e639f4a37e48fb0',1,'CDM.h']]],
   ['darkyellow',['DARKYELLOW',['../_c_d_m_8h.html#acfe075b8847d66a3a1dfb6fb8051187ea0311c0ecb97a3f42f678481a61ef6c95',1,'CDM.h']]],
-  ['data',['data',['../struct_c_d_m_surface.html#adce19b3211f4678a93f6924f7888c7e9',1,'CDMSurface::data()'],['../struct_c_d_m_text.html#a91a70b77df95bd8b0830b49a094c2acb',1,'CDMText::data()']]],
+  ['data',['data',['../struct_c_d_m_surface.html#adce19b3211f4678a93f6924f7888c7e9',1,'CDMSurface::data()'],['../struct_c_d_m_text.html#a79d124c473298ee68f0edcf56ae99c71',1,'CDMText::data()']]],
   ['decimal',['decimal',['../_c_d_m_8h.html#a8e7d3f25fc77053719b079b29784115fa6992b6597999d56c20d35f8d1ec915e1',1,'CDM.h']]],
   ['del',['del',['../_c_d_m_8h.html#a8e7d3f25fc77053719b079b29784115fa6c72d326f1e8c8f83ce91ccf13f107c7',1,'CDM.h']]],
   ['divide',['divide',['../_c_d_m_8h.html#a8e7d3f25fc77053719b079b29784115fa6e9415469d8f8da1cf6774cddd61a259',1,'CDM.h']]],

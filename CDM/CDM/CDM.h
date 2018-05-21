@@ -117,6 +117,19 @@
 #define _INOUTOPT_
 
 /**********************************************************************************************//**
+ * \enum	CDMExtraOptions
+ *
+ * \brief	Values that represent extra options for coloring letters and backgrounds.
+ * 			Exclusive for advanced usage.
+ **************************************************************************************************/
+
+typedef enum CDMExtraOptions {
+	reverseColors = COMMON_LVB_REVERSE_VIDEO,
+	underscore = COMMON_LVB_UNDERSCORE,
+	Alpha = 100,
+}CDMExtraOptions;
+
+/**********************************************************************************************//**
  * \enum	CDMLetterColor
  *
  * \brief	Describes a parameter that will be used for data input and output and it maps all the
@@ -156,6 +169,21 @@ typedef enum CDMLetterColor {
 	LCOLOR13 = MAGENTA,
 	LCOLOR14 = YELLOW,
 	LCOLOR15 = WHITE,
+	UNDERLINED1 = LCOLOR1 | underscore,
+	UNDERLINED2 = LCOLOR2 | underscore,
+	UNDERLINED3 = LCOLOR3 | underscore,
+	UNDERLINED4 = LCOLOR4 | underscore,
+	UNDERLINED5 = LCOLOR5 | underscore,
+	UNDERLINED6 = LCOLOR6 | underscore,
+	UNDERLINED7 = LCOLOR7 | underscore,
+	UNDERLINED8 = LCOLOR8 | underscore,
+	UNDERLINED9 = LCOLOR9 | underscore,
+	UNDERLINED10 = LCOLOR10 | underscore,
+	UNDERLINED11 = LCOLOR11 | underscore,
+	UNDERLINED12 = LCOLOR12 | underscore,
+	UNDERLINED13 = LCOLOR13 | underscore,
+	UNDERLINED14 = LCOLOR14 | underscore,
+	UNDERLINED15 = LCOLOR15 | underscore
 } CDMLetterColor;
 
 /**********************************************************************************************//**
@@ -198,20 +226,23 @@ typedef enum CDMBackgroundColor {
 	BCOLOR13 = BMAGENTA,
 	BCOLOR14 = BYELLOW,
 	BCOLOR15 = BWHITE,
+	REVERSED1 = BCOLOR1 | reverseColors,
+	REVERSED2 = BCOLOR2 | reverseColors,
+	REVERSED3 = BCOLOR3 | reverseColors,
+	REVERSED4 = BCOLOR4 | reverseColors,
+	REVERSED5 = BCOLOR5 | reverseColors,
+	REVERSED6 = BCOLOR6 | reverseColors,
+	REVERSED7 = BCOLOR7 | reverseColors,
+	REVERSED8 = BCOLOR8 | reverseColors,
+	REVERSED9 = BCOLOR9 | reverseColors,
+	REVERSED10 = BCOLOR10 | reverseColors,
+	REVERSED11 = BCOLOR11 | reverseColors,
+	REVERSED12 = BCOLOR12 | reverseColors,
+	REVERSED13 = BCOLOR13 | reverseColors,
+	REVERSED14 = BCOLOR14 | reverseColors,
+	REVERSED15 = BCOLOR15 | reverseColors
+
 } CDMBackgroundColor;
-
-/**********************************************************************************************//**
- * \enum	CDMExtraOptions
- *
- * \brief	Values that represent extra options for coloring letters and backgrounds.
- * 			Exclusive for advanced usage.
- **************************************************************************************************/
-
-typedef enum CDMExtraOptions {
-	reverseColors = COMMON_LVB_REVERSE_VIDEO,
-	underscore = COMMON_LVB_UNDERSCORE,
-	Alpha = 100,
-}CDMExtraOptions;
 
 /**********************************************************************************************//**
  * \enum	CDMColorSets
@@ -285,7 +316,8 @@ typedef enum CDMKey {
 	eight = 0x38,
 	nine = 0x39,
 	A = 0x41, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z,
-	add = 0x6B,
+	multiply = 0x06A,
+	add,
 	separator,
 	substract,
 	decimal,

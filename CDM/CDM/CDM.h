@@ -163,12 +163,13 @@ typedef enum CDMLetterColor {
 	LCOLOR7 = DARKYELLOW,
 	LCOLOR8 = DARKGRAY,
 	LCOLOR9 = GRAY,
-	LCOLOR10 = GREEN,
-	LCOLOR11 = CYAN,
-	LCOLOR12 = RED,
-	LCOLOR13 = MAGENTA,
-	LCOLOR14 = YELLOW,
-	LCOLOR15 = WHITE,
+	LCOLOR10 = BLUE,
+	LCOLOR11 = GREEN,
+	LCOLOR12 = CYAN,
+	LCOLOR13 = RED,
+	LCOLOR14 = MAGENTA,
+	LCOLOR15 = YELLOW,
+	LCOLOR16 = WHITE,
 	UNDERLINED1 = LCOLOR1 | underscore,
 	UNDERLINED2 = LCOLOR2 | underscore,
 	UNDERLINED3 = LCOLOR3 | underscore,
@@ -183,7 +184,8 @@ typedef enum CDMLetterColor {
 	UNDERLINED12 = LCOLOR12 | underscore,
 	UNDERLINED13 = LCOLOR13 | underscore,
 	UNDERLINED14 = LCOLOR14 | underscore,
-	UNDERLINED15 = LCOLOR15 | underscore
+	UNDERLINED15 = LCOLOR15 | underscore,
+	UNDERLINED16 = LCOLOR16 | underscore,
 } CDMLetterColor;
 
 /**********************************************************************************************//**
@@ -220,12 +222,13 @@ typedef enum CDMBackgroundColor {
 	BCOLOR7 =  BDARKYELLOW,
 	BCOLOR8 =  BDARKGRAY,
 	BCOLOR9 =  BGRAY,
-	BCOLOR10 = BGREEN,
-	BCOLOR11 = BCYAN,
-	BCOLOR12 = BRED,
-	BCOLOR13 = BMAGENTA,
-	BCOLOR14 = BYELLOW,
-	BCOLOR15 = BWHITE,
+	BCOLOR10 = BBLUE,
+	BCOLOR11 = BGREEN,
+	BCOLOR12 = BCYAN,
+	BCOLOR13 = BRED,
+	BCOLOR14 = BMAGENTA,
+	BCOLOR15 = BYELLOW,
+	BCOLOR16 = BWHITE,
 	REVERSED1 = BCOLOR1 | reverseColors,
 	REVERSED2 = BCOLOR2 | reverseColors,
 	REVERSED3 = BCOLOR3 | reverseColors,
@@ -240,7 +243,8 @@ typedef enum CDMBackgroundColor {
 	REVERSED12 = BCOLOR12 | reverseColors,
 	REVERSED13 = BCOLOR13 | reverseColors,
 	REVERSED14 = BCOLOR14 | reverseColors,
-	REVERSED15 = BCOLOR15 | reverseColors
+	REVERSED15 = BCOLOR15 | reverseColors,
+	REVERSED16 = BCOLOR16 | reverseColors,
 
 } CDMBackgroundColor;
 
